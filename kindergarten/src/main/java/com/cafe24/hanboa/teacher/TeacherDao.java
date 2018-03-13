@@ -15,7 +15,7 @@ public class TeacherDao {
 	private SqlSessionTemplate sqlSession;
 	private static final Logger logger = LoggerFactory.getLogger(TeacherDao.class);
 	
-	String localName = "com.cafe24.hanboa.mappers.TeacherMapper.";
+	String localName = "com.cafe24.hanboa.teacher.TeacherMapper.";
 	
 	// 목록조회
 	public List<Teacher> selectTeacherList() {
