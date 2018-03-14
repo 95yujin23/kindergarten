@@ -1,0 +1,21 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cafe24.hanboa.feeding.FeedingMapper">
+
+<!-- 식단메뉴조회 -->
+	<select id="getFeedingMenuList"
+			parameterType="java.util.Map"
+			resultType="com.cafe24.hanboa.feeding.FeedingMenu">
+		SELECT
+			feeding_menu_cd as feedingMenuCd
+			,menu_date as menuDate
+			,lunch_calory_protein as lunchCaloryProtein
+			,morning_snack as morningSnack
+			,afternoon_sanck as afternoonSnack
+			,origin
+			,menu_manager as menuManager
+			,license_kindergarten as licenseKindergarten
+		FROM hanboa.TB_FEEDING_MENU			
+			</select>
+
+</mapper>
