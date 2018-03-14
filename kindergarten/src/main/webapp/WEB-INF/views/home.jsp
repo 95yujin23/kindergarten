@@ -254,13 +254,12 @@
 								Tables</a></li>
 						<li><a href="forms.html"><i class="fa fa-edit fa-fw"></i>
 								Forms</a></li>
-						<li><a href="#"><i class="fa fa-wrench fa-fw"></i> UI
-								Elements<span class="fa arrow"></span></a>
+						<li><a href="#"><i class="fa fa-wrench fa-fw"></i> 급식 관리<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
-								<li><a href="panels-wells.html">Panels and Wells</a></li>
-								<li><a href="buttons.html">Buttons</a></li>
-								<li><a href="notifications.html">Notifications</a></li>
-								<li><a href="typography.html">Typography</a></li>
+								<li><a href="${pageContext.request.contextPath}/feeding/feeding_menu">식단</a></li>
+								<li><a href="${pageContext.request.contextPath}/feeding/feeding_application">급식신청</a></li>
+								<li><a href="${pageContext.request.contextPath}/feeding/feeding_monthly">월별급식</a></li>
+								<li><a href="${pageContext.request.contextPath}/feeding/feeding_poisonning">식중독발생및처리</a></li>
 								<li><a href="icons.html"> Icons</a></li>
 								<li><a href="grid.html">Grid</a></li>
 							</ul> <!-- /.nav-second-level --></li>
