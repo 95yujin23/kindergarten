@@ -28,7 +28,15 @@ public class TeacherController {
 		return "teacher/teacher_list";
 	}
 	
-	
+/*	// 1. 목록조회
+	@RequestMapping(value="/teacher/teacher_list")
+	public String teacherList(Model model, HttpSession session) {
+		List<Teacher> list = teacherService.getTeacherList();
+		logger.debug("1-1. TeacherController -- TeacherList : {}", list);
+		logger.debug("-----------------------------------------");
+		model.addAttribute("list",list);
+		return "teacher/teacher_list";
+	}*/
 	
 
 }

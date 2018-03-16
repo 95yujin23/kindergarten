@@ -41,7 +41,7 @@
  		,pay_step as payStep
  		,license_kindergarten as licenseKindergarten
 	FROM hanboa.TB_TEACHERS
-	WHERE teacher_cd = #{teacherCd}
+	WHERE email = #{teacherCd} AND 
 	</select>	
 	
 <!-- 교직원 개인 조회 -->
