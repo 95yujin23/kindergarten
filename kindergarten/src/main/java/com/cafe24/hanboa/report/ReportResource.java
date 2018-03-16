@@ -1,7 +1,7 @@
 package com.cafe24.hanboa.report;
 
 public class ReportResource {
-	//일지자원코드 tb_report_resource
+	//일지자원코드 tb_report_resource_
 	
 	private String reportResourceCd;
 	private String groupNm;
