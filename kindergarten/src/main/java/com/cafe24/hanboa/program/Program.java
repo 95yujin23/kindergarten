@@ -7,7 +7,7 @@ public class Program {
 	private int programNumberWeek;
 	private int programOperationTime;
 	private int programOutsourcingCost;
-	private int programClosingAccoutingExpenditurePayment;
+	private int programClosingStatus;
 	private String programClosingoption;
 	private String contractCd;
 	private String programRegistrationDate;
@@ -49,11 +49,11 @@ public class Program {
 	public void setProgramOutsourcingCost(int programOutsourcingCost) {
 		this.programOutsourcingCost = programOutsourcingCost;
 	}
-	public int getProgramClosingAccoutingExpenditurePayment() {
-		return programClosingAccoutingExpenditurePayment;
+	public int getProgramClosingStatus() {
+		return programClosingStatus;
 	}
-	public void setProgramClosingAccoutingExpenditurePayment(int programClosingAccoutingExpenditurePayment) {
-		this.programClosingAccoutingExpenditurePayment = programClosingAccoutingExpenditurePayment;
+	public void setProgramClosingStatus(int programClosingStatus) {
+		this.programClosingStatus = programClosingStatus;
 	}
 	public String getProgramClosingoption() {
 		return programClosingoption;
@@ -89,9 +89,9 @@ public class Program {
 	public String toString() {
 		return "Program [programCd=" + programCd + ", totalResourceCd=" + totalResourceCd + ", programNm=" + programNm
 				+ ", programNumberWeek=" + programNumberWeek + ", programOperationTime=" + programOperationTime
-				+ ", programOutsourcingCost=" + programOutsourcingCost + ", programClosingAccoutingExpenditurePayment="
-				+ programClosingAccoutingExpenditurePayment + ", programClosingoption=" + programClosingoption
-				+ ", contractCd=" + contractCd + ", programRegistrationDate=" + programRegistrationDate
-				+ ", programRegistrant=" + programRegistrant + ", licenseKindergarten=" + licenseKindergarten + "]";
+				+ ", programOutsourcingCost=" + programOutsourcingCost + ", programClosingStatus="
+				+ programClosingStatus + ", programClosingoption=" + programClosingoption + ", contractCd=" + contractCd
+				+ ", programRegistrationDate=" + programRegistrationDate + ", programRegistrant=" + programRegistrant
+				+ ", licenseKindergarten=" + licenseKindergarten + "]";
 	}
 }
