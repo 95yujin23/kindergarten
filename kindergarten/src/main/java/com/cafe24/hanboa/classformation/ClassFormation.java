@@ -2,6 +2,7 @@ package com.cafe24.hanboa.classformation;
 
 public class ClassFormation {
 	//영유아반편성 TB_KIDS_CLASS_FORMATION
+	// 영유아 반편성을 위한 테이블
 	
 	private String classFormationCd;
 	private String kidsCd;
