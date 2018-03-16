@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
+<div class="sidebar">
 	<div class="navbar-default sidebar" role="navigation">
 		<div class="sidebar-nav navbar-collapse">
 			<ul class="nav" id="side-menu">
@@ -14,6 +15,20 @@
 						</span>
 					</div> <!-- /input-group -->
 				</li>
+
+		<!-- 로그인 -->
+		<div class="row">
+					<div  class="col-xs-4" >
+					&nbsp;
+					</div>
+					<div class="col-xs-8">
+							<a href="/login" "><img src="resources/img/login.png"></a>
+
+					</div>
+				</div>
+
+
+	<br/>
 
 				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
 						Project & Team Introduce<span class="fa arrow"></span></a>
@@ -58,5 +73,6 @@
 			</ul>
 		</div>
 		<!-- /.sidebar-collapse -->
+	</div>
 	</div>
 </html>
