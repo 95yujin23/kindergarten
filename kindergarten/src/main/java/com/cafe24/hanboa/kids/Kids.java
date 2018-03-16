@@ -1,8 +1,8 @@
 package com.cafe24.hanboa.kids;
 
 public class Kids {
-	private String kids_cd;
-	private String kids_nm;
+	private String kidsCd;
+	private String kidsNm;
 	private String kidsDateOfBirth;
 	private String kidsAddress;
 	private String kidsParentPhone;
@@ -14,17 +14,17 @@ public class Kids {
 	private String kidsGraduation;
 	private String licenseKindergarten;
 	
-	public String getKids_cd() {
-		return kids_cd;
+	public String getKidsCd() {
+		return kidsCd;
 	}
-	public void setKids_cd(String kids_cd) {
-		this.kids_cd = kids_cd;
+	public void setKidsCd(String kidsCd) {
+		this.kidsCd = kidsCd;
 	}
-	public String getKids_nm() {
-		return kids_nm;
+	public String getKidsNm() {
+		return kidsNm;
 	}
-	public void setKids_nm(String kids_nm) {
-		this.kids_nm = kids_nm;
+	public void setKidsNm(String kidsNm) {
+		this.kidsNm = kidsNm;
 	}
 	public String getKidsDateOfBirth() {
 		return kidsDateOfBirth;
@@ -89,7 +89,7 @@ public class Kids {
 	
 	@Override
 	public String toString() {
-		return "Kids [kids_cd=" + kids_cd + ", kids_nm=" + kids_nm + ", kidsDateOfBirth=" + kidsDateOfBirth
+		return "Kids [kidsCd=" + kidsCd + ", kidsNm=" + kidsNm + ", kidsDateOfBirth=" + kidsDateOfBirth
 				+ ", kidsAddress=" + kidsAddress + ", kidsParentPhone=" + kidsParentPhone + ", kidsSparePhone="
 				+ kidsSparePhone + ", kidsGender=" + kidsGender + ", kidsCommutingType=" + kidsCommutingType
 				+ ", kidsCaution=" + kidsCaution + ", kidsAdmission=" + kidsAdmission + ", kidsGraduation="
