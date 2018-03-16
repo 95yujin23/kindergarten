@@ -1,18 +1,19 @@
 package com.cafe24.hanboa.teacher;
 
 public class Teacher {
+
 	private String teacherCd;
 	private String teacherNm;
-	private String dateOfBirth;
-	private String phone;
-	private String email;
-	private String password;
-	private String address;
-	private String entryDate;
-	private String position;
-	private String bank;
-	private String account;
-	private int payStep;
+	private String teacherDateOfBirth;
+	private String teacherPhone;
+	private String teacherEmail;
+	private String teacherPw;
+	private String teacherAddress;
+	private String teacherEntryDate;
+	private String teacherPosition;
+	private String teacherBank;
+	private String teacherAccount;
+	private int teacherPayStep;
 	private String licenseKindergarten;
 	
 	public String getTeacherCd() {
@@ -27,65 +28,65 @@ public class Teacher {
 	public void setTeacherNm(String teacherNm) {
 		this.teacherNm = teacherNm;
 	}
-	public String getDateOfBirth() {
-		return dateOfBirth;
+	public String getTeacherDateOfBirth() {
+		return teacherDateOfBirth;
 	}
-	public void setDateOfBirth(String dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setTeacherDateOfBirth(String teacherDateOfBirth) {
+		this.teacherDateOfBirth = teacherDateOfBirth;
 	}
-	public String getPhone() {
-		return phone;
+	public String getTeacherPhone() {
+		return teacherPhone;
 	}
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setTeacherPhone(String teacherPhone) {
+		this.teacherPhone = teacherPhone;
 	}
-	public String getEmail() {
-		return email;
+	public String getTeacherEmail() {
+		return teacherEmail;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setTeacherEmail(String teacherEmail) {
+		this.teacherEmail = teacherEmail;
 	}
-	public String getPassword() {
-		return password;
+	public String getTeacherPw() {
+		return teacherPw;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setTeacherPw(String teacherPw) {
+		this.teacherPw = teacherPw;
 	}
-	public String getAddress() {
-		return address;
+	public String getTeacherAddress() {
+		return teacherAddress;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setTeacherAddress(String teacherAddress) {
+		this.teacherAddress = teacherAddress;
 	}
-	public String getEntryDate() {
-		return entryDate;
+	public String getTeacherEntryDate() {
+		return teacherEntryDate;
 	}
-	public void setEntryDate(String entryDate) {
-		this.entryDate = entryDate;
+	public void setTeacherEntryDate(String teacherEntryDate) {
+		this.teacherEntryDate = teacherEntryDate;
 	}
-	public String getPosition() {
-		return position;
+	public String getTeacherPosition() {
+		return teacherPosition;
 	}
-	public void setPosition(String position) {
-		this.position = position;
+	public void setTeacherPosition(String teacherPosition) {
+		this.teacherPosition = teacherPosition;
 	}
-	public String getBank() {
-		return bank;
+	public String getTeacherBank() {
+		return teacherBank;
 	}
-	public void setBank(String bank) {
-		this.bank = bank;
+	public void setTeacherBank(String teacherBank) {
+		this.teacherBank = teacherBank;
 	}
-	public String getAccount() {
-		return account;
+	public String getTeacherAccount() {
+		return teacherAccount;
 	}
-	public void setAccount(String account) {
-		this.account = account;
+	public void setTeacherAccount(String teacherAccount) {
+		this.teacherAccount = teacherAccount;
 	}
-	public int getPayStep() {
-		return payStep;
+	public int getTeacherPayStep() {
+		return teacherPayStep;
 	}
-	public void setPayStep(int payStep) {
-		this.payStep = payStep;
+	public void setTeacherPayStep(int teacherPayStep) {
+		this.teacherPayStep = teacherPayStep;
 	}
 	public String getLicenseKindergarten() {
 		return licenseKindergarten;
@@ -96,9 +97,11 @@ public class Teacher {
 	
 	@Override
 	public String toString() {
-		return "Teacher [teacherCd=" + teacherCd + ", teacherNm=" + teacherNm + ", dateOfBirth=" + dateOfBirth
-				+ ", phone=" + phone + ", email=" + email + ", password=" + password + ", address=" + address
-				+ ", entryDate=" + entryDate + ", position=" + position + ", bank=" + bank + ", account=" + account
-				+ ", payStep=" + payStep + ", licenseKindergarten=" + licenseKindergarten + "]";
+		return "Teacher [teacherCd=" + teacherCd + ", teacherNm=" + teacherNm + ", teacherDateOfBirth="
+				+ teacherDateOfBirth + ", teacherPhone=" + teacherPhone + ", teacherEmail=" + teacherEmail
+				+ ", teacherPw=" + teacherPw + ", teacherAddress=" + teacherAddress + ", teacherEntryDate="
+				+ teacherEntryDate + ", teacherPosition=" + teacherPosition + ", teacherBank=" + teacherBank
+				+ ", teacherAccount=" + teacherAccount + ", teacherPayStep=" + teacherPayStep + ", licenseKindergarten="
+				+ licenseKindergarten + "]";
 	}
 }
