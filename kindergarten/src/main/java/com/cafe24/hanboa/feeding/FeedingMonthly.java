@@ -9,12 +9,11 @@ public class FeedingMonthly {
 	private String femoCafeteriaReportedCheck;
 	private String contractCd;
 	private int femoExpenditureCost;
-	private int femoClosingAccountingExpenditurePayment;
+	private int femoClosingCost;
 	private String femoClosingOption;
 	private String femoRegistrationDate;
 	private String femoRegistrant;
 	private String licenseKindergarten;
-	
 	
 	public String getFeedingMonthlyCd() {
 		return feedingMonthlyCd;
@@ -64,11 +63,11 @@ public class FeedingMonthly {
 	public void setFemoExpenditureCost(int femoExpenditureCost) {
 		this.femoExpenditureCost = femoExpenditureCost;
 	}
-	public int getFemoClosingAccountingExpenditurePayment() {
-		return femoClosingAccountingExpenditurePayment;
+	public int getFemoClosingCost() {
+		return femoClosingCost;
 	}
-	public void setFemoClosingAccountingExpenditurePayment(int femoClosingAccountingExpenditurePayment) {
-		this.femoClosingAccountingExpenditurePayment = femoClosingAccountingExpenditurePayment;
+	public void setFemoClosingCost(int femoClosingCost) {
+		this.femoClosingCost = femoClosingCost;
 	}
 	public String getFemoClosingOption() {
 		return femoClosingOption;
@@ -99,12 +98,10 @@ public class FeedingMonthly {
 		return "FeedingMonthly [feedingMonthlyCd=" + feedingMonthlyCd + ", femoFeedingMonth=" + femoFeedingMonth
 				+ ", femoFeedingYear=" + femoFeedingYear + ", femoCook=" + femoCook + ", femoOperationMethod="
 				+ femoOperationMethod + ", femoCafeteriaReportedCheck=" + femoCafeteriaReportedCheck + ", contractCd="
-				+ contractCd + ", femoExpenditureCost=" + femoExpenditureCost
-				+ ", femoClosingAccountingExpenditurePayment=" + femoClosingAccountingExpenditurePayment
+				+ contractCd + ", femoExpenditureCost=" + femoExpenditureCost + ", femoClosingCost=" + femoClosingCost
 				+ ", femoClosingOption=" + femoClosingOption + ", femoRegistrationDate=" + femoRegistrationDate
 				+ ", femoRegistrant=" + femoRegistrant + ", licenseKindergarten=" + licenseKindergarten + "]";
 	}
-	
 	
 	
 	
