@@ -2,6 +2,7 @@ package com.cafe24.hanboa.classformation;
 
 public class KidsClass {
 	//영유아반관리 TB_KIDS_CLASS
+	// 주석
 	
 	private String kidsClassCd;
 	private String classNm;
