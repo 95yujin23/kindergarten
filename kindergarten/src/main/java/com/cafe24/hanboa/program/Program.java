@@ -7,7 +7,7 @@ public class Program {
 	private int programNumberWeek;
 	private int programOperationTime;
 	private int programOutsourcingCost;
-	private int programClosingStatus;
+	private int programClosingCost;
 	private String programClosingoption;
 	private String contractCd;
 	private String programRegistrationDate;
@@ -49,11 +49,11 @@ public class Program {
 	public void setProgramOutsourcingCost(int programOutsourcingCost) {
 		this.programOutsourcingCost = programOutsourcingCost;
 	}
-	public int getProgramClosingStatus() {
-		return programClosingStatus;
+	public int getProgramClosingCost() {
+		return programClosingCost;
 	}
-	public void setProgramClosingStatus(int programClosingStatus) {
-		this.programClosingStatus = programClosingStatus;
+	public void setProgramClosingCost(int programClosingCost) {
+		this.programClosingCost = programClosingCost;
 	}
 	public String getProgramClosingoption() {
 		return programClosingoption;
@@ -89,8 +89,8 @@ public class Program {
 	public String toString() {
 		return "Program [programCd=" + programCd + ", totalResourceCd=" + totalResourceCd + ", programNm=" + programNm
 				+ ", programNumberWeek=" + programNumberWeek + ", programOperationTime=" + programOperationTime
-				+ ", programOutsourcingCost=" + programOutsourcingCost + ", programClosingStatus="
-				+ programClosingStatus + ", programClosingoption=" + programClosingoption + ", contractCd=" + contractCd
+				+ ", programOutsourcingCost=" + programOutsourcingCost + ", programClosingCost=" + programClosingCost
+				+ ", programClosingoption=" + programClosingoption + ", contractCd=" + contractCd
 				+ ", programRegistrationDate=" + programRegistrationDate + ", programRegistrant=" + programRegistrant
 				+ ", licenseKindergarten=" + licenseKindergarten + "]";
 	}
