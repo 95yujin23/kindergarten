@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cafe24.hanboa.ProgramMapper">
+	<resultMap id="ProgramMap" type="com.cafe24.hanboa.program.Program">
+		<id property="programCd" column="PROGRAM_CD" />
+		<result property="totalResourceCd" column="TOTAL_RESOURCE_CD" />
+		<result property="programNm" column="PROGRAM_NM" />
+		<result property="programNumberWeek" column="PROGRAM_NUMBER_WEEK" />
+		<result property="programOperationTime" column="PROGRAM_OPERATION_TIME" />
+		<result property="programOutsourcingCost" column="PROGRAM_OUTSOURCING_COST" />
+		<result property="programClosingAccoutingExpenditurePayment" column="PROGRAM_CLOSING_ACCOUNTING_EXPENDITURE_PAYMENT" />
+		<result property="programClosingoption" column="PROGRAM_CLOSING_OPTION" />
+		<result property="contractCd" column="CONTRACT_CD" />
+		<result property="programRegistrationDate" column="PROGRAM_REGISTRATION_DATE" />
+		<result property="programRegistrant" column="PROGRAM_REGISTRANT" />
+		<result property="licenseKindergarten" column="LICENSE_KINDERGARTEN" />
+	</resultMap>
+	
+	<insert id="" parameterType="com.cafe24.hanboa.program.Program">
+		INSERT INTO TB_PROGRAM()
+	</insert>
+</mapper>
