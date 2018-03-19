@@ -22,7 +22,7 @@ public class ClientDao {
 		return sqlSession.selectList(localName+"getClientList");
 	}	
 	// 2.업데이트 정보요청
-	public Client updateClient(String clientCd) {
+	public Client updateGetClient(String clientCd) {
 		return sqlSession.selectOne(localName+"getClient", clientCd);		
 	}	
 	// 3.업데이트
@@ -30,7 +30,7 @@ public class ClientDao {
 		return sqlSession.update(localName+"updateClient", client);
 	}
 	// 4.삭제
-	public int deleteClient(int clientCd) {
+	public int deleteClient(String clientCd) {
 		return sqlSession.delete(localName+"deleteClient", clientCd);
 	}
 	// 5.등록

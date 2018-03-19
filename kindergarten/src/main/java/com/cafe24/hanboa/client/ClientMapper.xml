@@ -1,10 +1,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.cafe24.hanboa.feeding.FeedingMapper">
+<mapper namespace="com.cafe24.hanboa.client.ClientMapper">
 
-<!-- 식단메뉴조회 -->
+<!-- 거래처 조회 -->
 	<select id="getClientList"
-			parameterType="java.util.Map"
 			resultType="com.cafe24.hanboa.client.Client">
 		SELECT
 			client_cd as clientCd
@@ -17,6 +16,46 @@
 			,client_registrant as clientRegistrant
 			,license_kindergarten as licenseKindergarten
 		FROM hanboa.TB_CLIENT	
-			</select>
+	</select>
+	
+<!-- 거래처항목별 조회 -->
+	<select id="getClientOne"
+			parameterType="String"
+			resultType="com.cafe24.hanboa.client.Client">
+		SELECT
+			client_cd as clientCd
+			,client_phone as clientPhone
+			,client_type as clientType
+			,client_nm as clientNm
+			,client_manager as clientManager
+			,client_address as clientAddress
+			,client_registration_date as clientRegistrationDate
+			,client_registrant as clientRegistrant
+			,license_kindergarten as licenseKindergarten
+		FROM hanboa.TB_CLIENT
+		WHERE client_cd = #{clientCd}			
+	</select>
+<!-- 거래처 등록 -->
+	<insert id = "clientAdd" parameterType="com.cafe24.hanboa.program.client.client">
+		INSERT INTO TB_CLIENT
+		(client_cd
+		,client_phone
+		,client_type
+		,client_nm
+		,client_manager
+		,client_address
+		,client_registration_date
+		,client_registrant
+		,license_kindergarten)
+		VALUES
+		(${clientCd}
+		,${clientPhone}
+		,${clientType}
+		,${clientNm}
+		,${clientAddress}
+		,${clientRegistrationDate}
+		,${clientRegistrant}
+		,${licenseKindergarten})		
+	</insert>
 
 </mapper>
