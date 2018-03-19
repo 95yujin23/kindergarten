@@ -22,4 +22,14 @@ public class TeacherDao {
 		logger.debug("1-1. TeacherDao -- List<Teacher> selectTeacherList() 매서드 실행");
 		return sqlSession.selectList(localName+"getTeacherList");
 	}
+	// 개인 조회
+	public Teacher selectTeacherOne(String memberCd) {
+		logger.debug("1-2. TeacherDao -- Teacher selectTeacherOne() 매서드 실행");
+		return sqlSession.selectOne(localName+"getTeacherOne");
+	}
+	// 로그인
+	public Teacher login(Teacher teacher) {
+		logger.debug("1-3. TeacherDao -- Teacher login(Teacher teacher) 매서드 실행");
+		return sqlSession.selectOne(localName+"login");
+	}
 }

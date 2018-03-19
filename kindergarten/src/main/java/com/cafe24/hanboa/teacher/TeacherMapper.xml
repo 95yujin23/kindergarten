@@ -6,64 +6,64 @@
 	<select id="getTeacherList"
 			resultType="com.cafe24.hanboa.teacher.Teacher">
 	SELECT
-		teacher_cd as teacherCd
- 		,teacher_nm as teacherNm
- 		,date_of_birth as dateOfBirth
- 		,phone
- 		,password
- 		,email
- 		,address
-		,entry_date as entryDate
- 		,position
- 		,bank
- 		,account
- 		,pay_step as payStep
- 		,license_kindergarten as licenseKindergarten
+		teacher_cd				AS teacherCd
+		,teacher_nm				AS teacherNm
+		,teacher_date_of_birth	AS teacherDateOfBirth
+		,teacher_phone			AS teacherPhone
+		,teacher_email			AS teacherEmail
+		,teacher_pw				AS teacherPw
+		,teacher_address		AS teacherAddress
+		,teacher_entry_date		AS teacherEntryDate
+		,teacher_position		AS teacherPosition
+		,teacher_bank			AS teacherBank
+		,teacher_account		AS teacherAccount
+		,teacher_pay_step		AS teacherPayStep
+		,license_kindergarten	AS licenseKindergarten
 	FROM hanboa.TB_TEACHERS
 	</select>
+	
+<!-- 교직원 개인 조회 -->
+	<select id="getTeacherOne"
+			parameterType="String"
+			resultType="com.cafe24.hanboa.teacher.Teacher">
+	SELECT
+		teacher_cd				AS teacherCd
+		,teacher_nm				AS teacherNm
+		,teacher_date_of_birth	AS teacherDateOfBirth
+		,teacher_phone			AS teacherPhone
+		,teacher_email			AS teacherEmail
+		,teacher_pw				AS teacherPw
+		,teacher_address		AS teacherAddress
+		,teacher_entry_date		AS teacherEntryDate
+		,teacher_position		AS teacherPosition
+		,teacher_bank			AS teacherBank
+		,teacher_account		AS teacherAccount
+		,teacher_pay_step		AS teacherPayStep
+		,license_kindergarten	AS licenseKindergarten
+	FROM hanboa.TB_TEACHERS
+	WHERE teacher_cd = #{teacherCd}
+	</select>	
 	
 <!-- 교직원 로그인 -->
 	<select id="login"
 			parameterType="String"
 			resultType="com.cafe24.hanboa.teacher.Teacher">
 	SELECT
-		teacher_cd as teacherCd
- 		,teacher_nm as teacherNm
- 		,date_of_birth as dateOfBirth
- 		,phone
- 		,password
- 		,email
- 		,address
-		,entry_date as entryDate
- 		,position
- 		,bank
- 		,account
- 		,pay_step as payStep
- 		,license_kindergarten as licenseKindergarten
+		teacher_cd				AS teacherCd
+		,teacher_nm				AS teacherNm
+		,teacher_date_of_birth	AS teacherDateOfBirth
+		,teacher_phone			AS teacherPhone
+		,teacher_email			AS teacherEmail
+		,teacher_pw				AS teacherPw
+		,teacher_address		AS teacherAddress
+		,teacher_entry_date		AS teacherEntryDate
+		,teacher_position		AS teacherPosition
+		,teacher_bank			AS teacherBank
+		,teacher_account		AS teacherAccount
+		,teacher_pay_step		AS teacherPayStep
+		,license_kindergarten	AS licenseKindergarten
 	FROM hanboa.TB_TEACHERS
 	WHERE email = #{teacherCd} AND 
 	</select>	
-	
-<!-- 교직원 개인 조회 -->
-	<select id="getTeacherOne"
-			parameterType="java.util.Map"
-			resultType="com.cafe24.hanboa.teacher.Teacher">
-	SELECT
-		teacher_cd as teacherCd
- 		,teacher_nm as teacherNm
- 		,date_of_birth as dateOfBirth
- 		,phone
- 		,password
- 		,email
- 		,address
-		,entry_date as entryDate
- 		,position
- 		,bank
- 		,account
- 		,pay_step as payStep
- 		,license_kindergarten as licenseKindergarten
-	FROM hanboa.TB_TEACHERS
-	WHERE teacher_cd = #{teacherCd}
-	</select>
-	
+
 </mapper>

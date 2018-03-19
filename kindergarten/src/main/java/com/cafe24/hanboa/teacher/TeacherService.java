@@ -23,4 +23,18 @@ public class TeacherService {
 		logger.debug("-----------------------------------------");
 		return list;
 	}
+	// 2. 개인조회
+	public Teacher getTeacherOne(String memberCd){
+		Teacher teacher = teacherDao.selectTeacherOne(memberCd);
+		logger.debug("1-2. TeacherService -- TeacherList : {}", teacher);
+		logger.debug("-----------------------------------------");
+		return teacher;
+	}
+	// 3. 로그인
+	public Teacher login(Teacher teacher){
+		Teacher loginTeacher = teacherDao.login(teacher);
+		logger.debug("1-2. TeacherService -- TeacherList : {}", teacher);
+		logger.debug("-----------------------------------------");
+		return teacher;
+	}
 }
