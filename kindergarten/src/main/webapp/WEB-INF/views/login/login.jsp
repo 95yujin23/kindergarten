@@ -64,7 +64,7 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6">
-							<form role="form" id="loginForm" action="${pageContext.request.contextPath}/Login" method="POST">
+							<form id="loginForm" action="${pageContext.request.contextPath}/Login" method="POST">
 								<div class="form-group">
 								    <label>Email</label>
 								    <input class="form-control" id="teacherEmail" name="teacherEmail" placeholder="이메일">

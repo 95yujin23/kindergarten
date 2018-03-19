@@ -31,10 +31,11 @@ public class TeacherService {
 		return teacher;
 	}
 	// 3. 로그인
-	public Teacher login(Teacher teacher){
-		logger.debug("1-3. TeacherService -- Login : {}", teacher);
-		teacher = teacherDao.login(teacher);
+	public Teacher login(String teacherEmail, String teacherPw){
+		//logger.debug("1-3. TeacherService -- Login : {}", teacher);
+		Teacher teacher = teacherDao.login(teacherEmail, teacherPw);
 		logger.debug("-----------------------------------------");
 		return teacher;
 	}
+
 }

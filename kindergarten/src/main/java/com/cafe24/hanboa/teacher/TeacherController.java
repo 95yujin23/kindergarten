@@ -49,9 +49,9 @@ public class TeacherController {
 	
 	// 4. 로그인 실행
 	@RequestMapping(value="/Login", method = RequestMethod.POST)
-	public String login(Model model, HttpSession session, Teacher teacher) {
-		logger.debug("1-4. TeacherController -- LoginAction : {}", teacher);
-		Teacher loginTeacher = teacherService.login(teacher);
+	public String login(Model model, HttpSession session, String teacherEmail, String teacherPw) {
+		//logger.debug("1-4. TeacherController -- LoginAction : {}", teacher);
+		Teacher loginTeacher = teacherService.login(teacherEmail, teacherPw);
 		if(loginTeacher == null) {
 			return "redirect:/Login";
 		}else {

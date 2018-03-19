@@ -45,6 +45,7 @@
 	
 <!-- 교직원 로그인 -->
 	<select id="login"
+			parameterType="com.cafe24.hanboa.teacher.Teacher"
 			resultType="com.cafe24.hanboa.teacher.Teacher">
 	SELECT
 		teacher_cd				AS teacherCd

@@ -1,5 +1,6 @@
 package com.cafe24.hanboa.teacher;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -28,8 +29,11 @@ public class TeacherDao {
 		return sqlSession.selectOne(localName+"getTeacherOne");
 	}
 	// 로그인
-	public Teacher login(Teacher teacher) {
+	public Teacher login(String teacherEmail, String teacherPw) {
 		logger.debug("1-3. TeacherDao -- Teacher login(Teacher teacher) 매서드 실행");
-		return sqlSession.selectOne(localName+"login");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("teacherEmail", teacherEmail);
+		map.put("teacherPw", teacherPw);
+		return sqlSession.selectOne(localName+"login",map);
 	}
 }
