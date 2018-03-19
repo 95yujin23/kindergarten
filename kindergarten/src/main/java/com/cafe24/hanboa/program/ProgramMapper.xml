@@ -2,22 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cafe24.hanboa.ProgramMapper">
-	<resultMap id="ProgramMap" type="com.cafe24.hanboa.program.Program">
-		<id property="programCd" column="PROGRAM_CD" />
-		<result property="totalResourceCd" column="TOTAL_RESOURCE_CD" />
-		<result property="programNm" column="PROGRAM_NM" />
-		<result property="programNumberWeek" column="PROGRAM_NUMBER_WEEK" />
-		<result property="programOperationTime" column="PROGRAM_OPERATION_TIME" />
-		<result property="programOutsourcingCost" column="PROGRAM_OUTSOURCING_COST" />
-		<result property="programClosingAccoutingExpenditurePayment" column="PROGRAM_CLOSING_ACCOUNTING_EXPENDITURE_PAYMENT" />
-		<result property="programClosingoption" column="PROGRAM_CLOSING_OPTION" />
-		<result property="contractCd" column="CONTRACT_CD" />
-		<result property="programRegistrationDate" column="PROGRAM_REGISTRATION_DATE" />
-		<result property="programRegistrant" column="PROGRAM_REGISTRANT" />
-		<result property="licenseKindergarten" column="LICENSE_KINDERGARTEN" />
-	</resultMap>
-	
-	<insert id="" parameterType="com.cafe24.hanboa.program.Program">
-		INSERT INTO TB_PROGRAM()
+		
+	<insert id="ProgramAdd" parameterType="com.cafe24.hanboa.program.Program">
+		INSERT INTO TB_PROGRAM
+			(PROGRAM_CD, TOTAL_RESOURCE_CD, 
+			PROGRAM_NM, PROGRAM_NUMBER_WEEK, 
+			PROGRAM_OPERATION_TIME, PROGRAM_OUTSOURCING_COST, 
+			PROGRAM_OUTSOURCING_COST, PROGRAM_CLOSING_OPTION, 
+			CONTRACT_CD, PROGRAM_REGISTRATION_DATE, 
+			PROGRAM_REGISTRANT, LICENSE_KINDERGARTEN) 
+		VALUES 
+			(${programCd}, ${totalResourceCd}, 
+			${programNm}, ${programNumberWeek}, 
+			${programOperationTime}, ${programOutsourcingCost}, 
+			${programClosingCost}, ${programClosingoption}, 
+			${contractCd}, ${programRegistrationDate}, 
+			${programRegistrant}, ${licenseKindergarten});
 	</insert>
+	<select id="getProgramList" parameterType="String" resultType="com.cafe24.hanboa.program.Program">
+		SELECT  
+			PROGRAM_CD AS programCd
+			, TOTAL_RESOURCE_CD AS totalResourceCd
+			, PROGRAM_NM AS programNm
+			, PROGRAM_NUMBER_WEEK AS programNumberWeek
+			, PROGRAM_OPERATION_TIME AS programOperationTime
+			, PROGRAM_OUTSOURCING_COST AS programOutsourcingCost
+			, PROGRAM_CLOSING_COST AS programClosingCost
+			, PROGRAM_CLOSING_OPTION AS programClosingoption
+			, CONTRACT_CD AS contractCd
+			, PROGRAM_REGISTRATION_DATE AS programRegistrationDate
+			, PROGRAM_REGISTRANT AS programRegistrant
+			, LICENSE_KINDERGARTEN AS licenseKindergarten
+		FROM TB_PROGRAM
+	</select>
 </mapper>
