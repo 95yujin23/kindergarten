@@ -1,0 +1,22 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cafe24.hanboa.feeding.FeedingMapper">
+
+<!-- 식단메뉴조회 -->
+	<select id="getClientList"
+			parameterType="java.util.Map"
+			resultType="com.cafe24.hanboa.client.Client">
+		SELECT
+			client_cd as clientCd
+			,client_phone as clientPhone
+			,client_type as clientType
+			,client_nm as clientNm
+			,client_manager as clientManager
+			,client_address as clientAddress
+			,client_registration_date as clientRegistrationDate
+			,client_registrant as clientRegistrant
+			,license_kindergarten as licenseKindergarten
+		FROM hanboa.TB_CLIENT	
+			</select>
+
+</mapper>
