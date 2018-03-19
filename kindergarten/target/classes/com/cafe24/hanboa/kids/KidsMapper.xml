@@ -1,1 +1,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cafe24.hanboa.kids.KidsMapper">
+	
+	<select id="selectAllKids"
+			resultType="com.cafe24.hanboa.kids.Kids">
+		SELECT 
+			kids_cd as kidsCd
+			, kids_nm 				as kidsNm
+			, kids_date_of_birth	as kidsDateOfBirth
+			, kids_address 			as kidsAddress
+			, kids_parent_phone 	as kidsParentPhone
+			, kids_spare_phone 		as kidsSparePhone
+			, kids_gender 			as kidsGender
+			, kids_commuting_type 	as kidsCommutingType
+			, kids_caution 			as kidsCaution
+			, kids_admission 		as kidsAdmission
+			, kids_graduation 		as kidsGraduation
+			, license_kindergarten 	as licenseKindergarten
+		FROM hanboa.TB_KIDS
+	</select>
+</mapper>
