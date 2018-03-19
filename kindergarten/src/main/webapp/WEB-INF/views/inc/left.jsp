@@ -179,9 +179,29 @@
 						<li><a href="${pageContext.request.contextPath}/feeding/feeding_monthly">월별급식</a></li>
 						<li><a href="${pageContext.request.contextPath}/feeding/feeding_poisonning">식중독발생및처리</a></li>
 					</ul>
-				</li>									
+				</li>	
+				<!-- 11. 거래처관리 메뉴 -->
+				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>
+						거래처 관리<span class="fa arrow"></span>
+					</a>
+					<ul class="nav nav-second-level">
+						<li><a href="${pageContext.request.contextPath}/client/client_list">거래처목록</a></li>
+						<li><a href="${pageContext.request.contextPath}/client/client_add">거래처등록</a></li>
+						<li><a href="${pageContext.request.contextPath}/client/client_modify">거래처수정</a></li>
+					</ul>
+				</li>
+				<!-- 12. 계약관리 메뉴 -->
+				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>
+						계약 관리<span class="fa arrow"></span>
+					</a>
+					<ul class="nav nav-second-level">
+						<li><a href="${pageContext.request.contextPath}/contract/contract_list">계약목록</a></li>
+						<li><a href="${pageContext.request.contextPath}/contract/contract_add">계약등록</a></li>
+						<li><a href="${pageContext.request.contextPath}/contract/contract_modify">계약수정</a></li>						
+					</ul>
+				</li>								
 
-				<!-- 11. 통합자원코드 메뉴 -->
+				<!-- 13. 통합자원코드 메뉴 -->
 				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>
 						통합자원코드 관리<span class="fa arrow"></span>
 					</a>
@@ -193,7 +213,7 @@
 					</ul>
 				</li>									
 
-				<!-- 12. 유치원라이센스 메뉴 -->
+				<!-- 14. 유치원라이센스 메뉴 -->
 				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>
 						유치원라이센스 관리<span class="fa arrow"></span>
 					</a>
