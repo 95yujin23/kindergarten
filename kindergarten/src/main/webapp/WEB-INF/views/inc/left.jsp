@@ -72,10 +72,9 @@
 						영유아 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_menu">식단</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_application">급식신청</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_monthly">월별급식</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_poisonning">식중독발생및처리</a></li>
+						<li><a href="${pageContext.request.contextPath}/kidsList">유아목록</a></li>
+						<li><a href="${pageContext.request.contextPath}/feeding/feeding_monthly">반별현황</a></li>
+						<li><a href="${pageContext.request.contextPath}/feeding/feeding_poisonning">유아출석현황</a></li>
 					</ul>
 				</li>
 				

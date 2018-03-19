@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>Kids List</h1>
-<table>
+<table border=1>
 	<thead>
 		<tr>
 			<th>KIDS_CD</th>
