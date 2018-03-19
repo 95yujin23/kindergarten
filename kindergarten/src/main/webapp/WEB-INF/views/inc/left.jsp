@@ -15,7 +15,7 @@
 						</span>
 					</div> <!-- /input-group -->
 				</li>
-
+				<c:if test="${empty sessionScope.loginTeacher}">
 				<!-- 1. 프로젝트 및 팀 소개 메뉴 -->
 				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
 						Project & Team Introduce<span class="fa arrow"></span>
@@ -37,7 +37,7 @@
 						Project Start
 					</a>
 				</li>
-						
+				</c:if>		
 				<!-- 3. 교직원 메뉴 -->				
 				<li><a href="#"><i class="fa fa-table fa-fw"></i>
 						교직원 관리<span class="fa arrow"></span>

@@ -61,4 +61,13 @@ public class TeacherController {
 		return "redirect:/";
 			}
 	
+	// 5. 로그아웃
+		@RequestMapping(value="/Logout", method = RequestMethod.GET)
+		public String logout(Model model, HttpSession session) {
+			logger.debug("1-5. TeacherController -- LogOut");
+			session.invalidate();
+						logger.debug("-----------------------------------------");
+			return "redirect:/";
+			}
+		
 }
