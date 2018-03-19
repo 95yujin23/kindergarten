@@ -112,12 +112,15 @@
 						특별활동 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_menu">식단</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_application">급식신청</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_monthly">월별급식</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_poisonning">식중독발생및처리</a></li>
-						<li><a href="icons.html"> Icons</a></li>
-						<li><a href="grid.html">Grid</a></li>
+						<li><a href="${pageContext.request.contextPath}/program/programDetail">특별활동<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="${pageContext.request.contextPath}/program/programDetail">내특별활동</a></li> <!-- 영유아 -->
+								<li><a href="${pageContext.request.contextPath}/program/programApplication">특별활동신청</a></li> <!-- 영유아 -->
+								<li><a href="${pageContext.request.contextPath}/program/programAdd">특별활동등록</a></li> <!-- 교직원 -->
+								<li><a href="${pageContext.request.contextPath}/program/programModify">특별활동수정</a></li> <!-- 교직원 -->
+								<li><a href="${pageContext.request.contextPath}/program/programList">특별활동조회</a></li> <!-- 교직원 -->
+							</ul>
+						</li>
 					</ul>
 				</li>
 					
