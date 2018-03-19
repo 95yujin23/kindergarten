@@ -24,7 +24,6 @@
 	
 <!-- 교직원 개인 조회 -->
 	<select id="getTeacherOne"
-			parameterType="String"
 			resultType="com.cafe24.hanboa.teacher.Teacher">
 	SELECT
 		teacher_cd				AS teacherCd
@@ -46,7 +45,6 @@
 	
 <!-- 교직원 로그인 -->
 	<select id="login"
-			parameterType="String"
 			resultType="com.cafe24.hanboa.teacher.Teacher">
 	SELECT
 		teacher_cd				AS teacherCd
@@ -63,7 +61,7 @@
 		,teacher_pay_step		AS teacherPayStep
 		,license_kindergarten	AS licenseKindergarten
 	FROM hanboa.TB_TEACHERS
-	WHERE email = #{teacherCd} AND 
+	WHERE teacher_email = #{teacherEmail} AND teacher_pw = #{teacherPw} 
 	</select>	
 
 </mapper>

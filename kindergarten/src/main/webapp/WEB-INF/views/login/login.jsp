@@ -41,49 +41,49 @@
 
 	<!-- TOP : Navigation -->
 	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-	<c:import url="./inc/top.jsp"></c:import>
+	<c:import url="../inc/top.jsp"></c:import>
 	<!-- TOP -->
 
 	<!-- LEFT : Navigation -->
-	<c:import url="./inc/left.jsp"></c:import>
+	<c:import url="../inc/left.jsp"></c:import>
 	<!-- LEFT -->
 	</nav>
 </div>
-	<div id="page-wrapper">
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">Forms</h1>
-				</div>
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">로그인</h1>
 		</div>
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-  					<div class="panel-heading">
-						Basic Form Elements
-					</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+				    이메일과 비밀번호를 입력하세요.
+				</div>
 				<div class="panel-body">
-   				 	<div class="row">
-						<div class="col-lg-12">
-							<form role="form">
-    							<div class="form-group">
-									<label>Text Input</label>
-									<input class="form-control">
-									<p class="help-block">Example block-level help text here.</p>
-    							</div>
-    							<div class="form-group">
-      								<label>Text Input with Placeholder</label>
-									input class="form-control" placeholder="Enter text">
-								</div>	
+					<div class="row">
+						<div class="col-lg-6">
+							<form role="form" id="loginForm" action="${pageContext.request.contextPath}/Login" method="POST">
+								<div class="form-group">
+								    <label>Email</label>
+								    <input class="form-control" id="teacherEmail" name="teacherEmail" placeholder="이메일">
+								</div>
+								<div class="form-group">
+								    <label>PassWord</label>
+								    <input class="form-control" id="teacherPw" name="teacherPw" placeholder="비밀번호">
+								</div>
+								<button type="submit">LOGIN</button>
 							</form>
 						</div>
 					</div>
 				</div>
-				</div>
 			</div>
 		</div>
 	</div>
+</div>
 	<!-- FOOTER : Navigation -->
-	<c:import url="./inc/footer.jsp"></c:import>
+	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->
 
 	<!-- jQuery -->
@@ -99,5 +99,8 @@
 	<script src="resources/vendor/js/raphael.min.js"></script>
 	<script src="resources/vendor/js/morris.min.js"></script>
 	<script src="resources/vendor/js/morris-data.js"></script>
+
+	<!-- Custom Theme JavaScript -->
+	<script src="resources/vendor/js/sb-admin-2.js"></script>
 </body>
 </html>

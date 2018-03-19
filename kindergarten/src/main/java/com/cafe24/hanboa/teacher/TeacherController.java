@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class TeacherController {
@@ -38,19 +39,26 @@ public class TeacherController {
 		return "teacher/teacher_select";
 	}
 	
-	// 3. 로그인
-		@RequestMapping(value="/Login")
-		public String login(Model model, HttpSession session, Teacher teacher) {
-			logger.debug("1-2. TeacherController -- Login : {}", teacher);
-			Teacher loginTeacher = teacherService.login(teacher);
-			if(loginTeacher == null) {
-				return "redirect:/login/login";
-			}else {
-				
-			}
-			logger.debug("-----------------------------------------");
-			model.addAttribute("teacher", teacher);
-			return "login/login";
+	// 3. 로그인 화면
+	@RequestMapping(value="/Login", method = RequestMethod.GET)
+	public String login() {
+		logger.debug("1-3. TeacherController -- LoginForm");;
+		logger.debug("-----------------------------------------");
+		return "login/login";
 		}
-
+	
+	// 4. 로그인 실행
+	@RequestMapping(value="/Login", method = RequestMethod.POST)
+	public String login(Model model, HttpSession session, Teacher teacher) {
+		logger.debug("1-4. TeacherController -- LoginAction : {}", teacher);
+		Teacher loginTeacher = teacherService.login(teacher);
+		if(loginTeacher == null) {
+			return "redirect:/Login";
+		}else {
+			session.setAttribute("loginTeacher", loginTeacher);
+		}
+		logger.debug("-----------------------------------------");
+		return "redirect:/";
+			}
+	
 }

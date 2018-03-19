@@ -32,8 +32,8 @@ public class TeacherService {
 	}
 	// 3. 로그인
 	public Teacher login(Teacher teacher){
-		Teacher loginTeacher = teacherDao.login(teacher);
-		logger.debug("1-2. TeacherService -- TeacherList : {}", teacher);
+		logger.debug("1-3. TeacherService -- Login : {}", teacher);
+		teacher = teacherDao.login(teacher);
 		logger.debug("-----------------------------------------");
 		return teacher;
 	}
