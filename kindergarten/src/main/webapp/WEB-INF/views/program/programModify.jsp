@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Program List</title>
+<title>Program Modify</title>
 <!-- Bootstrap Core CSS -->
 <link href="../resources/vendor/css/bootstrap.min.css" rel="stylesheet">
 <!-- MetisMenu CSS -->
@@ -36,7 +36,7 @@
 			
 			<div class="col-lg-1"></div>
 			<div class="col-lg-11">
-			<h2>교직원용</h2>
+			<h2>수정화면</h2>
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -45,26 +45,38 @@
 						<th>1회운영시간(분)</th>
 						<th>외주금액</th>
 						<th>마감유무</th>
-						<th>계약코드</th>
-						<th>등록날짜</th>
-						<th>등록인</th>
-						<th>수정</th>
-						<th>삭제</th>
 					</tr>
 				</thead>
-				<c:forEach var="program" items="${list}">
+				<c:forEach var="program" items="${program}">
 					<tbody>
 					<tr>
-						<td>${program.programNm}</td>							
-						<td>${program.programNumberWeek}</td>
-						<td>${program.programOperationTime}</td>
-						<td>${program.programOutsourcingCost}</td>
-						<td>${program.programClosingoption}</td>
-						<td>${program.contractCd}</td>
-						<td>${program.programRegistrationDate}</td>
-						<td>${program.programRegistrant}</td>
-						<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/program/programModify?programCd=${program.programCd}"><i class="fa fa-pencil"></i></a></td>
-						<td><a class="btn btn-danger" href="${pageContext.request.contextPath}"><i class="fa fa-trash"></i></a></td>
+						<td><input type="text" value="${program.programNm}" name="programNm"></td>							
+						<td>
+							<select name="programNumberWeek">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+						</td>
+						<td>
+							<select name="programOperationTime">
+								<option value="10">10</option>
+								<option value="20">20</option>
+								<option value="30">30</option>
+								<option value="40">40</option>
+								<option value="50">50</option>
+								<option value="60">60</option>
+							</select>
+						</td>
+						<td><input type="text" value="${program.programOutsourcingCost}" name="programOutsourcingCost"></td>
+						<td>
+							<select name="programClosingoption">
+								<option value="1">마감전</option>
+								<option value="2">마감완료</option>
+							</select>
+						</td>
 					</tr>
 				</tbody>
 				</c:forEach>

@@ -21,4 +21,14 @@ public class ProgramDao {
 		logger.debug("{} <- getProgramList ProgramDao.java");
 		 return sqlSesionTamplate.selectList(localName+"getProgramList");
 	}
+	// 업데이트 정보요청
+	public Program modifyGetProgram(String programCd) {
+		logger.debug("{} <- updateGetProgram ProgramDao.java");
+		return sqlSesionTamplate.selectOne(localName+"selectProgramOne");
+	}
+	// 업데이트
+	public int programModify(Program program) {
+		logger.debug("{} <- updateProgram ProgramDao.java");
+		return sqlSesionTamplate.update(localName+"programModify");
+	}
 }
