@@ -3,26 +3,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>교직원 전체 목록</title>
 </head>
 <body>
-<h1>Teacher List</h1>
+<h1>교직원 목록</h1>
 <table>
 	<thead>
 		<tr>
-			<th>TEACHER_CD</th>
-			<th>TEACHER_NM</th>
-			<th>DATE_OF_BIRTH</th>
-			<th>PHONE</th>
-			<th>EMAIL</th>
-			<th>PASSWORD</th>
-			<th>ADDRESS</th>
-			<th>ENTRY_DATE</th>
-			<th>POSITION</th>
-			<th>BANK</th>
-			<th>ACCOUNT</th>
-			<th>PAY_STEP</th>
-			<th>LICENSE_KINDERGARTEN</th>
+			<th>교직원 코드</th>
+			<th>교직원 이름</th>
+			<th>생년월일</th>
+			<th>연락처</th>
+			<th>전자우편</th>
+			<th>자택 주소</th>
+			<th>입사일</th>
+			<th>직급/th>
+			<th>호봉</th>
+			<th>수정</th>
+			<th>삭제</th>
 		</tr>
 	</thead>
 	<c:forEach var="teacherList" items="${list}">
@@ -30,17 +28,15 @@
 			<tr>
 				<td>${teacherList.teacherCd}</td>
 				<td>${teacherList.teacherNm}</td>
-				<td>${teacherList.dateOfBirth}</td>
-				<td>${teacherList.phone}</td>
-				<td>${teacherList.password}</td>
-				<td>${teacherList.email}</td>
-				<td>${teacherList.address}</td>
-				<td>${teacherList.entryDate}</td>
-				<td>${teacherList.position}</td>
-				<td>${teacherList.bank}</td>
-				<td>${teacherList.account}</td>
-				<td>${teacherList.payStep}</td>
-				<td>${teacherList.licenseKindergarten}</td>
+				<td>${teacherList.teacherDateOfBirth}</td>
+				<td>${teacherList.teacherPhone}</td>
+				<td>${teacherList.teacherEmail}</td>
+				<td>${teacherList.teacherAddress}</td>
+				<td>${teacherList.teacherEntryDate}</td>
+				<td>${teacherList.teacherPosition}</td>
+				<td>${teacherList.teacherPayStep}</td>
+				<td><a href="${pageContext.request.contextPath}/TeacherModify">수정</a></td> <!-- 수정화면 -->
+				<td><a href="${pageContext.request.contextPath}/TeacherRemove">삭제</a></td>
 			</tr>
 		</tbody>
 	</c:forEach>
