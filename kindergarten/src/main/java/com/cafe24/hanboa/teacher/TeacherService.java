@@ -16,26 +16,41 @@ public class TeacherService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(TeacherService.class);
 	
-	// 1. 목록조회
+	// 1. 교직원 목록 조회
 	public List<Teacher> getTeacherList(){
 		List<Teacher> list = teacherDao.selectTeacherList();
-		logger.debug("1-1. TeacherService -- TeacherList : {}", list);
+		logger.debug("1. TeacherService -- getTeacherList() : {}", list);
 		logger.debug("-----------------------------------------");
 		return list;
 	}
-	// 2. 개인조회
+	// 2. 교직원 개인 조회
 	public Teacher getTeacherOne(String memberCd){
 		Teacher teacher = teacherDao.selectTeacherOne(memberCd);
-		logger.debug("1-2. TeacherService -- TeacherList : {}", teacher);
+		logger.debug("2. TeacherService -- getTeacherOne(String memberCd) : {}", teacher);
 		logger.debug("-----------------------------------------");
 		return teacher;
 	}
 	// 3. 로그인
-	public Teacher login(String teacherEmail, String teacherPw){
-		//logger.debug("1-3. TeacherService -- Login : {}", teacher);
-		Teacher teacher = teacherDao.login(teacherEmail, teacherPw);
+	public Teacher login(Teacher teacher){
+		logger.debug("3. TeacherService -- login(String teacherEmail, String teacherPw)");
+		teacher = teacherDao.login(teacher);
 		logger.debug("-----------------------------------------");
 		return teacher;
 	}
-
+	// 4. 교직원 등록
+	public int addTeacher(Teacher teacher) {
+		int addTeacher = teacherDao.insertTeacher(teacher);
+		logger.debug("4. TeacherService -- addTeacher()");
+		return addTeacher;		
+	}
+	// 5. 교직원 수정
+	public int modifyTeacher(Teacher teacher) {
+		int modifyTeacher = teacherDao.updateTeacher(teacher);
+		return modifyTeacher;
+	}
+	// 6. 교직원 삭제 & 탈퇴
+	public int removeTeacher(String teacherCd) {
+		int removeTeacher = teacherDao.deleteTeacher(teacherCd);
+		return removeTeacher;
+	}
 }

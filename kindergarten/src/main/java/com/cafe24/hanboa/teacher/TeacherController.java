@@ -49,9 +49,9 @@ public class TeacherController {
 	
 	// 3-2. 로그인 실행
 	@RequestMapping(value="/Login", method = RequestMethod.POST)
-	public String login(Model model, HttpSession session, String teacherEmail, String teacherPw) {
-		logger.debug("3-2. TeacherController -- LoginAction : {}, {}", teacherEmail,teacherPw);
-		Teacher loginTeacher = teacherService.login(teacherEmail, teacherPw);
+	public String login(Model model, HttpSession session, Teacher teacher) {
+		logger.debug("3-2. TeacherController -- LoginAction : {}, {}", teacher);
+		Teacher loginTeacher = teacherService.login(teacher);
 		if(loginTeacher == null) {
 			return "redirect:/Login";
 		}else {
@@ -102,7 +102,7 @@ public class TeacherController {
 		return "redirect:/";
 		}
 	
-	// 7. 교직원 삭제
+	// 7. 교직원 삭제 & 탈퇴
 	@RequestMapping(value="/teacherRemove", method = RequestMethod.GET)
 	public String teacherRemove(Model model, HttpSession session) {
 		logger.debug("7. TeacherController -- TeacherRemove");
