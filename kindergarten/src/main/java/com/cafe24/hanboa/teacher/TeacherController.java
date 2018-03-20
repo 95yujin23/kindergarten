@@ -58,6 +58,11 @@ public class TeacherController {
 			session.setAttribute("loginTeacher", loginTeacher);
 		}
 		logger.debug("-----------------------------------------");
+		/*	1. 로그인이 되면 로그인된 선생님의 정보에서 license를 가져옴
+		 *	2. 최초 로그인을 하는 사람 - 최초로 라이센스를 부여받은 원장님
+		 *	3. 원장님이 부여받은 라이센스를 가지고 교직원을 등록
+		 * 	4. 라이센스가 원장이 등록한 교직원에게 부여
+		 */
 		return "redirect:/";
 			}
 	
@@ -80,8 +85,9 @@ public class TeacherController {
 	
 	// 5-2. 교직원 등록
 	@RequestMapping(value="/TeacherAdd", method = RequestMethod.POST)
-	public String teacherAdd(Model model, HttpSession session) {
-		logger.debug("5-2. TeacherController -- TeacherAdd");
+	public String teacherAdd(Model model, HttpSession session, Teacher teacher) {
+		logger.debug("5-2. TeacherController -- TeacherAdd : {}", teacher);
+		teacherService.addTeacher(teacher);
 		logger.debug("-----------------------------------------");
 		return "redirect:/";
 		}	

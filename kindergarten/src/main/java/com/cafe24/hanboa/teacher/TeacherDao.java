@@ -35,9 +35,9 @@ public class TeacherDao {
 		return sqlSession.selectOne(localName+"login",teacher);
 	}
 	// 4. 교직원 등록
-	public int insertTeacher(Teacher teahcer) {
+	public int insertTeacher(Teacher teacher) {
 		logger.debug("1-3. TeacherDao -- Teacher login(Teacher teacher) 매서드 실행");
-		return sqlSession.insert(localName+"insertTeacher",teahcer);
+		return sqlSession.insert(localName+"insertTeacher",teacher);
 	}
 	// 5. 교직원 수정
 	public int updateTeacher(Teacher teacher) {
@@ -45,7 +45,7 @@ public class TeacherDao {
 	}
 	// 6. 교직원 삭제 & 탈퇴
 	public int deleteTeacher(String teacherCd) {
-		return sqlSession.update(localName+"updateTeacher",teacherCd);
+		return sqlSession.update(localName+"deleteTeacher",teacherCd);
 		
 	}
 }
