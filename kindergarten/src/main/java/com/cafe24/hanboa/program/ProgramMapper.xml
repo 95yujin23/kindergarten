@@ -44,10 +44,6 @@
 			, PROGRAM_OUTSOURCING_COST AS programOutsourcingCost
 			, PROGRAM_CLOSING_COST AS programClosingCost
 			, PROGRAM_CLOSING_OPTION AS programClosingoption
-			, CONTRACT_CD AS contractCd
-			, PROGRAM_REGISTRATION_DATE AS programRegistrationDate
-			, PROGRAM_REGISTRANT AS programRegistrant
-			, LICENSE_KINDERGARTEN AS licenseKindergarten
 		FROM TB_PROGRAM
 		WHERE PROGRAM_CD = #{programCd}
 	</select>

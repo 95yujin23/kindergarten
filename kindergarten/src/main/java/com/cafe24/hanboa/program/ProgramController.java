@@ -21,7 +21,7 @@ public class ProgramController {
 	@RequestMapping(value = "/program/programList", method = RequestMethod.GET)
 	public String ProgramList(Model model) {
 		List<Program> list = programService.selectProgramList();
-		logger.debug("{} <- list ProgramController.java");
+		logger.debug("{} <- list ProgramController.java", list);
 		model.addAttribute("list", list);
 		return "program/programList";
 	}
@@ -29,6 +29,8 @@ public class ProgramController {
 	@RequestMapping(value = "/program/programModify", method = RequestMethod.GET)
 	public String ProgramModify(Model model, @RequestParam(value="programCd", required = true) String programCd) {
 		Program program = programService.modifyGetProgram(programCd);
+		logger.debug("{} <- programCd ProgramController.java", programCd);
+		logger.debug("{} <- program ProgramController.java", program);
 		model.addAttribute("program", program);
 		return "program/programModify";
 	}
