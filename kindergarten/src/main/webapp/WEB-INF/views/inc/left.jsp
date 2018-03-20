@@ -16,6 +16,7 @@
 					</div> <!-- /input-group -->
 				</li>
 				<c:if test="${empty sessionScope.loginTeacher}">
+				
 				<!-- 1. 프로젝트 및 팀 소개 메뉴 -->
 				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
 						Project & Team Introduce<span class="fa arrow"></span>
@@ -46,14 +47,13 @@
 						<li><a href="#">교직원<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
 								<li><a href="${pageContext.request.contextPath}/TeacherList">교직원 전체 조회</a></li>
-								<li><a href="${pageContext.request.contextPath}/TeacherInformation">교직원 개인 조회</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
+								<li><a href="${pageContext.request.contextPath}/TeacherSelect">교직원 개인 조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/TeacherAdd">교직원 등록</a></li>
 							</ul>	
 						<li><a href="#">교직원 인건비 지급<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="#">인건비 지급 전체 조회</a></li>
-								<li><a href="#">Third Level Item</a></li>
+								<li><a href="${pageContext.request.contextPath}/TeacherAdd">인건비 지급 전체 조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/TeacherAdd">인건비 지급 개인 조회</a></li>
 								<li><a href="#">Third Level Item</a></li>
 								<li><a href="#">Third Level Item</a></li>
 							</ul>	
