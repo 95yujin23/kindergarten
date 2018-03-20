@@ -73,8 +73,8 @@
 					</a>
 					<ul class="nav nav-second-level">
 						<li><a href="${pageContext.request.contextPath}/kidsList">유아목록</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_monthly">반별현황</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_poisonning">유아출석현황</a></li>
+						<li><a href="${pageContext.request.contextPath}/feeding/feeding_monthly">출석관리</a></li>
+						<li><a href="${pageContext.request.contextPath}/feeding/feeding_poisonning">반 현황</a></li>
 					</ul>
 				</li>
 				
@@ -83,10 +83,22 @@
 						영유아 일지 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_menu">식단</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_application">급식신청</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_monthly">월별급식</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_poisonning">식중독발생및처리</a></li>
+						<li><a href="${pageContext.request.contextPath}/feeding/feeding_menu">전체일지목록</a></li>
+						<li><a href="#">관찰일지<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="${pageContext.request.contextPath}/TeacherList">보육일지 작성</a></li>
+								<li><a href="${pageContext.request.contextPath}/TeacherSelect">보육일지 조회</a></li>
+							</ul>	
+						<li><a href="#">보육일지<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="${pageContext.request.contextPath}/TeacherList">관찰일지 작성</a></li>
+								<li><a href="${pageContext.request.contextPath}/TeacherSelect">관찰일지 조회</a></li>
+							</ul>
+						<li><a href="#">상담일지<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="${pageContext.request.contextPath}/TeacherList">상담일지 작성</a></li>
+								<li><a href="${pageContext.request.contextPath}/TeacherSelect">상담일지 조회</a></li>
+						</ul>
 						<li><a href="icons.html"> Icons</a></li>
 						<li><a href="grid.html">Grid</a></li>
 					</ul>
