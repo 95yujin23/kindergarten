@@ -1,1 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cafe24.hanboa.attendance.AttendanceMapper">
+
+	<!-- <select id="selectAllKidsattendance"
+			resultType="com.cafe24.hanboa.attendance.KidsAttendance">
+		SELECT
+			attendance_cd 			AS attendanceCd
+			,kids_cd 				AS kidsCd
+			,kids_attendance_time 	AS kidsAttendanceTime
+			,kids_come_home_time 	AS kidsComeHomeTime
+			,kids_rest_late_type 	AS kidsRestLateTime
+			,kids_reason 			AS kidsReason
+			,license_kindergarten 	AS licenseKindergarten
+		FROM hanboa.TB_KIDS_ATTENDANCE
+	
+	</select> -->
+	
+	<select id="selectAllKidsattendance" resultType="com.cafe24.hanboa.attendance.KidsAttendance">
+		SELECT
+				attendance_cd 			AS attendanceCd
+				,kids_cd 				AS kidsCd
+				,kids_attendance_time 	AS kidsAttendanceTime
+				,kids_come_home_time 	AS kidsComeHomeTime
+				,kids_rest_late_type 	AS kidsRestLateTime
+				,kids_reason 			AS kidsReason
+				,license_kindergarten 	AS licenseKindergarten
+			FROM hanboa.TB_KIDS_ATTENDANCE
+	</select>
+
+</mapper>
