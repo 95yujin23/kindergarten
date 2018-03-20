@@ -5,64 +5,124 @@
 <!-- 교직원 목록 조회 -->
 	<select id="getTeacherList"
 			resultType="com.cafe24.hanboa.teacher.Teacher">
-	SELECT
-		teacher_cd				AS teacherCd
-		,teacher_nm				AS teacherNm
-		,teacher_date_of_birth	AS teacherDateOfBirth
-		,teacher_phone			AS teacherPhone
-		,teacher_email			AS teacherEmail
-		,teacher_pw				AS teacherPw
-		,teacher_address		AS teacherAddress
-		,teacher_entry_date		AS teacherEntryDate
-		,teacher_position		AS teacherPosition
-		,teacher_bank			AS teacherBank
-		,teacher_account		AS teacherAccount
-		,teacher_pay_step		AS teacherPayStep
-		,license_kindergarten	AS licenseKindergarten
-	FROM hanboa.TB_TEACHERS
+		SELECT
+			teacher_cd				AS teacherCd
+			,teacher_nm				AS teacherNm
+			,teacher_date_of_birth	AS teacherDateOfBirth
+			,teacher_phone			AS teacherPhone
+			,teacher_email			AS teacherEmail
+			,teacher_pw				AS teacherPw
+			,teacher_address		AS teacherAddress
+			,teacher_entry_date		AS teacherEntryDate
+			,teacher_position		AS teacherPosition
+			,teacher_bank			AS teacherBank
+			,teacher_account		AS teacherAccount
+			,teacher_pay_step		AS teacherPayStep
+			,license_kindergarten	AS licenseKindergarten
+		FROM hanboa.TB_TEACHERS
 	</select>
 	
 <!-- 교직원 개인 조회 -->
 	<select id="getTeacherOne"
 			resultType="com.cafe24.hanboa.teacher.Teacher">
-	SELECT
-		teacher_cd				AS teacherCd
-		,teacher_nm				AS teacherNm
-		,teacher_date_of_birth	AS teacherDateOfBirth
-		,teacher_phone			AS teacherPhone
-		,teacher_email			AS teacherEmail
-		,teacher_pw				AS teacherPw
-		,teacher_address		AS teacherAddress
-		,teacher_entry_date		AS teacherEntryDate
-		,teacher_position		AS teacherPosition
-		,teacher_bank			AS teacherBank
-		,teacher_account		AS teacherAccount
-		,teacher_pay_step		AS teacherPayStep
-		,license_kindergarten	AS licenseKindergarten
-	FROM hanboa.TB_TEACHERS
-	WHERE teacher_cd = #{teacherCd}
+		SELECT
+			teacher_cd				AS teacherCd
+			,teacher_nm				AS teacherNm
+			,teacher_date_of_birth	AS teacherDateOfBirth
+			,teacher_phone			AS teacherPhone
+			,teacher_email			AS teacherEmail
+			,teacher_pw				AS teacherPw
+			,teacher_address		AS teacherAddress
+			,teacher_entry_date		AS teacherEntryDate
+			,teacher_position		AS teacherPosition
+			,teacher_bank			AS teacherBank
+			,teacher_account		AS teacherAccount
+			,teacher_pay_step		AS teacherPayStep
+			,license_kindergarten	AS licenseKindergarten
+		FROM hanboa.TB_TEACHERS
+		WHERE teacher_cd = #{teacherCd}
 	</select>	
 	
 <!-- 교직원 로그인 -->
 	<select id="login"
 			parameterType="com.cafe24.hanboa.teacher.Teacher"
 			resultType="com.cafe24.hanboa.teacher.Teacher">
-	SELECT
-		teacher_cd				AS teacherCd
-		,teacher_nm				AS teacherNm
-		,teacher_date_of_birth	AS teacherDateOfBirth
-		,teacher_phone			AS teacherPhone
-		,teacher_email			AS teacherEmail
-		,teacher_pw				AS teacherPw
-		,teacher_address		AS teacherAddress
-		,teacher_entry_date		AS teacherEntryDate
-		,teacher_position		AS teacherPosition
-		,teacher_bank			AS teacherBank
-		,teacher_account		AS teacherAccount
-		,teacher_pay_step		AS teacherPayStep
-		,license_kindergarten	AS licenseKindergarten
-	FROM hanboa.TB_TEACHERS
-	WHERE teacher_email = #{teacherEmail} AND teacher_pw = #{teacherPw} 
+		SELECT
+			teacher_cd				AS teacherCd
+			,teacher_nm				AS teacherNm
+			,teacher_date_of_birth	AS teacherDateOfBirth
+			,teacher_phone			AS teacherPhone
+			,teacher_email			AS teacherEmail
+			,teacher_pw				AS teacherPw
+			,teacher_address		AS teacherAddress
+			,teacher_entry_date		AS teacherEntryDate
+			,teacher_position		AS teacherPosition
+			,teacher_bank			AS teacherBank
+			,teacher_account		AS teacherAccount
+			,teacher_pay_step		AS teacherPayStep
+			,license_kindergarten	AS licenseKindergarten
+		FROM hanboa.TB_TEACHERS
+		WHERE teacher_email = #{teacherEmail} AND teacher_pw = #{teacherPw} 
 	</select>	
 
+<!-- 교직원 등록 -->
+	<insert id="insertTeacher"
+			parameterType="com.cafe24.hanboa.teacher.Teacher">
+		<!-- selectKey설정 - #{teacherCd} : 문자열(TEAC) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 --> 
+		<selectKey resultType="String" keyProperty="teacherCd" order="BEFORE">
+			SELECT CONCAT('TEAC', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_TEACHERS ))
+		</selectKey>
+		INSERT INTO TB_TEACHERS	(
+			teacher_cd
+			,teacher_nm
+			,teacher_email
+			,teacher_phone
+			,teacher_pw
+			,license_kindergarten		
+		)
+		VALUES (
+			#{teacherCd}
+			,#{teacherNm}
+			,#{teacherEmail}
+			,#{teacherPhone}
+			,#{teacherPw}
+			,#{licenseKindergarten}
+		)
+	</insert>
+	
+<!-- 교직원 수정 -->
+	<update id="updateTeacher"
+			parameterType="com.cafe24.hanboa.teacher.Teacher">
+		UPDATE TB_TEACHERS
+			SET teacher_nm = #{teacherNm}
+				,teacher_date_of_birth = #{teacherDateOfBirth}
+		WHERE teacher_cd = #{teacherCd}
+	</update>
+	
+<!-- 교직원 삭제 & 탈퇴 -->
+	<delete id="deleteTeacher"
+			parameterType="com.cafe24.hanboa.teacher.Teacher">
+		DELETE 
+		FROM TB_TEACHERS
+		WHERE teacher_cd = #{teacherCd}
+	</delete>
+	
+<!-- 교직원 인건비 지급 목록 전체 조회 -->
+	<select id="getTeacherPayList"
+			resultType="com.cafe24.hanboa.teacher.TeacherPay">
+	
+	</select>
+	
+<!-- 교직원 인건비 지급 목록 개인 조회 -->
+	<select id="getTeacherPayOne">
+	</select>
+<!-- 교직원 인건비 지급 등록 -->
+	<insert id="insertTeacherPay">
+	</insert>
+<!-- 교직원 인건비 지급 수정 -->
+	<update id="updateTeacherPay">
+	</update>
+<!-- 교직원 인건비 지급 삭제 -->
+	<delete id="deleteTeacherPay">
+	</delete>
 </mapper>

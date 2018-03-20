@@ -1,6 +1,5 @@
 package com.cafe24.hanboa.teacher;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -18,22 +17,35 @@ public class TeacherDao {
 	
 	String localName = "com.cafe24.hanboa.teacher.TeacherMapper.";
 	
-	// 목록조회
+	// 1. 교직원 목록 조회
 	public List<Teacher> selectTeacherList() {
 		logger.debug("1-1. TeacherDao -- List<Teacher> selectTeacherList() 매서드 실행");
 		return sqlSession.selectList(localName+"getTeacherList");
 	}
-	// 개인 조회
+	// 2. 교직원 개인 조회
 	public Teacher selectTeacherOne(String memberCd) {
 		logger.debug("1-2. TeacherDao -- Teacher selectTeacherOne() 매서드 실행");
-		return sqlSession.selectOne(localName+"getTeacherOne");
+		return sqlSession.selectOne(localName+"getTeacherOne",memberCd);
 	}
-	// 로그인
-	public Teacher login(String teacherEmail, String teacherPw) {
+	// 3. 로그인
+	public Teacher login(Teacher teacher) {
 		logger.debug("1-3. TeacherDao -- Teacher login(Teacher teacher) 매서드 실행");
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("teacherEmail", teacherEmail);
-		map.put("teacherPw", teacherPw);
-		return sqlSession.selectOne(localName+"login",map);
+		teacher.setTeacherEmail(teacher.getTeacherEmail());
+		teacher.setTeacherPw(teacher.getTeacherPw());
+		return sqlSession.selectOne(localName+"login",teacher);
+	}
+	// 4. 교직원 등록
+	public int insertTeacher(Teacher teacher) {
+		logger.debug("1-3. TeacherDao -- Teacher login(Teacher teacher) 매서드 실행");
+		return sqlSession.insert(localName+"insertTeacher",teacher);
+	}
+	// 5. 교직원 수정
+	public int updateTeacher(Teacher teacher) {
+		return sqlSession.update(localName+"updateTeacher",teacher);
+	}
+	// 6. 교직원 삭제 & 탈퇴
+	public int deleteTeacher(String teacherCd) {
+		return sqlSession.update(localName+"deleteTeacher",teacherCd);
+		
 	}
 }

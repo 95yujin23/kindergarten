@@ -67,7 +67,7 @@
 							<form id="loginForm" action="${pageContext.request.contextPath}/TeacherAdd" method="POST">
 								<div class="form-group">
 								    <label>Name</label>
-								    <input class="form-control" id="teacherName" name="teacherEmail" placeholder="이름">
+								    <input class="form-control" id="teacherNm" name="teacherNm" placeholder="이름">
 								</div>
 								<div class="form-group">
 								    <label>Email</label>
@@ -75,7 +75,7 @@
 								</div>
 								<div class="form-group">
 								    <label>Phone</label>
-								    <input class="form-control" id="teacherPhone" name="teacherEmail" placeholder="연락처">
+								    <input class="form-control" id="teacherPhone" name="teacherPhone" placeholder="연락처">
 								</div>
 								<div class="form-group">
 								    <label>PassWord</label>
