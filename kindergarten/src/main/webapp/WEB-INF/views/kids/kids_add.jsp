@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>교직원 등록 화면</title>
+<title>영유아 등록 화면</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="resources/vendor/css/bootstrap.min.css" rel="stylesheet">
@@ -52,34 +52,58 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">교직원 등록</h1>
+			<h1 class="page-header">영유아 등록</h1>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-				    현재 근무하고 있는 교직원을 등록해주세요.
+				    현재 다니고 있는 영유아를 등록해주세요.
 				</div>
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6">
 							<form id="addForm" action="${pageContext.request.contextPath}/TeacherAdd" method="POST">
 								<div class="form-group">
-								    <label>Name</label>
-								    <input class="form-control" id="teacherNm" name="teacherNm" placeholder="이름">
+								    <label>이름</label>
+								    <input class="form-control" id="kidsNm" name="kidsNm" placeholder="이름">
 								</div>
 								<div class="form-group">
-								    <label>Email</label>
-								    <input class="form-control" id="teacherEmail" name="teacherEmail" placeholder="이메일">
+								    <label>생년월일</label>
+								    <input class="form-control" id="kidsDateOfBirth" name="kidsDateOfBirth" placeholder="생년월일">
 								</div>
 								<div class="form-group">
-								    <label>Phone</label>
-								    <input class="form-control" id="teacherPhone" name="teacherPhone" placeholder="연락처">
+								    <label>주소</label>
+								    <input class="form-control" id="kidsAddress" name="kidsAddress" placeholder="주소">
 								</div>
 								<div class="form-group">
-								    <label>PassWord</label>
-								    <input class="form-control" id="teacherPw" name="teacherPw" placeholder="임시비밀번호">
+								    <label>보호자연락처</label>
+								    <input class="form-control" id="kidsParentPhone" name="kidsParentPhone" placeholder="보호자연락처">
+								</div>
+								<div class="form-group">
+								    <label>보호자예비연락처</label>
+								    <input class="form-control" id="kidsSparePhone" name="kidsSparePhone" placeholder="보호자예비연락처">
+								</div>
+								<div class="form-group">
+								    <label>성별</label>
+								    <input class="form-control" id="kidsGender" name="kidsGender" placeholder="성별">
+								</div>
+								<div class="form-group">
+								    <label>통학방법</label>
+								    <input class="form-control" id="kidsCommutiogType" name="kidsCommutiogType" placeholder="통학방법">
+								</div>
+								<div class="form-group">
+								    <label>주의사항</label>
+								    <input class="form-control" id="kidsCaution" name="kidsCaution" placeholder="주의사항">
+								</div>
+								<div class="form-group">
+								    <label>입학</label>
+								    <input class="form-control" id="kidsAdmission" name="kidsAdmission" placeholder="입학">
+								</div>
+								<div class="form-group">
+								    <label>퇴소</label>
+								    <input class="form-control" id="kidsGraduation" name="kidsGraduation" placeholder="퇴소">
 								</div>
 								<button type="submit">등록</button>
 							</form>
