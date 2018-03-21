@@ -63,6 +63,7 @@ public class TeacherController {
 		 *	3. 원장님이 부여받은 라이센스를 가지고 교직원을 등록
 		 * 	4. 라이센스가 원장이 등록한 교직원에게 부여
 		 */
+		model.addAttribute("loginTeacher",loginTeacher);
 		return "redirect:/";
 			}
 	
@@ -87,6 +88,14 @@ public class TeacherController {
 	@RequestMapping(value="/TeacherAdd", method = RequestMethod.POST)
 	public String teacherAdd(Model model, HttpSession session, Teacher teacher) {
 		logger.debug("5-2. TeacherController -- TeacherAdd : {}", teacher);
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
+		if(loginTeacher == null) {
+			// loginTeacher의 값이 null이라면 login화면으로
+			return "redirect:/Login";
+		}
+		// null이 아니라면 loginTeacher세션에서 라이센스를 받아서 teacher객체에 셋팅한다.
+		teacher.setLicenseKindergarten(loginTeacher.getLicenseKindergarten());
 		teacherService.addTeacher(teacher);
 		logger.debug("-----------------------------------------");
 		return "redirect:/";
