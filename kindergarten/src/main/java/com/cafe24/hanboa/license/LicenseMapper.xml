@@ -1,0 +1,57 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cafe24.hanboa.license.LicenseMapper">
+
+<!-- 유치원 라이센스 조회 -->
+	<select id="getLicense"
+			resultType="com.cafe24.hanboa.license.License">
+		SELECT
+			license_kindergarten		AS	licenseKindergarten
+			,kindergarten_nm			AS	kindergartenNm
+			,license_grant_day			AS	licenseGrantDay
+			,license_expiration_day		AS	licenseExpirationDay	
+			,kindergarten_address		AS	kindergartenAddress
+			,kindergarten_phone			AS	kindergartenPhone
+		FROM hanboa.TB_LICENSE			
+	</select>
+
+<!-- 유치원 라이센스 등록 : 관리자 -->
+	<insert id="intsertLicense"
+			parameterType="com.cafe24.hanboa.license.License">
+		INSERT INTO TB_LICENSE (
+			license_kindergarten
+			,kindergarten_nm
+			,license_grant_day
+			,license_expiration_day
+			,kindergarten_address
+			,kindergarten_phone
+		)
+		VALUES (
+			#{licenseKindergarten}
+			,#{kindergartenNm}
+			,#{licenseGrantDay}
+			,#{licenseExpirationDay}
+			,#{kindergartenAddress}
+			,#{kindergartenPhone}
+		)
+	</insert>
+	
+<!-- 유치원 라이센스 수정 : 원장 - 유치원 정보만 -->
+	<update id="updateLicense"
+			parameterType="com.cafe24.hanboa.license.License">
+		UPDATE TB_LICENSE
+			SET kindergarten_nm = #{kindergartenNm}
+				,kindergarten_address = #{kindergartenAddress}
+				,kindergarten_phone = #{kindergartenPhone}
+		WHERE license_kindergarten = #{licenseKindergarten}
+	</update>
+	
+<!-- 유치원 라이센스 삭제 : 관리자 -->
+	<delete id="deleteLicense"
+			parameterType="com.cafe24.hanboa.license.License">
+		DELETE
+		FROM TB_LICENSE
+		WHERE license_kindergarten = #{licenseKindergarten}
+	</delete>
+	
+</mapper>

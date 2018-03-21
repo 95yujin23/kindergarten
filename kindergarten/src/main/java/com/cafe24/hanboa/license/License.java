@@ -1,6 +1,6 @@
-package com.cafe24.hanboa.kindergarten;
+package com.cafe24.hanboa.license;
 
-public class Kindergarten {
+public class License {
 	private String licenseKindergarten;
 	private String kindergartenNm;
 	private String licenseGrantDay;
