@@ -37,50 +37,52 @@
 			<div class="col-lg-1"></div>
 			<div class="col-lg-11">
 			<h2>수정화면</h2>
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>특별활동프로그램명</th>
-						<th>주당운영횟수(회)</th>
-						<th>1회운영시간(분)</th>
-						<th>외주금액</th>
-						<th>마감유무</th>
-					</tr>
-				</thead>
-				<c:forEach var="program" items="${program}">
+			<form id="programModifyForm" action="${pageContext.request.contextPath}/program/programList" method="post">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>특별활동프로그램명</th>
+							<th>주당운영횟수(회)</th>
+							<th>1회운영시간(분)</th>
+							<th>외주금액</th>
+							<th>마감유무</th>
+						</tr>
+					</thead>
 					<tbody>
-					<tr>
-						<td><input type="text" value="${program.programNm}" name="programNm"></td>							
-						<td>
-							<select name="programNumberWeek">
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-							</select>
-						</td>
-						<td>
-							<select name="programOperationTime">
-								<option value="10">10</option>
-								<option value="20">20</option>
-								<option value="30">30</option>
-								<option value="40">40</option>
-								<option value="50">50</option>
-								<option value="60">60</option>
-							</select>
-						</td>
-						<td><input type="text" value="${program.programOutsourcingCost}" name="programOutsourcingCost"></td>
-						<td>
-							<select name="programClosingoption">
-								<option value="1">마감전</option>
-								<option value="2">마감완료</option>
-							</select>
-						</td>
-					</tr>
-				</tbody>
-				</c:forEach>
-			</table>
+						<tr>
+							<td><input type="text" value="${program.programNm}" name="programNm"></td>							
+							<td>
+								<select name="programNumberWeek">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</td>
+							<td>
+								<select name="programOperationTime">
+									<option value="10">10</option>
+									<option value="20">20</option>
+									<option value="30">30</option>
+									<option value="40">40</option>
+									<option value="50">50</option>
+									<option value="60">60</option>
+								</select>
+							</td>
+							<td><input type="text" value="${program.programOutsourcingCost}" name="programOutsourcingCost"></td>
+							<td>
+								<select name="programClosingoption">
+									<option value="1">마감전</option>
+									<option value="2">마감완료</option>
+								</select>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<button id="modifyButton" class="btn" type="button">수정</button>
+				<button class="btn" type="reset">초기화</button>
+			</form>
 			</div>
 		</div>
 	</div>	
