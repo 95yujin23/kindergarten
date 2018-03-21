@@ -111,16 +111,18 @@ public class TeacherController {
 	
 	// 6-2. 교직원 수정
 	@RequestMapping(value="/teacherModify", method = RequestMethod.POST)
-	public String teacherModify(Model model, HttpSession session) {
+	public String teacherModify(Model model, HttpSession session, Teacher teacher) {
 		logger.debug("6-2. TeacherController -- TeacherModify");
+		teacherService.modifyTeacher(teacher);
 		logger.debug("-----------------------------------------");
 		return "redirect:/";
 		}
 	
 	// 7. 교직원 삭제 & 탈퇴
 	@RequestMapping(value="/teacherRemove", method = RequestMethod.GET)
-	public String teacherRemove(Model model, HttpSession session) {
+	public String teacherRemove(Model model, HttpSession session, String teacherCd) {
 		logger.debug("7. TeacherController -- TeacherRemove");
+		teacherService.removeTeacher(teacherCd);
 		logger.debug("-----------------------------------------");
 		return "redirect:/";
 		}	
@@ -128,22 +130,26 @@ public class TeacherController {
 	// 8. 교직원 인건비 지급 목록 전체 조회
 	@RequestMapping(value="/teacherPayList", method = RequestMethod.GET)
 	public String teacherPayList(Model model, HttpSession session) {
-		logger.debug("8. TeacherController -- TeacherPayList");
+		List<TeacherPay> list = teacherService.getTeacherPayList();
+		logger.debug("8. TeacherController -- TeacherPayList : {}", list);
 		logger.debug("-----------------------------------------");
+		model.addAttribute("teacherPay", list);
 		return "teacher/teacher_pay_list";
 		}	
 	
 	// 9. 교직원 인건비 지급 목록 개인 조회
 	@RequestMapping(value="/teacherPaySelect", method = RequestMethod.GET)
-	public String teacherPaySelect(Model model, HttpSession session) {
-		logger.debug("9. TeacherController -- TeacherPaySelect");
+	public String teacherPaySelect(Model model, HttpSession session, String teacherCd) {
+		TeacherPay teacherPay = teacherService.getTeacherPayOne(teacherCd);
+		logger.debug("9. TeacherController -- TeacherPaySelect : {}", teacherPay);
 		logger.debug("-----------------------------------------");
 		return "teacher/teacher_pay_select";
 		}
 	
 	// 10-1. 교직원 인건비 지급 수정 화면
 	@RequestMapping(value="/teacherPayModify", method = RequestMethod.GET)
-	public String teacherPayModify(Model model, HttpSession session) {
+	public String teacherPayModify() {
+		
 		logger.debug("10-1. TeacherController -- TeacherPayModifyForm");
 		logger.debug("-----------------------------------------");
 		return "teacher/teacher_pay_modify";
@@ -151,16 +157,18 @@ public class TeacherController {
 
 	// 10-2. 교직원 인건비 지급 수정
 	@RequestMapping(value="/teacherPayModify", method = RequestMethod.POST)
-	public String teacherPayModify() {
-		logger.debug("10-2. TeacherController -- teacherPayModify");
+	public String teacherPayModify(Model model, HttpSession session, TeacherPay teacherPay) {
+		teacherService.modifyTeacherPay(teacherPay);
+		logger.debug("10-2. TeacherController -- teacherPayModify {}", teacherPay);
 		logger.debug("-----------------------------------------");
 		return "redirect:/";
 		}
 	
 	// 11. 교직원 인건비 지급 삭제
 	@RequestMapping(value="/teacherPayRemove", method = RequestMethod.GET)
-	public String teacherPayRemove(Model model, HttpSession session) {
+	public String teacherPayRemove(Model model, HttpSession session, String teacherCd) {
 		logger.debug("11. TeacherController -- LogOut");
+		teacherService.removeTeacherPay(teacherCd);
 		logger.debug("-----------------------------------------");
 		return "redirect:/";
 		}	
