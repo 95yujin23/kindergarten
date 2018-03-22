@@ -1,1 +1,83 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cafe24.hanboa.safety.SafetyMapper">
+
+<!-- 안전 점검 및 교육 목록 조회 -->
+	<select id="getSafetyList">
+		SELECT 
+			safety_execution_cd			AS safetyExecutionCd
+			, total_resource_cd			AS totalResourceCd
+			, safety_time				AS safetyTime
+			, safety_kids_count			AS safetyKidsCount
+			, safety_host				AS safetyHost
+			, safety_expenditure_cost	AS safetyExpenditureCost
+			, safety_closing_cd			AS safetyClosingCd
+			, safety_division			AS safetyDivision
+			, safety_closing_option		AS safetyClosingOption
+			, safety_restrant			AS safetyRestrant
+			, safety_registration_date	AS safetyRegistrationDate
+			, license_kindergarten		AS licenseKindergarten
+		FROM hanboa.TB_SAFETY_EXECUTION 
+		WHERE year(safety_registration_date) LIKE CONCAT('%',#{year},'%')
+		AND safety_division LIKE CONCAT('%',#{division},'%')
+	</select>
+	
+<!-- 안전 점검 및 교육 등록 -->
+	<insert id="insertSatefy">
+		<!-- selectKey 설정 - #{safetyExecutionCd} : 문자열 (SA_EX_) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 -->
+		<selectKey resultType="String" keyProperty="safetyExecutionCd" order="BEFORE">
+			SELECT CONCAT('SA_EX_',(SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_SAFETY_EXECUTION))
+		</selectKey>
+		INSERT INTO hanboa.TB_SAFETY_EXECUTION (
+			safety_execution_cd
+			, total_resource_cd
+			, safety_time
+			, safety_kids_count
+			, safety_host
+			, safety_expenditure_cost
+			, safety_closing_cd
+			, safety_division
+			, safety_closing_option
+			, safety_restrant
+			, safety_registration_date
+			, license_kindergarten
+		)
+		VALUES (
+			#{safetyExecutionCd}
+			, #{totalResourceCd}
+			, #{safetyTime}
+			, #{safetyKidsCount}
+			, #{safetyHost}
+			, #{safetyExpenditureCost}
+			, #{safetyClosingCd}
+			, #{safetyDivision}
+			, #{safetyClosingOption}
+			, #{safetyRestrant}
+			, #{safetyRegistrationDate}
+			, #{licenseKindergarten}
+		)
+	</insert>
+	
+<!-- 안전 점검 및 교육 수정 -->
+	<update id="updateSafety">
+		UPDATE hanboa.TB_SAFETY_EXECUTION
+			SET	
+				total_resource_cd			= #{totalResourceCd}
+				, safety_time				= #{safetyTime}
+				, safety_kids_count			= #{safetyKidsCount}
+				, safety_host				= #{safetyHost}
+				, safety_expenditure_cost	= #{safetyExpenditureCost}
+				, safety_division			= #{safetyDivision}
+				, safety_closing_option		= #{safetyClosingOption}
+				, safety_restrant			= #{safetyRestrant}
+		WHERE safety_execution_cd = #{safetyExecutionCd}
+	</update>
+	
+<!-- 안전 점검 및 교육 삭제 -->
+	<delete id="deleteSafety">
+		DELETE
+		FROM hanboa.TB_SAFETY_EXECUTION
+		WHERE safety_execution_cd = #{safetyExecutionCd}
+	</delete>
+	
+</mapper>
