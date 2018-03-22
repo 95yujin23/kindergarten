@@ -22,7 +22,7 @@ public class KidsController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(KidsController.class);
 	
-	// 1. 영유아 목록 조회 (원장)
+	// 1. 영유아 목록 반별 조회
 	@RequestMapping(value="/KidsList")
 	public String kidsList(Model model, HttpSession session
 						, @RequestParam(value="keyword", defaultValue="") String keyword) {
