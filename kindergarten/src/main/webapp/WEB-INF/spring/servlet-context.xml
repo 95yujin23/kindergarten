@@ -56,6 +56,8 @@
                 <value>classpath:com/cafe24/hanboa/kids/KidsMapper.xml</value> 
                 <value>classpath:com/cafe24/hanboa/attendance/AttendanceMapper.xml</value>
                 <value>classpath:com/cafe24/hanboa/report/ReportMapper.xml</value>
+                <value>classpath:com/cafe24/hanboa/contract/ContractMapper.xml</value>
+                
             </list>
         </property>
     </bean>
