@@ -1,6 +1,7 @@
 package com.cafe24.hanboa.kids;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -22,9 +23,11 @@ public class KidsDao {
 	String localName = "com.cafe24.hanboa.kids.KidsMapper.";
 	
 	//전체 영유아 조회
-	public List<Kids> selectKidsList() {
-		logger.debug("KidsDao -- List<Kids> selectKidsList() 매서드 실행 ");
-		return sqlSession.selectList(localName + "getKidsList");
+	public List<Kids> selectKidsList(HashMap<String, Object> map) {
+		logger.debug("KidsDao -- List<Kids> selectKidsList(HashMap<String, Object> map) 매서드 실행");
+		logger.debug("map : {}",map);
+		// parameter로 map에 값을 담아서 넘겨준다. keyword의 value값
+		return sqlSession.selectList(localName + "getKidsList", map);
 	}
 	// 편성 반별 영유아 조회
 	public List<Kids> selectKidsListByClass(Teacher teacher){

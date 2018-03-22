@@ -1,5 +1,6 @@
 package com.cafe24.hanboa.kids;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -20,8 +21,8 @@ public class KidsService {
 	private static final Logger logger = LoggerFactory.getLogger(TeacherService.class);
 	
 	// 1. 영유아목록조회
-	public List<Kids> getKidsList() {
-		List<Kids> list = kidsDao.selectKidsList();
+	public List<Kids> getKidsList(HashMap<String, Object> map) {
+		List<Kids> list = kidsDao.selectKidsList(map);
 		logger.debug("KidsService -- getKidsList : {}", list);
 		logger.debug("-----------------------------------------");
 		return list;

@@ -4,23 +4,37 @@
 
 <!-- 영유아 목록 조회 -->	
 	<select id="getKidsList"
+			parameterType="java.util.Map"
 			resultType="com.cafe24.hanboa.kids.Kids">
 		SELECT 
-			kids_cd as kidsCd
-			, kids_nm 				as kidsNm
-			, kids_date_of_birth	as kidsDateOfBirth
-			, kids_address 			as kidsAddress
-			, kids_parent_phone 	as kidsParentPhone
-			, kids_spare_phone 		as kidsSparePhone
-			, kids_gender 			as kidsGender
-			, kids_commuting_type 	as kidsCommutingType
-			, kids_caution 			as kidsCaution
-			, kids_admission 		as kidsAdmission
-			, kids_graduation 		as kidsGraduation
-			, license_kindergarten 	as licenseKindergarten
-		FROM hanboa.TB_KIDS
-	</select>
+			KC.kids_class_cd	AS kidsClassCd
+			, KC.class_nm		AS classNm
+			, CF.kids_cd		AS kidsCd
+			, K.kids_nm			AS kidsNm
+		FROM TB_KIDS_CLASS_FORMATION CF
+		INNER JOIN TB_KIDS_CLASS KC
+		ON CF.KIDS_CLASS_CD = KC.KIDS_CLASS_CD
+		INNER JOIN TB_KIDS K
+		ON K.KIDS_CD = CF.KIDS_CD
+		WHERE KC.class_nm LIKE CONCAT('%',#{keyword},'%')
+		<!-- <include refid="search"></include> -->
+		<!-- WHERE절을 include 태그로 삽입 --></select>
 	
+	<!-- <sql id = "search">
+		<choose>
+		전체 검색
+		<when test="keyword == 'all'">		
+			keyword가 all인 조건을 충족함
+			WHERE country_name LIKE CONCAT('%',#{keyword},'%')
+			name이 keyword와 같을 때 (keyword의 기본값은 "":공백)
+		</when>
+		부분 검색
+		<otherwise>
+			WHERE #{searchOption} LIKE CONCAT('%',#{keyword},'%')
+			검색 조건이 keyword와 같을 때, 검색조건(기본값country_name)과 keyword에 값 부여(ex:나라이름)
+		</otherwise>
+		</choose>
+	</sql> -->
 	<!-- 영유아 편성 반별 조회-->
 	<select id="getKidsListByClass"
 			resultType="com.cafe24.hanboa.kids.Kids"

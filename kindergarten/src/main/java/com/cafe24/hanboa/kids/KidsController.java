@@ -1,5 +1,6 @@
 package com.cafe24.hanboa.kids;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -10,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.hanboa.teacher.Teacher;
-import com.cafe24.hanboa.teacher.TeacherController;
 
 @Controller
 public class KidsController {
@@ -21,17 +22,23 @@ public class KidsController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(KidsController.class);
 	
-	// 1. 영유아목록조회
+	// 1. 영유아 목록 조회 (원장)
 	@RequestMapping(value="/KidsList")
-	public String kidsList(Model model, HttpSession session) {
-		List<Kids> list = kidsService.getKidsList();
-		logger.debug("KidsController -- KidsList : {}", list);
+	public String kidsList(Model model, HttpSession session
+						, @RequestParam(value="keyword", defaultValue="") String keyword) {
+							//String타입의 keyword변수에 "keyword" value값을 받아옴, 기본값은 ""(공백)
+		logger.debug("1. KidsController -- Keyword : {}", keyword);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("keyword", keyword);
+		//map 객체 생성, map안에 keyword value값 담기
+		List<Kids> list = kidsService.getKidsList(map);
+		logger.debug("KidsList : {}", list);
 		logger.debug("----------------------------------------");
 		model.addAttribute("list",list);
 		return "kids/kids_list";
 	}
 	
-	// 영유아 편성 반별 조회
+	// 2. 영유아 편성 반별 조회 (교직원)
 	@RequestMapping(value="/KidsListByClass")
 	public String kidsListByClass(Model model, HttpSession session, Teacher teacher) {
 		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
@@ -47,6 +54,6 @@ public class KidsController {
 		logger.debug("List<Kids> : {}",list);
 		logger.debug("----------------------------------------");
 		model.addAttribute("list",list);
-		return "kids/kids_list";
+		return "kids/kids_class_list";
 	}
 }
