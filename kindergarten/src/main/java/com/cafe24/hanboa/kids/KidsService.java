@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cafe24.hanboa.teacher.Teacher;
 import com.cafe24.hanboa.teacher.TeacherService;
 
 @Service
@@ -19,12 +20,20 @@ public class KidsService {
 	private static final Logger logger = LoggerFactory.getLogger(TeacherService.class);
 	
 	// 1. 영유아목록조회
-	public List<Kids> selectAllKids() {
-		List<Kids> list = kidsDao.selectAllKids();
-		logger.debug("KidsService -- KidsList : {}", list);
+	public List<Kids> getKidsList() {
+		List<Kids> list = kidsDao.selectKidsList();
+		logger.debug("KidsService -- getKidsList : {}", list);
 		logger.debug("-----------------------------------------");
 		return list;
 	}
 	
+	// 영유아 편성 반별 조회
+	public List<Kids> getKidsListByClass(Teacher teacher){
+		logger.debug("KidsService -- getKidsListByClass : {}", teacher);
+		List<Kids> list = kidsDao.selectKidsListByClass(teacher);
+		logger.debug("List<Kids> : {}", list);
+		logger.debug("-----------------------------------------");
+		return list;
+	}
 	
 }

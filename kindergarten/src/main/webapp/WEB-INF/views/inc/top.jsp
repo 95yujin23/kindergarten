@@ -19,7 +19,7 @@
 						<i class="fa fa-bell fa-fw"></i><i class="fa fa-caret-down"></i>
 					</a>
 					<ul class="dropdown-menu dropdown-alerts">
-						<li><a href="${pageContext.request.contextPath}/TeacherClassList">
+						<li><a href="${pageContext.request.contextPath}/KidsListByClass">
 								<i class="fa fa-comment fa-fw"></i>우리반 아이들
 								<span class="pull-right text-muted small">내가 맡은 반</span>
 							</a>
