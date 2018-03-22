@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,8 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Client Modify</title>
-<!-- Bootstrap Core CSS -->
+<title>Client List</title>
 <link href="../resources/vendor/css/bootstrap.min.css" rel="stylesheet">
 <!-- MetisMenu CSS -->
 <link href="../resources/vendor/css/metisMenu.min.css" rel="stylesheet">
@@ -21,7 +19,7 @@
 <link href="../resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<div id="wrapper">
+	<div id "wrapper">
 		<!-- TOP : Navigation -->
 		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<c:import url="../inc/top.jsp"></c:import>
@@ -33,40 +31,50 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			
 			<div class="col-lg-1"></div>
 			<div class="col-lg-11">
-			<h2>수정화면</h2>
-			<form id="clientModifyForm" action="${pageContext.request.contextPath}/client/client_List" method="post">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>거래처이름</th>							
-							<th>거래처 연락처</th>
-							<th>거래처 담당자</th>
-							<th>거래처 주소</th>
-							<th>거래처 구분</th>
-						</tr>
-					</thead>
+			<h2>계약 리스트</h2>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>CONTRACT_CD</th>
+						<th>CONTRACT_START_DATE</th>
+						<th>CONTRACT_END_DATE</th>
+						<th>CLEINT_CD</th>
+						<th>CONTRACT_AMOUNT</th>
+						<th>CONTRACT_CONTENTS</th>
+						<th>CONTRACT_TYPE</th>
+						<th>CONTRACT_REGISTRATION_DATE</th>
+						<th>CONTRACT_REGISTRANT</th>
+						<th>LICENSE_KINDERGARTEN</th>
+						<th>수정</th>
+						<th>삭제</th>						
+					</tr>
+				</thead>
+				<c:forEach var="contactList" items="${list}">
 					<tbody>
 						<tr>
-							<td><input type="hidden" value="${clientlist.clientCd}" name="clientCd"></td>
-							<td><input type="text" value="${clientlist.clientNm}" name="clientNm"></td>										
-							<td><input type="text" value="${clientlist.clientPhone}" name="clientPhone"></td>
-							<td><input type="text" value="${clientlist.clientManager}" name="clientManager"></td>
-							<td><input type="text" value="${clientlist.clientAddress}" name="clientAddress"></td>
-							<td><input type="text" value="${clientlist.clientType}" name="clientType"></td> 
+							<td>${contactList.contractCd}</td>
+							<td>${contactList.contractStartDate}</td>
+							<td>${contactList.contractEndDate}</td>
+							<td>${contactList.clientCd}</td>
+							<td>${contactList.contractAmaount}</td>
+							<td>${contactList.contractContents}</td>
+							<td>${contactList.contractType}</td>
+							<td>${contactList.contractRegistrationDate}</td>
+							<td>${contactList.contractRegistant}</td>
+							<td>${contactList.licenseKindergarten}</td>
+							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}"><i class="fa fa-pencil"></i></a></td>
+							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}"><i class="fa fa-trash"></i></a></td>
 						</tr>
-					</tbody>
-				</table>
-				<button id="modifyButton" class="btn" type="button">수정</button>
-				<button class="btn" type="reset">초기화</button>
-			</form>
+					</tbody>	
+					</c:forEach>
+			</table>
 			</div>
 		</div>
-	</div>	
+	</div>
 	<!-- FOOTER : Navigation -->
-	<c:import url="../inc/footer.jsp"></c:import>
+	<c:import url="./inc/footer.jsp"></c:import>
 	<!-- FOOTER -->
 </body>
 </html>

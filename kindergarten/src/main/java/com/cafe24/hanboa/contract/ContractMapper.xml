@@ -1,0 +1,25 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cafe24.hanboa.contract.ContractMapper">
+
+<!-- 거래처 조회 -->
+	<select id="getContractList"
+			resultType="com.cafe24.hanboa.contract.Contract">
+		SELECT
+			contract_cd as contactCd
+			,contract_start_date as contractStartDate
+			,contract_end_date as contractEndDate
+			,client_cd as clientCd
+			,contract_amount as contractAmount
+			,contract_contents as contractContents
+			,contract_type as contractType
+			,contract_registration_date as contractRegistrationDate
+			,contract_registrant as contractRegistrant
+			,license_kindergarten as licenseKindergarten
+		FROM hanboa.TB_CONTRACT	
+	</select>
+	
+	
+	
+	
+	</mapper>
