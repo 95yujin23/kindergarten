@@ -7,6 +7,7 @@ public class Report {
 	private String kidsReportCd;
 	private String reportResourceCd;
 	private String reportCd;
+	private String kidsCd;
 	private String licenseKindergarten;
 	private String title;
 	private String subTitle;
@@ -20,7 +21,15 @@ public class Report {
 	private String plans;
 	private String evaluation;
 	private String registrant;
-	private String registrantionDate;
+	private String registrationDate;
+	
+	public String getKidsCd() {
+		return kidsCd;
+	}
+	public void setKidsCd(String kidsCd) {
+		this.kidsCd = kidsCd;
+	}
+	
 	
 	public String getKidsReportCd() {
 		return kidsReportCd;
@@ -118,12 +127,13 @@ public class Report {
 	public void setRegistrant(String registrant) {
 		this.registrant = registrant;
 	}
-	public String getRegistrantionDate() {
-		return registrantionDate;
+	public String getRegistrationDate() {
+		return registrationDate;
 	}
-	public void setRegistrantionDate(String registrantionDate) {
-		this.registrantionDate = registrantionDate;
+	public void setRegistrationDate(String registrationDate) {
+		this.registrationDate = registrationDate;
 	}
+	
 	
 	
 	

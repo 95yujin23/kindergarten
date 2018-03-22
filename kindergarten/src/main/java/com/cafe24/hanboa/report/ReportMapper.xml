@@ -1,1 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cafe24.hanboa.report.ReportMapper">
+
+	<select id="selectAllReport"
+			resultType="com.cafe24.hanboa.report.Report">
+		SELECT
+			kids_report_cd 			as kidsReportCd
+			,report_resource_cd 	as reportResourceCd
+			,report_cd 				as reportCd
+			,kids_cd 				as kidsCd
+			,license_kindergarten 	as licenseKindergarten
+			,title 					as title
+			,sub_title 				as subTitle
+			,weather 				as weather
+			,objective 				as objective
+			,observe_content 		as observeContent
+			,parent_nm 			as parentNm
+			,teacher_opinion 		as teacherOpinion
+			,parent_opinion 		as parentOpinion
+			,journal_type 			as journalType
+			,plans 					as plans
+			,evaluation 			as evaluation
+			,registrant 			as registrant
+			,registration_date 		as registrationDate
+		FROM hanboa.TB_REPORT
+	</select>
+</mapper>
