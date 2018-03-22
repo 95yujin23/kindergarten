@@ -62,7 +62,7 @@
 							<td>${clientList.clientRegistrationDate}</td>
 							<td>${clientList.clientRegistrant}</td>
 							<td>${clientList.licenseKindergarten}</td>
-							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/client/client_modify?clientCd=${client.clientCd}"><i class="fa fa-pencil"></i></a></td>
+							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/client/client_modify?clientCd=${clientList.clientCd}"><i class="fa fa-pencil"></i></a></td>
 							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}"><i class="fa fa-trash"></i></a></td>
 						</tr>
 					</tbody>	

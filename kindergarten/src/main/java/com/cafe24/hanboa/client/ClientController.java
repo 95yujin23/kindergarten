@@ -35,7 +35,7 @@ public class ClientController {
 		logger.debug("{} <- ClientCd ClientController.java",clientCd);
 		logger.debug("{} <- Client ClientController.java",client);
 		model.addAttribute("client", client);
-		return "client/client_Modify";
+		return "client/client_modify";
 	}
 	//3. 수정 처리요청
 	@RequestMapping(value = "/client/client_modify", method = RequestMethod.POST)
