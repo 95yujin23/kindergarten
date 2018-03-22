@@ -83,7 +83,7 @@
 						영유아 일지 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_menu">전체일지목록</a></li>
+						<li><a href="${pageContext.request.contextPath}/kidsReport">전체일지목록</a></li>
 						<li><a href="#">관찰일지<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
 								<li><a href="${pageContext.request.contextPath}/TeacherList">보육일지 작성</a></li>

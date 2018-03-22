@@ -25,4 +25,21 @@
 			,registration_date 		as registrationDate
 		FROM hanboa.TB_REPORT
 	</select>
+	
+	<select id="selectReportList"
+			parameterType="java.util.Map"
+			resultType="com.cafe24.hanboa.report.Report">
+			
+			SELECT report.kids_report_cd 일지코드
+				,resource.group_nm 일지명
+				,kids.kids_nm 유아명
+				,report.registrant 담당자
+				,report.registration_date 등록날짜 
+			FROM TB_REPORT_RESOURCE resource 
+				JOIN TB_REPORT report 
+					ON report.report_resource_cd = resource.report_resource_cd 
+				JOIN TB_KIDS kids 
+					ON report.kids_cd = kids.kids_cd
+	
+	</select>
 </mapper>
