@@ -19,26 +19,27 @@ public class ClientService {
 	//1.목록조회
 	public List<Client> getClientList(){
 		List<Client> list = clientDao.selectClientList();
-		logger.debug("1-1. ClientService -- ClientList : {}", list);	
+		logger.debug("{} <- getClientList ClientService.java", list);	
 		return list;
 	}
 	
 	//2.업데이트 정보요청
-	public Client updateGetClient(String clientCd) {
-		Client updateGet = clientDao.updateGetClient(clientCd);
-		logger.debug("1-2.ClientService -- updateGetClient : {}", updateGet);
-		return updateGet;
+	public Client modifyGetClient(String clientCd) {
+		Client modifyGet = clientDao.modifyGetClient(clientCd);
+		logger.debug("{} <- modifyGetClient ClientService.java", modifyGet);
+		return modifyGet;
 	}
 	
 	//3.업데이트
 	public int updateClient(Client client) {
 		int update = clientDao.updateClient(client);
-		logger.debug("1-3.ClientService -- updateClient : {}", update);
+		logger.debug("{} <- updateClient ClientService.java", update);
 		return update;
 	}
 	//4. 삭제
 	public int deleteClient(String clientCd) {
 		int delete = clientDao.deleteClient(clientCd);
+		logger.debug("{} <- deleteClient ClientService.java", delete);
 		return delete;		
 	}
 	

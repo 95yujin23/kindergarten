@@ -18,15 +18,17 @@ public class ClientDao {
 	
 	// 1.목록조회
 	public List<Client> selectClientList() {
-		logger.debug("1-1. ClientDao -- List<Client> selectClient() 메서드 실행");		
+		logger.debug("{} <- selectClientList ClientDao.java");		
 		return sqlSession.selectList(localName+"getClientList");
 	}	
 	// 2.업데이트 정보요청
-	public Client updateGetClient(String clientCd) {
-		return sqlSession.selectOne(localName+"getClient", clientCd);		
+	public Client modifyGetClient(String clientCd) {
+		logger.debug("{} <- modifyGetClient ClientDao.java");
+		return sqlSession.selectOne(localName+"clientModify", clientCd);	
 	}	
 	// 3.업데이트
 	public int updateClient(Client client) {
+		logger.debug("{} <- updateClient ClientDao.java");
 		return sqlSession.update(localName+"updateClient", client);
 	}
 	// 4.삭제
@@ -35,7 +37,7 @@ public class ClientDao {
 	}
 	// 5.등록
 	public int insertClient(Client client) {
-		return sqlSession.insert(localName+"insertClient", client);		
+		return sqlSession.insert(localName+"clientAdd", client);		
 	}
 	
 	
