@@ -73,8 +73,8 @@
 					</a>
 					<ul class="nav nav-second-level">
 						<li><a href="${pageContext.request.contextPath}/kidsList">유아목록</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_monthly">출석관리</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_poisonning">반 현황</a></li>
+						<li><a href="${pageContext.request.contextPath}/kidsAttendance">출석관리</a></li>
+						<li><a href="${pageContext.request.contextPath}/kidsClass">반 현황</a></li>
 					</ul>
 				</li>
 				

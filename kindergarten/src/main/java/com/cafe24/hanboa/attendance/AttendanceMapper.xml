@@ -17,7 +17,8 @@
 	
 	</select> -->
 	
-	<select id="selectAllKidsattendance" resultType="com.cafe24.hanboa.attendance.KidsAttendance">
+	<select id="selectAllKidsattendance" 
+			resultType="com.cafe24.hanboa.attendance.KidsAttendance">
 		SELECT
 				attendance_cd 			AS attendanceCd
 				,kids_cd 				AS kidsCd
