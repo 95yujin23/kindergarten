@@ -22,18 +22,10 @@ public class ContractController {
 	@RequestMapping(value="/contract/contract_list")
 	public String contractList(Model model, HttpSession session) {
 		logger.info("1. ContractController -- ContractList : {}");
-
-		
-		contractService.getContractList();
-		
-/*		
 		List<Contract> list = contractService.getContractList();
 		logger.info("1. ContractController -- ContractList : {}", list);
 		logger.debug("-----------------------------------------");
 		model.addAttribute("list",list);
-		*/
-		
-		
 		return "contract/contract_list";
 		
 	}

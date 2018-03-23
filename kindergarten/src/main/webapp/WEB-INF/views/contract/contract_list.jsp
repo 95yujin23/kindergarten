@@ -74,7 +74,7 @@
 		</div>
 	</div>
 	<!-- FOOTER : Navigation -->
-	<c:import url="./inc/footer.jsp"></c:import>
+	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->
 </body>
 </html>
