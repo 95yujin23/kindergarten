@@ -3,8 +3,7 @@
 <mapper namespace="com.cafe24.hanboa.contract.ContractMapper">
 
 <!-- 거래처 조회 -->
-	<select id="getContractList"
-			resultType="com.cafe24.hanboa.contract.Contract">
+	<select id="getContractList222" resultType="com.cafe24.hanboa.contract.Contract">
 		SELECT
 			contract_cd as contractCd
 			,contract_start_date as contractStartDate
