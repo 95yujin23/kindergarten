@@ -59,7 +59,7 @@
 					</tbody>
 				</table>
 				<button id="modifyButton" class="btn" type="submit">수정</button>
-				<button class="btn" type="reset">초기화</button>
+				<button class="btn" type="reset">초기화</button> 
 			</form>
 			</div>
 		</div>

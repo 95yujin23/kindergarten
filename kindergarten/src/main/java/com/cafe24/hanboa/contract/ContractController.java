@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ContractController {
-	@Autowired
+	@Autowired 
 	public ContractService contractService;
 
 	private static final Logger logger = LoggerFactory.getLogger(Contract.class);

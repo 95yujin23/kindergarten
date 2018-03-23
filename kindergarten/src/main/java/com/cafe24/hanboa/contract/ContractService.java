@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class ContractService {
-	@Autowired
+	@Autowired 
 	public ContractDao contractDao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(ContractService.class);

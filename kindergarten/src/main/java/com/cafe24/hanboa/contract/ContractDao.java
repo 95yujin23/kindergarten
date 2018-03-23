@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class ContractDao {
-	@Autowired
+	@Autowired 
 	public SqlSessionTemplate sqlSession;
 	private static final Logger logger = LoggerFactory.getLogger(ContractDao.class);
 	

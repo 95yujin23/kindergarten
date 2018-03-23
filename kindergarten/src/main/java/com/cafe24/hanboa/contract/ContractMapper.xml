@@ -44,7 +44,7 @@
 			,contract_start_date
 			,contract_end_date
 			,client_cd
-			,contract_amount
+			,contract_amount 
 			,contract_contents
 			,contract_type
 			,contract_registration_date
