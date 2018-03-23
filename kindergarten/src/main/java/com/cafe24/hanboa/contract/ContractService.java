@@ -20,6 +20,12 @@ public class ContractService {
 	public List<Contract> getContractList(){
 		List<Contract> list = contractDao.selectContarct();
 		return list;
-	}	
+	}
+	
+	//2.수정 정보요청
+	public Contract modifyGetContract(String contractCd) {
+		Contract modifyGet = contractDao.modifyGetContarct(contractCd);
+		return modifyGet;
+	}
 
 }

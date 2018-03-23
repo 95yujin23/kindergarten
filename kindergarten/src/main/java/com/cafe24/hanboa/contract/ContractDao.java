@@ -21,9 +21,14 @@ public class ContractDao {
 		logger.debug(" ContractDao -- List<Contract> selectContarct()");
 		//return sqlSession.selectList(localName,"getContractList222");
 		//return sqlSession.selectList(localName+"getContractList222");
-		return sqlSession.selectList(localName+"getContractList");
-		
-	}		
+		return sqlSession.selectList(localName+"getContractList");		
+	}
+	
+	//2.수정정보요청
+	public Contract modifyGetContarct(String contractCd) {
+		logger.debug("{} <- ContractDao.modifyGetContarct");
+		return sqlSession.selectOne(localName+"contractModify",contractCd);		
+	}
 	
 
 }
