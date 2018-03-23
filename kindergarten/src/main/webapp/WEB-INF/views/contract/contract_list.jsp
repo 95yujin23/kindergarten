@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Client List</title>
+<title>Contract List</title>
 <link href="../resources/vendor/css/bootstrap.min.css" rel="stylesheet">
 <!-- MetisMenu CSS -->
 <link href="../resources/vendor/css/metisMenu.min.css" rel="stylesheet">
@@ -51,19 +51,19 @@
 						<th>삭제</th>						
 					</tr>
 				</thead>
-				<c:forEach var="contactList" items="${list}">
+				<c:forEach var="contract" items="${list}">
 					<tbody>
 						<tr>
-							<td>${contactList.contractCd}</td>
-							<td>${contactList.contractStartDate}</td>
-							<td>${contactList.contractEndDate}</td>
-							<td>${contactList.clientCd}</td>
-							<td>${contactList.contractAmaount}</td>
-							<td>${contactList.contractContents}</td>
-							<td>${contactList.contractType}</td>
-							<td>${contactList.contractRegistrationDate}</td>
-							<td>${contactList.contractRegistant}</td>
-							<td>${contactList.licenseKindergarten}</td>
+							<td>${contract.contractCd}</td>
+							<td>${contract.contractStartDate}</td>
+							<td>${contract.contractEndDate}</td>
+							<td>${contract.clientCd}</td>
+							<td>${contract.contractAmount}</td>
+							<td>${contract.contractContents}</td>
+							<td>${contract.contractType}</td>
+							<td>${contract.contractRegistrationDate}</td>
+							<td>${contract.contractRegistrant}</td>
+							<td>${contract.licenseKindergarten}</td>
 							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}"><i class="fa fa-pencil"></i></a></td>
 							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}"><i class="fa fa-trash"></i></a></td>
 						</tr>
