@@ -59,7 +59,7 @@
 							</ul>	
 						<li><a href="#">교직원 근태<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/theacherAttendance">교직원 출석 등록</a></li>
+								<li><a href="${pageContext.request.contextPath}/theacher_attendance">교직원 출석 등록</a></li>
 								<li><a href="#">교직원 근태 전체 조회</a></li>
 								<li><a href="#">Third Level Item</a></li>
 								<li><a href="#">Third Level Item</a></li>
