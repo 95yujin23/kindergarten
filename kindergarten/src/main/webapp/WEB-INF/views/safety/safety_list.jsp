@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>안전 점검 및 교육 목록 화면</title>
+<title>안전 점검 및 교육 실행 목록</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="resources/vendor/css/bootstrap.min.css" rel="stylesheet">
@@ -54,38 +54,52 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-			<h1 class="page-header">교직원 등록</h1>
-			<h1>교직원 목록</h1>
-				<table>
+			<h1 class="page-header">안전 점검 및 교육 실행 목록</h1>
+			<form action="${pageContext.request.contextPath}/SafetyList" method="post">
+					<select name="year" class="form-control">
+					<!-- 검색 조건을 검색 처리후 결과화면에 보여주기 위해 c:out 출력태그 사용 (삼항연산자) -->
+					<option value="all"		<c:out value="${year}"/>>모든 해</option>
+					<option value="2016"	<c:out value="${year}"/>>2016년</option>
+					<option value="2017"	<c:out value="${year}"/>>2017년</option>
+					<option value="2018"	<c:out value="${year}"/>>2018년</option>					
+					</select> 
+					<select name="division" class="form-control">
+					<!-- 검색 조건을 검색 처리후 결과화면에 보여주기 위해 c:out 출력태그 사용 (삼항연산자) -->
+					<option value="all"		<c:out value="${division}"/>>전체</option>
+					<option value="점검"		<c:out value="${division}"/>>점검</option>
+					<option value="교육"		<c:out value="${division}"/>>교육</option>
+					</select> 
+					<button class="btn btn-success" type="submit" value="검색">검색</button>
+				</form>
+				<table border=1>
 					<thead>
 						<tr>
-							<th>교직원 코드</th>
-							<th>교직원 이름</th>
-							<th>생년월일</th>
-							<th>연락처</th>
-							<th>전자우편</th>
-							<th>자택 주소</th>
-							<th>입사일</th>
-							<th>직급/th>
-							<th>호봉</th>
-							<th>수정</th>
-							<th>삭제</th>
+							<th>안전교육및점검실행코드</th>
+							<th>통합자원코드</th>
+							<th>안전 실행시간(분)</th>
+							<th>안전 실시아동수</th>
+							<th>안전 주최</th>
+							<th>안전 교육및점검비</th>
+							<th>안전 교육구분</th>
+							<th>안전 마감유무</th>
+							<th>안전 등록인</th>
+							<th>안전 등록날짜</th>
 						</tr>
 					</thead>
-					<c:forEach var="teacherList" items="${list}">
+					<c:forEach var="safetyList" items="${list}">
 						<tbody>
 							<tr>
-								<td>${teacherList.teacherCd}</td>
-								<td>${teacherList.teacherNm}</td>
-								<td>${teacherList.teacherDateOfBirth}</td>
-								<td>${teacherList.teacherPhone}</td>
-								<td>${teacherList.teacherEmail}</td>
-								<td>${teacherList.teacherAddress}</td>
-								<td>${teacherList.teacherEntryDate}</td>
-								<td>${teacherList.teacherPosition}</td>
-								<td>${teacherList.teacherPayStep}</td>
-								<td><a href="${pageContext.request.contextPath}/TeacherModify">수정</a></td> <!-- 수정화면 -->
-								<td><a href="${pageContext.request.contextPath}/TeacherRemove">삭제</a></td>
+								<td>${safetyList.safetyExecutionCd}</td>
+								<td>${safetyList.totalResourceCd}</td>
+								<td>${safetyList.safetyTime}</td>
+								<td>${safetyList.safetyKidsCount}</td>
+								<td>${safetyList.safetyHost}</td>
+								<td>${safetyList.safetyExpenditureCost}</td>
+								<td>${safetyList.safetyClosingCd}</td>
+								<td>${safetyList.safetyDivision}</td>
+								<td>${safetyList.safetyClosingOption}</td>
+								<td>${safetyList.safetyRestrant}</td>
+								<td>${safetyList.safetyRegistrationDate}</td>
 							</tr>
 						</tbody>
 					</c:forEach>

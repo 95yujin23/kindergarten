@@ -43,12 +43,13 @@
 	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 	<c:import url="./inc/top.jsp"></c:import>
 	<!-- TOP -->
+	</nav>
 
 	<!-- LEFT : Navigation -->
 	<c:import url="./inc/left.jsp"></c:import>
 	<!-- LEFT -->
-	</nav>
 </div>
+
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">

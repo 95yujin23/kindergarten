@@ -5,12 +5,13 @@ public class Contract {
 	private String contractStartDate;
 	private String contractEndDate;
 	private String clientCd;
-	private int contractAmaount;
+	private int contractAmount;
 	private String contractContents;
 	private String contractType;
 	private String contractRegistrationDate;
-	private String contractRegistant;
+	private String contractRegistrant;
 	private String licenseKindergarten;
+	
 	
 	public String getContractCd() {
 		return contractCd;
@@ -36,11 +37,11 @@ public class Contract {
 	public void setClientCd(String clientCd) {
 		this.clientCd = clientCd;
 	}
-	public int getContractAmaount() {
-		return contractAmaount;
+	public int getContractAmount() {
+		return contractAmount;
 	}
-	public void setContractAmaount(int contractAmaount) {
-		this.contractAmaount = contractAmaount;
+	public void setContractAmount(int contractAmount) {
+		this.contractAmount = contractAmount;
 	}
 	public String getContractContents() {
 		return contractContents;
@@ -60,11 +61,11 @@ public class Contract {
 	public void setContractRegistrationDate(String contractRegistrationDate) {
 		this.contractRegistrationDate = contractRegistrationDate;
 	}
-	public String getContractRegistant() {
-		return contractRegistant;
+	public String getContractRegistrant() {
+		return contractRegistrant;
 	}
-	public void setContractRegistant(String contractRegistant) {
-		this.contractRegistant = contractRegistant;
+	public void setContractRegistrant(String contractRegistrant) {
+		this.contractRegistrant = contractRegistrant;
 	}
 	public String getLicenseKindergarten() {
 		return licenseKindergarten;
@@ -73,15 +74,17 @@ public class Contract {
 		this.licenseKindergarten = licenseKindergarten;
 	}
 	
-	
 	@Override
 	public String toString() {
 		return "Contract [contractCd=" + contractCd + ", contractStartDate=" + contractStartDate + ", contractEndDate="
-				+ contractEndDate + ", clientCd=" + clientCd + ", contractAmaount=" + contractAmaount
+				+ contractEndDate + ", clientCd=" + clientCd + ", contractAmount=" + contractAmount
 				+ ", contractContents=" + contractContents + ", contractType=" + contractType
-				+ ", contractRegistrationDate=" + contractRegistrationDate + ", contractRegistant=" + contractRegistant
-				+ ", licenseKindergarten=" + licenseKindergarten + "]";
+				+ ", contractRegistrationDate=" + contractRegistrationDate + ", contractRegistrant="
+				+ contractRegistrant + ", licenseKindergarten=" + licenseKindergarten + "]";
 	}
+	
+	
+	
 	
 	
 	
