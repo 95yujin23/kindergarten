@@ -33,11 +33,11 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			
 			<div class="col-lg-1"></div>
 			<div class="col-lg-11">
 			<h2>수정화면</h2>
-			<form id="programModifyForm" action="${pageContext.request.contextPath}/program/programList" method="post">
+			<form id="programModifyForm" action="${pageContext.request.contextPath}/program/program_list" method="post">
+				<input type="hidden" value="${program.programCd}" name="programCd">
 				<table class="table table-hover">
 					<thead>
 						<tr>
@@ -73,14 +73,14 @@
 							<td><input type="text" value="${program.programOutsourcingCost}" name="programOutsourcingCost"></td>
 							<td>
 								<select name="programClosingoption">
-									<option value="1">마감전</option>
-									<option value="2">마감완료</option>
+									<option value="마감전">마감전</option>
+									<option value="마감완료">마감완료</option>
 								</select>
 							</td>
 						</tr>
 					</tbody>
 				</table>
-				<button id="modifyButton" class="btn" type="button">수정</button>
+				<button id="modifyButton" class="btn" type="submit">수정</button>
 				<button class="btn" type="reset">초기화</button>
 			</form>
 			</div>

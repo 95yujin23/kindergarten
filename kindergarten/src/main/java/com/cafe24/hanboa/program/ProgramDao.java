@@ -18,17 +18,16 @@ public class ProgramDao {
 	
 	// 전체조회
 	public List<Program> getProgramList() {
-		logger.debug("{} <- getProgramList ProgramDao.java");
 		 return sqlSesionTamplate.selectList(localName+"getProgramList");
 	}
 	// 업데이트 정보요청
 	public Program modifyGetProgram(String programCd) {
-		logger.debug("{} <- updateGetProgram ProgramDao.java");
-		return sqlSesionTamplate.selectOne(localName+"selectProgramOne");
+		logger.debug("{} <- programCd modifyGetProgram ProgramDao.java", programCd);
+		return sqlSesionTamplate.selectOne(localName+"selectProgramOne", programCd);
 	}
 	// 업데이트
 	public int programModify(Program program) {
-		logger.debug("{} <- updateProgram ProgramDao.java");
-		return sqlSesionTamplate.update(localName+"programModify");
+		logger.debug("{} <- updateProgram ProgramDao.java", program);
+		return sqlSesionTamplate.update(localName+"programModify", program);
 	}
 }

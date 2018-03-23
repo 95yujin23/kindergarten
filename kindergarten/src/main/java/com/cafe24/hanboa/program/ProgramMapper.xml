@@ -58,9 +58,7 @@
 			, PROGRAM_CLOSING_OPTION = #{programClosingoption}
 		WHERE PROGRAM_CD = #{programCd}
 	</update>
-	<delete id="programDelete" parameterType="com.cafe24.hanboa.program.Program">
-		<if test="">
-			
-		</if>
-	</delete>
+	<select id="">
+		SELECT 
+	</select>
 </mapper>

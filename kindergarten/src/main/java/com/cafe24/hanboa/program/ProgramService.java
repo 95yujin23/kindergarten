@@ -21,15 +21,15 @@ public class ProgramService {
 		return programDao.getProgramList();
 	}	
 	// Program 수정 정보요청
-	public Program modifyGetProgram(String programCd) {
-		logger.debug("{} <- modifyGetProgram ProgramService.java");
+	public Program getProgramOne(String programCd) {
 		Program program = programDao.modifyGetProgram(programCd);
+		logger.debug("{} <- getProgramOne ProgramService.java", program);
 		return program;
 	}
 	// Program 수정
 	public int programModify(Program program) {
-		logger.debug("{} <- programModify ProgramService.java");
 		int programOne = programDao.programModify(program);
+		logger.debug("{} <- programModify ProgramService.java", programOne);
 		return programOne;
 	}
 }
