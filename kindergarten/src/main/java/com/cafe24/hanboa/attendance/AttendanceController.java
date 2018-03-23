@@ -10,6 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.cafe24.hanboa.teacher.Teacher;
+import com.cafe24.hanboa.teacher.TeacherService;
 
 @Controller
 public class AttendanceController {
@@ -18,6 +22,32 @@ public class AttendanceController {
 	private AttendanceService attendanceService;
 	private static final Logger logger = LoggerFactory.getLogger(AttendanceController.class);
 	
+	// 교직원
+	// 1-1. 교직원 출근 요청
+	@RequestMapping(value="/teacher_attendance", method = RequestMethod.GET)
+	public String theacherAttendance() {
+		logger.debug("1. AttendanceController theacherAttendance()메소드 실행 ");
+		logger.debug("------------------------------------------------------------");
+		return "attendance/teacher_attendance";
+	}
+	// 1-2. 교직원 출근 요청
+	@RequestMapping(value="/teacher_attendance", method = RequestMethod.POST)
+	public String theacherAttendance(Model model, HttpSession session, Teacher teacher, TeacherAttendance teacherAttendance) {
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
+		if(loginTeacher == null) {
+			// loginTeacher의 값이 null이라면 login화면으로
+			return "redirect:/Login";
+		}
+		// null이 아니라면 loginTeacher세션에서 교원번호와 라이센스를 받아서 teacher객체에 셋팅한다.
+		teacherAttendance.setTeacherCd(loginTeacher.getTeacherCd());
+		teacherAttendance.setLicenseKindergarten(loginTeacher.getLicenseKindergarten());
+		attendanceService.insertTeacherAttendance(teacherAttendance);
+		logger.debug("AttendanceController -- theacherAttendance : {}", teacherAttendance);
+		return "redirect:/teacher_attendance_list";
+	}
+	
+	// 영유아
 	// 1. 영유아 출석 모두 조회
 	@RequestMapping(value="/kidsAttendance")
 	public String kidsAttendanceList(Model model, HttpSession session) {
