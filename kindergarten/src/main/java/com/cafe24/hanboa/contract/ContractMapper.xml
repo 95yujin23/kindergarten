@@ -6,7 +6,7 @@
 	<select id="getContractList"
 			resultType="com.cafe24.hanboa.contract.Contract">
 		SELECT
-			contract_cd as contactCd
+			contract_cd as contractCd
 			,contract_start_date as contractStartDate
 			,contract_end_date as contractEndDate
 			,client_cd as clientCd
