@@ -128,17 +128,17 @@ public class TeacherController {
 		}	
 	
 	// 8. 교직원 인건비 지급 목록 전체 조회
-	@RequestMapping(value="/teacherPayList", method = RequestMethod.GET)
+	@RequestMapping(value="/TeacherPayList", method = RequestMethod.GET)
 	public String teacherPayList(Model model, HttpSession session) {
 		List<TeacherPay> list = teacherService.getTeacherPayList();
 		logger.debug("8. TeacherController -- TeacherPayList : {}", list);
 		logger.debug("-----------------------------------------");
-		model.addAttribute("teacherPay", list);
+		model.addAttribute("list", list);
 		return "teacher/teacher_pay_list";
 		}	
 	
 	// 9. 교직원 인건비 지급 목록 개인 조회
-	@RequestMapping(value="/teacherPaySelect", method = RequestMethod.GET)
+	@RequestMapping(value="/TeacherPaySelect", method = RequestMethod.GET)
 	public String teacherPaySelect(Model model, HttpSession session, String teacherCd) {
 		TeacherPay teacherPay = teacherService.getTeacherPayOne(teacherCd);
 		logger.debug("9. TeacherController -- TeacherPaySelect : {}", teacherPay);
@@ -147,7 +147,7 @@ public class TeacherController {
 		}
 	
 	// 10-1. 교직원 인건비 지급 수정 화면
-	@RequestMapping(value="/teacherPayModify", method = RequestMethod.GET)
+	@RequestMapping(value="/TeacherPayModify", method = RequestMethod.GET)
 	public String teacherPayModify() {
 		
 		logger.debug("10-1. TeacherController -- TeacherPayModifyForm");
@@ -156,7 +156,7 @@ public class TeacherController {
 		}
 
 	// 10-2. 교직원 인건비 지급 수정
-	@RequestMapping(value="/teacherPayModify", method = RequestMethod.POST)
+	@RequestMapping(value="/TeacherPayModify", method = RequestMethod.POST)
 	public String teacherPayModify(Model model, HttpSession session, TeacherPay teacherPay) {
 		teacherService.modifyTeacherPay(teacherPay);
 		logger.debug("10-2. TeacherController -- teacherPayModify {}", teacherPay);
@@ -165,7 +165,7 @@ public class TeacherController {
 		}
 	
 	// 11. 교직원 인건비 지급 삭제
-	@RequestMapping(value="/teacherPayRemove", method = RequestMethod.GET)
+	@RequestMapping(value="/TeacherPayRemove", method = RequestMethod.GET)
 	public String teacherPayRemove(Model model, HttpSession session, String teacherCd) {
 		logger.debug("11. TeacherController -- LogOut");
 		teacherService.removeTeacherPay(teacherCd);
