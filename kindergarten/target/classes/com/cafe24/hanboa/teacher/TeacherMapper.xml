@@ -121,7 +121,7 @@
 			pay_cd					AS payCd
 			,teacher_cd				AS teacherCd
 			,pay_payment			AS payPayment
-			,pay_closing_cd			AS payClosing_cd
+			,pay_closing_cd			AS payClosingCd
 			,pay_closing_option		AS payClosingOption
 			,pay_registration_date	AS payRegistrationDate
 			,pay_registrant			AS payRegistrant
