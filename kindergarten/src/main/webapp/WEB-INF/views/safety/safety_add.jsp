@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>교직원 등록 화면</title>
+<title>안전교육및점검 등록 화면</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="resources/vendor/css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +52,7 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">교직원 등록</h1>
+			<h1 class="page-header">안전 점검 및 교육 등록</h1>
 		</div>
 	</div>
 	<div class="row">

@@ -39,6 +39,7 @@
 					</a>
 				</li>
 				</c:if>		
+				
 				<!-- 3. 교직원 메뉴 -->				
 				<li><a href="#"><i class="fa fa-table fa-fw"></i>
 						교직원 관리<span class="fa arrow"></span>
@@ -50,20 +51,22 @@
 								<li><a href="${pageContext.request.contextPath}/TeacherSelect">교직원 개인 조회</a></li>
 								<li><a href="${pageContext.request.contextPath}/TeacherAdd">교직원 등록</a></li>
 							</ul>	
+						</li>
 						<li><a href="#">교직원 인건비 지급<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/TeacherAdd">인건비 지급 전체 조회</a></li>
-								<li><a href="${pageContext.request.contextPath}/TeacherAdd">인건비 지급 개인 조회</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
+								<li><a href="${pageContext.request.contextPath}/TeacherPayList">인건비 지급 전체 조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/TeacherPaySelect">인건비 지급 개인 조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/TeacherPayAdd">인건비 지급 등록</a></li>
 							</ul>	
+						</li>
 						<li><a href="#">교직원 근태<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/theacher_attendance">교직원 출석 등록</a></li>
+								<li><a href="${pageContext.request.contextPath}/teacher_attendance">교직원 출석 등록</a></li>
 								<li><a href="#">교직원 근태 전체 조회</a></li>
 								<li><a href="#">Third Level Item</a></li>
 								<li><a href="#">Third Level Item</a></li>
 							</ul>	
+						</li>
 					</ul>
 				</li>
 				
@@ -86,19 +89,19 @@
 						<li><a href="${pageContext.request.contextPath}/feeding/feeding_menu">전체일지목록</a></li>
 						<li><a href="#">관찰일지<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/TeacherList">보육일지 작성</a></li>
-								<li><a href="${pageContext.request.contextPath}/TeacherSelect">보육일지 조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/.">보육일지 작성</a></li>
+								<li><a href="${pageContext.request.contextPath}/.">보육일지 조회</a></li>
 							</ul>	
 						<li><a href="#">보육일지<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/TeacherList">관찰일지 작성</a></li>
-								<li><a href="${pageContext.request.contextPath}/TeacherSelect">관찰일지 조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/.">관찰일지 작성</a></li>
+								<li><a href="${pageContext.request.contextPath}/.">관찰일지 조회</a></li>
 							</ul>
 						<li><a href="#">상담일지<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/TeacherList">상담일지 작성</a></li>
-								<li><a href="${pageContext.request.contextPath}/TeacherSelect">상담일지 조회</a></li>
-						</ul>
+								<li><a href="${pageContext.request.contextPath}/.">상담일지 작성</a></li>
+								<li><a href="${pageContext.request.contextPath}/.">상담일지 조회</a></li>
+							</ul>
 						<li><a href="icons.html"> Icons</a></li>
 						<li><a href="grid.html">Grid</a></li>
 					</ul>
@@ -109,10 +112,10 @@
 						계획안 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_menu">식단</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_application">급식신청</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_monthly">월별급식</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_poisonning">식중독발생및처리</a></li>
+						<li><a href="${pageContext.request.contextPath}/.">?</a></li>
+						<li><a href="${pageContext.request.contextPath}/.">?</a></li>
+						<li><a href="${pageContext.request.contextPath}/.">?</a></li>
+						<li><a href="${pageContext.request.contextPath}/.">?</a></li>
 						<li><a href="icons.html"> Icons</a></li>
 						<li><a href="grid.html">Grid</a></li>
 					</ul>
@@ -136,7 +139,7 @@
 						급식 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
-						<li><a href="">식단<span class="fa arrow"></span></a>
+						<li><a href="#">식단<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
 								<li><a href="${pageContext.request.contextPath}/feeding/feeding_menu">식단 조회</a></li>
 								<li><a href="#">Third Level Item</a></li>
@@ -174,9 +177,7 @@
 					</a>
 					<ul class="nav nav-second-level">
 						<li><a href="${pageContext.request.contextPath}/SafetyList">안전교육및점검 목록 조회</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_application">급식신청</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_monthly">월별급식</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_poisonning">식중독발생및처리</a></li>
+						<li><a href="${pageContext.request.contextPath}/SafetyAdd">안전교육및점검 등록</a></li>
 					</ul>
 				</li>
 				
@@ -185,12 +186,13 @@
 						회계 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_menu">식단</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_application">급식신청</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_monthly">월별급식</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_poisonning">식중독발생및처리</a></li>
+						<li><a href="${pageContext.request.contextPath}/.">?</a></li>
+						<li><a href="${pageContext.request.contextPath}/.">?</a></li>
+						<li><a href="${pageContext.request.contextPath}/.">?</a></li>
+						<li><a href="${pageContext.request.contextPath}/.">?</a></li>
 					</ul>
 				</li>	
+				
 				<!-- 11. 거래처관리 메뉴 -->
 				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>
 						거래처 관리<span class="fa arrow"></span>
@@ -201,6 +203,7 @@
 						<li><a href="${pageContext.request.contextPath}/client/client_modify">거래처수정</a></li>
 					</ul>
 				</li>
+				
 				<!-- 12. 계약관리 메뉴 -->
 				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>
 						계약 관리<span class="fa arrow"></span>
@@ -217,10 +220,8 @@
 						통합자원코드 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_menu">식단</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_application">급식신청</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_monthly">월별급식</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_poisonning">식중독발생및처리</a></li>
+						<li><a href="${pageContext.request.contextPath}/TotalResourceAdd">통합자원코드 등록</a></li>
+						<li><a href="${pageContext.request.contextPath}/TotalResourceList">통합자원코드 조회</a></li>
 					</ul>
 				</li>									
 
@@ -229,26 +230,13 @@
 						유치원라이센스 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_menu">식단</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_application">급식신청</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_monthly">월별급식</a></li>
-						<li><a href="${pageContext.request.contextPath}/feeding/feeding_poisonning">식중독발생및처리</a></li>
+						<li><a href="${pageContext.request.contextPath}/LicenseAdd">유치원라이센스 등록</a></li>
+						<li><a href="${pageContext.request.contextPath}/LicenseList">유치원라이센스 조회</a></li>
+						<li><a href="${pageContext.request.contextPath}/LicenseSelect">유치원정보 조회</a></li>
 					</ul>
 				</li>																	
-					<!-- <ul class="nav nav-second-level">
-						<li><a href="#">Second Level Item</a></li>
-						<li><a href="#">Second Level Item</a></li>
-						<li><a href="#">Third Level <span class="fa arrow"></span></a>
-							<ul class="nav nav-third-level">
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-							</ul> /.nav-third-level</li>
-					</ul> /.nav-second-level</li> -->
 			</ul>
 		</div>
-		<!-- /.sidebar-collapse -->
 	</div>
 	</div>
 </html>
