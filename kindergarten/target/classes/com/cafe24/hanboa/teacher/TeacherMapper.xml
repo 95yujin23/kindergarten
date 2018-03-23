@@ -159,13 +159,13 @@
 			,pay_registration_date
 			,pay_registrant
 			,license_kindergarten)
-		VALUSE (
+		VALUES (
 			#{payCd}
 			,#{teacherCd}
 			,#{payPayment}
 			,#{payClosingCd}
 			,#{payClosingOption}
-			,#{payRegistrationDate}
+			,CURDATE()
 			,#{payRegistrant}
 			,#{licenseKindergarten}
 		)
