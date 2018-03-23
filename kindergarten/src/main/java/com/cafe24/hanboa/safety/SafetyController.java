@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -23,10 +22,7 @@ public class SafetyController {
 	private static final Logger logger = LoggerFactory.getLogger(SafetyController.class);
 	
 	//1. 안전교육및점검 목록 조회 (연도 & 구분 별)
-	@RequestMapping(value="/SafetyList", method = RequestMethod.GET)
-	public String SafetyList(Model model, HttpSession session) {
-		return "safety/safety_list";
-	}
+	
 	@RequestMapping(value="/SafetyList")
 	public String safetyList(Model model, HttpSession session
 						 	,@RequestParam(value="year", defaultValue="") String year
@@ -37,6 +33,7 @@ public class SafetyController {
 	HashMap<String, Object> map = new HashMap<String, Object>();
 	map.put("year", year);
 	map.put("division", division);
+	logger.debug("map : {}", map);
 	// 변수에 담은 값을 map안에 집어넣는다.
 	List<Safety> list = safetyService.getSafetyList(map);
 	// list 객체를 만들어 getSafetyList 매서드 호출, 값이 담긴 map을 넘겨준다.

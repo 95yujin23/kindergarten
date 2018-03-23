@@ -3,7 +3,9 @@
 <mapper namespace="com.cafe24.hanboa.safety.SafetyMapper">
 
 <!-- 안전 점검 및 교육 목록 조회 -->
-	<select id="getSafetyList">
+	<select id="getSafetyList"
+			parameterType="java.util.Map"
+			resultType="com.cafe24.hanboa.safety.Safety">
 		SELECT 
 			safety_execution_cd			AS safetyExecutionCd
 			, total_resource_cd			AS totalResourceCd
