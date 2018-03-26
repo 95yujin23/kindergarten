@@ -18,17 +18,32 @@
 			,license_kindergarten as licenseKindergarten
 		FROM hanboa.TB_FEEDING_APPLICATION				
 	</select>
+<!-- 급식신청 항목별조회 -->
+	<select id = "selectFeapONE"
+			resultType="com.cafe24.hanboa.feeding.FeedingApplication">
+		SELECT 
+			feeding_application_cd as feedingApplicationCd
+			,kids_cd as kidsCd
+			,feeding_monthly_cd as feedingMonthlyCd
+			,feap_expense_month as feapExpenseMonth
+			,feap_closing_income as feapClosingIncome
+			,feap_closing_option as feapClosingOption
+			,feap_division as feapDivision
+		FROM hanboa.TB_FEEDING_APPLICATION
+		WHERE feeding_application_cd = #{feedingApplicationCd}
+	</select>
 <!-- 급식신청 업데이트 -->	
 	<update id="feapModify" parameterType="com.cafe24.hanboa.feeding.FeedingApplication">
 		UPDATE TB_FEEDING_APPLICATION
 			SET
 			feeding_application_cd = #{feedingApplicationCd}
 			,kids_cd = #{kidsCd}
-			,feap_expense_month = #{feedingMonthlyCd}
+			,feeding_monthly_cd = #{feedingMonthlyCd}
+			,feap_expense_month = #{feapExpenseMonth}
 			,feap_closing_income = #{feapClosingIncome}
 			,feap_closing_option = #{feapClosingOption}
 			,feap_division = #{feapDivision}
-		WHERE feeding_application_cd = #{feedingApplicationCd} 	
+		WHERE feeding_application_cd = #{feedingApplicationCd}
 	</update>
 			
 	

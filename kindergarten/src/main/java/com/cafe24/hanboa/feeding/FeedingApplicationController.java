@@ -33,15 +33,16 @@ public class FeedingApplicationController {
 	public String feedingApplicationModify(Model model, @RequestParam(value="feedingApplicationCd", required=true) String feedingApplicationCd) {
 		FeedingApplication feedingApplication = feapService.modifyGetfeap(feedingApplicationCd);
 		model.addAttribute("feedingApplication", feedingApplication);
-		return "/feeding/feedingApplication_modify";		
+		logger.debug("{} <- feedingApplication FeedingApplicationController.java",feedingApplication);
+		return "feeding/feedingApplication_modify";
 	}
 	
-	// 3.수정 처리요청
+	/*// 3.수정 처리요청
 	@RequestMapping(value="/feeding/feedingApplication_modify", method = RequestMethod.POST)
 	public String feedingApplicationModify(FeedingApplication feedingApplication) {
 		return null;		
 	}
 			
-	
+	*/
 
 }

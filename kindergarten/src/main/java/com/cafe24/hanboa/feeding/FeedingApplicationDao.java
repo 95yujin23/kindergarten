@@ -24,7 +24,8 @@ public class FeedingApplicationDao {
 	
 	// 2. 업데이트 정보요청
 	public FeedingApplication modifyGetFeedingApplication(String feedingApplication) {
-		return sqlSession.selectOne(localName+"feapModify");		
+		logger.debug("{} <- modifyGetFeedingApplication FeedingApplicationDao.java",feedingApplication);
+		return sqlSession.selectOne(localName+"selectFeapONE",feedingApplication);		
 	}
 	
 }

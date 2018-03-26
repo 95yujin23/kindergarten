@@ -25,7 +25,8 @@ public class FeedingApplicationService {
 	//2. 수정 정보요청
 	public FeedingApplication modifyGetfeap(String feedingApplicationCd) {		
 		FeedingApplication modifyGet = feedingApplicationDao.modifyGetFeedingApplication(feedingApplicationCd);
-		logger.debug("{} <- modifyGetfeap FeedingApplicationService.java");
+		logger.debug("{} <- modifyGetfeap FeedingApplicationService.java",feedingApplicationCd);
+		logger.debug("{} <- modifyGetfeap FeedingApplicationService.java",modifyGet);
 		return modifyGet;
 	}
 	
