@@ -27,7 +27,7 @@ public class ContractDao {
 	//2.수정정보요청
 	public Contract modifyGetContarct(String contractCd) {
 		logger.debug("{} <- ContractDao.modifyGetContarct");
-		return sqlSession.selectOne(localName+"contractModify",contractCd);		
+		return sqlSession.selectOne(localName+"getContractOne",contractCd);		
 	}
 	
 

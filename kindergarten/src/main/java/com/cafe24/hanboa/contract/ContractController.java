@@ -32,10 +32,12 @@ public class ContractController {
 	}
 	
 	// 2. 수정정보요청
-	@RequestMapping(value="/contract/contract_modyfy", method=RequestMethod.GET)
+	@RequestMapping(value="/contract/contract_modify", method=RequestMethod.GET)
 	public String contractModify(Model model, @RequestParam(value="contractCd", required=true)String contractCd) {
 		Contract contract = contractService.modifyGetContract(contractCd);
-		model.addAttribute("contract",contract);
+		logger.debug("{} <- ContractCd ContactController.java",contractCd);
+		logger.debug("{} <- Contract ContractController.java",contract);
+		model.addAttribute("contract", contract);
 		return "contract/contract_modify";		
 	}
 }

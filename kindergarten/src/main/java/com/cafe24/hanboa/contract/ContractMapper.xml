@@ -71,6 +71,6 @@
 			,contract_end_date = #{contractEndDate}
 			,contract_contents = #{contractContents}
 			,contract_amount = #{contractAmount}
-		WHERE countract_CD = #{contractCd}
+		WHERE contract_cd = #{contractCd}
 	</update>
 </mapper>
