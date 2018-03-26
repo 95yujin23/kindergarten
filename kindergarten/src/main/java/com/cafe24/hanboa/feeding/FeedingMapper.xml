@@ -2,7 +2,7 @@
 
 <mapper namespace="com.cafe24.hanboa.feeding.FeedingMapper">
 
-<!-- 급식신청  -->
+<!-- 급식신청 전체조회 -->
 	<select id="getFeedingApplication"
 			resultType="com.cafe24.hanboa.feeding.FeedingApplication">
 		SELECT
@@ -18,6 +18,19 @@
 			,license_kindergarten as licenseKindergarten
 		FROM hanboa.TB_FEEDING_APPLICATION				
 	</select>
+<!-- 급식신청 업데이트 -->	
+	<update id="feapModify" parameterType="com.cafe24.hanboa.feeding.FeedingApplication">
+		UPDATE TB_FEEDING_APPLICATION
+			SET
+			feeding_application_cd = #{feedingApplicationCd}
+			,kids_cd = #{kidsCd}
+			,feap_expense_month = #{feedingMonthlyCd}
+			,feap_closing_income = #{feapClosingIncome}
+			,feap_closing_option = #{feapClosingOption}
+			,feap_division = #{feapDivision}
+		WHERE feeding_application_cd = #{feedingApplicationCd} 	
+	</update>
+			
 	
 <!-- 식단메뉴조회 -->
 	<select id="getFeedingMenuList"

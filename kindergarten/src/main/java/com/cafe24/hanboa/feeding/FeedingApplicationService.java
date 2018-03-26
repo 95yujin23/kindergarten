@@ -15,10 +15,18 @@ public class FeedingApplicationService {
 	private FeedingApplicationDao feedingApplicationDao;		
 	private static final Logger logger = LoggerFactory.getLogger(FeedingApplicationService.class);
 
+	//1.전체조회
 	public List<FeedingApplication> getFeedingApplicationList(){
 		List<FeedingApplication> list = feedingApplicationDao.selectFeedingApplicationList();
 		logger.debug("{} <- getFeedingApplicationList FeedingApplicationService", list);
-		return list;
-		
+		return list;		
 	}
+	
+	//2. 수정 정보요청
+	public FeedingApplication modifyGetfeap(String feedingApplicationCd) {		
+		FeedingApplication modifyGet = feedingApplicationDao.modifyGetFeedingApplication(feedingApplicationCd);
+		logger.debug("{} <- modifyGetfeap FeedingApplicationService.java");
+		return modifyGet;
+	}
+	
 }

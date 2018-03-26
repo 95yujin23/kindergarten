@@ -4,7 +4,7 @@ public class FeedingApplication {
 	private String feedingApplicationCd;
 	private String kidsCd;
 	private String feedingMonthlyCd;
-	private int feapEspenseMonth;
+	private int feapExpenseMonth;
 	private int feapClosingIncome;
 	private String feapClosingOption;
 	private String feapDivision;
@@ -31,10 +31,10 @@ public class FeedingApplication {
 		this.feedingMonthlyCd = feedingMonthlyCd;
 	}
 	public int getFeapEspenseMonth() {
-		return feapEspenseMonth;
+		return feapExpenseMonth;
 	}
 	public void setFeapEspenseMonth(int feapEspenseMonth) {
-		this.feapEspenseMonth = feapEspenseMonth;
+		this.feapExpenseMonth = feapEspenseMonth;
 	}
 	public int getFeapClosingIncome() {
 		return feapClosingIncome;
@@ -75,7 +75,7 @@ public class FeedingApplication {
 	@Override
 	public String toString() {
 		return "FeedingApplication [feedingApplicationCd=" + feedingApplicationCd + ", kidsCd=" + kidsCd
-				+ ", feedingMonthlyCd=" + feedingMonthlyCd + ", feapEspenseMonth=" + feapEspenseMonth
+				+ ", feedingMonthlyCd=" + feedingMonthlyCd + ", feapEspenseMonth=" + feapExpenseMonth
 				+ ", feapClosingIncome=" + feapClosingIncome + ", feapClosingOption=" + feapClosingOption
 				+ ", feapDivision=" + feapDivision + ", feapRegistrationDate=" + feapRegistrationDate
 				+ ", feapRegistrant=" + feapRegistrant + ", licenseKindergarten=" + licenseKindergarten + "]";

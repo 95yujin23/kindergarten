@@ -16,8 +16,15 @@ public class FeedingApplicationDao {
 
 	String localName = "com.cafe24.hanboa.feeding.FeedingMapper.";
 	
+	// 1. 목록조회
 	public List<FeedingApplication> selectFeedingApplicationList(){
 		logger.debug("{} <- selectFeedingApplicationList FeedingApplicationDao.java");
 		return sqlSession.selectList(localName+"getFeedingApplication");
 	}
+	
+	// 2. 업데이트 정보요청
+	public FeedingApplication modifyGetFeedingApplication(String feedingApplication) {
+		return sqlSession.selectOne(localName+"feapModify");		
+	}
+	
 }
