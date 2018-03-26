@@ -1,5 +1,6 @@
 package com.cafe24.hanboa.teacher;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -60,10 +61,10 @@ public class TeacherDao {
 		return sqlSession.update(localName+"deleteTeacher",teacherCd);		
 	}
 	// 7. 인건비 지급 목록 조회
-	public List<TeacherPay> selectTeacherPayList() {
+	public List<TeacherAndTeacherPay> selectTeacherPayList(HashMap<String, Object> map) {
 		logger.debug("7. TeacherDao -- List<TeacherPay> selectTeacherPayList() 매서드 실행");
 		logger.debug("-----------------------------------------");
-		return sqlSession.selectList(localName+"getTeacherPayList");
+		return sqlSession.selectList(localName+"getTeacherPayList",map);
 	}
 	// 8. 인건비 지급 개인 조회
 	public TeacherPay selectTeacherPayOne(String teacherCd) {

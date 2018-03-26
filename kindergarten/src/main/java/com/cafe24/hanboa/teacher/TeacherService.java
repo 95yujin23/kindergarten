@@ -1,5 +1,6 @@
 package com.cafe24.hanboa.teacher;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -59,9 +60,10 @@ public class TeacherService {
 		return removeTeacher;
 	}
 	// 7. 인건비 지급 목록 조회
-	public List<TeacherPay> getTeacherPayList() {
-		logger.debug("7. TeacherService -- getTeacherPayList()");
-		List<TeacherPay> list = teacherDao.selectTeacherPayList();
+	public List<TeacherAndTeacherPay> getTeacherPayList(HashMap<String, Object> map) {
+		logger.debug("7. TeacherService -- getTeacherPayList(HashMap<String, Object> map)");
+		logger.debug(" map : {}", map);
+		List<TeacherAndTeacherPay> list = teacherDao.selectTeacherPayList(map);
 		logger.debug("-----------------------------------------");
 		return list;
 	}

@@ -1,13 +1,12 @@
 package com.cafe24.hanboa.teacher;
 
-public class Teacher {
+public class TeacherAndTeacherPay {
 
 	private String teacherCd;
 	private String teacherNm;
 	private String teacherDateOfBirth;
 	private String teacherPhone;
 	private String teacherEmail;
-	private String teacherPw;
 	private String teacherAddress;
 	private String teacherEntryDate;
 	private String teacherPosition;
@@ -15,7 +14,12 @@ public class Teacher {
 	private String teacherAccount;
 	private int teacherPayStep;
 	private String licenseKindergarten;
-	
+	String payCd;
+	int payPayment;
+	int payClosingCd;
+	String payClosingOption;
+	String payRegistrationDate;
+	String payRegistrant;
 	public String getTeacherCd() {
 		return teacherCd;
 	}
@@ -45,12 +49,6 @@ public class Teacher {
 	}
 	public void setTeacherEmail(String teacherEmail) {
 		this.teacherEmail = teacherEmail;
-	}
-	public String getTeacherPw() {
-		return teacherPw;
-	}
-	public void setTeacherPw(String teacherPw) {
-		this.teacherPw = teacherPw;
 	}
 	public String getTeacherAddress() {
 		return teacherAddress;
@@ -94,13 +92,52 @@ public class Teacher {
 	public void setLicenseKindergarten(String licenseKindergarten) {
 		this.licenseKindergarten = licenseKindergarten;
 	}
+	public String getPayCd() {
+		return payCd;
+	}
+	public void setPayCd(String payCd) {
+		this.payCd = payCd;
+	}
+	public int getPayPayment() {
+		return payPayment;
+	}
+	public void setPayPayment(int payPayment) {
+		this.payPayment = payPayment;
+	}
+	public int getPayClosingCd() {
+		return payClosingCd;
+	}
+	public void setPayClosingCd(int payClosingCd) {
+		this.payClosingCd = payClosingCd;
+	}
+	public String getPayClosingOption() {
+		return payClosingOption;
+	}
+	public void setPayClosingOption(String payClosingOption) {
+		this.payClosingOption = payClosingOption;
+	}
+	public String getPayRegistrationDate() {
+		return payRegistrationDate;
+	}
+	public void setPayRegistrationDate(String payRegistrationDate) {
+		this.payRegistrationDate = payRegistrationDate;
+	}
+	public String getPayRegistrant() {
+		return payRegistrant;
+	}
+	public void setPayRegistrant(String payRegistrant) {
+		this.payRegistrant = payRegistrant;
+	}
+	
 	@Override
 	public String toString() {
-		return "Teacher [teacherCd=" + teacherCd + ", teacherNm=" + teacherNm + ", teacherDateOfBirth="
+		return "TeacherAndTeacherPay [teacherCd=" + teacherCd + ", teacherNm=" + teacherNm + ", teacherDateOfBirth="
 				+ teacherDateOfBirth + ", teacherPhone=" + teacherPhone + ", teacherEmail=" + teacherEmail
-				+ ", teacherPw=" + teacherPw + ", teacherAddress=" + teacherAddress + ", teacherEntryDate="
-				+ teacherEntryDate + ", teacherPosition=" + teacherPosition + ", teacherBank=" + teacherBank
-				+ ", teacherAccount=" + teacherAccount + ", teacherPayStep=" + teacherPayStep + ", licenseKindergarten="
-				+ licenseKindergarten ;
+				+ ", teacherAddress=" + teacherAddress + ", teacherEntryDate=" + teacherEntryDate + ", teacherPosition="
+				+ teacherPosition + ", teacherBank=" + teacherBank + ", teacherAccount=" + teacherAccount
+				+ ", teacherPayStep=" + teacherPayStep + ", licenseKindergarten=" + licenseKindergarten + ", payCd="
+				+ payCd + ", payPayment=" + payPayment + ", payClosingCd=" + payClosingCd + ", payClosingOption="
+				+ payClosingOption + ", payRegistrationDate=" + payRegistrationDate + ", payRegistrant=" + payRegistrant
+				+ "]";
 	}
 }

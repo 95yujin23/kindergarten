@@ -1,5 +1,6 @@
 package com.cafe24.hanboa.teacher;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class TeacherController {
@@ -128,10 +130,19 @@ public class TeacherController {
 		}	
 	
 	// 8. 교직원 인건비 지급 목록 전체 조회
-	@RequestMapping(value="/TeacherPayList", method = RequestMethod.GET)
-	public String teacherPayList(Model model, HttpSession session) {
-		List<TeacherPay> list = teacherService.getTeacherPayList();
-		logger.debug("8. TeacherController -- TeacherPayList : {}", list);
+	@RequestMapping(value="/TeacherPayList")
+	public String teacherPayList(Model model, HttpSession session
+								,@RequestParam(value="year", defaultValue="") String year
+							 	,@RequestParam(value="month", defaultValue="") String month) {
+		logger.debug("8. TeacherController -- TeacherPayList");
+		logger.debug("year : {}", year);
+		logger.debug("month : {}", month);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("year", year);
+		map.put("month", month);
+		logger.debug("map : {}", map);
+		List<TeacherAndTeacherPay> list = teacherService.getTeacherPayList(map);
+		logger.debug("list : {}", list);
 		logger.debug("-----------------------------------------");
 		model.addAttribute("list", list);
 		return "teacher/teacher_pay_list";

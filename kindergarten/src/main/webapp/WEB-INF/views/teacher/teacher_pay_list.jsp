@@ -56,6 +56,32 @@
 				<div class="panel-heading">
 			<h1 class="page-header">교직원 등록</h1>
 			<h1>교직원 목록</h1>
+			<form action="${pageContext.request.contextPath}/TeacherPayList" method="post">
+					<select name="year" class="form-control">
+					<!-- 검색 조건을 검색 처리후 결과화면에 보여주기 위해 c:out 출력태그 사용 (삼항연산자) -->
+					<option value=""		<c:out value="${year}"/>>모든 해</option>
+					<option value="2016"	<c:out value="${year}"/>>2016년</option>
+					<option value="2017"	<c:out value="${year}"/>>2017년</option>
+					<option value="2018"	<c:out value="${year}"/>>2018년</option>					
+					</select> 
+					<select name="division" class="form-control">
+					<!-- 검색 조건을 검색 처리후 결과화면에 보여주기 위해 c:out 출력태그 사용 (삼항연산자) -->
+					<option value=""		<c:out value="${month}"/>>모든 월</option>
+					<option value="1"		<c:out value="${month}"/>>1</option>
+					<option value="2"		<c:out value="${month}"/>>2</option>
+					<option value="3"		<c:out value="${month}"/>>3</option>
+					<option value="4"		<c:out value="${month}"/>>4</option>
+					<option value="5"		<c:out value="${month}"/>>5</option>
+					<option value="6"		<c:out value="${month}"/>>6</option>
+					<option value="7"		<c:out value="${month}"/>>7</option>
+					<option value="8"		<c:out value="${month}"/>>8</option>
+					<option value="9"		<c:out value="${month}"/>>9</option>
+					<option value="10"		<c:out value="${month}"/>>10</option>
+					<option value="11"		<c:out value="${month}"/>>11</option>
+					<option value="12"		<c:out value="${month}"/>>12</option>
+					</select> 
+					<button class="btn btn-success" type="submit" value="검색">검색</button>
+				</form>
 				<table>
 					<thead>
 						<tr>
@@ -73,13 +99,13 @@
 					<c:forEach var="teacherPayList" items="${list}">
 						<tbody>
 							<tr>
-								<td>${teacherPayList.payCd}</td>
-								<td>${teacherPayList.teacherCd}</td>
+								<td>${teacherPayList.teacherNm}</td>
 								<td>${teacherPayList.payPayment}</td>
+								<%-- <td>${teacherPayList.payPayment}</td>
 								<td>${teacherPayList.payClosingCd}</td>
 								<td>${teacherPayList.payClosingOption}</td>
 								<td>${teacherPayList.payRegistrationDate}</td>
-								<td>${teacherPayList.payRegistrant}</td>
+								<td>${teacherPayList.payRegistrant}</td> --%>
 								<td><a href="${pageContext.request.contextPath}/TeacherPayModify">수정</a></td> <!-- 수정화면 -->
 								<td><a href="${pageContext.request.contextPath}/TeacherPayRemove">삭제</a></td>
 							</tr>

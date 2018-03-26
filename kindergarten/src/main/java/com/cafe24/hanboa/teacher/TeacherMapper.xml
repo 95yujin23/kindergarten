@@ -115,7 +115,7 @@
 	</delete>
 	
 <!-- 교직원 인건비 지급 목록 전체 조회 -->
-	<select id="getTeacherPayList"
+	<!-- <select id="getTeacherPayList"
 			resultType="com.cafe24.hanboa.teacher.TeacherPay">
 		SELECT
 			pay_cd					AS payCd
@@ -127,7 +127,7 @@
 			,pay_registrant			AS payRegistrant
 			,license_kindergarten	AS licenseKindergarten
 		FROM hanboa.TB_TEACHER_PAY
-	</select>
+	</select> -->
 	
 <!-- 교직원 인건비 지급 목록 개인 조회 -->
 	<select id="getTeacherPayOne">
@@ -189,5 +189,55 @@
 		FROM hanboa.TB_TEACHER_PAY
 		WHERE teacher_cd = #{teacherCd}
 	</delete>
+
+<!-- 교직원 인건비 연 & 월 별 조회-->
+	<select id="getTeacherPayList" resultMap="TeacherAndTeacherPay" parameterType="java.util.Map">
+		SELECT T.teacher_nm
+			,TP.pay_payment
+		FROM TB_TEACHERS T
+		JOIN TB_TEACHER_PAY TP
+		ON T.teacher_cd = TP.teacher_cd
+		WHERE year(pay_registration_date) LIKE CONCAT('%',#{year},'%')
+		AND month(pay_registration_date) LIKE CONCAT('%',#{month},'%')
+	</select>
 	
+<!-- TeacherAndTeacherPay list parameter getting : resultMap 설정-->
+
+<!-- resultMap : Teacher -->
+<!-- teacher와 teacherPay를 모두 가지는 DTO를 생성, 그 클래스를 가지고 resultMap을 만들었다.
+	teacher DTO에 TeacherPay 클래스 호출해 teacherPay 객체를 생성 하는 방법 
+	, List<TeacherPay> list 를 선언하는 방법 두가지 다
+	 collection태그를 이용해서 하는데 property를 가져오지 못해서 되지않았다. -->
+	<resultMap type="com.cafe24.hanboa.teacher.TeacherAndTeacherPay"
+				id="TeacherAndTeacherPay">
+		<result property="teacherCd" column="teacher_cd"></result>
+		<result property="teacherNm" column="teacher_nm"></result>
+		<result property="teacherDateOfBirth" column="teacher_date_of_birth"></result>
+		<result property="teacherPhone" column="teacher_phone"></result>
+		<result property="teacherEmail" column="teacher_email"></result>
+		<result property="teacherAddress" column="teacher_address"></result>
+		<result property="teacherEntryDate" column="teacher_entry_date"></result>
+		<result property="teacherPosition" column="teacher_position"></result>
+		<result property="teacherBank" column="teacher_bank"></result>
+		<result property="teacherAccount" column="teacher_account"></result>
+		<result property="teacherPayStep" column="teacher_pay_step"></result>
+		<result property="licenseKindergarten" column="license_kindergarten"></result>
+		<result property="payCd" column="pay_cd"></result>
+		<result property="payPayment" column="pay_payment"></result>
+		<result property="payClosingCd" column="pay_closing_cd"></result>
+		<result property="payClosingOption" column="pay_closing_option"></result>
+		<result property="payRegistrationDate" column="pay_registration_date"></result>
+		<result property="payRegistrant" column="pay_registrant"></result>
+	</resultMap>
+	
+<!-- resultMap : TeacherPay -->
+<!-- 	<resultMap type="com.cafe24.hanboa.teacher.TeacherPay"
+				id="TeacherPay">
+		<result property="payCd" column="pay_cd"></result>
+		<result property="payPayment" column="pay_payment"></result>
+		<result property="payClosingCd" column="pay_closing_cd"></result>
+		<result property="payClosingOption" column="pay_closing_option"></result>
+		<result property="payRegistrationDate" column="pay_registration_date"></result>
+		<result property="payRegistrant" column="pay_registrant"></result>
+	</resultMap>	 -->
 </mapper>
