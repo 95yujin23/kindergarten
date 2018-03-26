@@ -2,9 +2,8 @@
 
 <mapper namespace="com.cafe24.hanboa.contract.ContractMapper">
 
-<!-- 거래처 조회 -->
-	<select id="getContractList"
-			resultType="com.cafe24.hanboa.contract.Contract">
+<!-- 계약 조회 -->
+	<select id="getContractList" resultType="com.cafe24.hanboa.contract.Contract">
 		SELECT
 			contract_cd as contractCd
 			,contract_start_date as contractStartDate
@@ -18,8 +17,60 @@
 			,license_kindergarten as licenseKindergarten
 		FROM hanboa.TB_CONTRACT	
 	</select>
-	
-	
-	
-	
-	</mapper>
+
+<!-- 계약 항목별 조회 -->
+	<select id = "getContractOne"
+			parameterType="String"
+			resultType="com.cafe24.hanboa.contract.Contract">
+		SELECT
+			contract_cd as contractCd
+			,contract_start_date as contractStartDate
+			,contract_end_date as contractEndDate
+			,client_cd as clientCd
+			,contract_amount as contractAmount
+			,contract_contents as contractContents
+			,contract_type as contractType
+			,contract_registration_date as contractRegistrationDate
+			,contract_registrant as contractRegistrant
+			,license_kindergarten as licenseKindergarten
+			FROM TB_CONTRACT
+			WHERE contract_cd = #{contractCd}
+	</select>
+<!-- 계약 등록 -->
+	<insert id = "contractAdd" 
+			parameterType="com.cafe24.hanboa.contract.Contract">
+		INSERT INTO TB_CONTRACT
+			(contract_cd
+			,contract_start_date
+			,contract_end_date
+			,client_cd
+			,contract_amount 
+			,contract_contents
+			,contract_type
+			,contract_registration_date
+			,contract_registrant
+			,license_kindergarten)
+			VALUES
+			(${contractCd}
+			,${contractStartDate}
+			,${contractEndDate}
+			,${clientCd}
+			,${contractAmount}
+			,${contractContents}
+			,${contractType}
+			,${contractRegistrationDate}
+			,${contractRegistrant}
+			,${licenseKindergarten})
+	</insert>
+<!-- 계약 수정 -->
+	<update id = "contractModify" parameterType="com.cafe24.hanboa.contract.Contract">
+		UPDATE TB_CONTRACT
+		SET
+			contract_type = #{contractType}
+			,contract_start_date = #{contractStartDate}
+			,contract_end_date = #{contractEndDate}
+			,contract_contents = #{contractContents}
+			,contract_amount = #{contractAmount}
+		WHERE countract_CD = #{contractCd}
+	</update>
+</mapper>

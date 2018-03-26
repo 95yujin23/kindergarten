@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class ContractService {
-	@Autowired
+	@Autowired 
 	public ContractDao contractDao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(ContractService.class);
@@ -20,6 +20,12 @@ public class ContractService {
 	public List<Contract> getContractList(){
 		List<Contract> list = contractDao.selectContarct();
 		return list;
-	}	
+	}
+	
+	//2.수정 정보요청
+	public Contract modifyGetContract(String contractCd) {
+		Contract modifyGet = contractDao.modifyGetContarct(contractCd);
+		return modifyGet;
+	}
 
 }

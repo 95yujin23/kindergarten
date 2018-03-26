@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class ContractDao {
-	@Autowired
+	@Autowired 
 	public SqlSessionTemplate sqlSession;
 	private static final Logger logger = LoggerFactory.getLogger(ContractDao.class);
 	
@@ -18,8 +18,17 @@ public class ContractDao {
 	
 	// 1.목록조회
 	public List<Contract> selectContarct(){
-		return sqlSession.selectList(localName,"getContractList");
-	}		
+		logger.debug(" ContractDao -- List<Contract> selectContarct()");
+		//return sqlSession.selectList(localName,"getContractList222");
+		//return sqlSession.selectList(localName+"getContractList222");
+		return sqlSession.selectList(localName+"getContractList");		
+	}
+	
+	//2.수정정보요청
+	public Contract modifyGetContarct(String contractCd) {
+		logger.debug("{} <- ContractDao.modifyGetContarct");
+		return sqlSession.selectOne(localName+"contractModify",contractCd);		
+	}
 	
 
 }
