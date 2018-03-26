@@ -13,15 +13,27 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class AttendanceDao {
 	//출석 처리 DAO
-	
 	@Autowired
-	private SqlSessionTemplate sqlSession;
+	private SqlSessionTemplate sqlSessionTemlate;
 	private static final Logger logger = LoggerFactory.getLogger(AttendanceDao.class);
-	
 	String localName = "com.cafe24.hanboa.attendance.AttendanceMapper.";
 	
+	// 교직원
+	// 1. 교직원 출근 입력
+	public int insertTeacherAttendance(TeacherAttendance teacherAttendance) {
+		logger.debug("AttendanceDao.java insertTeacherAttendance() 메소드 실행"); 
+		return sqlSessionTemlate.insert(localName + "insertTheacherAttendance", teacherAttendance);
+	}
+	// 2. 교직원 전체 조회
+	public List<TeacherAttendance> selectTheacherAttendance() {
+		logger.debug("AttendanceDao.java selectTheacherAttendance() 메소드 실행"); 
+		return sqlSessionTemlate.selectList(localName+"selectTheacherAttendance");
+	}
+	
+	// 영유아
+	// 1. 영유아 출석 전체 조회
 	public List<KidsAttendance> selectAllKidsAttendance() {
 		logger.debug("AttendanceDao.java selectAllAttendance() 메소드 실행 ");
-		return sqlSession.selectList(localName + "selectAllKidsattendance");
+		return sqlSessionTemlate.selectList(localName + "selectAllKidsattendance");
 	}
 }
