@@ -41,6 +41,7 @@
 				<table class="table table-hover">
 					<thead>
 						<tr>
+							<th>거래처코드</th>
 							<th>거래처이름</th>							
 							<th>거래처 연락처</th>
 							<th>거래처 담당자</th>
@@ -50,12 +51,12 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="hidden" value="${clientlist.clientCd}" name="clientCd"></td>
-							<td><input type="text" value="${clientlist.clientNm}" name="clientNm"></td>										
-							<td><input type="text" value="${clientlist.clientPhone}" name="clientPhone"></td>
-							<td><input type="text" value="${clientlist.clientManager}" name="clientManager"></td>
-							<td><input type="text" value="${clientlist.clientAddress}" name="clientAddress"></td>
-							<td><input type="text" value="${clientlist.clientType}" name="clientType"></td> 
+							<td><input type="hidden" value="${client.clientCd}" name="clientCd"></td>
+							<td><input type="text" value="${client.clientNm}" name="clientNm"></td>										
+							<td><input type="text" value="${client.clientPhone}" name="clientPhone"></td>
+							<td><input type="text" value="${client.clientManager}" name="clientManager"></td>
+							<td><input type="text" value="${client.clientAddress}" name="clientAddress"></td>
+							<td><input type="text" value="${client.clientType}" name="clientType"></td> 
 						</tr>
 					</tbody>
 				</table>

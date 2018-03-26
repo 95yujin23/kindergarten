@@ -41,7 +41,8 @@ public class ClientController {
 	@RequestMapping(value = "/client/client_modify", method = RequestMethod.POST)
 	public String clientModify(Client client) {
 		clientService.updateClient(client);
-		return "redirect:client/client_List";
+		logger.debug("{} <-clientModify ClientController.java", client);
+		return "redirect:client/client_list";
 	}
 	
 	

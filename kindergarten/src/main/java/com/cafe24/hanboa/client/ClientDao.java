@@ -24,12 +24,12 @@ public class ClientDao {
 	// 2.업데이트 정보요청
 	public Client modifyGetClient(String clientCd) {
 		logger.debug("{} <- modifyGetClient ClientDao.java");
-		return sqlSession.selectOne(localName+"clientModify", clientCd);		
+		return sqlSession.selectOne(localName+"getClientOne", clientCd);		
 	}	
 	// 3.업데이트
 	public int updateClient(Client client) {
 		logger.debug("{} <- updateClient ClientDao.java");
-		return sqlSession.update(localName+"updateClient", client);
+		return sqlSession.update(localName+"clientModify", client);
 	}
 	// 4.삭제
 	public int deleteClient(String clientCd) {
