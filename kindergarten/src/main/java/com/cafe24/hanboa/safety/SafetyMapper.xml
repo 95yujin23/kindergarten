@@ -55,7 +55,7 @@
 			, #{safetyDivision}
 			, #{safetyClosingOption}
 			, #{safetyRestrant}
-			, #{safetyRegistrationDate}
+			, CURDATE()
 			, #{licenseKindergarten}
 		)
 	</insert>
