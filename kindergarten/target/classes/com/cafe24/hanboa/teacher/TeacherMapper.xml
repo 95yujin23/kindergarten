@@ -147,11 +147,12 @@
 	</select>
 	
 <!-- 교직원 인건비 지급 등록 -->
-	<insert id="insertTeacherPay">
-		<!-- selectKey설정 - #{teacherCd} : 문자열(TEAC_) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 --> 
-		<selectKey resultType="String" keyProperty="payCd" order="BEFORE">
-			SELECT CONCAT('PAY', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_TEACHER_PAY ))
-		</selectKey>
+	<insert id="insertTeacherPay"
+			parameterType="com.cafe24.hanboa.teacher.TeacherPay">
+			<!-- selectKey설정 - #{payCd} : 문자열(TEAC_) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 --> 
+			<selectKey resultType="String" keyProperty="payCd" order="BEFORE">
+				SELECT CONCAT('PAY', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_TEACHER_PAY ))
+			</selectKey> 
 		INSERT INTO hanboa.TB_TEACHER_PAY (
 			pay_cd
 			,teacher_cd
@@ -165,14 +166,32 @@
 			#{payCd}
 			,#{teacherCd}
 			,#{payPayment}
-			,#{payClosingCd}
-			,#{payClosingOption}
+			,0
+			,'무'<!-- 마감유무 기본값은 '무' : 마감처리후 '유'로 변경되도록 해주기 -->
 			,CURDATE()
 			,#{payRegistrant}
 			,#{licenseKindergarten}
 		)
 	</insert>
-	
+<!-- ↑교직원 인건비 지급 등록 후 
+		- 교직원 인건비 마감 코드 최초 0으로 등록
+	 ↓교직원 인건비 마감 코드 수정
+	 	- 교직원 인건비 등록과 동시에 마감코드 수정
+	 	- 등록날짜에서 연 '2018' + 월 '3'을 더한 문자('20183')를 구함
+	 	- 0으로 등록되있던 마감코드를 수정	-->
+<!-- 교직원 인건비 지급 마감 코드 수정 -->
+	<update id="updatePayClosingCd"
+			parameterType="com.cafe24.hanboa.teacher.TeacherPay">
+			<!-- selectKey설정 - #{payClosingCd} : payRegistrationDate에서 연도:ex)2018 + 월:ex)03 = '20183' -->
+			<selectKey resultType="String" keyProperty="payClosingCd" order="BEFORE">
+				SELECT CONCAT(year(pay_registration_date),month(pay_registration_date)) FROM hanboa.TB_TEACHER_PAY
+				WHERE pay_cd = #{payCd}
+			</selectKey>
+		UPDATE hanboa.TB_TEACHER_PAY
+		SET pay_closing_cd	= #{payClosingCd}
+		WHERE pay_cd = #{payCd}
+	</update>
+
 <!-- 교직원 인건비 지급 수정 -->
 	<update id="updateTeacherPay">
 		UPDATE INTO hanboa.TB_TEACHER_PAY

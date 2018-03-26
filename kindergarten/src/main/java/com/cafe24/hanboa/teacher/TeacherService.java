@@ -76,10 +76,18 @@ public class TeacherService {
 	}
 	// 9. 인건비 지급 등록
 	public int addTeacherPay(TeacherPay teacherPay) {
-		logger.debug("4. TeacherService -- addTeacherPay(TeacherPay teacherPay) : {}",teacherPay);
+		logger.debug("9. TeacherService -- addTeacherPay(TeacherPay teacherPay) : {}",teacherPay);
 		int addTeacher = teacherDao.insertTeacherPay(teacherPay);
+		
 		logger.debug("-----------------------------------------");
 		return addTeacher;
+	}
+	// 9-1. 인건비 마감 코드 수정
+	public int modifyPayClosingCd(TeacherPay teacherPay){
+		logger.debug("9-1. TeacherService -- modifyPayClosingCd(TeacherPay teacherPay) : {}",teacherPay);
+		int modifyPayClosingCd = teacherDao.modifyPayClosingCd(teacherPay);
+		logger.debug("-----------------------------------------");
+		return modifyPayClosingCd;
 	}
 	// 10. 인건비 지급 수정
 		public int modifyTeacherPay(TeacherPay teacherPay) {

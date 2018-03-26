@@ -59,27 +59,32 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-				    교직원에게 지급 인건비를 등록해주세요
+				    교직원에게 지급한 인건비를 등록해주세요
 				</div>
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6">
-							<form id="addForm" action="${pageContext.request.contextPath}/TeacherAdd" method="POST">
+							<form id="addForm" action="${pageContext.request.contextPath}/TeacherPayAdd" method="POST">
+								
 								<div class="form-group">
 								    <label>Name</label>
-								    <input class="form-control" id="teacherNm" name="teacherNm" placeholder="이름">
+								    <select name="teacherCd" class="form-control">
+									<option value="" <c:out value=""/>>이름</option>
+									<c:forEach var="teacher" items="${list}">
+									<!-- list에 담긴 teacher List를 반복문이 끝날 때까지 출력 
+										value값은 teacherCd -> teacherCd를 가지고 해당 교직원의 인건비를 등록함
+										teacherNm은 화면에 보여줄 것, 선택 시에 코드를 보고 누군지 알수 없으므로-->
+									<option value="${teacher.teacherCd}" <c:out value="${teacherCd}"/>>${teacher.teacherNm}</option>
+									</c:forEach>
+									</select>
 								</div>
 								<div class="form-group">
-								    <label>Email</label>
-								    <input class="form-control" id="teacherEmail" name="teacherEmail" placeholder="이메일">
+								    <label>Payment</label>
+								    <input class="form-control" id="payPayment" name="payPayment" placeholder="지급금액(단위:원)">
 								</div>
 								<div class="form-group">
-								    <label>Phone</label>
-								    <input class="form-control" id="teacherPhone" name="teacherPhone" placeholder="연락처">
-								</div>
-								<div class="form-group">
-								    <label>PassWord</label>
-								    <input class="form-control" id="teacherPw" name="teacherPw" placeholder="임시비밀번호">
+								    <label>payRegistrant</label>
+								    <input class="form-control" id="pay_closing_cd" name="teacherPhone" placeholder="등록인">
 								</div>
 								<button type="submit">등록</button>
 							</form>
