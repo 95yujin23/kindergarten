@@ -68,11 +68,11 @@ public class TeacherService {
 		return list;
 	}
 	// 8. 인건비 지급 개인 조회
-	public TeacherPay getTeacherPayOne(String teacherCd) {
-		logger.debug("8. TeacherService -- removeTeacher(String teacherCd) : {}",teacherCd);
-		TeacherPay teacherPay = teacherDao.selectTeacherPayOne(teacherCd);
+	public List<TeacherPay> getTeacherPayOne(Teacher teacher) {
+		logger.debug("8. TeacherService -- removeTeacher(String teacherCd) : {}",teacher);
+		List<TeacherPay> list = teacherDao.selectTeacherPayOne(teacher);
 		logger.debug("-----------------------------------------");
-		return teacherPay;
+		return list;
 	}
 	// 9. 인건비 지급 등록
 	public int addTeacherPay(TeacherPay teacherPay) {

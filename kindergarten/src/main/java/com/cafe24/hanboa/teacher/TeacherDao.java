@@ -67,11 +67,11 @@ public class TeacherDao {
 		return sqlSession.selectList(localName+"getTeacherPayList",map);
 	}
 	// 8. 인건비 지급 개인 조회
-	public TeacherPay selectTeacherPayOne(String teacherCd) {
+	public List<TeacherPay> selectTeacherPayOne(Teacher teacher) {
 		logger.debug("8. TeacherDao -- TeacherPay selectTeacherPayOne(String teacherCd) 매서드 실행");
-		logger.debug("teacherCd : {}",teacherCd);
+		logger.debug("teacherCd : {}",teacher);
 		logger.debug("-----------------------------------------");
-		return sqlSession.selectOne(localName+"getTeacherPayOne",teacherCd);
+		return sqlSession.selectList(localName+"getTeacherPayOne",teacher);
 	}
 	// 9. 인건비 지급 등록
 	public int insertTeacherPay(TeacherPay teacherPay) {

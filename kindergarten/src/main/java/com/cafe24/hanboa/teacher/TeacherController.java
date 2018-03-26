@@ -150,10 +150,19 @@ public class TeacherController {
 	
 	// 9. 교직원 인건비 지급 목록 개인 조회
 	@RequestMapping(value="/TeacherPaySelect", method = RequestMethod.GET)
-	public String teacherPaySelect(Model model, HttpSession session, String teacherCd) {
-		TeacherPay teacherPay = teacherService.getTeacherPayOne(teacherCd);
-		logger.debug("9. TeacherController -- TeacherPaySelect : {}", teacherPay);
+	public String teacherPaySelect(Model model, HttpSession session, Teacher teacher) {		
+		logger.debug("9. TeacherController -- TeacherPaySelect : {}");
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
+		if(loginTeacher == null) {
+			// loginTeacher의 값이 null이라면 login화면으로
+			return "redirect:/Login";
+		}
+		// null이 아니라면 loginTeacher세션에서 라이센스를 받아서 teacher객체에 셋팅한다.
+		teacher.setTeacherCd(loginTeacher.getTeacherCd());
+		List<TeacherPay> list = teacherService.getTeacherPayOne(teacher);
 		logger.debug("-----------------------------------------");
+		model.addAttribute("list", list);
 		return "teacher/teacher_pay_select";
 		}
 	

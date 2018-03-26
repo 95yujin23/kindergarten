@@ -130,7 +130,9 @@
 	</select> -->
 	
 <!-- 교직원 인건비 지급 목록 개인 조회 -->
-	<select id="getTeacherPayOne">
+	<select id="getTeacherPayOne"
+			parameterType="com.cafe24.hanboa.teacher.Teacher"
+			resultType="com.cafe24.hanboa.teacher.TeacherPay">
 		SELECT
 			pay_cd					AS payCd
 			,teacher_cd				AS teacherCd
@@ -207,7 +209,8 @@
 <!-- teacher와 teacherPay를 모두 가지는 DTO를 생성, 그 클래스를 가지고 resultMap을 만들었다.
 	teacher DTO에 TeacherPay 클래스 호출해 teacherPay 객체를 생성 하는 방법 
 	, List<TeacherPay> list 를 선언하는 방법 두가지 다
-	 collection태그를 이용해서 하는데 property를 가져오지 못해서 되지않았다. -->
+	 collection태그를 이용해서 해봤는데 property를 가져오지 못해서 되지않았다.
+	 why..? -->
 	<resultMap type="com.cafe24.hanboa.teacher.TeacherAndTeacherPay"
 				id="TeacherAndTeacherPay">
 		<result property="teacherCd" column="teacher_cd"></result>
