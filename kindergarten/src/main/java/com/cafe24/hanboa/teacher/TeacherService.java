@@ -1,5 +1,6 @@
 package com.cafe24.hanboa.teacher;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -59,25 +60,34 @@ public class TeacherService {
 		return removeTeacher;
 	}
 	// 7. 인건비 지급 목록 조회
-	public List<TeacherPay> getTeacherPayList() {
-		logger.debug("7. TeacherService -- getTeacherPayList()");
-		List<TeacherPay> list = teacherDao.selectTeacherPayList();
+	public List<TeacherAndTeacherPay> getTeacherPayList(HashMap<String, Object> map) {
+		logger.debug("7. TeacherService -- getTeacherPayList(HashMap<String, Object> map)");
+		logger.debug(" map : {}", map);
+		List<TeacherAndTeacherPay> list = teacherDao.selectTeacherPayList(map);
 		logger.debug("-----------------------------------------");
 		return list;
 	}
 	// 8. 인건비 지급 개인 조회
-	public TeacherPay getTeacherPayOne(String teacherCd) {
-		logger.debug("8. TeacherService -- removeTeacher(String teacherCd) : {}",teacherCd);
-		TeacherPay teacherPay = teacherDao.selectTeacherPayOne(teacherCd);
+	public List<TeacherPay> getTeacherPayOne(Teacher teacher) {
+		logger.debug("8. TeacherService -- removeTeacher(String teacherCd) : {}",teacher);
+		List<TeacherPay> list = teacherDao.selectTeacherPayOne(teacher);
 		logger.debug("-----------------------------------------");
-		return teacherPay;
+		return list;
 	}
 	// 9. 인건비 지급 등록
 	public int addTeacherPay(TeacherPay teacherPay) {
-		logger.debug("4. TeacherService -- addTeacherPay(TeacherPay teacherPay) : {}",teacherPay);
+		logger.debug("9. TeacherService -- addTeacherPay(TeacherPay teacherPay) : {}",teacherPay);
 		int addTeacher = teacherDao.insertTeacherPay(teacherPay);
+		
 		logger.debug("-----------------------------------------");
 		return addTeacher;
+	}
+	// 9-1. 인건비 마감 코드 수정
+	public int modifyPayClosingCd(TeacherPay teacherPay){
+		logger.debug("9-1. TeacherService -- modifyPayClosingCd(TeacherPay teacherPay) : {}",teacherPay);
+		int modifyPayClosingCd = teacherDao.modifyPayClosingCd(teacherPay);
+		logger.debug("-----------------------------------------");
+		return modifyPayClosingCd;
 	}
 	// 10. 인건비 지급 수정
 		public int modifyTeacherPay(TeacherPay teacherPay) {

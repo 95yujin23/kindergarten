@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Client Modify</title>
+<title>FeedingApplication Modify</title>
 <!-- Bootstrap Core CSS -->
 <link href="../resources/vendor/css/bootstrap.min.css" rel="stylesheet">
 <!-- MetisMenu CSS -->
@@ -37,26 +37,28 @@
 			<div class="col-lg-1"></div>
 			<div class="col-lg-11">
 			<h2>수정화면</h2>
-			<form id="clientModifyForm" action="${pageContext.request.contextPath}/client/client_List" method="post">
+			<form id="feedingApplicationModifyForm" action="${pageContext.request.contextPath}/feeding/feeding_application" method="post">
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th>거래처코드</th>
-							<th>거래처이름</th>							
-							<th>거래처 연락처</th>
-							<th>거래처 담당자</th>
-							<th>거래처 주소</th>
-							<th>거래처 구분</th>
+							<th>급식신청 코드</th>							
+							<th>영유아 코드</th>
+							<th>월별급식 코드</th>
+							<th>수입급식비</th>
+							<th>마감회계(수입급식비)</th>
+							<th>마감유무</th>
+							<th>급식구분</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="hidden" value="${client.clientCd}" name="clientCd"></td>
-							<td><input type="text" value="${client.clientNm}" name="clientNm"></td>										
-							<td><input type="text" value="${client.clientPhone}" name="clientPhone"></td>
-							<td><input type="text" value="${client.clientManager}" name="clientManager"></td>
-							<td><input type="text" value="${client.clientAddress}" name="clientAddress"></td>
-							<td><input type="text" value="${client.clientType}" name="clientType"></td> 
+							<td><input type="text" value="${feedingApplication.feedingApplicationCd}" name="feedingApplicationCd"></td>
+							<td><input type="text" value="${feedingApplication.kidsCd}" name="kidsCd"></td>										
+							<td><input type="text" value="${feedingApplication.feedingMonthlyCd}" name="feedingMonthlyCd"></td>
+							<td><input type="text" value="${feedingApplication.feapExpenseMonth}" name="feapExpenseMonth"></td>
+							<td><input type="text" value="${feedingApplication.feapClosingIncome}" name="feapClosingIncome"></td>
+							<td><input type="text" value="${feedingApplication.feapClosingOption}" name="feapClosingOption"></td> 
+							<td><input type="text" value="${feedingApplication.feapDivision}" name="feapDivision"></td> 
 						</tr>
 					</tbody>
 				</table>

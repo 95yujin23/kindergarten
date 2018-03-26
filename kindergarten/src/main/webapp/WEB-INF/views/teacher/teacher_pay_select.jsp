@@ -76,7 +76,7 @@
 								<td>${teacherPayList.payCd}</td>
 								<td>${teacherPayList.teacherCd}</td>
 								<td>${teacherPayList.payPayment}</td>
-								<td>${teacherPayList.payClosing_cd}</td>
+								<td>${teacherPayList.payClosingCd}</td>
 								<td>${teacherPayList.payClosingOption}</td>
 								<td>${teacherPayList.payRegistrationDate}</td>
 								<td>${teacherPayList.payRegistrant}</td>

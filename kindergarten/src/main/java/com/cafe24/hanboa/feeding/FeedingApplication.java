@@ -4,14 +4,13 @@ public class FeedingApplication {
 	private String feedingApplicationCd;
 	private String kidsCd;
 	private String feedingMonthlyCd;
-	private int feapEspenseMonth;
+	private int feapExpenseMonth;
 	private int feapClosingIncome;
 	private String feapClosingOption;
-	private String feapFeedingDivision;
+	private String feapDivision;
 	private String feapRegistrationDate;
 	private String feapRegistrant;
 	private String licenseKindergarten;
-	
 	
 	public String getFeedingApplicationCd() {
 		return feedingApplicationCd;
@@ -32,10 +31,10 @@ public class FeedingApplication {
 		this.feedingMonthlyCd = feedingMonthlyCd;
 	}
 	public int getFeapEspenseMonth() {
-		return feapEspenseMonth;
+		return feapExpenseMonth;
 	}
 	public void setFeapEspenseMonth(int feapEspenseMonth) {
-		this.feapEspenseMonth = feapEspenseMonth;
+		this.feapExpenseMonth = feapEspenseMonth;
 	}
 	public int getFeapClosingIncome() {
 		return feapClosingIncome;
@@ -49,11 +48,11 @@ public class FeedingApplication {
 	public void setFeapClosingOption(String feapClosingOption) {
 		this.feapClosingOption = feapClosingOption;
 	}
-	public String getFeapFeedingDivision() {
-		return feapFeedingDivision;
+	public String getFeapDivision() {
+		return feapDivision;
 	}
-	public void setFeapFeedingDivision(String feapFeedingDivision) {
-		this.feapFeedingDivision = feapFeedingDivision;
+	public void setFeapDivision(String feapDivision) {
+		this.feapDivision = feapDivision;
 	}
 	public String getFeapRegistrationDate() {
 		return feapRegistrationDate;
@@ -76,11 +75,13 @@ public class FeedingApplication {
 	@Override
 	public String toString() {
 		return "FeedingApplication [feedingApplicationCd=" + feedingApplicationCd + ", kidsCd=" + kidsCd
-				+ ", feedingMonthlyCd=" + feedingMonthlyCd + ", feapEspenseMonth=" + feapEspenseMonth
+				+ ", feedingMonthlyCd=" + feedingMonthlyCd + ", feapEspenseMonth=" + feapExpenseMonth
 				+ ", feapClosingIncome=" + feapClosingIncome + ", feapClosingOption=" + feapClosingOption
-				+ ", feapFeedingDivision=" + feapFeedingDivision + ", feapRegistrationDate=" + feapRegistrationDate
+				+ ", feapDivision=" + feapDivision + ", feapRegistrationDate=" + feapRegistrationDate
 				+ ", feapRegistrant=" + feapRegistrant + ", licenseKindergarten=" + licenseKindergarten + "]";
 	}
+	
+
 	
 	
 	

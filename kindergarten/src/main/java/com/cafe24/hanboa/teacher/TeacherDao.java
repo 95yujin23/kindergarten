@@ -1,5 +1,6 @@
 package com.cafe24.hanboa.teacher;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -60,17 +61,17 @@ public class TeacherDao {
 		return sqlSession.update(localName+"deleteTeacher",teacherCd);		
 	}
 	// 7. 인건비 지급 목록 조회
-	public List<TeacherPay> selectTeacherPayList() {
+	public List<TeacherAndTeacherPay> selectTeacherPayList(HashMap<String, Object> map) {
 		logger.debug("7. TeacherDao -- List<TeacherPay> selectTeacherPayList() 매서드 실행");
 		logger.debug("-----------------------------------------");
-		return sqlSession.selectList(localName+"getTeacherPayList");
+		return sqlSession.selectList(localName+"getTeacherPayList",map);
 	}
 	// 8. 인건비 지급 개인 조회
-	public TeacherPay selectTeacherPayOne(String teacherCd) {
+	public List<TeacherPay> selectTeacherPayOne(Teacher teacher) {
 		logger.debug("8. TeacherDao -- TeacherPay selectTeacherPayOne(String teacherCd) 매서드 실행");
-		logger.debug("teacherCd : {}",teacherCd);
+		logger.debug("teacherCd : {}",teacher);
 		logger.debug("-----------------------------------------");
-		return sqlSession.selectOne(localName+"getTeacherPayOne",teacherCd);
+		return sqlSession.selectList(localName+"getTeacherPayOne",teacher);
 	}
 	// 9. 인건비 지급 등록
 	public int insertTeacherPay(TeacherPay teacherPay) {
@@ -78,6 +79,13 @@ public class TeacherDao {
 		logger.debug("teacherPay : {}",teacherPay);
 		logger.debug("-----------------------------------------");
 		return sqlSession.insert(localName+"insertTeacherPay",teacherPay);
+	}
+	// 9-1. 인건비 마감 코드 수정
+	public int modifyPayClosingCd(TeacherPay teacherPay) {
+		logger.debug("9. TeacherDao -- int modifyPayClosingCd(TeacherPay teacherPay) 매서드 실행");
+		logger.debug("teacherPay : {}",teacherPay);
+		logger.debug("-----------------------------------------");
+		return sqlSession.insert(localName+"updatePayClosingCd",teacherPay);
 	}
 	// 10. 인건비 지급 수정
 	public int updateTeacherPay(TeacherPay teacherPay) {

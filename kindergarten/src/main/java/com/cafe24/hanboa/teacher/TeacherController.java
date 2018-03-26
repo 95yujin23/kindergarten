@@ -1,5 +1,6 @@
 package com.cafe24.hanboa.teacher;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class TeacherController {
@@ -128,10 +130,19 @@ public class TeacherController {
 		}	
 	
 	// 8. 교직원 인건비 지급 목록 전체 조회
-	@RequestMapping(value="/TeacherPayList", method = RequestMethod.GET)
-	public String teacherPayList(Model model, HttpSession session) {
-		List<TeacherPay> list = teacherService.getTeacherPayList();
-		logger.debug("8. TeacherController -- TeacherPayList : {}", list);
+	@RequestMapping(value="/TeacherPayList")
+	public String teacherPayList(Model model, HttpSession session
+								,@RequestParam(value="year", defaultValue="") String year
+							 	,@RequestParam(value="month", defaultValue="") String month) {
+		logger.debug("8. TeacherController -- TeacherPayList");
+		logger.debug("year : {}", year);
+		logger.debug("month : {}", month);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("year", year);
+		map.put("month", month);
+		logger.debug("map : {}", map);
+		List<TeacherAndTeacherPay> list = teacherService.getTeacherPayList(map);
+		logger.debug("list : {}", list);
 		logger.debug("-----------------------------------------");
 		model.addAttribute("list", list);
 		return "teacher/teacher_pay_list";
@@ -139,14 +150,47 @@ public class TeacherController {
 	
 	// 9. 교직원 인건비 지급 목록 개인 조회
 	@RequestMapping(value="/TeacherPaySelect", method = RequestMethod.GET)
-	public String teacherPaySelect(Model model, HttpSession session, String teacherCd) {
-		TeacherPay teacherPay = teacherService.getTeacherPayOne(teacherCd);
-		logger.debug("9. TeacherController -- TeacherPaySelect : {}", teacherPay);
+	public String teacherPaySelect(Model model, HttpSession session, Teacher teacher) {		
+		logger.debug("9. TeacherController -- TeacherPaySelect : {}");
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
+		if(loginTeacher == null) {
+			// loginTeacher의 값이 null이라면 login화면으로
+			return "redirect:/Login";
+		}
+		// null이 아니라면 loginTeacher세션에서 라이센스를 받아서 teacher객체에 셋팅한다.
+		teacher.setTeacherCd(loginTeacher.getTeacherCd());
+		List<TeacherPay> list = teacherService.getTeacherPayOne(teacher);
 		logger.debug("-----------------------------------------");
+		model.addAttribute("list", list);
 		return "teacher/teacher_pay_select";
 		}
 	
-	// 10-1. 교직원 인건비 지급 수정 화면
+	// 10-1. 교직원 인건비 지급 등록 화면
+		@RequestMapping(value="/TeacherPayAdd", method = RequestMethod.GET)
+		public String teacherPayAdd(Model model) {
+			logger.debug("10-1. TeacherController -- TeacherPayModifyForm");
+			//교직원 목록 가져오기 ( 교직원코드 & 교직원이름)
+			List<Teacher> list = teacherService.getTeacherList();
+			logger.debug("list {} :",list);
+			//list에 교직원목록을 담아서 화면에 뿌려줌 : select의 option value
+			logger.debug("-----------------------------------------");
+			model.addAttribute("list", list);
+			return "teacher/teacher_pay_add";
+			}
+
+	// 10-2. 교직원 인건비 지급 등록
+	@RequestMapping(value="/TeacherPayAdd", method = RequestMethod.POST)
+	public String teacherPayAdd(Model model, HttpSession session, TeacherPay teacherPay) {
+		teacherService.addTeacherPay(teacherPay);
+		//인건비 지급 등록 후 마감 코드 수정
+		teacherService.modifyPayClosingCd(teacherPay);
+		logger.debug("10-2. TeacherController -- teacherPayModify {}", teacherPay);
+		logger.debug("-----------------------------------------");
+		return "redirect:/";
+		}
+	
+	// 11-1. 교직원 인건비 지급 수정 화면
 	@RequestMapping(value="/TeacherPayModify", method = RequestMethod.GET)
 	public String teacherPayModify() {
 		
@@ -155,7 +199,7 @@ public class TeacherController {
 		return "teacher/teacher_pay_modify";
 		}
 
-	// 10-2. 교직원 인건비 지급 수정
+	// 11-2. 교직원 인건비 지급 수정
 	@RequestMapping(value="/TeacherPayModify", method = RequestMethod.POST)
 	public String teacherPayModify(Model model, HttpSession session, TeacherPay teacherPay) {
 		teacherService.modifyTeacherPay(teacherPay);
@@ -164,9 +208,10 @@ public class TeacherController {
 		return "redirect:/";
 		}
 	
-	// 11. 교직원 인건비 지급 삭제
+	// 12. 교직원 인건비 지급 삭제
 	@RequestMapping(value="/TeacherPayRemove", method = RequestMethod.GET)
 	public String teacherPayRemove(Model model, HttpSession session, String teacherCd) {
+		//원장만 가능하도록 만들기 - 직급이 원장님인 경우만 삭제 가능 - session에서 가져오기
 		logger.debug("11. TeacherController -- LogOut");
 		teacherService.removeTeacherPay(teacherCd);
 		logger.debug("-----------------------------------------");
