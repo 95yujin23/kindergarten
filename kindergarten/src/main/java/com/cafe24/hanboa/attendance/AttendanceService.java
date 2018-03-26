@@ -32,10 +32,15 @@ public class AttendanceService {
 		}
 		teacherAttendance.setTeacherAttendance(inTime);
 		attendanceDao.insertTeacherAttendance(teacherAttendance);
-		logger.debug("AttendanceService -> insertTeacherAttendance : {}  ", teacherAttendance);
+		logger.debug("{} <- insertTeacherAttendance AttendanceService.java", teacherAttendance);
 		logger.debug("-------------------------------------------------------------");	
 	}
-	// 2. 교직원 퇴근 업데이트
+	// 2. 교직원 전체 조회
+	public List<TeacherAttendance> selectTheacherAttendance() {
+		logger.debug("{} <- insertTeacherAttendance AttendanceService.java");
+		logger.debug("-------------------------------------------------------------");	
+		return attendanceDao.selectTheacherAttendance();
+	}
 	
 	// 영유아
 	//1. 영유아 출석 전체 조회

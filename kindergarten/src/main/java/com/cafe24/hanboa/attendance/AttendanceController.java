@@ -43,8 +43,16 @@ public class AttendanceController {
 		teacherAttendance.setTeacherCd(loginTeacher.getTeacherCd());
 		teacherAttendance.setLicenseKindergarten(loginTeacher.getLicenseKindergarten());
 		attendanceService.insertTeacherAttendance(teacherAttendance);
-		logger.debug("AttendanceController -- theacherAttendance : {}", teacherAttendance);
+		logger.debug("{} <- theacherAttendance AttendanceController.java", teacherAttendance);
 		return "redirect:/teacher_attendance_list";
+	}
+	// 2. 교직원 출근 전체 조회(원장)
+	@RequestMapping(value="/teacher_attendance_list", method = RequestMethod.GET)
+	public String theacherAttendanceList(Model model) {
+		List<TeacherAttendance> list = attendanceService.selectTheacherAttendance();
+		logger.debug("{} <- theacherAttendanceList AttendanceController.java", list);
+		model.addAttribute("list", list);
+		return "attendance/teacher_attendance_list";
 	}
 	
 	// 영유아

@@ -2,20 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cafe24.hanboa.attendance.AttendanceMapper">
-
-	<!-- <select id="selectAllKidsattendance"
-			resultType="com.cafe24.hanboa.attendance.KidsAttendance">
-		SELECT
-			attendance_cd 			AS attendanceCd
-			,kids_cd 				AS kidsCd
-			,kids_attendance_time 	AS kidsAttendanceTime
-			,kids_come_home_time 	AS kidsComeHomeTime
-			,kids_rest_late_type 	AS kidsRestLateTime
-			,kids_reason 			AS kidsReason
-			,license_kindergarten 	AS licenseKindergarten
-		FROM hanboa.TB_KIDS_ATTENDANCE
-	
-	</select> -->
 	<!-- 교직원 -->
 	<!-- 1. 교직원 출근 입력 -->
 	<insert id="insertTheacherAttendance" parameterType="com.cafe24.hanboa.attendance.TeacherAttendance">
@@ -39,6 +25,31 @@
 			, #{licenseKindergarten}
 		)
 	</insert>
+	<!-- 교직원 출근 조회(원장용) -->
+	<select id="selectTheacherAttendance" parameterType="String" resultType="com.cafe24.hanboa.attendance.TeacherAttendance">
+		SELECT
+			ATTENDANCES_CD as attendanceCd
+			, TEACHER_CD as teacherCd
+			, TEACHER_DAY as teacherDay
+			, TEACHER_ATTENDANCE as teacherAttendance
+			, TEACHER_GET_OFF as teacherGetOff
+			, TEACHER_REST_LATE_TYPE as teacherRestLateType
+			, LICENSE_KINDERGARTEN as licenseKindergarten
+		FROM TB_TEACHER_ATTENDANCES
+	</select>
+	<!-- 교직원 출근 개별 조회(선생님용) -->
+	<select id="selectTheacherAttendanceOne" parameterType="String" resultType="com.cafe24.hanboa.attendance.TeacherAttendance">
+		SELECT
+			ATTENDANCES_CD as attendanceCd
+			, TEACHER_CD as teacherCd
+			, TEACHER_DAY as teacherDay
+			, TEACHER_ATTENDANCE as teacherAttendance
+			, TEACHER_GET_OFF as teacherGetOff
+			, TEACHER_REST_LATE_TYPE as teacherRestLateType
+			, LICENSE_KINDERGARTEN as licenseKindergarten
+		FROM TB_TEACHER_ATTENDANCES
+		WHERE TEACHER_CD = #{teacherCd}
+	</select>
 	<!-- 교직원 퇴근 업데이트 -->
 	<update id="updateTheacherAttendance" parameterType="com.cafe24.hanboa.attendance.TeacherAttendance">
 		UPDATE TB_TEACHER_ATTENDANCES
@@ -47,18 +58,20 @@
 			, TEACHER_REST_LATE_TYPE = #{teacherRestLateType}
 		WHERE TEACHER_CD = #{teacherCd}
 	</update>
+
+	
 	
 	<!-- 영유아 -->
 	<select id="selectAllKidsattendance" resultType="com.cafe24.hanboa.attendance.KidsAttendance">
 		SELECT
-				attendance_cd 			AS attendanceCd
-				,kids_cd 				AS kidsCd
-				,kids_attendance_time 	AS kidsAttendanceTime
-				,kids_come_home_time 	AS kidsComeHomeTime
-				,kids_rest_late_type 	AS kidsRestLateTime
-				,kids_reason 			AS kidsReason
-				,license_kindergarten 	AS licenseKindergarten
-			FROM TB_KIDS_ATTENDANCE
+			attendance_cd 			AS attendanceCd
+			,kids_cd 				AS kidsCd
+			,kids_attendance_time 	AS kidsAttendanceTime
+			,kids_come_home_time 	AS kidsComeHomeTime
+			,kids_rest_late_type 	AS kidsRestLateTime
+			,kids_reason 			AS kidsReason
+			,license_kindergarten 	AS licenseKindergarten
+		FROM TB_KIDS_ATTENDANCE
 	</select>
 	
 </mapper>

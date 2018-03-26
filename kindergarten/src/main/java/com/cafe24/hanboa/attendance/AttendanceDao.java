@@ -24,6 +24,11 @@ public class AttendanceDao {
 		logger.debug("AttendanceDao.java insertTeacherAttendance() 메소드 실행"); 
 		return sqlSessionTemlate.insert(localName + "insertTheacherAttendance", teacherAttendance);
 	}
+	// 2. 교직원 전체 조회
+	public List<TeacherAttendance> selectTheacherAttendance() {
+		logger.debug("AttendanceDao.java selectTheacherAttendance() 메소드 실행"); 
+		return sqlSessionTemlate.selectList(localName+"selectTheacherAttendance");
+	}
 	
 	// 영유아
 	// 1. 영유아 출석 전체 조회
