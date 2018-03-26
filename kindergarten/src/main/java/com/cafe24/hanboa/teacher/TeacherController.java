@@ -166,7 +166,31 @@ public class TeacherController {
 		return "teacher/teacher_pay_select";
 		}
 	
-	// 10-1. 교직원 인건비 지급 수정 화면
+	// 10-1. 교직원 인건비 지급 등록 화면
+		@RequestMapping(value="/TeacherPayAdd", method = RequestMethod.GET)
+		public String teacherPayAdd(Model model) {
+			logger.debug("10-1. TeacherController -- TeacherPayModifyForm");
+			//교직원 목록 가져오기 ( 교직원코드 & 교직원이름)
+			List<Teacher> list = teacherService.getTeacherList();
+			logger.debug("list {} :",list);
+			//list에 교직원목록을 담아서 화면에 뿌려줌 : select의 option value
+			logger.debug("-----------------------------------------");
+			model.addAttribute("list", list);
+			return "teacher/teacher_pay_add";
+			}
+
+	// 10-2. 교직원 인건비 지급 등록
+	@RequestMapping(value="/TeacherPayAdd", method = RequestMethod.POST)
+	public String teacherPayAdd(Model model, HttpSession session, TeacherPay teacherPay) {
+		teacherService.addTeacherPay(teacherPay);
+		//인건비 지급 등록 후 마감 코드 수정
+		teacherService.modifyPayClosingCd(teacherPay);
+		logger.debug("10-2. TeacherController -- teacherPayModify {}", teacherPay);
+		logger.debug("-----------------------------------------");
+		return "redirect:/";
+		}
+	
+	// 11-1. 교직원 인건비 지급 수정 화면
 	@RequestMapping(value="/TeacherPayModify", method = RequestMethod.GET)
 	public String teacherPayModify() {
 		
@@ -175,7 +199,7 @@ public class TeacherController {
 		return "teacher/teacher_pay_modify";
 		}
 
-	// 10-2. 교직원 인건비 지급 수정
+	// 11-2. 교직원 인건비 지급 수정
 	@RequestMapping(value="/TeacherPayModify", method = RequestMethod.POST)
 	public String teacherPayModify(Model model, HttpSession session, TeacherPay teacherPay) {
 		teacherService.modifyTeacherPay(teacherPay);
@@ -184,9 +208,10 @@ public class TeacherController {
 		return "redirect:/";
 		}
 	
-	// 11. 교직원 인건비 지급 삭제
+	// 12. 교직원 인건비 지급 삭제
 	@RequestMapping(value="/TeacherPayRemove", method = RequestMethod.GET)
 	public String teacherPayRemove(Model model, HttpSession session, String teacherCd) {
+		//원장만 가능하도록 만들기 - 직급이 원장님인 경우만 삭제 가능 - session에서 가져오기
 		logger.debug("11. TeacherController -- LogOut");
 		teacherService.removeTeacherPay(teacherCd);
 		logger.debug("-----------------------------------------");

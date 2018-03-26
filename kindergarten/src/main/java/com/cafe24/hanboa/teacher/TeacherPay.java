@@ -4,7 +4,7 @@ public class TeacherPay {
 	String payCd;
 	String teacherCd;
 	int payPayment;
-	int payClosingCd;
+	String payClosingCd;
 	String payClosingOption;
 	String payRegistrationDate;
 	String payRegistrant;
@@ -28,10 +28,10 @@ public class TeacherPay {
 	public void setPayPayment(int payPayment) {
 		this.payPayment = payPayment;
 	}
-	public int getPayClosingCd() {
+	public String getPayClosingCd() {
 		return payClosingCd;
 	}
-	public void setPayClosingCd(int payClosingCd) {
+	public void setPayClosingCd(String payClosingCd) {
 		this.payClosingCd = payClosingCd;
 	}
 	public String getPayClosingOption() {

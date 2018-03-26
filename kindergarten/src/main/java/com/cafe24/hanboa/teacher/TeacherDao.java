@@ -80,6 +80,13 @@ public class TeacherDao {
 		logger.debug("-----------------------------------------");
 		return sqlSession.insert(localName+"insertTeacherPay",teacherPay);
 	}
+	// 9-1. 인건비 마감 코드 수정
+	public int modifyPayClosingCd(TeacherPay teacherPay) {
+		logger.debug("9. TeacherDao -- int modifyPayClosingCd(TeacherPay teacherPay) 매서드 실행");
+		logger.debug("teacherPay : {}",teacherPay);
+		logger.debug("-----------------------------------------");
+		return sqlSession.insert(localName+"updatePayClosingCd",teacherPay);
+	}
 	// 10. 인건비 지급 수정
 	public int updateTeacherPay(TeacherPay teacherPay) {
 		logger.debug("10. TeacherDao -- int updateTeacherPay(TeacherPay teacherPay) 매서드 실행");
