@@ -50,16 +50,34 @@
 <!-- 식단메뉴조회 -->
 	<select id="getFeedingMenuList"
 			resultType="com.cafe24.hanboa.feeding.FeedingMenu">
-		SELECT
+	SELECT
 			feeding_menu_cd as feedingMenuCd
-			,menu_date as menuDate
-			,lunch_calory_protein as lunchCaloryProtein
-			,morning_snack as morningSnack
-			,afternoon_sanck as afternoonSnack
-			,origin
-			,menu_manager as menuManager
+			,feme_date as menuDate
+			,feme_lunch_calory_protein as lunchCaloryProtein
+			,feme_morning_snack as morningSnack
+			,feme_afternoon_snack as afternoonSnack
+			,feme_origin as origin 
+			,feme_manager as menuManager
 			,license_kindergarten as licenseKindergarten
-		FROM hanboa.TB_FEEDING_MENU			
+		FROM hanboa.TB_FEEDING_MENU		
 			</select>
+			
+			
+<!-- 식중독현황 조회 -->
+	<select id="getFepoList"
+			resultType="com.cafe24.hanboa.feeding.FeedingPoisonning">
+		SELECT
+			food_poisonning_generation_cd as foodPoisonningGenerationCd
+			,feeding_monthly_cd as feedingMonthlyCd
+			,fopo_generation_date as fepoGenerationDate
+			,fopo_whole_kids_count as fopoWholeKidsCount
+			,fopo_generated_kids_count as fopoGeneratedKidsCount
+			,fopo_food_poisonning_kids as fopoFoodPoisonningKids
+			,fopo_processing_result as fopoProcessingResult
+			,fopo_registration_date as fopoRegistrationDate
+			,fopo_registrant as registrant
+			,license_kindergarten as licenseKindergarten
+		FROM TB_FOOD_POISONNING_PROCESSING			
+	</select>
 
 </mapper>
