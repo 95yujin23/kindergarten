@@ -22,7 +22,7 @@
 				<c:forEach var="attendanceList" items="${list}">
 					<tbody>
 						<tr>
-							<td>${attendanceList.teacherDay}</td>
+							<td>${attendanceList.teacherAttendanceDay}</td>
 							<td>${attendanceList.teacherAttendance}</td>
 							<td>${attendanceList.teacherGetOff}</td>
 							<td>${attendanceList.teacherRestLateType}</td>

@@ -26,7 +26,7 @@ public class AttendanceService {
 		String sampleTime = "090000";
 		String inDate = new SimpleDateFormat("yyyyMMdd").format(new Date());
 		String inTime = new SimpleDateFormat("HHmmss").format(new Date());
-		teacherAttendance.setTeacherDay(inDate);
+		teacherAttendance.setTeacherAttendanceDay(inDate);
 		int sampleTimeEx = Integer.parseInt(sampleTime);
 		int inTimeEx = Integer.parseInt(inTime);
 		if(sampleTimeEx < inTimeEx) {
@@ -63,7 +63,7 @@ public class AttendanceService {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("teacherCd", teacherCd);
 		map.put("teacherGetOff", inTime);
-		map.put("teacherDay", inDate);
+		map.put("teacherAttendanceDay", inDate);
 		map.put("teacherRestLateType", teacherRestLateType);
 		attendanceDao.updateTheacherAttendance(map);
 		logger.debug("updateTeacherAttendance AttendanceService.java");

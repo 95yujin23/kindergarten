@@ -5,11 +5,12 @@ public class TeacherAttendance {
 	
 	private String attendanceCd;
 	private String teacherCd;
-	private String teacherDay;
+	private String teacherAttendanceDay;
 	private String teacherAttendance;
 	private String teacherGetOff;
 	private String teacherRestLateType;
 	private String licenseKindergarten;
+	
 	public String getAttendanceCd() {
 		return attendanceCd;
 	}
@@ -22,11 +23,11 @@ public class TeacherAttendance {
 	public void setTeacherCd(String teacherCd) {
 		this.teacherCd = teacherCd;
 	}
-	public String getTeacherDay() {
-		return teacherDay;
+	public String getTeacherAttendanceDay() {
+		return teacherAttendanceDay;
 	}
-	public void setTeacherDay(String teacherDay) {
-		this.teacherDay = teacherDay;
+	public void setTeacherAttendanceDay(String teacherAttendanceDay) {
+		this.teacherAttendanceDay = teacherAttendanceDay;
 	}
 	public String getTeacherAttendance() {
 		return teacherAttendance;

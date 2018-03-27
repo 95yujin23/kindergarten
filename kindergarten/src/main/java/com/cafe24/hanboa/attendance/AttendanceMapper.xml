@@ -12,14 +12,14 @@
 		INSERT INTO TB_TEACHER_ATTENDANCES (
 			ATTENDANCES_CD
 			, TEACHER_CD
-			, TEACHER_DAY
+			, TEACHER_ATTENDANCE_DAY
 			, TEACHER_ATTENDANCE
 			, TEACHER_REST_LATE_TYPE
 			, LICENSE_KINDERGARTEN
 		) VALUES (
 			#{attendanceCd}
 			, #{teacherCd}
-			, #{teacherDay}
+			, #{teacherAttendanceDay}
 			, #{teacherAttendance}
 			, #{teacherRestLateType}
 			, #{licenseKindergarten}
@@ -30,7 +30,7 @@
 		SELECT
 			ATTENDANCES_CD as attendanceCd
 			, TEACHER_CD as teacherCd
-			, TEACHER_DAY as teacherDay
+			, TEACHER_ATTENDANCE_DAY as teacherAttendanceDay
 			, TEACHER_ATTENDANCE as teacherAttendance
 			, TEACHER_GET_OFF as teacherGetOff
 			, TEACHER_REST_LATE_TYPE as teacherRestLateType
@@ -42,7 +42,7 @@
 		SELECT
 			ATTENDANCES_CD as attendanceCd
 			, TEACHER_CD as teacherCd
-			, TEACHER_DAY as teacherDay
+			, TEACHER_ATTENDANCE_DAY as teacherAttendanceDay
 			, TEACHER_ATTENDANCE as teacherAttendance
 			, TEACHER_GET_OFF as teacherGetOff
 			, TEACHER_REST_LATE_TYPE as teacherRestLateType
@@ -57,7 +57,7 @@
 			TEACHER_GET_OFF = #{teacherGetOff}
 			, TEACHER_REST_LATE_TYPE = #{teacherRestLateType}
 		WHERE TEACHER_CD = #{teacherCd}
-		AND TEACHER_DAY = #{teacherDay}
+		AND TEACHER_ATTENDANCE_DAY = #{teacherAttendanceDay}
 	</update>
 	
 	
