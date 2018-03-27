@@ -59,8 +59,28 @@
 			,feme_origin as origin 
 			,feme_manager as menuManager
 			,license_kindergarten as licenseKindergarten
-		FROM hanboa.TB_FEEDING_MENU		
+	FROM hanboa.TB_FEEDING_MENU		
 			</select>
+			
+<!-- 월별급식 조회 -->
+	<select id="getfemoList"
+			resultType="com.cafe24.hanboa.feeding.FeedingMonthly">
+	SELECT
+			feeding_monthly_cd as feedingMonthlyCd
+			,femo_feeding_month as femoFeedingMonth
+			,femo_feeding_year as femoFeedingYear
+			,femo_cook as femoCook
+			,femo_operation_method as femoOperationMethod
+			,femo_cafeteria_reported_check as femoCafeteriaReportedCheck
+			,contract_cd as contractCd
+			,femo_expenditure_cost as femoExpenditureCost
+			,femo_closing_cost as femoClosingCost
+			,femo_closing_option as femoClosingOption
+			,femo_registration_date as femoRegistrationDate
+			,femo_registrant as femoRegistrant
+			,license_kindergarten as licenseKindergarten
+	FROM TB_FEEDING_MONTHLY
+	</select>
 			
 			
 <!-- 식중독현황 조회 -->
