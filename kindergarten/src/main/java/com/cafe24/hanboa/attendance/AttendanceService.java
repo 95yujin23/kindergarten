@@ -88,5 +88,10 @@ public class AttendanceService {
 		logger.debug("{} <- insertKidsAttendance AttendanceService.java", kidsAttendance);
 		logger.debug("-------------------------------------------------------------");	
 	}
-	
+	// 2-1. 교직원 등하원 전체 조회(교직원용)
+	public List<KidsAttendance> selectKidsAttendance() {
+		logger.debug("selectKidsAttendance AttendanceService.java");
+		logger.debug("-------------------------------------------------------------");
+		return attendanceDao.selectKidsAttendance();
+	}
 }

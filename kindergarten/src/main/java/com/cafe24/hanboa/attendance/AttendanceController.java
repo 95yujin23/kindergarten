@@ -103,4 +103,12 @@ public class AttendanceController {
 		attendanceService.insertKidsAttendance(kidsAttendance);
 		return "redirect:/kids_attendance_list";
 	}
+	// 2-1. 영유아 등하원 전체 조회(교직원용)
+	@RequestMapping(value="/kids_attendance_list", method = RequestMethod.GET)
+	public String kidsAttendanceList(Model model) {
+		List<KidsAttendance> list = attendanceService.selectKidsAttendance();
+		logger.debug("{} <- kidsAttendanceList AttendanceController.java", list);
+		model.addAttribute("list", list);
+		return "attendance/kids_attendance_list";
+	}
 }

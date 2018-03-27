@@ -86,5 +86,16 @@
 			, #{licenseKindergarten}
 		)
 	</insert>
-	
+	<select id="selectKidsAttendance" parameterType="String" resultType="com.cafe24.hanboa.attendance.KidsAttendance">
+		SELECT
+			ATTENDANCE_CD as attendanceCd
+			, KIDS_CD as kidsCd
+			, KIDS_ATTENDANCE_DAY as kidsAttendanceDay
+			, KIDS_ATTENDANCE as kidsAttendance
+			, KIDS_COME_HOME as kidsComeHome
+			, KIDS_REST_LATE_TYPE as kidsRestLateType
+			, KIDS_REASON as kidsReason
+			, LICENSE_KINDERGARTEN as licenseKindergarten
+		FROM TB_KIDS_ATTENDANCE
+	</select>
 </mapper>
