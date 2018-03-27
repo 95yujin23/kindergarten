@@ -141,7 +141,7 @@
 					<ul class="nav nav-second-level">
 						<li><a href="#">식단<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/feeding/feeding_menu">식단 조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/feeding/feedingMenu_list">식단 조회</a></li>
 								<li><a href="#">Third Level Item</a></li>
 								<li><a href="#">Third Level Item</a></li>
 								<li><a href="#">Third Level Item</a></li>
@@ -149,21 +149,21 @@
 						</li>
 						<li><a href="#">급식신청<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/feeding/feeding_application">급식 신청 조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/feeding/feedingApplication_list">급식 신청 조회</a></li>
 								<li><a href="#">Third Level Item</a></li>
 								<li><a href="#">Third Level Item</a></li>
 								<li><a href="#">Third Level Item</a></li>
 							</ul>					
 						<li><a href="#">월별급식<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/feeding/feeding_monthly">월 급식비 조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/feeding/feedingMonthly_list">월 급식비 조회</a></li>
 								<li><a href="#">Third Level Item</a></li>
 								<li><a href="#">Third Level Item</a></li>
 								<li><a href="#">Third Level Item</a></li>
 							</ul>					
 						<li><a href="#">식중독발생및처리<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/feeding/feeding_poisonning">식중독발생및처리 조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/feeding/feedingPoisonning_list">식중독발생및처리 조회</a></li>
 								<li><a href="#">Third Level Item</a></li>
 								<li><a href="#">Third Level Item</a></li>
 								<li><a href="#">Third Level Item</a></li>
