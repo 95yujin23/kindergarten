@@ -86,6 +86,7 @@
 			, #{licenseKindergarten}
 		)
 	</insert>
+	<!-- 교직원 등하원 전체 조회(교직원용) -->
 	<select id="selectKidsAttendance" parameterType="String" resultType="com.cafe24.hanboa.attendance.KidsAttendance">
 		SELECT
 			ATTENDANCE_CD as attendanceCd
@@ -97,5 +98,19 @@
 			, KIDS_REASON as kidsReason
 			, LICENSE_KINDERGARTEN as licenseKindergarten
 		FROM TB_KIDS_ATTENDANCE
+	</select>
+	<!-- 교직원 등하원 개인 조회(영유아용) -->
+	<select id="selectKidsAttendanceOne" parameterType="String" resultType="com.cafe24.hanboa.attendance.KidsAttendance">
+		SELECT
+			ATTENDANCE_CD as attendanceCd
+			, KIDS_CD as kidsCd
+			, KIDS_ATTENDANCE_DAY as kidsAttendanceDay
+			, KIDS_ATTENDANCE as kidsAttendance
+			, KIDS_COME_HOME as kidsComeHome
+			, KIDS_REST_LATE_TYPE as kidsRestLateType
+			, KIDS_REASON as kidsReason
+			, LICENSE_KINDERGARTEN as licenseKindergarten
+		FROM TB_KIDS_ATTENDANCE
+		WHERE KIDS_CD = #{kidsCd}
 	</select>
 </mapper>

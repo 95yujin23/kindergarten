@@ -88,10 +88,16 @@ public class AttendanceService {
 		logger.debug("{} <- insertKidsAttendance AttendanceService.java", kidsAttendance);
 		logger.debug("-------------------------------------------------------------");	
 	}
-	// 2-1. 교직원 등하원 전체 조회(교직원용)
+	// 2-1. 영유아 등하원 전체 조회(교직원용)
 	public List<KidsAttendance> selectKidsAttendance() {
 		logger.debug("selectKidsAttendance AttendanceService.java");
 		logger.debug("-------------------------------------------------------------");
 		return attendanceDao.selectKidsAttendance();
+	}
+	// 2-2. 영유아 등하원 개인 조회(영유아용)
+	public List<KidsAttendance> selectKidsAttendanceOne(String kids) {
+		logger.debug("selectKidsAttendanceOne AttendanceService.java");
+		logger.debug("-------------------------------------------------------------");
+		return attendanceDao.selectKidsAttendanceOne(kids);
 	}
 }

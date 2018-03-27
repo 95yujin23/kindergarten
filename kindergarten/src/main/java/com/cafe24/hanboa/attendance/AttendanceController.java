@@ -111,4 +111,11 @@ public class AttendanceController {
 		model.addAttribute("list", list);
 		return "attendance/kids_attendance_list";
 	}
+	// 2-2. 영유아 등하원 개인 조회(영유아용)
+	public String kidsAttendanceListOne(Model model, String kids) {
+		List<KidsAttendance> list = attendanceService.selectKidsAttendanceOne(kids);
+		logger.debug("{} <- kidsAttendanceListOne AttendanceController.java", list);
+		model.addAttribute("list", list);
+		return "attendance/kids_attendance_list_one";
+	}
 }

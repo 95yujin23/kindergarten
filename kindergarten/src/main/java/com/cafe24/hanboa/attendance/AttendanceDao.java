@@ -49,10 +49,14 @@ public class AttendanceDao {
 		logger.debug("AttendanceDao.java 1. insertKidsAttendance() 메소드 실행");
 		return sqlSessionTemlate.insert(localName+"insertKidsAttendance", kidsAttendance);
 	}
-	// 2-1. 교직원 등하원 전체 조회(교직원용)
+	// 2-1. 영유아 등하원 전체 조회(교직원용)
 	public List<KidsAttendance> selectKidsAttendance() {
-		logger.debug("AttendanceDao.java 1. selectKidsAttendance() 메소드 실행");
+		logger.debug("AttendanceDao.java 2-1. selectKidsAttendance() 메소드 실행");
 		return sqlSessionTemlate.selectList(localName+"selectKidsAttendance");
 	}
-	// 2-2. 교직원 등하원 전체 조회(영유아용)
+	// 2-2. 영유아 등하원 개인 조회(영유아용)
+	public List<KidsAttendance> selectKidsAttendanceOne(String kids) {
+		logger.debug("AttendanceDao.java 2-2. selectKidsAttendanceOne() 메소드 실행");
+		return sqlSessionTemlate.selectList(localName+"selectKidsAttendanceOne", kids);
+	}
 }
