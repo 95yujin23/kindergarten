@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.hanboa.teacher.Teacher;
 
+
 @Controller
+
 public class KidsController {
+	
 	@Autowired
 	private KidsService kidsService;
 	
@@ -78,17 +81,24 @@ public class KidsController {
 		}	
 	
 	// 5-1. 영유아 수정 화면
+	
 	@RequestMapping(value="/KidsModify", method = RequestMethod.GET)
-	public String kidsModify() {
-		logger.debug("5-1. KidsController -- KidsModifyForm");
+	public String kidsModify(Model model, String kidsCd, HttpSession session) {
+		logger.debug("5-1. KidsController -- KidsModifyForm : {}",kidsCd);
+		//kidsCd로 영유아 정보 가져와서 화면에 뿌려주기
+		Kids kids = kidsService.getKidsOne(kidsCd);
+		logger.debug("Kids kids : {}", kids);
+		model.addAttribute("kids",kids);
 		logger.debug("-----------------------------------------");
 		return "kids/kids_modify";
 		}
 	
 	// 5-2. 영유아 수정
 	@RequestMapping(value="/KidsModify", method = RequestMethod.POST)
-	public String kidsModify(Model model) {
-		logger.debug("5-2. KidsController -- KidsModify");
+	public String kidsModify(Model model, Kids kids) {
+		logger.debug("5-2. KidsController -- KidsModify : {}",kids);
+		kidsService.modifyKids(kids);
+		
 		logger.debug("-----------------------------------------");
 		return "redirect:/";
 		}

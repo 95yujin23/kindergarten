@@ -91,12 +91,12 @@
 								</div>
 								<div class="form-group">
 								    <label>통학방법</label>
-								    <input class="form-control" id="kidsCommutiogType" name="kidsCommutiogType" value="${kids.kidsCommutiogType}">
+								    <input class="form-control" id="kidsCommutingType" name="kidsCommutingType" value="${kids.kidsCommutingType}">
 								</div>
 								<div class="form-group">
 								    <label>주의사항</label>
-								    <input class="form-control" id="kidsCaution" name="kidsCaution" value="${kids.kidsCaution">
-								</div>								
+								    <input class="form-control" id="kidsCaution" name="kidsCaution" value="${kids.kidsCaution}">
+								</div>
 								<button type="submit">수정</button>
 							</form>
 						</div>
@@ -104,7 +104,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>	
 </div>
 	<!-- FOOTER : Navigation -->
 	<c:import url="../inc/footer.jsp"></c:import>

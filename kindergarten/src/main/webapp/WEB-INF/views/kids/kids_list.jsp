@@ -68,24 +68,23 @@
 				<table border=1>
 					<thead>
 						<tr>
-							<th>KIDS_CD</th>
-							<th>KIDS_NM</th>
-							<th>DATE_OF_BIRTH</th>
-							<th>KIDS_ADDRESS</th>
-							<th>KIDS_PARENT_PHONE</th>
-							<th>KIDS_SPARE_PHONE</th>
-							<th>KIDS_GENDER</th>
-							<th>KIDS_COMMUTING_TYPE</th>
-							<th>KIDS_CAUTION</th>
-							<th>KIDS_ADMISSION</th>
-							<th>ACCKIDS_GRADUATIONOUNT</th>
-							<th>LICENSE_KINDERGARTEN</th>
+							<th>이름</th>
+							<th>생년월일</th>
+							<th>주소</th>
+							<th>보호자연락처</th>
+							<th>보호자예비연락처</th>
+							<th>성별</th>
+							<th>통학방법</th>
+							<th>주의사항</th>
+							<th>입학날짜</th>
+							<th>졸업날짜</th>
+							<th>수정</th>
+							<th>삭제</th>
 						</tr>
 					</thead>
 					<c:forEach var="kidsList" items="${list}">
 						<tbody>
 							<tr>
-								<td>${kidsList.kidsCd}</td>
 								<td>${kidsList.kidsNm}</td>
 								<td>${kidsList.kidsDateOfBirth}</td>
 								<td>${kidsList.kidsAddress}</td>
@@ -96,7 +95,8 @@
 								<td>${kidsList.kidsCaution}</td>
 								<td>${kidsList.kidsAdmission}</td>
 								<td>${kidsList.kidsGraduation}</td>
-								<td>${kidsList.licenseKindergarten}</td>
+								<td><a href="${pageContext.request.contextPath}/KidsModify?kidsCd=${kidsList.kidsCd}">수정</a></td>
+								<td><a href="${pageContext.request.contextPath}/KidsRemove?kidsCd=${kidsList.kidsCd}">삭제</a></td>
 							</tr>
 						</tbody>
 					</c:forEach>

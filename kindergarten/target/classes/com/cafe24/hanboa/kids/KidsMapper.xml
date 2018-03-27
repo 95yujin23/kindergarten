@@ -7,10 +7,19 @@
 			parameterType="java.util.Map"
 			resultType="com.cafe24.hanboa.kids.Kids">
 		SELECT 
-			KC.kids_class_cd	AS kidsClassCd
-			, KC.class_nm		AS classNm
-			, CF.kids_cd		AS kidsCd
-			, K.kids_nm			AS kidsNm
+			KC.kids_class_cd		AS kidsClassCd
+			, KC.class_nm			AS classNm
+			, CF.kids_cd			AS kidsCd
+			, K.kids_nm				AS kidsNm
+			, K.kids_date_of_birth	AS kidsDateOfBirth
+			, K.kids_address		AS kidsAddress
+			, K.kids_parent_phone	AS kidsParentPhone
+			, K.kids_spare_phone	AS kidsSparePhone
+			, K.kids_gender			AS kidsGender
+			, K.kids_commuting_type	AS kidsCommutingType
+			, K.kids_caution		AS kidsCaution
+			, K.kids_admission		AS kidsAdmission
+			, K.kids_graduation		AS kidsGraduation
 		FROM TB_KIDS_CLASS_FORMATION CF
 		INNER JOIN TB_KIDS_CLASS KC
 		ON CF.KIDS_CLASS_CD = KC.KIDS_CLASS_CD
@@ -61,6 +70,24 @@
 	</select>
 	
 <!-- 영유아 개인 조회 -->
+	<select id="getKidsOne"
+			resultType="com.cafe24.hanboa.kids.Kids"
+			parameterType="String">
+		SELECT
+			kids_cd					AS kidsCd
+			,kids_nm				AS kidsNm
+			,kids_date_of_birth		AS kidsDateOfBirth
+			,kids_address			AS kidsAddress
+			,kids_parent_phone		AS kidsParentPhone
+			,kids_spare_phone		AS kidsSparePhone
+			,kids_gender			AS kidsGender
+			,kids_commuting_type	AS kidsCommutingType
+			,kids_caution			AS kidsCaution
+			,kids_admission			AS kidsAdmission
+			,kids_graduation		AS kidsGraduation
+		FROM hanboa.TB_KIDS
+		WHERE kids_cd = #{kidsCd}
+	</select>
 
 <!-- 영유아 등록 -->
 	<insert id="insertKids"

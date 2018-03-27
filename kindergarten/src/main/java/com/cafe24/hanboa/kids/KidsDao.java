@@ -34,24 +34,29 @@ public class KidsDao {
 		logger.debug("2. KidsDao -- List<Kids> selectKidsListByClass(Teacher teacher) : {}",teacher);
 		return sqlSession.selectList(localName + "getKidsListByClass",teacher);
 	}
-	// 3. 영유아 등록
+	// 3. 영유아 개인 조회
+	public Kids selectKidsOne(String kidsCd) {
+		logger.debug("3. KidsDao --  Kids selectKidsOne(String kidsCd) : {}",kidsCd);
+		return sqlSession.selectOne(localName + "getKidsOne",kidsCd);
+	}
+	// 4. 영유아 등록
 	public int insertKids(Kids kids) {
-		logger.debug("3. KidsDao -- int insertKids(Kids kids) : {}",kids);
+		logger.debug("4. KidsDao -- int insertKids(Kids kids) : {}",kids);
 		return sqlSession.insert(localName + "insertKids",kids);
 	}
-	// 4. 영유아 수정
+	// 5. 영유아 수정
 	public int updateKids(Kids kids) {
-		logger.debug("4. KidsDao -- int updateKids(Kids kids) : {}",kids);
+		logger.debug("5. KidsDao -- int updateKids(Kids kids) : {}",kids);
 		return sqlSession.update(localName + "updateKids",kids);
 	}
-	// 4-2. 영유아 수정 : 졸업 update
-	public int updateKidsGraduation(Kids kids) {
-		logger.debug("4-2. KidsDao -- int updateKidsGraduation(Kids kids) : {}",kids);
-		return sqlSession.update(localName + "updateKidsGraduation",kids);
+	// 5-2. 영유아 수정 : 졸업 update
+	public int updateKidsGraduation(String kidsCd) {
+		logger.debug("5-2. KidsDao -- int updateKidsGraduation(String kidsCd) : {}",kidsCd);
+		return sqlSession.update(localName + "updateKidsGraduation",kidsCd);
 	}
-	// 5. 영유아 삭제
+	// 6. 영유아 삭제
 	public int deleteKids(String kidsCd) {
-		logger.debug("5. KidsDao -- int deleteKids(String kidsCd) : {}",kidsCd);
+		logger.debug("6. KidsDao -- int deleteKids(String kidsCd) : {}",kidsCd);
 		return sqlSession.update(localName + "deleteKids",kidsCd);
 	}
 }
