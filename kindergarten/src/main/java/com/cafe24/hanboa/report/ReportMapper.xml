@@ -27,19 +27,97 @@
 	</select>
 	
 	<select id="selectReportList"
-			parameterType="java.util.Map"
-			resultType="com.cafe24.hanboa.report.Report">
+			resultType="com.cafe24.hanboa.report.ReportList">
 			
-			SELECT report.kids_report_cd 일지코드
-				,resource.group_nm 일지명
-				,kids.kids_nm 유아명
-				,report.registrant 담당자
-				,report.registration_date 등록날짜 
-			FROM TB_REPORT_RESOURCE resource 
-				JOIN TB_REPORT report 
-					ON report.report_resource_cd = resource.report_resource_cd 
+					SELECT 
+				report.kids_report_cd 		as kidsReportCd
+				,division.report_nm			as reportNm
+				,kids.kids_nm 				as kidsNm
+				,class.class_nm				as classNm
+				,report.registrant 			as registrant
+				,report.registration_date 	as registrationDate 
+			FROM TB_REPORT report
+				JOIN TB_REPORT_DIVISION division
+					ON report.report_cd = division.report_cd
 				JOIN TB_KIDS kids 
 					ON report.kids_cd = kids.kids_cd
-	
+				JOIN TB_KIDS_CLASS_FORMATION formation
+					ON kids.kids_cd = formation.kids_cd
+				JOIN TB_KIDS_CLASS class
+					ON class.kids_class_cd = formation.kids_class_cd
 	</select>
+	
+	
+	<select id="selectReportForSearch"
+			resultType="com.cafe24.hanboa.report.ReportList"
+			parameterType="String">
+			
+			SELECT 
+				report.kids_report_cd 		as kidsReportCd
+				,division.report_nm			as reportNm
+				,kids.kids_nm 				as kidsNm
+				,class.class_nm				as classNm
+				,report.registrant 			as registrant
+				,report.registration_date 	as registrationDate 
+			FROM TB_REPORT report
+				JOIN TB_REPORT_DIVISION division
+					ON report.report_cd = division.report_cd
+				JOIN TB_KIDS kids 
+					ON report.kids_cd = kids.kids_cd
+				JOIN TB_KIDS_CLASS_FORMATION formation
+					ON kids.kids_cd = formation.kids_cd
+				JOIN TB_KIDS_CLASS class
+					ON class.kids_class_cd = formation.kids_class_cd
+					<where>
+						<if test="resportPoint != null">
+							and divison.report_cd = #{reportPoint};
+						</if>
+						
+						<if test="classPoint != null">
+							and class.kids_class_cd = #{classPoint}
+						</if>
+						
+						<if test="teacherPoint != null">
+							and report.registrant = #{teacherPoint}
+						</if>
+					</where>
+					
+					
+					<!-- <choose>
+						<when test="reportPoint != null and classPoint == null and teacherPoint == null">
+							WHERE division.report_cd = #{reportPoint}
+						</when>
+						<when test="classPoint != null and reportPoint == null and teacherPoint == null">
+							WHERE class.kids_class_cd = #{classPoint}
+						</when>
+						
+						<when test="teacherPoint != null and reportPoint == null and classPoint == null">
+							WHERE report.registrant = #{teacherPoint}
+						</when>
+					</choose> -->
+		
+	</select>
+	
+	<!-- kids_report_list 반별 검색  리스트-->
+	
+	<select id="selectClassListForSearch"
+			resultType="com.cafe24.hanboa.classformation.KidsClass">
+		SELECT
+			KIDS_CLASS_CD 			as kidsClassCd
+			,class_nm 				as classNm
+			,class_kids_age			as classKidsAge
+			,license_kindergarten 	as licenseKindergarten
+		FROM hanboa.TB_KIDS_CLASS
+		
+	</select>
+	
+	<!-- report_divison 리스트 출력 -->
+	<select id="selectReportDivisionList"
+			resultType="com.cafe24.hanboa.report.ReportDivision">
+		SELECT
+			report_cd as reportCd
+			,report_nm as reportNm
+		FROM hanboa.TB_REPORT_DIVISION
+	</select>
+	
 </mapper>

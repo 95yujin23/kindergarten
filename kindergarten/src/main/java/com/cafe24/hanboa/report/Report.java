@@ -22,7 +22,21 @@ public class Report {
 	private String evaluation;
 	private String registrant;
 	private String registrationDate;
+	private ReportDivision reportDivision;
+	private ReportResource reportResource;
 	
+	public ReportDivision getReportDivision() {
+		return reportDivision;
+	}
+	public void setReportDivision(ReportDivision reportDivision) {
+		this.reportDivision = reportDivision;
+	}
+	public ReportResource getReportResource() {
+		return reportResource;
+	}
+	public void setReportResource(ReportResource reportResource) {
+		this.reportResource = reportResource;
+	}
 	public String getKidsCd() {
 		return kidsCd;
 	}

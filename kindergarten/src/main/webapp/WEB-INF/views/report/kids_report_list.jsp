@@ -53,49 +53,58 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-			<h1 class="page-header">영유아 목록</h1>
+			<h1 class="page-header">영유아 일지 목록</h1>
 			
+			<form action="${pageContext.request.contextPath}/reportSearch" method="post">
+			유아 별 일지 검색
+				<input type="text" id="kids_name">
+			반 별 일지 검색
+				<select name="classPointReport" >
+				<option value='null'>--선택사항--</option>
+				<!-- 반복문을 사용해서 데이터베이스 안에 있는 반을 모두 보여준다. -->
+				<c:forEach var="classList" items="${kidsClass}">
+					<option value="${classList.kidsClassCd}">${classList.classNm}</option>
+				</c:forEach>
+				</select>
+				
+			선생님 별 일지 검색
+				<select name="teacherPointReport">
+				<option value='null'>--선택사항--</option>
+				<!-- 반복문을 사용해서 데이터베이스 안에 있는 선생님을 모두 보여준다. -->
+					<c:forEach var="teacherList" items="${teacher}">
+					<option value="${teacherList.teacherCd}">${teacherList.teacherNm}</option>
+				</c:forEach>
+				</select>
+			일지 항목 별 검색
+				<select name="reportPointList">
+				<!-- 반복문을 사용해서 데이터베이스 안에 있는 일지항목을 모두 보여준다. -->
+				<option value='null'>--선택사항--</option>
+				<c:forEach var="reportDivisionList" items="${division}">
+					<option value="${reportDivisionList.reportCd}">${reportDivisionList.reportNm}</option>
+				</c:forEach>
+				</select>
+				<button class="btn btn-success" type="submit" value="검색">검색</button>
+			</form>
 <table border=1>
 	<thead>
+		
 		<tr>
-			<th>영유아일지코드</th>
-			<th>일지자원코드</th>
-			<th>영유아일지구분코드</th>
-			<th>영유아코드</th>
-			<th>유치원라이센스</th>
-			<th>일지주제</th>
-			<th>일지소주제</th>
-			<th>날씨</th>
-			<th>목표</th>
-			<th>관찰_영유아관찰내용</th>
-			<th>상담_보호자명</th>
-			<th>상담_교사의견</th>
-			<th>상담_부모의견</th>
-			<th>상담_상담방법</th>
-			<th>보육_활동계획방법</th>
-			<th>보육_평가</th>
-			<th>등록인</th>
-			<th>등록날짜</th>
+		<th>일지코드</th>
+		<th>일지명</th>
+		<th>유아명</th>
+		<th>반이름</th>
+		<th>담당자</th>
+		<th>등록날짜</th>
 		</tr>
 	</thead>
 	<c:forEach var="kidsReport" items="${list}">
 		<tbody>
 			<tr>
+				
 				<td>${kidsReport.kidsReportCd}</td>
-				<td>${kidsReport.reportResourceCd}</td>
-				<td>${kidsReport.reportCd}</td>
-				<td>${kidsReport.kidsCd}</td>
-				<td>${kidsReport.licenseKindergarten}</td>
-				<td>${kidsReport.title}</td>
-				<td>${kidsReport.subTitle}</td>
-				<td>${kidsReport.weather}</td>
-				<td>${kidsReport.objective}</td>
-				<td>${kidsReport.observeContent}</td>
-				<td>${kidsReport.parentNm}</td>
-				<td>${kidsReport.teacherOpinion}</td>
-				<td>${kidsReport.journalType}</td>
-				<td>${kidsReport.plans}</td>
-				<td>${kidsReport.evaluation}</td>
+				<td>${kidsReport.reportNm}</td>
+				<td>${kidsReport.kidsNm}</td>
+				<td>${kidsReport.classNm}</td>
 				<td>${kidsReport.registrant}</td>
 				<td>${kidsReport.registrationDate}</td>
 			</tr>

@@ -6,7 +6,6 @@ public class ReportDivision {
 	
 	private String reportCd;
 	private String reportNm;
-	private String kidsCd;
 	
 	public String getReportCd() {
 		return reportCd;
@@ -20,11 +19,4 @@ public class ReportDivision {
 	public void setReportNm(String reportNm) {
 		this.reportNm = reportNm;
 	}
-	public String getKidsCd() {
-		return kidsCd;
-	}
-	public void setKidsCd(String kidsCd) {
-		this.kidsCd = kidsCd;
-	}
-	
 }
