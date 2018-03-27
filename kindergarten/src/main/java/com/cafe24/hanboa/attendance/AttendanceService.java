@@ -37,11 +37,17 @@ public class AttendanceService {
 		logger.debug("{} <- insertTeacherAttendance AttendanceService.java", teacherAttendance);
 		logger.debug("-------------------------------------------------------------");	
 	}
-	// 2-1. 교직원 전체 조회
+	// 2-1. 교직원 출퇴근 전체 조회(원장용)
 	public List<TeacherAttendance> selectTeacherAttendance() {
-		logger.debug("insertTeacherAttendance AttendanceService.java");
+		logger.debug("selectTeacherAttendance AttendanceService.java");
 		logger.debug("-------------------------------------------------------------");	
 		return attendanceDao.selectTeacherAttendance();
+	}
+	// 2-2. 교직원 출퇴근 전체 조회(선생님용)
+	public List<TeacherAttendance> selectTeacherAttendanceOne(String teacherCd) {
+		logger.debug("selectTeacherAttendanceOne AttendanceService.java");
+		logger.debug("-------------------------------------------------------------");
+		return attendanceDao.selectTeacherAttendanceOne(teacherCd);
 	}
 	// 3. 교직원 퇴근 입력(업데이트)
 	public void updateTeacherAttendance(String teacherCd) {

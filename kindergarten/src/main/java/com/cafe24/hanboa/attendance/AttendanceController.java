@@ -46,11 +46,25 @@ public class AttendanceController {
 		logger.debug("{} <- theacherAttendance AttendanceController.java", teacherAttendance);
 		return "redirect:/teacher_attendance_list";
 	}
-	// 2-1. 교직원 출근 전체 조회(원장)
-	@RequestMapping(value="/teacher_attendance_list", method = RequestMethod.GET)
+	// 2-1. 교직원 출퇴근 전체 조회(원장용)
+	@RequestMapping(value="/teacher_all_attendance_list", method = RequestMethod.GET)
 	public String teacherAttendanceList(Model model) {
 		List<TeacherAttendance> list = attendanceService.selectTeacherAttendance();
 		logger.debug("{} <- theacherAttendanceList AttendanceController.java", list);
+		model.addAttribute("list", list);
+		return "attendance/teacher_all_attendance_list";
+	}
+	// 2-2. 교직원 출퇴근 전체 조회(선생님용)
+	@RequestMapping(value="/teacher_attendance_list", method = RequestMethod.GET)
+	public String teacherAttendanceListOne(HttpSession session, Model model, String teacherCd) {
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
+		if(loginTeacher == null) {
+			// loginTeacher의 값이 null이라면 login화면으로
+			return "redirect:/Login";
+		}
+		teacherCd = loginTeacher.getTeacherCd();
+		List<TeacherAttendance> list = attendanceService.selectTeacherAttendanceOne(teacherCd);
 		model.addAttribute("list", list);
 		return "attendance/teacher_attendance_list";
 	}

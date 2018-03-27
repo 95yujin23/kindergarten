@@ -36,7 +36,6 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>교직원코드</th>
 						<th>출근일</th>
 						<th>출근시간</th>
 						<th>퇴근시간</th>
@@ -46,7 +45,6 @@
 				<c:forEach var="attendanceList" items="${list}">
 					<tbody>
 						<tr>
-							<td>${attendanceList.teacherCd}</td>
 							<td>${attendanceList.teacherDay}</td>
 							<td>${attendanceList.teacherAttendance}</td>
 							<td>${attendanceList.teacherGetOff}</td>

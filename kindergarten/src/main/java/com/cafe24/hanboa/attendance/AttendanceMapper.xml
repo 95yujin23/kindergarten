@@ -25,7 +25,7 @@
 			, #{licenseKindergarten}
 		)
 	</insert>
-	<!-- 교직원 출근 조회(원장용) -->
+	<!-- 교직원 출퇴근 조회(원장용) -->
 	<select id="selectTheacherAttendance" parameterType="String" resultType="com.cafe24.hanboa.attendance.TeacherAttendance">
 		SELECT
 			ATTENDANCES_CD as attendanceCd
@@ -37,7 +37,7 @@
 			, LICENSE_KINDERGARTEN as licenseKindergarten
 		FROM TB_TEACHER_ATTENDANCES
 	</select>
-	<!-- 교직원 출근 개별 조회(선생님용) -->
+	<!-- 교직원 출퇴근 개별 조회(선생님용) -->
 	<select id="selectTheacherAttendanceOne" parameterType="String" resultType="com.cafe24.hanboa.attendance.TeacherAttendance">
 		SELECT
 			ATTENDANCES_CD as attendanceCd
