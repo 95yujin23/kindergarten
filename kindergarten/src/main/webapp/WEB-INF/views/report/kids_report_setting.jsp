@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-
-<title>영유아 일지 목록</title>
+<title>Insert title here</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="./resources/vendor/css/bootstrap.min.css" rel="stylesheet">
@@ -32,9 +28,9 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
 </head>
 <body>
-
 <div id="wrapper">
 
 	<!-- TOP : Navigation -->
@@ -47,77 +43,69 @@
 	<!-- LEFT -->
 	</nav>
 </div>
-
+<!-- content -->
 <div id="page-wrapper">
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-lg-3" style="display:inline; float:left">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-			<h1 class="page-header">영유아 일지 목록</h1>
-			
-			<form action="${pageContext.request.contextPath}/reportSearch" method="post">
-			유아 별 일지 검색
-				<input type="text" id="kids_name">
-			반 별 일지 검색
-				<select name="classPointReport" >
-				<option value="">--선택사항--</option>
-				<!-- 반복문을 사용해서 데이터베이스 안에 있는 반을 모두 보여준다. -->
-				<c:forEach var="classList" items="${kidsClass}">
-					<option value="${classList.kidsClassCd}">${classList.classNm}</option>
-				</c:forEach>
-				</select>
-				
-			선생님 별 일지 검색
-				<select name="teacherPointReport">
-				<option value="">--선택사항--</option>
-				<!-- 반복문을 사용해서 데이터베이스 안에 있는 선생님을 모두 보여준다. -->
-					<c:forEach var="teacherList" items="${teacher}">
-					<option value="${teacherList.teacherCd}">${teacherList.teacherNm}</option>
-				</c:forEach>
-				</select>
-			일지 항목 별 검색
-				<select name="reportPointList">
-				<!-- 반복문을 사용해서 데이터베이스 안에 있는 일지항목을 모두 보여준다. -->
-				<option value="">--선택사항--</option>
-				<c:forEach var="reportDivisionList" items="${division}">
-					<option value="${reportDivisionList.reportCd}">${reportDivisionList.reportNm}</option>
-				</c:forEach>
-				</select>
-				<button class="btn btn-success" type="submit" value="검색">검색</button>
-			</form>
+				<h2 class="page-header">일지설정</h2>
 <table class="table table-hover">
 	<thead>
-		
 		<tr>
-		<th>일지코드</th>
+		<th>일지자원코드</th>
 		<th>일지명</th>
-		<th>유아명</th>
-		<th>반이름</th>
-		<th>담당자</th>
-		<th>등록날짜</th>
 		</tr>
 	</thead>
-	<c:forEach var="kidsReport" items="${list}">
-		<tbody>
-			<tr>
-				
-				<td>${kidsReport.kidsReportCd}</td>
-				<td>${kidsReport.reportNm}</td>
-				<td>${kidsReport.kidsNm}</td>
-				<td>${kidsReport.classNm}</td>
-				<td>${kidsReport.registrant}</td>
-				<td>${kidsReport.registrationDate}</td>
-			</tr>
-		</tbody>
+	
+	<!--  -->
+	<c:forEach var="reportDivision" items="${list}">
+	<tbody>
+		<tr>
+			<td>${reportDivision.reportCd}</td>
+			<td>${reportDivision.reportNm}</td>
+		</tr>
+	</tbody>
 	</c:forEach>
 </table>
-
-</div>
+				</div>
 			</div>
 		</div>
 	</div>
+	
+	<div class="row">
+		<div class="col-lg-3" style="display:inline; float:left">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+				<h2 class="page-header">일지설정</h2>
+<table class="table table-hover">
+	<thead>
+		<tr>
+		<th>일지자원코드</th>
+		<th>일지명</th>
+		</tr>
+	</thead>
+	
+	<!--  -->
+	<c:forEach var="reportDivision" items="${list}">
+	<tbody>
+		<tr>
+			<td>${reportDivision.reportCd}</td>
+			<td>${reportDivision.reportNm}</td>
+		</tr>
+	</tbody>
+	</c:forEach>
+</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 </div>
-	<!-- FOOTER : Navigation -->
+
+
+
+<!-- FOOTER : Navigation -->
 	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->
 
@@ -137,6 +125,5 @@
 
 	<!-- Custom Theme JavaScript -->
 	<script src="resources/vendor/js/sb-admin-2.js"></script>
-
 </body>
 </html>

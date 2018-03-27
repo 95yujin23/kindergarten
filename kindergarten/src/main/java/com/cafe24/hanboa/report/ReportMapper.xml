@@ -80,21 +80,6 @@
 						<if test="reportPoint != null and reportPoint != ''">
 							WHERE division.report_cd = #{reportPoint};
 						</if>
-					
-					
-					<!-- <choose>
-						<when test="reportPoint != null and classPoint == null and teacherPoint == null">
-							WHERE division.report_cd = #{reportPoint}
-						</when>
-						<when test="classPoint != null and reportPoint == null and teacherPoint == null">
-							WHERE class.kids_class_cd = #{classPoint}
-						</when>
-						
-						<when test="teacherPoint != null and reportPoint == null and classPoint == null">
-							WHERE report.registrant = #{teacherPoint}
-						</when>
-					</choose> -->
-		
 	</select>
 	
 	<!-- kids_report_list 반별 검색  리스트-->
@@ -117,6 +102,5 @@
 			report_cd as reportCd
 			,report_nm as reportNm
 		FROM hanboa.TB_REPORT_DIVISION
-	</select>
-	
+	</select>	
 </mapper>

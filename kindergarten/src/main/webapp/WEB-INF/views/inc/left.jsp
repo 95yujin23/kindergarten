@@ -93,21 +93,11 @@
 						영유아 일지 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/kidsReport">전체일지목록</a></li>
-						<li><a href="#">관찰일지<span class="fa arrow"></span></a>
+						<li><a href="${pageContext.request.contextPath}/kidsReport">일지목록</a></li>
+						
+						<li><a href="#">일지관리<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/.">보육일지 작성</a></li>
-								<li><a href="${pageContext.request.contextPath}/.">보육일지 조회</a></li>
-							</ul>	
-						<li><a href="#">보육일지<span class="fa arrow"></span></a>
-							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/.">관찰일지 작성</a></li>
-								<li><a href="${pageContext.request.contextPath}/.">관찰일지 조회</a></li>
-							</ul>
-						<li><a href="#">상담일지<span class="fa arrow"></span></a>
-							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/.">상담일지 작성</a></li>
-								<li><a href="${pageContext.request.contextPath}/.">상담일지 조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/reportSetting">일지설정</a></li>
 							</ul>
 						<li><a href="icons.html"> Icons</a></li>
 						<li><a href="grid.html">Grid</a></li>

@@ -50,7 +50,7 @@ public class ReportController {
 		
 		return "report/kids_report_list";
 	}
-	
+	//선택 검색화면
 	@RequestMapping(value="/reportSearch", method=RequestMethod.POST)
 	public String reportSearch(Model model,HttpSession session
 								,@RequestParam(value="classPointReport", defaultValue="") String classPoint
@@ -82,6 +82,19 @@ public class ReportController {
 		model.addAttribute("division", division);
 		
 		return "report/kids_report_list";
+	}
+	
+	// 유아일지 설정화면
+	@RequestMapping(value="/reportSetting")
+	public String reportSetting(Model model,HttpSession session) {
+		
+		logger.debug("reportSetting() 메소드 실행 ");
+		
+		List<ReportDivision> list = reportService.selectReportDivisionListForSearch();
+		
+		model.addAttribute("list", list);
+		
+		return "report/kids_report_setting";
 	}
 	
 	
