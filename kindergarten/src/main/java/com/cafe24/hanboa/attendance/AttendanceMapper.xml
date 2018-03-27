@@ -51,14 +51,14 @@
 		WHERE TEACHER_CD = #{teacherCd}
 	</select>
 	<!-- 교직원 퇴근 업데이트 -->
-	<update id="updateTheacherAttendance" parameterType="com.cafe24.hanboa.attendance.TeacherAttendance">
+	<update id="updateTheacherAttendance" parameterType="java.util.Map">
 		UPDATE TB_TEACHER_ATTENDANCES
 		SET
 			TEACHER_GET_OFF = #{teacherGetOff}
 			, TEACHER_REST_LATE_TYPE = #{teacherRestLateType}
 		WHERE TEACHER_CD = #{teacherCd}
+		AND TEACHER_DAY = #{teacherDay}
 	</update>
-
 	
 	
 	<!-- 영유아 -->
