@@ -68,19 +68,18 @@
 					ON kids.kids_cd = formation.kids_cd
 				JOIN TB_KIDS_CLASS class
 					ON class.kids_class_cd = formation.kids_class_cd
-					<where>
-						<if test="resportPoint != null">
-							and divison.report_cd = #{reportPoint};
+						
+						<if test="classPoint != null and classPoint != ''">
+							WHERE class.kids_class_cd = #{classPoint}
 						</if>
 						
-						<if test="classPoint != null">
-							and class.kids_class_cd = #{classPoint}
+						<if test="teacherPoint != null and teacherPoint != ''">
+							WHERE report.registrant = #{teacherPoint}
 						</if>
 						
-						<if test="teacherPoint != null">
-							and report.registrant = #{teacherPoint}
+						<if test="reportPoint != null and reportPoint != ''">
+							WHERE division.report_cd = #{reportPoint};
 						</if>
-					</where>
 					
 					
 					<!-- <choose>

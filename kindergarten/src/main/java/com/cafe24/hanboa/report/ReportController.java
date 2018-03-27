@@ -53,13 +53,13 @@ public class ReportController {
 	
 	@RequestMapping(value="/reportSearch", method=RequestMethod.POST)
 	public String reportSearch(Model model,HttpSession session
-								,@RequestParam(value="classPointReport", defaultValue="null") String classPoint
+								,@RequestParam(value="classPointReport", defaultValue="") String classPoint
 					
-								,@RequestParam(value="teacherPointReport", defaultValue="null") String teacherPoint
+								,@RequestParam(value="teacherPointReport", defaultValue="") String teacherPoint
 					
-								,@RequestParam(value="reportPointList", defaultValue="null") String reportPoint
+								,@RequestParam(value="reportPointList", defaultValue="") String reportPoint
 								,Map<String, Object> map) {
-		
+	
 		logger.debug("reportSearch() 메소드 실행 ");
 		
 		logger.debug("reportSearch() classPoint is : {}  ", classPoint);

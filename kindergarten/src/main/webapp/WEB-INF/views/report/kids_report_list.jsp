@@ -60,7 +60,7 @@
 				<input type="text" id="kids_name">
 			반 별 일지 검색
 				<select name="classPointReport" >
-				<option value='null'>--선택사항--</option>
+				<option value="">--선택사항--</option>
 				<!-- 반복문을 사용해서 데이터베이스 안에 있는 반을 모두 보여준다. -->
 				<c:forEach var="classList" items="${kidsClass}">
 					<option value="${classList.kidsClassCd}">${classList.classNm}</option>
@@ -69,7 +69,7 @@
 				
 			선생님 별 일지 검색
 				<select name="teacherPointReport">
-				<option value='null'>--선택사항--</option>
+				<option value="">--선택사항--</option>
 				<!-- 반복문을 사용해서 데이터베이스 안에 있는 선생님을 모두 보여준다. -->
 					<c:forEach var="teacherList" items="${teacher}">
 					<option value="${teacherList.teacherCd}">${teacherList.teacherNm}</option>
@@ -78,7 +78,7 @@
 			일지 항목 별 검색
 				<select name="reportPointList">
 				<!-- 반복문을 사용해서 데이터베이스 안에 있는 일지항목을 모두 보여준다. -->
-				<option value='null'>--선택사항--</option>
+				<option value="">--선택사항--</option>
 				<c:forEach var="reportDivisionList" items="${division}">
 					<option value="${reportDivisionList.reportCd}">${reportDivisionList.reportNm}</option>
 				</c:forEach>
