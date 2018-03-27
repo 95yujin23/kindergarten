@@ -60,6 +60,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 				    선생님 개인정보 수정 화면 입니다.
+				    <!-- 선생님 본인만 수정가능 -->
 				</div>
 				<div class="panel-body">
 					<div class="row">

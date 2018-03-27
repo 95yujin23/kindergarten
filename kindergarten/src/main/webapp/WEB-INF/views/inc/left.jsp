@@ -61,7 +61,7 @@
 						</li>
 						<li><a href="#">교직원 근태<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/teacher_attendance">교직원 출석 등록</a></li>
+								<li><a href="${pageContext.request.contextPath}/teacher_attendance">교직원 출퇴근 등록</a></li>
 								<li><a href="${pageContext.request.contextPath}/teacher_attendance_list">교직원 근태 전체 조회</a></li>
 								<li><a href="#">Third Level Item</a></li>
 								<li><a href="#">Third Level Item</a></li>
@@ -76,7 +76,14 @@
 					</a>
 					<ul class="nav nav-second-level">
 						<li><a href="${pageContext.request.contextPath}/KidsList">유아목록</a></li>
-						<li><a href="${pageContext.request.contextPath}/kidsAttendance">출석관리</a></li>
+						<li><a href="#">출석관리<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="${pageContext.request.contextPath}/kids_attendance">등하원 등록</a></li>
+								<li><a href="${pageContext.request.contextPath}/kids_attendance_list">등하원 전체 조회</a></li>
+								<li><a href="#">Third Level Item</a></li>
+								<li><a href="#">Third Level Item</a></li>
+							</ul>	
+						</li>
 						<li><a href="${pageContext.request.contextPath}/kidsClass">반 현황</a></li>
 					</ul>
 				</li>

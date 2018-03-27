@@ -22,16 +22,36 @@ public class KidsDao {
 	
 	String localName = "com.cafe24.hanboa.kids.KidsMapper.";
 	
-	//전체 영유아 조회
+	// 1. 전체 영유아 조회 : 반 별로
 	public List<Kids> selectKidsList(HashMap<String, Object> map) {
-		logger.debug("KidsDao -- List<Kids> selectKidsList(HashMap<String, Object> map) 매서드 실행");
+		logger.debug("1. KidsDao -- List<Kids> selectKidsList(HashMap<String, Object> map) 매서드 실행");
 		logger.debug("map : {}",map);
 		// parameter로 map에 값을 담아서 넘겨준다. keyword의 value값
 		return sqlSession.selectList(localName + "getKidsList", map);
 	}
-	// 편성 반별 영유아 조회
+	// 2. 편성 반별 영유아 조회 : 선생님이 맡은 반
 	public List<Kids> selectKidsListByClass(Teacher teacher){
-		logger.debug("KidsDao -- List<Kids> selectKidsListByClass(Teacher teacher) : {}",teacher);
+		logger.debug("2. KidsDao -- List<Kids> selectKidsListByClass(Teacher teacher) : {}",teacher);
 		return sqlSession.selectList(localName + "getKidsListByClass",teacher);
+	}
+	// 3. 영유아 등록
+	public int insertKids(Kids kids) {
+		logger.debug("3. KidsDao -- int insertKids(Kids kids) : {}",kids);
+		return sqlSession.insert(localName + "insertKids",kids);
+	}
+	// 4. 영유아 수정
+	public int updateKids(Kids kids) {
+		logger.debug("4. KidsDao -- int updateKids(Kids kids) : {}",kids);
+		return sqlSession.update(localName + "updateKids",kids);
+	}
+	// 4-2. 영유아 수정 : 졸업 update
+	public int updateKidsGraduation(Kids kids) {
+		logger.debug("4-2. KidsDao -- int updateKidsGraduation(Kids kids) : {}",kids);
+		return sqlSession.update(localName + "updateKidsGraduation",kids);
+	}
+	// 5. 영유아 삭제
+	public int deleteKids(String kidsCd) {
+		logger.debug("5. KidsDao -- int deleteKids(String kidsCd) : {}",kidsCd);
+		return sqlSession.update(localName + "deleteKids",kidsCd);
 	}
 }

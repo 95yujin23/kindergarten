@@ -52,7 +52,7 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">내 정보 수정</h1>
+			<h1 class="page-header">인건비 정보 수정</h1>
 		</div>
 	</div>
 	<div class="row">
@@ -60,48 +60,20 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 				    선생님 인건비 지급 정보 수정 화면 입니다.
+				    <!-- 수정할것,,, 급여 등록인 -->
 				</div>
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6">
-							<form id="modiForm" action="${pageContext.request.contextPath}/TeacherModify" method="POST">
+							<form id="modiForm" action="${pageContext.request.contextPath}/TeacherPayModify" method="POST">
 								<div class="form-group">
-								    <label>이름</label>
+								    <label>급여</label>
 								    <input class="form-control" id="teacherNm" name="teacherNm" placeholder="이름">
 								</div>
 								<div class="form-group">
-								    <label>생년월일</label>
+								    <label>등록인</label>
 								    <input class="form-control" id="teacherDateOfBirth" name="teacherDateOfBirth" placeholder="생년월일">
-								</div>
-								<div class="form-group">
-								    <label>연락처</label>
-								    <input class="form-control" id="teacherPhone" name="teacherPhone" placeholder="연락처">
-								</div>
-								<div class="form-group">
-								    <label>전자우편</label>
-								    <input class="form-control" id="teacherEmail" name="teacherEmail" placeholder="전자우편">
-								</div>
-								<div class="form-group">
-								    <label>주소</label>
-								    <input class="form-control" id="teacherAddress" name="teacherAddress" placeholder="주소">
-								</div>
-								<div class="form-group">
-								    <label>급여은행</label>
-								    <input class="form-control" id="teacherBank" name="teacherBank" placeholder="급여은행">
-								</div>
-								<div class="form-group">
-								    <label>급여계좌</label>
-								    <input class="form-control" id="teacherAccount" name="teacherAccount" placeholder="급여계좌">
-								</div>
-								<!-- 직급과 호봉은 원장만 수정 가능 -->
-								<div class="form-group">
-								    <label>직급</label>
-								    <input class="form-control" id="teacherPosition" name="teacherPosition" placeholder="직급">
-								</div>
-								<div class="form-group">
-								    <label>호봉</label>
-								    <input class="form-control" id="teacherPayStep" name="teacherPayStep" placeholder="호봉">
-								</div>								
+								</div>							
 								<button type="submit">수정</button>
 							</form>
 						</div>

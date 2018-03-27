@@ -84,7 +84,7 @@
 								</div>
 								<div class="form-group">
 								    <label>payRegistrant</label>
-								    <input class="form-control" id="pay_closing_cd" name="teacherPhone" placeholder="등록인">
+								    <input class="form-control" id="payRegistrant" name="payRegistrant" placeholder="등록인">
 								</div>
 								<button type="submit">등록</button>
 							</form>
