@@ -35,7 +35,8 @@
 		</otherwise>
 		</choose>
 	</sql> -->
-	<!-- 영유아 편성 반별 조회-->
+
+<!-- 영유아 편성 반별 조회-->
 	<select id="getKidsListByClass"
 			resultType="com.cafe24.hanboa.kids.Kids"
 			parameterType="com.cafe24.hanboa.teacher.Teacher">
@@ -63,13 +64,68 @@
 
 <!-- 영유아 등록 -->
 	<insert id="insertKids"
-			parameterType="com.cafe24.hanboa.kids.Kids"></insert>
+			parameterType="com.cafe24.hanboa.kids.Kids">
+			<!-- selectKey설정 - #{kidsCd} : 문자열(TEAC_) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 --> 
+			<selectKey resultType="String" keyProperty="kidsCd" order="BEFORE">
+				SELECT CONCAT('KIDS', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_KIDS ))
+			</selectKey>
+		INSERT INTO hanboa.TB_KIDS (
+			kids_cd
+			,kids_nm
+			,kids_date_of_birth
+			,kids_address
+			,kids_parent_phone
+			,kids_spare_phone
+			,kids_gender
+			,kids_commuting_type
+			,kids_caution
+			,kids_admission
+			,license_kindergarten
+		)
+		VALUES (
+			#{kidsCd}
+			,#{kidsNm}
+			,#{kidsDateOfBirth}
+			,#{kidsAddress}
+			,#{kidsParentPhone}
+			,#{kidsSparePhone}
+			,#{kidsGender}
+			,#{kidsCommutingType}
+			,#{kidsCaution}
+			,CURDATE()
+			,#{licenseKindergarten}
+		)
+	</insert>
 			
 <!-- 영유아 수정 -->
 	<update id="updateKids"
-			parameterType="com.cafe24.hanboa.kids.Kids"></update>
-			
+			parameterType="com.cafe24.hanboa.kids.Kids">
+		UPDATE hanboa.TB_KIDS
+		SET kids_nm					= #{kidsNm}
+			,kids_date_of_birth		= #{kidsDateOfBirth}
+			,kids_address			= #{kidsAddress}
+			,kids_parent_phone		= #{kidsParentPhone}
+			,kids_spare_phone		= #{kidsSparePhone}
+			,kids_gender			= #{kidsGender}
+			,kids_commuting_type	= #{kidsCommutingType}
+			,kids_caution			= #{kidsCaution}
+		WHERE kids_cd = #{kidsCd}
+	</update>
+
+<!-- 영유아 졸업 일자 수정 -->
+	<update id="updateKidsGraduation"
+			parameterType="com.cafe24.hanboa.kids.Kids">
+		UPDATE
+		SET kids_graduation = #{kidsGraduation}
+		WHERE kids_cd = #{kidsCd}
+	</update>	
+		
 <!-- 영유아 삭제 -->
 	<delete id="deleteKids"
-			parameterType="com.cafe24.hanboa.kids.Kids"></delete>
+			parameterType="com.cafe24.hanboa.kids.Kids">
+		DELETE
+		FROM hanboa.TB_KIDS
+		WHERE kids_cd = #{kidsCd}
+	</delete>
+	
 </mapper>

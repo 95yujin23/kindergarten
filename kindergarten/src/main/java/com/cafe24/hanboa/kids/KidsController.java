@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.hanboa.teacher.Teacher;
@@ -49,11 +50,46 @@ public class KidsController {
 		}
 		teacher.setTeacherCd(loginTeacher.getTeacherCd());
 		// null이 아니라면 loginTeacher세션에서 선생님코드를 받아서 teacher객체에 셋팅한다.
-		logger.debug("1. TeacherController -- KidsListByClass : {}", teacher);
+		logger.debug("2. KidsController -- KidsListByClass : {}", teacher);
 		List<Kids> list = kidsService.getKidsListByClass(teacher);
 		logger.debug("List<Kids> : {}",list);
 		logger.debug("----------------------------------------");
 		model.addAttribute("list",list);
 		return "kids/kids_class_list";
 	}
+	
+	// 3. 영유아 개인 조회
+	
+	
+	// 4-1. 영유아 등록 화면
+	@RequestMapping(value="/KidsAdd", method = RequestMethod.GET)
+	public String kidsAdd() {
+		logger.debug("4-1. KidsController -- KidsAddForm");
+		logger.debug("-----------------------------------------");
+		return "kids/kids_add";
+		}	
+	
+	// 4-2. 영유아 등록
+	@RequestMapping(value="/KidsAdd", method = RequestMethod.POST)
+	public String kidsAdd(Model model) {
+		logger.debug("4-2. KidsController -- KidsAdd");
+		logger.debug("-----------------------------------------");
+		return "redirect:/";
+		}	
+	
+	// 5-1. 영유아 수정 화면
+	@RequestMapping(value="/KidsModify", method = RequestMethod.GET)
+	public String kidsModify() {
+		logger.debug("5-1. KidsController -- KidsModifyForm");
+		logger.debug("-----------------------------------------");
+		return "kids/kids_modify";
+		}
+	
+	// 5-2. 영유아 수정
+	@RequestMapping(value="/KidsModify", method = RequestMethod.POST)
+	public String kidsModify(Model model) {
+		logger.debug("5-2. KidsController -- KidsModify");
+		logger.debug("-----------------------------------------");
+		return "redirect:/";
+		}
 }

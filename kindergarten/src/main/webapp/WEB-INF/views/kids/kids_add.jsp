@@ -64,7 +64,7 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6">
-							<form id="addForm" action="${pageContext.request.contextPath}/TeacherAdd" method="POST">
+							<form id="addForm" action="${pageContext.request.contextPath}/KidsAdd" method="POST">
 								<div class="form-group">
 								    <label>이름</label>
 								    <input class="form-control" id="kidsNm" name="kidsNm" placeholder="이름">
@@ -96,14 +96,6 @@
 								<div class="form-group">
 								    <label>주의사항</label>
 								    <input class="form-control" id="kidsCaution" name="kidsCaution" placeholder="주의사항">
-								</div>
-								<div class="form-group">
-								    <label>입학</label>
-								    <input class="form-control" id="kidsAdmission" name="kidsAdmission" placeholder="입학">
-								</div>
-								<div class="form-group">
-								    <label>퇴소</label>
-								    <input class="form-control" id="kidsGraduation" name="kidsGraduation" placeholder="퇴소">
 								</div>
 								<button type="submit">등록</button>
 							</form>

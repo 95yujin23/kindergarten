@@ -52,36 +52,52 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">교직원 등록</h1>
+			<h1 class="page-header">영유아 정보 수정</h1>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-				    현재 근무하고 있는 교직원을 등록해주세요.
+				    영유아 정보 수정 화면 입니다.
 				</div>
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6">
-							<form id="addForm" action="${pageContext.request.contextPath}/TeacherAdd" method="POST">
+							<form id="modiForm" action="${pageContext.request.contextPath}/KidsModify?kidsCd=${kids.kidsCd}" method="POST">
 								<div class="form-group">
-								    <label>Name</label>
-								    <input class="form-control" id="teacherNm" name="teacherNm" placeholder="이름">
+								    <label>이름</label>
+								    <input class="form-control" id="kidsNm" name="kidsNm" value="${kids.kidsNm}">
 								</div>
 								<div class="form-group">
-								    <label>Email</label>
-								    <input class="form-control" id="teacherEmail" name="teacherEmail" placeholder="이메일">
+								    <label>생년월일</label>
+								    <input class="form-control" id="kidsDateOfBirth" name="kidsDateOfBirth" value="${kids.kidsDateOfBirth}">
 								</div>
 								<div class="form-group">
-								    <label>Phone</label>
-								    <input class="form-control" id="teacherPhone" name="teacherPhone" placeholder="연락처">
+								    <label>주소</label>
+								    <input class="form-control" id="kidsAddress" name="kidsAddress" value="${kids.kidsAddress}">
 								</div>
 								<div class="form-group">
-								    <label>PassWord</label>
-								    <input class="form-control" id="teacherPw" name="teacherPw" placeholder="임시비밀번호">
+								    <label>보호자연락처</label>
+								    <input class="form-control" id="kidsParentPhone" name="kidsParentPhone" value="${kids.kidsParentPhone}">
 								</div>
-								<button type="submit">등록</button>
+								<div class="form-group">
+								    <label>보호자예비연락처</label>
+								    <input class="form-control" id="kidsSparePhone" name="kidsSparePhone" value="${kids.kidsSparePhone}">
+								</div>
+								<div class="form-group">
+								    <label>성별</label>
+								    <input class="form-control" id="kidsGender" name="kidsGender" value="${kids.kidsGender}">
+								</div>
+								<div class="form-group">
+								    <label>통학방법</label>
+								    <input class="form-control" id="kidsCommutiogType" name="kidsCommutiogType" value="${kids.kidsCommutiogType}">
+								</div>
+								<div class="form-group">
+								    <label>주의사항</label>
+								    <input class="form-control" id="kidsCaution" name="kidsCaution" value="${kids.kidsCaution">
+								</div>								
+								<button type="submit">수정</button>
 							</form>
 						</div>
 					</div>
