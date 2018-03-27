@@ -62,16 +62,29 @@
 	
 	
 	<!-- 영유아 -->
-	<select id="selectAllKidsattendance" resultType="com.cafe24.hanboa.attendance.KidsAttendance">
-		SELECT
-			attendance_cd 			AS attendanceCd
-			,kids_cd 				AS kidsCd
-			,kids_attendance_time 	AS kidsAttendanceTime
-			,kids_come_home_time 	AS kidsComeHomeTime
-			,kids_rest_late_type 	AS kidsRestLateTime
-			,kids_reason 			AS kidsReason
-			,license_kindergarten 	AS licenseKindergarten
-		FROM TB_KIDS_ATTENDANCE
-	</select>
+	<!-- 1. 영유아 등원 입력 -->
+	<insert id="insertKidsAttendance" parameterType="com.cafe24.hanboa.attendance.KidsAttendance">
+		<!-- selectKey설정 - #{attendanceCd} : 문자열(ATTE) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 --> 
+		<selectKey resultType="String" keyProperty="attendanceCd" order="BEFORE">
+			SELECT CONCAT('ATTE', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_KIDS_ATTENDANCE ))
+		</selectKey>
+		INSERT INTO TB_KIDS_ATTENDANCE (
+			ATTENDANCE_CD
+			, KIDS_CD
+			, KIDS_ATTENDANCE_DAY
+			, KIDS_ATTENDANCE
+			, KIDS_REST_LATE_TYPE
+			, KIDS_REASON
+			, LICENSE_KINDERGARTEN
+		) VALUES (
+			#{attendanceCd}
+			, #{kidsCd}
+			, #{kidsAttendanceDay}
+			, #{kidsAttendance}
+			, #{kidsRestLateType}
+			, #{kidsReason}
+			, #{licenseKindergarten}
+		)
+	</insert>
 	
 </mapper>

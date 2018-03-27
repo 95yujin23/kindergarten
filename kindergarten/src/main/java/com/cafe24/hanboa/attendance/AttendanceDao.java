@@ -22,7 +22,7 @@ public class AttendanceDao {
 	// 교직원
 	// 1. 교직원 출근 입력
 	public int insertTeacherAttendance(TeacherAttendance teacherAttendance) {
-		logger.debug("AttendanceDao.java insertTeacherAttendance() 메소드 실행"); 
+		logger.debug("AttendanceDao.java 1. insertTeacherAttendance() 메소드 실행"); 
 		return sqlSessionTemlate.insert(localName + "insertTheacherAttendance", teacherAttendance);
 	}
 	// 2-1. 교직원 출퇴근 전체 조회(원장용)
@@ -42,10 +42,11 @@ public class AttendanceDao {
 		return sqlSessionTemlate.update(localName+"updateTheacherAttendance", map);
 	}
 	
+	
 	// 영유아
-	// 1. 영유아 출석 전체 조회
-	public List<KidsAttendance> selectAllKidsAttendance() {
-		logger.debug("AttendanceDao.java selectAllAttendance() 메소드 실행 ");
-		return sqlSessionTemlate.selectList(localName + "selectAllKidsattendance");
+	// 1. 영유아 등원 입력
+	public int insertKidsAttendance(KidsAttendance kidsAttendance) {
+		logger.debug("AttendanceDao.java 1. insertKidsAttendance() 메소드 실행");
+		return sqlSessionTemlate.insert(localName+"insertKidsAttendance", kidsAttendance);
 	}
 }

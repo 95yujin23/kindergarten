@@ -70,13 +70,23 @@ public class AttendanceService {
 		logger.debug("-------------------------------------------------------------");	
 	}
 	
+
 	// 영유아
-	//1. 영유아 출석 전체 조회
-	public List<KidsAttendance> selectAllKidsAttendance() {
-		List<KidsAttendance> list = attendanceDao.selectAllKidsAttendance();
-		logger.debug("AttendanceService -> AttendanceList : {}  ", list);
-		logger.debug("-------------------------------------------------------------");
-		return list;
+	// 1. 영유아 등원 입력
+	public void insertKidsAttendance(KidsAttendance kidsAttendance) {
+		String sampleTime = "100000";
+		String inDate = new SimpleDateFormat("yyyyMMdd").format(new Date());
+		String inTime = new SimpleDateFormat("HHmmss").format(new Date());
+		kidsAttendance.setKidsAttendanceDay(inDate);
+		int sampleTimeEx = Integer.parseInt(sampleTime);
+		int inTimeEx = Integer.parseInt(inTime);
+		if(sampleTimeEx < inTimeEx) {
+			kidsAttendance.setKidsRestLateType("지각");
+		}
+		kidsAttendance.setKidsAttendance(inTime);
+		attendanceDao.insertKidsAttendance(kidsAttendance);
+		logger.debug("{} <- insertKidsAttendance AttendanceService.java", kidsAttendance);
+		logger.debug("-------------------------------------------------------------");	
 	}
 	
 }

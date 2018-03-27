@@ -5,9 +5,10 @@ public class KidsAttendance {
 	
 	private String attendanceCd;
 	private String kidsCd;
-	private String kidsAttendanceTime;
-	private String kidsComeHomeTime;
-	private String kidsRestLateTime;
+	private String kidsAttendanceDay;
+	private String kidsAttendance;
+	private String kidsComeHome;
+	private String kidsRestLateType;
 	private String kidsReason;
 	private String licenseKindergarten;
 	
@@ -23,23 +24,29 @@ public class KidsAttendance {
 	public void setKidsCd(String kidsCd) {
 		this.kidsCd = kidsCd;
 	}
-	public String getKidsAttendanceTime() {
-		return kidsAttendanceTime;
+	public String getKidsAttendanceDay() {
+		return kidsAttendanceDay;
 	}
-	public void setKidsAttendanceTime(String kidsAttendanceTime) {
-		this.kidsAttendanceTime = kidsAttendanceTime;
+	public void setKidsAttendanceDay(String kidsAttendanceDay) {
+		this.kidsAttendanceDay = kidsAttendanceDay;
 	}
-	public String getKidsComeHomeTime() {
-		return kidsComeHomeTime;
+	public String getKidsAttendance() {
+		return kidsAttendance;
 	}
-	public void setKidsComeHomeTime(String kidsComeHomeTime) {
-		this.kidsComeHomeTime = kidsComeHomeTime;
+	public void setKidsAttendance(String kidsAttendance) {
+		this.kidsAttendance = kidsAttendance;
 	}
-	public String getKidsRestLateTime() {
-		return kidsRestLateTime;
+	public String getKidsComeHome() {
+		return kidsComeHome;
 	}
-	public void setKidsRestLateTime(String kidsRestLateTime) {
-		this.kidsRestLateTime = kidsRestLateTime;
+	public void setKidsComeHome(String kidsComeHome) {
+		this.kidsComeHome = kidsComeHome;
+	}
+	public String getKidsRestLateType() {
+		return kidsRestLateType;
+	}
+	public void setKidsRestLateType(String kidsRestLateType) {
+		this.kidsRestLateType = kidsRestLateType;
 	}
 	public String getKidsReason() {
 		return kidsReason;
@@ -53,6 +60,4 @@ public class KidsAttendance {
 	public void setLicenseKindergarten(String licenseKindergarten) {
 		this.licenseKindergarten = licenseKindergarten;
 	}
-	
-	
 }
