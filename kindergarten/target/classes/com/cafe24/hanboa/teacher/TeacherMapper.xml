@@ -98,7 +98,7 @@
 				,teacher_date_of_birth	= #{teacherDateOfBirth}
 				,teacher_phone			= #{teacherPhone}
 				,teacher_email			= #{teacherEmail}
-				,teacher_address		= #teacherAddress}
+				,teacher_address		= #{teacherAddress}
 				,teacher_position		= #{teacherPosition}
 				,teacher_bank			= #{teacherBank}
 				,teacher_account		= #{teacherAccount}

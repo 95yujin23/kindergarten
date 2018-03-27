@@ -33,11 +33,18 @@ public class TeacherController {
 	
 	// 2. 교직원 개인 조회
 	@RequestMapping(value="/TeacherSelect")
-	public String teacherOne(Model model, HttpSession session, String memberCd) {
-		logger.debug("2. TeacherController -- TeacherOne : {}", memberCd);
-		Teacher teacher = teacherService.getTeacherOne(memberCd);
+	public String teacherOne(Model model, HttpSession session, Teacher teacher) {
+		logger.debug("2. TeacherController -- TeacherOne : {}", teacher);
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		if(loginTeacher == null) {
+			return "redirect:/Login";
+		}else {
+			session.setAttribute("loginTeacher", loginTeacher);
+		}
 		logger.debug("-----------------------------------------");
-		model.addAttribute("teacher", teacher);
+		
+		/*Teacher teacher = teacherService.getTeacherOne(memberCd);*/
+		logger.debug("-----------------------------------------");
 		return "teacher/teacher_select";
 	}
 	
@@ -65,7 +72,6 @@ public class TeacherController {
 		 *	3. 원장님이 부여받은 라이센스를 가지고 교직원을 등록
 		 * 	4. 라이센스가 원장이 등록한 교직원에게 부여
 		 */
-		model.addAttribute("loginTeacher",loginTeacher);
 		return "redirect:/";
 			}
 	
@@ -112,11 +118,15 @@ public class TeacherController {
 		}
 	
 	// 6-2. 교직원 수정
-	@RequestMapping(value="/teacherModify", method = RequestMethod.POST)
+	@RequestMapping(value="/TeacherModify", method = RequestMethod.POST)
 	public String teacherModify(Model model, HttpSession session, Teacher teacher) {
 		logger.debug("6-2. TeacherController -- TeacherModify");
 		teacherService.modifyTeacher(teacher);
 		logger.debug("-----------------------------------------");
+		//수정은 되는데 결과가 바로 안나옴 ...  ? 로그아웃했다가 다시 로그인하면 나옴
+		//수정이 되면 로그아웃이 되게 만듬 - 로그인하면 변경된 정보로 들어감
+		//더 나은 방법을 생각해야봐야할거같음...
+		session.invalidate();
 		return "redirect:/";
 		}
 	

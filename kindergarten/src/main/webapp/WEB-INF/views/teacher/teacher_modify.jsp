@@ -64,43 +64,43 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6">
-							<form id="modiForm" action="${pageContext.request.contextPath}/TeacherModify" method="POST">
+							<form id="modiForm" action="${pageContext.request.contextPath}/TeacherModify?teacherCd=${loginTeacher.teacherCd}" method="POST">
 								<div class="form-group">
 								    <label>이름</label>
-								    <input class="form-control" id="teacherNm" name="teacherNm" placeholder="이름">
+								    <input class="form-control" id="teacherNm" name="teacherNm" value="${loginTeacher.teacherNm}">
 								</div>
 								<div class="form-group">
 								    <label>생년월일</label>
-								    <input class="form-control" id="teacherDateOfBirth" name="teacherDateOfBirth" placeholder="생년월일">
+								    <input class="form-control" id="teacherDateOfBirth" name="teacherDateOfBirth" value="${loginTeacher.teacherDateOfBirth}">
 								</div>
 								<div class="form-group">
 								    <label>연락처</label>
-								    <input class="form-control" id="teacherPhone" name="teacherPhone" placeholder="연락처">
+								    <input class="form-control" id="teacherPhone" name="teacherPhone" value="${loginTeacher.teacherPhone}">
 								</div>
 								<div class="form-group">
 								    <label>전자우편</label>
-								    <input class="form-control" id="teacherEmail" name="teacherEmail" placeholder="전자우편">
+								    <input class="form-control" id="teacherEmail" name="teacherEmail" value="${loginTeacher.teacherEmail}">
 								</div>
 								<div class="form-group">
-								    <label>주소</label>
-								    <input class="form-control" id="teacherAddress" name="teacherAddress" placeholder="주소">
+								    <label>자택주소</label>
+								    <input class="form-control" id="teacherAddress" name="teacherAddress" value="${loginTeacher.teacherAddress}">
 								</div>
 								<div class="form-group">
 								    <label>급여은행</label>
-								    <input class="form-control" id="teacherBank" name="teacherBank" placeholder="급여은행">
+								    <input class="form-control" id="teacherBank" name="teacherBank" value="${loginTeacher.teacherBank}">
 								</div>
 								<div class="form-group">
 								    <label>급여계좌</label>
-								    <input class="form-control" id="teacherAccount" name="teacherAccount" placeholder="급여계좌">
+								    <input class="form-control" id="teacherAccount" name="teacherAccount" value="${loginTeacher.teacherAccount}">
 								</div>
 								<!-- 직급과 호봉은 원장만 수정 가능 -->
 								<div class="form-group">
 								    <label>직급</label>
-								    <input class="form-control" id="teacherPosition" name="teacherPosition" placeholder="직급">
+								    <input class="form-control" id="teacherPosition" name="teacherPosition" value="${loginTeacher.teacherPosition}">
 								</div>
 								<div class="form-group">
 								    <label>호봉</label>
-								    <input class="form-control" id="teacherPayStep" name="teacherPayStep" placeholder="호봉">
+								    <input class="form-control" id="teacherPayStep" name="teacherPayStep" value="${loginTeacher.teacherPayStep}">
 								</div>								
 								<button type="submit">수정</button>
 							</form>
