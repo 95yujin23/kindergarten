@@ -168,7 +168,7 @@ public class TeacherController {
 			// loginTeacher의 값이 null이라면 login화면으로
 			return "redirect:/Login";
 		}
-		// null이 아니라면 loginTeacher세션에서 라이센스를 받아서 teacher객체에 셋팅한다.
+		// null이 아니라면 loginTeacher세션에서 teacherCd 받아서 teacher객체에 셋팅한다.
 		teacher.setTeacherCd(loginTeacher.getTeacherCd());
 		List<TeacherPay> list = teacherService.getTeacherPayOne(teacher);
 		logger.debug("-----------------------------------------");
@@ -192,10 +192,18 @@ public class TeacherController {
 	// 10-2. 교직원 인건비 지급 등록
 	@RequestMapping(value="/TeacherPayAdd", method = RequestMethod.POST)
 	public String teacherPayAdd(Model model, HttpSession session, TeacherPay teacherPay) {
-		teacherService.addTeacherPay(teacherPay);
-		//인건비 지급 등록 후 마감 코드 수정
-		teacherService.modifyPayClosingCd(teacherPay);
 		logger.debug("10-2. TeacherController -- teacherPayModify {}", teacherPay);
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
+		logger.debug("loginTeacher : {}", loginTeacher);
+		if(loginTeacher == null) {
+			// loginTeacher의 값이 null이라면 login화면으로
+			return "redirect:/Login";
+		}
+		// null이 아니라면 loginTeacher세션에서 라이센스를 받아서 teacher객체에 셋팅한다.
+		teacherPay.setLicenseKindergarten(loginTeacher.getLicenseKindergarten());
+		logger.debug("teacherPay : {}", teacherPay);
+		teacherService.addTeacherPay(teacherPay);
 		logger.debug("-----------------------------------------");
 		return "redirect:/";
 		}
