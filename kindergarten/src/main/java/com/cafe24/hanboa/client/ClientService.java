@@ -32,9 +32,9 @@ public class ClientService {
 	
 	//3.업데이트
 	public int updateClient(Client client) {
-		int clientOne = clientDao.updateClient(client);
-		logger.debug("{} <- updateClient ClientService.java", clientOne);
-		return clientOne;
+		int modifyClient = clientDao.updateClient(client);
+		logger.debug("{} <- updateClient ClientService.java", client);
+		return modifyClient;
 	}
 	//4. 삭제
 	public int deleteClient(String clientCd) {

@@ -39,10 +39,10 @@ public class ClientController {
 	}
 	//3. 수정 처리요청
 	@RequestMapping(value = "/client/client_modify", method = RequestMethod.POST)
-	public String clientModify(Client client) {
+	public String clientModify(Model model, Client client) {
 		clientService.updateClient(client);
 		logger.debug("{} <-clientModify ClientController.java", client);
-		return "redirect:client/client_list";
+		return "client/client_list";
 	}
 	
 	

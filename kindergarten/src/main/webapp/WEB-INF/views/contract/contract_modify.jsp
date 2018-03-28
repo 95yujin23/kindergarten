@@ -37,7 +37,6 @@
 			<div class="col-lg-11">
 			<h2>수정화면</h2>
 			<form id="contractModifyForm" action="${pageContext.request.contextPath}/contract/contract_list" method="post">
-				<input type="hidden" value="${contract.contractCd}" name="contractCd">
 				<table class="table table-hover">
 					<thead>
 						<tr>

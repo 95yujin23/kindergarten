@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Client Modify</title>
+<title>feedingMenu Modify</title>
 <!-- Bootstrap Core CSS -->
 <link href="../resources/vendor/css/bootstrap.min.css" rel="stylesheet">
 <!-- MetisMenu CSS -->
@@ -33,35 +33,36 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			
 			<div class="col-lg-1"></div>
 			<div class="col-lg-11">
-			<h2>수정화면</h2>
-			<form id="clientModifyForm" action="${pageContext.request.contextPath}/client/client_list" method="post">
-				<table class="table table-hover">
+			<h2>식단 수정화면</h2>
+			<form id="feedingMenuModifyForm" action="${pageContext.request.contextPath}/feeding/feedingMenu_modify=${feedingMenu.feedingMenuCd}" method="post">
+					<table class="table table-hover">
 					<thead>
 						<tr>
-							<th>거래처코드</th>
-							<th>거래처이름</th>							
-							<th>거래처 연락처</th>
-							<th>거래처 담당자</th>
-							<th>거래처 주소</th>
-							<th>거래처 구분</th>
+							<th>식단코드</th>
+							<th>식단일자</th>
+							<th>중식(열량/단백질)</th>
+							<th>오전간식</th>
+							<th>오후간식</th>
+							<th>원산지</th>
+							<th>담당자</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="hidden" value="${client.clientCd}" name="clientCd"></td>
-							<td><input type="text" value="${client.clientNm}" name="clientNm"></td>										
-							<td><input type="text" value="${client.clientPhone}" name="clientPhone"></td>
-							<td><input type="text" value="${client.clientManager}" name="clientManager"></td>
-							<td><input type="text" value="${client.clientAddress}" name="clientAddress"></td>
-							<td><input type="text" value="${client.clientType}" name="clientType"></td> 
+							<td><input type="text" value="${feedingMenu.feedingMenuCd}" name="feedingMenuCd"></td>	
+							<td><input type="text" value="${feedingMenu.menuDate}" name="menuDate"></td>	
+							<td><input type="text" value="${feedingMenu.lunchCaloryProtein}" name="lunchCaloryProtein"></td>	
+							<td><input type="text" value="${feedingMenu.morningSnack}" name="morningSnack"></td>	
+							<td><input type="text" value="${feedingMenu.afternoonSnack}" name="afternoonSnack"></td>	
+							<td><input type="text" value="${feedingMenu.origin}" name="origin"></td>							
+							<td><input type="text" value="${feedingMenu.menuManager}" name="menuManager"></td>
 						</tr>
 					</tbody>
 				</table>
 				<button id="modifyButton" class="btn" type="submit">수정</button>
-				<button class="btn" type="reset">초기화</button>
+				<button class="btn" type="reset">초기화</button> 
 			</form>
 			</div>
 		</div>

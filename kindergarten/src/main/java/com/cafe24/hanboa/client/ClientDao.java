@@ -23,7 +23,7 @@ public class ClientDao {
 	}	
 	// 2.업데이트 정보요청
 	public Client modifyGetClient(String clientCd) {
-		logger.debug("{} <- modifyGetClient ClientDao.java");
+		logger.debug("{} <- modifyGetClient ClientDao.java",clientCd);
 		return sqlSession.selectOne(localName+"getClientOne", clientCd);		
 	}	
 	// 3.업데이트

@@ -19,13 +19,24 @@ public class ContractService {
 	//1. 목록조회
 	public List<Contract> getContractList(){
 		List<Contract> list = contractDao.selectContarct();
+		logger.debug("{} < - getContractList 메서드 실행 ContractService.java");
 		return list;
 	}
 	
 	//2.수정 정보요청
 	public Contract modifyGetContract(String contractCd) {
 		Contract modifyGet = contractDao.modifyGetContarct(contractCd);
+		logger.debug("{} < - modifyGetContract 메서드 실행 ContractService.java",contractCd);
 		return modifyGet;
 	}
+	
+	//3.수정처리
+	public int modifyContract(Contract contract) {
+		int modifycontract = contractDao.modifyContract(contract);
+		logger.debug("{} < - modifyContrac t메서드 실행 ContractService.java",contract);
+		return modifycontract;	
+	}
+	
+	
 
 }

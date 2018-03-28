@@ -57,10 +57,12 @@
 		,${clientRegistrant}
 		,${licenseKindergarten})		
 	</insert>
+	
+<!-- 수정처리 -->
 <update id ="clientModify" parameterType="com.cafe24.hanboa.client.Client">
 	UPDATE TB_CLIENT
 	SET
-		client_nm = #{cleintNm}
+		client_nm = #{clientNm}
 		, client_phone = #{clientPhone}
 		, client_manager = #{clientManager}
 		, client_address = #{clientAddress}

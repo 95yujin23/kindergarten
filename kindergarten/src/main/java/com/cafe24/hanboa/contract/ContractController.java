@@ -40,4 +40,13 @@ public class ContractController {
 		model.addAttribute("contract", contract);
 		return "contract/contract_modify";		
 	}
+	
+	//3. 수정처리
+	@RequestMapping(value="/contract/contract_modify", method=RequestMethod.POST)
+	public String contractModify(Model model, Contract contract) {
+		contractService.modifyContract(contract);
+		logger.debug("{} < - contractModify 메서드실행 ContractController.java",contract);
+		return "contract/contract_list";
+		
+	}
 }

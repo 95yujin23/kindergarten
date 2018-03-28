@@ -16,8 +16,22 @@ public class FeedingMenuDao {
 	
 	String localName = "com.cafe24.hanboa.feeding.FeedingMapper.";
 	
+	// 1.전체조회
 	public List<FeedingMenu> selectFeedingMenu(){
+		logger.debug("{} <-- selectFeedingMenu FeedingMenuDao.java");
 		return sessionTemplate.selectList(localName+"getFeedingMenuList");
+	}
+	
+	//2. 수정정보요청
+	public FeedingMenu modifyGetFeedingMenu(String feedingMenuCd) {
+		logger.debug("{} <-- modifyGetFeedingMenu FeedingMenuDao.java",feedingMenuCd);
+		return sessionTemplate.selectOne(localName+"getFemeOne",feedingMenuCd);		
+	}
+	
+	//3. 수정처리
+	public int updateFeedingMenu(FeedingMenu feedingMenu) {
+		logger.debug("{} <-- updateFeedingMenu FeedingMenuDao.java",feedingMenu);
+		return sessionTemplate.update(localName+"modifyFeme",feedingMenu);
 	}
 	
 	

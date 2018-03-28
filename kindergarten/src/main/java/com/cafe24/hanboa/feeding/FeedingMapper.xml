@@ -59,8 +59,36 @@
 			,feme_origin as origin 
 			,feme_manager as menuManager
 			,license_kindergarten as licenseKindergarten
-	FROM hanboa.TB_FEEDING_MENU		
-			</select>
+	FROM TB_FEEDING_MENU		
+	</select>
+<!-- 식단메뉴 항목벽조회 -->
+	<select id = "getFemeOne"
+			resultType="com.cafe24.hanboa.feeding.FeedingMenu">
+	SELECT
+			feeding_menu_cd as feedingMenuCd
+			,feme_date as menuDate
+			,feme_lunch_calory_protein as lunchCaloryProtein
+			,feme_morning_snack as morningSnack
+			,feme_afternoon_snack as afternoonSnack
+			,feme_origin as origin 
+			,feme_manager as menuManager
+	FROM TB_FEEDING_MENU
+	WHERE feeding_menu_cd = #{feedingMenuCd}			
+	</select>
+<!-- 식단 메뉴 업데이트 -->
+	<update id = "modifyFeme"
+			parameterType = "com.cafe24.hanboa.feeding.FeedingMenu">
+	UPDATE TB_FEEDING_MENU
+		SET
+			feeding_menu_cd = #{feedingMenuCd}
+			,feme_date = #{menuDate}
+			,feme_lunch_calory_protein = #{lunchCaloryProtein}
+			,feme_morning_snack = #{morningSnack}
+			,feme_afternoon_snack = #{afternoonSnack}
+			,feme_origin = #{origin}
+			,feme_manager = #{menuManager}
+	WHERE feeding_menu_cd = #{feedingMenuCd}
+	</update>
 			
 <!-- 월별급식 조회 -->
 	<select id="getfemoList"
