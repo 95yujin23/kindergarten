@@ -72,7 +72,7 @@
 							</td>
 							<td><input type="text" value="${program.programOutsourcingCost}" name="programOutsourcingCost"></td>
 							<td>
-								<select name="programClosingoption">
+								<select name="programClosingDivision">
 									<option value="마감전">마감전</option>
 									<option value="마감완료">마감완료</option>
 								</select>

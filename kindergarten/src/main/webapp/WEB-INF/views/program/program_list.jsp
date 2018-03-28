@@ -58,8 +58,8 @@
 						<td>${program.programNm}</td>							
 						<td>${program.programNumberWeek}</td>
 						<td>${program.programOperationTime}</td>
-						<td>${program.programOutsourcingCost}</td>
-						<td>${program.programClosingoption}</td>
+						<td>${program.programClosingCd}</td>
+						<td>${program.programClosingDivision}</td>
 						<td>${program.contractCd}</td>
 						<td>${program.programRegistrationDate}</td>
 						<td>${program.programRegistrant}</td>

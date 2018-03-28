@@ -6,11 +6,12 @@ public class ProgramApplication {
 	private String programCd;
 	private String PRAPDivision;
 	private int PRAPCost;
-	private int PRAPClosingIncome;
-	private String PRAPClosingOption;
+	private int PRAPClosingCd;
+	private String PRAPClosingDivision;
 	private String PRAPRegistrationDate;
 	private String PRAPRegistrant;
 	private String licenseKindergarten;
+	
 	public String getProgramApplCd() {
 		return programApplCd;
 	}
@@ -41,17 +42,17 @@ public class ProgramApplication {
 	public void setPRAPCost(int pRAPCost) {
 		PRAPCost = pRAPCost;
 	}
-	public int getPRAPClosingIncome() {
-		return PRAPClosingIncome;
+	public int getPRAPClosingCd() {
+		return PRAPClosingCd;
 	}
-	public void setPRAPClosingIncome(int pRAPClosingIncome) {
-		PRAPClosingIncome = pRAPClosingIncome;
+	public void setPRAPClosingCd(int pRAPClosingCd) {
+		PRAPClosingCd = pRAPClosingCd;
 	}
-	public String getPRAPClosingOption() {
-		return PRAPClosingOption;
+	public String getPRAPClosingDivision() {
+		return PRAPClosingDivision;
 	}
-	public void setPRAPClosingOption(String pRAPClosingOption) {
-		PRAPClosingOption = pRAPClosingOption;
+	public void setPRAPClosingDivision(String pRAPClosingDivision) {
+		PRAPClosingDivision = pRAPClosingDivision;
 	}
 	public String getPRAPRegistrationDate() {
 		return PRAPRegistrationDate;
@@ -71,12 +72,5 @@ public class ProgramApplication {
 	public void setLicenseKindergarten(String licenseKindergarten) {
 		this.licenseKindergarten = licenseKindergarten;
 	}
-	@Override
-	public String toString() {
-		return "ProgramApplication [programApplCd=" + programApplCd + ", kidsCd=" + kidsCd + ", programCd=" + programCd
-				+ ", PRAPDivision=" + PRAPDivision + ", PRAPCost=" + PRAPCost + ", PRAPClosingIncome="
-				+ PRAPClosingIncome + ", PRAPClosingOption=" + PRAPClosingOption + ", PRAPRegistrationDate="
-				+ PRAPRegistrationDate + ", PRAPRegistrant=" + PRAPRegistrant + ", licenseKindergarten="
-				+ licenseKindergarten + "]";
-	}
+	
 }

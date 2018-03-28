@@ -7,12 +7,13 @@ public class Program {
 	private int programNumberWeek;
 	private int programOperationTime;
 	private int programOutsourcingCost;
-	private int programClosingCost;
-	private String programClosingoption;
+	private int programClosingCd;
+	private String programClosingDivision;
 	private String contractCd;
 	private String programRegistrationDate;
 	private String programRegistrant;
 	private String licenseKindergarten;
+	
 	public String getProgramCd() {
 		return programCd;
 	}
@@ -49,17 +50,17 @@ public class Program {
 	public void setProgramOutsourcingCost(int programOutsourcingCost) {
 		this.programOutsourcingCost = programOutsourcingCost;
 	}
-	public int getProgramClosingCost() {
-		return programClosingCost;
+	public int getProgramClosingCd() {
+		return programClosingCd;
 	}
-	public void setProgramClosingCost(int programClosingCost) {
-		this.programClosingCost = programClosingCost;
+	public void setProgramClosingCd(int programClosingCd) {
+		this.programClosingCd = programClosingCd;
 	}
-	public String getProgramClosingoption() {
-		return programClosingoption;
+	public String getProgramClosingDivision() {
+		return programClosingDivision;
 	}
-	public void setProgramClosingoption(String programClosingoption) {
-		this.programClosingoption = programClosingoption;
+	public void setProgramClosingDivision(String programClosingDivision) {
+		this.programClosingDivision = programClosingDivision;
 	}
 	public String getContractCd() {
 		return contractCd;
@@ -84,14 +85,5 @@ public class Program {
 	}
 	public void setLicenseKindergarten(String licenseKindergarten) {
 		this.licenseKindergarten = licenseKindergarten;
-	}
-	@Override
-	public String toString() {
-		return "Program [programCd=" + programCd + ", totalResourceCd=" + totalResourceCd + ", programNm=" + programNm
-				+ ", programNumberWeek=" + programNumberWeek + ", programOperationTime=" + programOperationTime
-				+ ", programOutsourcingCost=" + programOutsourcingCost + ", programClosingCost=" + programClosingCost
-				+ ", programClosingoption=" + programClosingoption + ", contractCd=" + contractCd
-				+ ", programRegistrationDate=" + programRegistrationDate + ", programRegistrant=" + programRegistrant
-				+ ", licenseKindergarten=" + licenseKindergarten + "]";
 	}
 }

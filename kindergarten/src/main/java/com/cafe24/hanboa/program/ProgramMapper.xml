@@ -7,14 +7,14 @@
 			(PROGRAM_CD, TOTAL_RESOURCE_CD, 
 			PROGRAM_NM, PROGRAM_NUMBER_WEEK, 
 			PROGRAM_OPERATION_TIME, PROGRAM_OUTSOURCING_COST, 
-			PROGRAM_OUTSOURCING_COST, PROGRAM_CLOSING_OPTION, 
+			PROGRAM_CLOSING_CD, PROGRAM_CLOSING_DIVISION, 
 			CONTRACT_CD, PROGRAM_REGISTRATION_DATE, 
 			PROGRAM_REGISTRANT, LICENSE_KINDERGARTEN) 
 		VALUES 
 			(${programCd}, ${totalResourceCd}, 
 			${programNm}, ${programNumberWeek}, 
 			${programOperationTime}, ${programOutsourcingCost}, 
-			${programClosingCost}, ${programClosingoption}, 
+			${programClosingCd}, ${programClosingDivision}, 
 			${contractCd}, ${programRegistrationDate}, 
 			${programRegistrant}, ${licenseKindergarten});
 	</insert>
@@ -26,8 +26,8 @@
 			, PROGRAM_NUMBER_WEEK AS programNumberWeek
 			, PROGRAM_OPERATION_TIME AS programOperationTime
 			, PROGRAM_OUTSOURCING_COST AS programOutsourcingCost
-			, PROGRAM_CLOSING_COST AS programClosingCost
-			, PROGRAM_CLOSING_OPTION AS programClosingoption
+			, PROGRAM_CLOSING_CD AS programClosingCd
+			, PROGRAM_CLOSING_DIVISION AS programClosingDivision
 			, CONTRACT_CD AS contractCd
 			, PROGRAM_REGISTRATION_DATE AS programRegistrationDate
 			, PROGRAM_REGISTRANT AS programRegistrant
@@ -42,8 +42,8 @@
 			, PROGRAM_NUMBER_WEEK AS programNumberWeek
 			, PROGRAM_OPERATION_TIME AS programOperationTime
 			, PROGRAM_OUTSOURCING_COST AS programOutsourcingCost
-			, PROGRAM_CLOSING_COST AS programClosingCost
-			, PROGRAM_CLOSING_OPTION AS programClosingoption
+			, PROGRAM_CLOSING_CD AS programClosingCd
+			, PROGRAM_CLOSING_DIVISION AS programClosingDivision
 		FROM TB_PROGRAM
 		WHERE PROGRAM_CD = #{programCd}
 	</select>
@@ -54,8 +54,8 @@
 			, PROGRAM_NUMBER_WEEK = #{programNumberWeek}
 			, PROGRAM_OPERATION_TIME = #{programOperationTime}
 			, PROGRAM_OUTSOURCING_COST = #{programOutsourcingCost}
-			, PROGRAM_CLOSING_COST = #{programClosingCost}
-			, PROGRAM_CLOSING_OPTION = #{programClosingoption}
+			, PROGRAM_CLOSING_CD = #{programClosingCd}
+			, PROGRAM_CLOSING_DIVISION = #{programClosingDivision}
 		WHERE PROGRAM_CD = #{programCd}
 	</update>
 	<select id="">
