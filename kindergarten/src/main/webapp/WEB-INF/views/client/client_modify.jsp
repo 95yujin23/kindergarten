@@ -37,7 +37,7 @@
 			<div class="col-lg-1"></div>
 			<div class="col-lg-11">
 			<h2>수정화면</h2>
-			<form id="clientModifyForm" action="${pageContext.request.contextPath}/client/client_list" method="post">
+			<form id="clientModifyForm" action="${pageContext.request.contextPath}/client/client_modify" method="post">
 				<table class="table table-hover">
 					<thead>
 						<tr>

@@ -42,7 +42,7 @@ public class FeedingMenuController {
 	public String feedingMenuModify(Model model, FeedingMenu feedingMenu) {
 		femeService.updateFeedingMenu(feedingMenu);
 		logger.debug("{} <-- feedingMenuModify FeedingMenuController.java",feedingMenu);
-		return "feeding/feedingMenu_list";	
+		return "redirect:/feeding/feedingMenu_list";	
 	}
 	
 

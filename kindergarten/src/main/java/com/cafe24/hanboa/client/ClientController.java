@@ -42,7 +42,7 @@ public class ClientController {
 	public String clientModify(Model model, Client client) {
 		clientService.updateClient(client);
 		logger.debug("{} <-clientModify ClientController.java", client);
-		return "client/client_list";
+		return "redirect:/client/client_list";
 	}
 	
 	

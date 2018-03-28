@@ -46,7 +46,7 @@ public class ContractController {
 	public String contractModify(Model model, Contract contract) {
 		contractService.modifyContract(contract);
 		logger.debug("{} < - contractModify 메서드실행 ContractController.java",contract);
-		return "contract/contract_list";
+		return "redirect:/contract/contract_list";
 		
 	}
 }

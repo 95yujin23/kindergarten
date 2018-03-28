@@ -36,7 +36,7 @@
 			<div class="col-lg-1"></div>
 			<div class="col-lg-11">
 			<h2>식단 수정화면</h2>
-			<form id="feedingMenuModifyForm" action="${pageContext.request.contextPath}/feeding/feedingMenu_modify=${feedingMenu.feedingMenuCd}" method="post">
+			<form id="feedingMenuModifyForm" action="${pageContext.request.contextPath}/feeding/feedingMenu_modify" method="post">
 					<table class="table table-hover">
 					<thead>
 						<tr>
