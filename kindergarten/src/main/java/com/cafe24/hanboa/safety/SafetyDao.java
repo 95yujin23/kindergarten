@@ -20,7 +20,7 @@ public class SafetyDao {
 	String localName = "com.cafe24.hanboa.safety.SafetyMapper.";
 
 	// 1. 안전 교육 및 점검 목록 조회 (연도 & 종류)
-	public List<Safety> selectSafetyList(HashMap<String, Object> map) {
+	public List<SafetyAndTotalResource> selectSafetyList(HashMap<String, Object> map) {
 		logger.debug("1. SafetyDao -- List<Safety> selectSafetyList(HashMap<String, Object> map)");
 		logger.debug("map : {}",map);
 		logger.debug("-----------------------------------------");

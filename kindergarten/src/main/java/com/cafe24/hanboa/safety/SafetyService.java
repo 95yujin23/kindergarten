@@ -3,11 +3,15 @@ package com.cafe24.hanboa.safety;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.cafe24.hanboa.teacher.Teacher;
 
 @Service
 @Transactional
@@ -18,9 +22,9 @@ public class SafetyService {
 		private static final Logger logger = LoggerFactory.getLogger(SafetyService.class);		
 
 		// 1. 안전 교육 및 점검 목록 조회
-		public List<Safety> getSafetyList(HashMap<String, Object> map) {
+		public List<SafetyAndTotalResource> getSafetyList(HashMap<String, Object> map) {
 			logger.debug("1. SafetyService -- List<Safety> getSafetyList(HashMap<String, Object> map) : {}", map);
-			List<Safety> list = safetyDao.selectSafetyList(map);
+			List<SafetyAndTotalResource> list = safetyDao.selectSafetyList(map);
 			//리스트에 못받아옴.... why?
 			logger.debug("SafetyService -- list : {}", list);
 			logger.debug("-----------------------------------------");

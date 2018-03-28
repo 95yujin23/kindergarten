@@ -76,6 +76,8 @@
 						<tr>
 							<th>안전교육및점검실행코드</th>
 							<th>통합자원코드</th>
+							<th>안전 교육 및 점검</th>
+							<th>안전 교육 및 점검 명</th>
 							<th>안전 실행시간(분)</th>
 							<th>안전 실시아동수</th>
 							<th>안전 주최</th>
@@ -91,14 +93,16 @@
 							<tr>
 								<td>${safetyList.safetyExecutionCd}</td>
 								<td>${safetyList.totalResourceCd}</td>
+								<td>${safetyList.resourceGroupNm}</td>
+								<td>${safetyList.resourceNm}</td>
 								<td>${safetyList.safetyTime}</td>
 								<td>${safetyList.safetyKidsCount}</td>
 								<td>${safetyList.safetyHost}</td>
 								<td>${safetyList.safetyExpenditureCost}</td>
 								<td>${safetyList.safetyClosingCd}</td>
 								<td>${safetyList.safetyDivision}</td>
-								<td>${safetyList.safetyClosingOption}</td>
-								<td>${safetyList.safetyRestrant}</td>
+								<td>${safetyList.safetyClosingDivision}</td>
+								<td>${safetyList.safetyRegistrant}</td>
 								<td>${safetyList.safetyRegistrationDate}</td>
 							</tr>
 						</tbody>

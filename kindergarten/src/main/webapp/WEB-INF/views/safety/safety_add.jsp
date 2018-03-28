@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>안전교육및점검 등록 화면</title>
+<title>교직원 등록 화면</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="resources/vendor/css/bootstrap.min.css" rel="stylesheet">
@@ -52,34 +52,59 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">안전 점검 및 교육 등록</h1>
+			<h1 class="page-header">교직원 인건비 등록</h1>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-				    현재 근무하고 있는 교직원을 등록해주세요.
+				    교직원에게 지급한 인건비를 등록해주세요
 				</div>
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6">
-							<form id="addForm" action="${pageContext.request.contextPath}/TeacherAdd" method="POST">
+							<form id="addForm" action="${pageContext.request.contextPath}/TeacherPayAdd" method="POST">
+								
 								<div class="form-group">
 								    <label>Name</label>
-								    <input class="form-control" id="teacherNm" name="teacherNm" placeholder="이름">
+								    <select name="totalResourceCd" class="form-control">
+									<option value="" <c:out value=""/>>이름</option>
+									<c:forEach var="totalResource" items="${list}">
+									<!-- list에 담긴 teacher List를 반복문이 끝날 때까지 출력 
+										value값은 totalResourceCd -> totalResourceCd를 가지고 해당 안전실행을 등록함
+										teacherNm은 화면에 보여줄 것, 선택 시에 코드를 보고 누군지 알수 없으므로-->
+									<option value="${totalResource.totalResourceCd}" <c:out value="${totalResourceCd}"/>>${totalResource.resourceGroupNm},${totalResource.resourceNm}</option>
+									</c:forEach>
+									</select>
 								</div>
 								<div class="form-group">
-								    <label>Email</label>
-								    <input class="form-control" id="teacherEmail" name="teacherEmail" placeholder="이메일">
+								    <label>실행시간</label>
+								    <input class="form-control" id="payPayment" name="payPayment" placeholder="지급금액(단위:원)">
 								</div>
 								<div class="form-group">
-								    <label>Phone</label>
-								    <input class="form-control" id="teacherPhone" name="teacherPhone" placeholder="연락처">
+								    <label>영유아(명)</label>
+								    <input class="form-control" id="payRegistrant" name="payRegistrant" placeholder="등록인">
 								</div>
 								<div class="form-group">
-								    <label>PassWord</label>
-								    <input class="form-control" id="teacherPw" name="teacherPw" placeholder="임시비밀번호">
+								    <label>주최</label>
+								    <input class="form-control" id="payPayment" name="payPayment" placeholder="지급금액(단위:원)">
+								</div>
+								<div class="form-group">
+								    <label>비용</label>
+								    <input class="form-control" id="payPayment" name="payPayment" placeholder="지급금액(단위:원)">
+								</div>
+								<div class="form-group">
+								    <label>구분</label>
+								    <input class="form-control" id="payPayment" name="payPayment" placeholder="지급금액(단위:원)">
+								</div>
+								<div class="form-group">
+								    <label>구분</label>
+								    <input type="button" class="form-control" id="payPayment" name="payPayment" placeholder="지급금액(단위:원)">
+								</div>
+								<div class="form-group">
+								    <label>구분</label>
+								    <input type="button" class="form-control" id="payPayment" name="payPayment" placeholder="지급금액(단위:원)">
 								</div>
 								<button type="submit">등록</button>
 							</form>

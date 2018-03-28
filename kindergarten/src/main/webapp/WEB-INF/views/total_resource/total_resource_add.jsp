@@ -71,7 +71,7 @@
 								</div>
 								<div class="form-group">
 								    <label>통합자원코드 명</label>
-								    <input class="form-control" id="resourceNm" name="resourceNm" placeholder="연락처">
+								    <input class="form-control" id="resourceNm" name="resourceNm" placeholder="주제">
 								</div>
 					
 								<button type="submit">등록</button>

@@ -1,15 +1,17 @@
 package com.cafe24.hanboa.safety;
 
-public class Safety {
+public class SafetyAndTotalResource {
 	String safetyExecutionCd;
 	String totalResourceCd;
+	String resourceGroupNm;
+	String resourceNm;
 	String safetyTime;
 	String safetyKidsCount;
 	String safetyHost;
 	String safetyExpenditureCost;
 	String safetyClosingCd;
 	String safetyDivision;
-	String safetyClosingOption;
+	String safetyClosingDivision;
 	String safetyRegistrant;
 	String safetyRegistrationDate;
 	String licenseKindergarten;
@@ -25,6 +27,18 @@ public class Safety {
 	}
 	public void setTotalResourceCd(String totalResourceCd) {
 		this.totalResourceCd = totalResourceCd;
+	}
+	public String getResourceGroupNm() {
+		return resourceGroupNm;
+	}
+	public void setResourceGroupNm(String resourceGroupNm) {
+		this.resourceGroupNm = resourceGroupNm;
+	}
+	public String getResourceNm() {
+		return resourceNm;
+	}
+	public void setResourceNm(String resourceNm) {
+		this.resourceNm = resourceNm;
 	}
 	public String getSafetyTime() {
 		return safetyTime;
@@ -62,13 +76,13 @@ public class Safety {
 	public void setSafetyDivision(String safetyDivision) {
 		this.safetyDivision = safetyDivision;
 	}
-	public String getSafetyClosingOption() {
-		return safetyClosingOption;
+	public String getSafetyClosingDivision() {
+		return safetyClosingDivision;
 	}
-	public void setSafetyClosingOption(String safetyClosingOption) {
-		this.safetyClosingOption = safetyClosingOption;
+	public void setSafetyClosingDivision(String safetyClosingDivision) {
+		this.safetyClosingDivision = safetyClosingDivision;
 	}
-	public String getSafetyRestrant() {
+	public String getSafetyRegistrant() {
 		return safetyRegistrant;
 	}
 	public void setSafetyRegistrant(String safetyRegistrant) {
@@ -89,11 +103,12 @@ public class Safety {
 	
 	@Override
 	public String toString() {
-		return "Safety [safetyExecutionCd=" + safetyExecutionCd + ", totalResourceCd=" + totalResourceCd
-				+ ", safetyTime=" + safetyTime + ", safetyKidsCount=" + safetyKidsCount + ", safetyHost=" + safetyHost
-				+ ", safetyExpenditureCost=" + safetyExpenditureCost + ", safetyClosingCd=" + safetyClosingCd
-				+ ", safetyDivision=" + safetyDivision + ", safetyClosingOption=" + safetyClosingOption
-				+ ", safetyRegistrant=" + safetyRegistrant + ", safetyRegistrationDate=" + safetyRegistrationDate
-				+ ", licenseKindergarten=" + licenseKindergarten + "]";
+		return "SafetyAndTotalResource [safetyExecutionCd=" + safetyExecutionCd + ", totalResourceCd=" + totalResourceCd
+				+ ", resourceGroupNm=" + resourceGroupNm + ", resourceNm=" + resourceNm + ", safetyTime=" + safetyTime
+				+ ", safetyKidsCount=" + safetyKidsCount + ", safetyHost=" + safetyHost + ", safetyExpenditureCost="
+				+ safetyExpenditureCost + ", safetyClosingCd=" + safetyClosingCd + ", safetyDivision=" + safetyDivision
+				+ ", safetyClosingDivision=" + safetyClosingDivision + ", safetyRegistrant=" + safetyRegistrant
+				+ ", safetyRegistrationDate=" + safetyRegistrationDate + ", licenseKindergarten=" + licenseKindergarten
+				+ "]";
 	}
 }

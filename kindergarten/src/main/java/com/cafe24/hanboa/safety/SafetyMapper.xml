@@ -3,7 +3,7 @@
 <mapper namespace="com.cafe24.hanboa.safety.SafetyMapper">
 
 <!-- 안전 점검 및 교육 목록 조회 -->
-	<select id="getSafetyList"
+	<!-- <select id="getSafetyList"
 			parameterType="java.util.Map"
 			resultType="com.cafe24.hanboa.safety.Safety">
 		SELECT 
@@ -22,8 +22,34 @@
 		FROM hanboa.TB_SAFETY_EXECUTION 
 		WHERE year(safety_registration_date) LIKE CONCAT('%',#{year},'%')
 		AND safety_division LIKE CONCAT('%',#{division},'%')
+	</select> -->
+
+<!-- 안전 점검 및 교육 목록 조회 -->
+	<select id="getSafetyList"
+			parameterType="java.util.Map"
+			resultMap="SafetyAndTotalResource">
+		SELECT 
+			SE.safety_execution_cd			
+			, SE.total_resource_cd			
+			, TR.resource_group_nm			
+			, TR.resource_nm				
+			, SE.safety_time				
+			, SE.safety_kids_count			
+			, SE.safety_host				
+			, SE.safety_expenditure_cost	
+			, SE.safety_closing_cd			
+			, SE.safety_division			
+			, SE.safety_closing_division		
+			, SE.safety_registrant			
+			, SE.safety_registration_date	
+			, SE.license_kindergarten		
+		FROM hanboa.TB_SAFETY_EXECUTION SE
+		JOIN hanboa.TB_TOTAL_RESOURCE TR
+		ON TR.total_resource_cd = SE.total_resource_cd
+		WHERE year(safety_registration_date) LIKE CONCAT('%',#{year},'%')
+		AND safety_division LIKE CONCAT('%',#{division},'%')
 	</select>
-	
+		
 <!-- 안전 점검 및 교육 등록 -->
 	<insert id="insertSatefy">
 		<!-- selectKey 설정 - #{safetyExecutionCd} : 문자열 (SA_EX_) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 -->
@@ -39,8 +65,8 @@
 			, safety_expenditure_cost
 			, safety_closing_cd
 			, safety_division
-			, safety_closing_option
-			, safety_restrant
+			, safety_closing_division
+			, safety_registrant
 			, safety_registration_date
 			, license_kindergarten
 		)
@@ -51,14 +77,27 @@
 			, #{safetyKidsCount}
 			, #{safetyHost}
 			, #{safetyExpenditureCost}
-			, #{safetyClosingCd}
-			, #{safetyDivision}
-			, #{safetyClosingOption}
-			, #{safetyRestrant}
+			, 0
+			, '무'
+			, #{safetyClosingDivision}
+			, #{safetyRegistrant}
 			, CURDATE()
 			, #{licenseKindergarten}
 		)
 	</insert>
+	
+<!-- 안전 점검 및 교육 마감코드 수정 -->
+	<update id="updateSafetyClosingCd"
+			parameterType="String">
+			<!-- selectKey설정 - #{safetyClosingCd} : safetyRegistrationDate에서 연도:ex)2018 + 월:ex)03 = '20183' -->
+			<selectKey resultType="String" keyProperty="safetyClosingCd" order="BEFORE">
+				SELECT CONCAT(year(safety_registration_date),month(safety_registration_date)) FROM hanboa.TB_SAFETY_EXECUTION
+				WHERE safety_execution_cd = #{safetyExecutionCd}
+			</selectKey>
+		UPDATE hanboa.TB_SAFETY_EXECUTION
+		SET safety_closing_cd = #{safetyClosingCd}
+		WHERE safety_execution_cd = #{safetyExecutionCd}
+	</update>	
 	
 <!-- 안전 점검 및 교육 수정 -->
 	<update id="updateSafety">
@@ -70,8 +109,8 @@
 				, safety_host				= #{safetyHost}
 				, safety_expenditure_cost	= #{safetyExpenditureCost}
 				, safety_division			= #{safetyDivision}
-				, safety_closing_option		= #{safetyClosingOption}
-				, safety_restrant			= #{safetyRestrant}
+				, safety_closing_division	= #{safetyClosingDivision}
+				, safety_registrant			= #{safetyRegistrant}
 		WHERE safety_execution_cd = #{safetyExecutionCd}
 	</update>
 	
@@ -81,5 +120,24 @@
 		FROM hanboa.TB_SAFETY_EXECUTION
 		WHERE safety_execution_cd = #{safetyExecutionCd}
 	</delete>
-	
+
+<!-- resultMap Safety & TotalResource -->
+	<resultMap type="com.cafe24.hanboa.safety.SafetyAndTotalResource"
+				id="SafetyAndTotalResource">
+		<result property="safetyExecutionCd" column="safety_execution_cd"></result>
+		<result property="totalResourceCd" column="total_resource_cd"></result>
+		<result property="resourceGroupNm" column="resource_group_nm"></result>
+		<result property="resourceNm" column="resource_nm"></result>
+		<result property="safetyTime" column="safety_time"></result>
+		<result property="safetyKidsCount" column="safety_kids_count"></result>
+		<result property="safetyHost" column="safety_host"></result>
+		<result property="safetyExpenditureCost" column="safety_expenditure_cost"></result>
+		<result property="safetyClosingCd" column="safety_closing_cd"></result>
+		<result property="safetyDivision" column="safety_division"></result>
+		<result property="safetyClosingDivision" column="safety_closing_division"></result>
+		<result property="safetyRegistrant" column="safety_registrant"></result>
+		<result property="safetyRegistrationDate" column="safety_registration_date"></result>
+		<result property="licenseKindergarten" column="license_kindergarten"></result>
+	</resultMap>
+		
 </mapper>
