@@ -89,6 +89,15 @@
 			,#{licenseKindergarten}
 		)
 	</insert>
+
+<!-- 교직원 등록 시 이메일 중복 검사 -->
+	<select id="selectTeacherEmail" 
+			parameterType="String"
+			resultType="int">
+		SELECT COUNT(teacher_email)
+		FROM hanboa.TB_TEACHERS
+		WHERE teacher_email = #{teacherEmail}
+	</select>
 	
 <!-- 교직원 수정 -->
 	<update id="updateTeacher"

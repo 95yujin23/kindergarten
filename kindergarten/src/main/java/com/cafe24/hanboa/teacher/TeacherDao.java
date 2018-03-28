@@ -46,6 +46,13 @@ public class TeacherDao {
 		logger.debug("-----------------------------------------");
 		return sqlSession.insert(localName+"insertTeacher",teacher);
 	}
+	// 4-2. 교직원 등록시 이메일 중복검사
+	public int selectTeacherEmail(String teacherEmail) {
+		logger.debug("4. TeacherDao -- int selectTeacherEmail(String teacherEmail) 매서드 실행");
+		logger.debug("String teacherEmail : {}",teacherEmail);
+		logger.debug("-----------------------------------------");
+		return sqlSession.selectOne(localName+"selectTeacherEmail",teacherEmail);
+	}
 	// 5. 교직원 수정
 	public int updateTeacher(Teacher teacher) {
 		logger.debug("5. TeacherDao -- int updateTeacher(Teacher teacher) 매서드 실행");

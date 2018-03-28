@@ -46,6 +46,14 @@ public class TeacherService {
 		logger.debug("-----------------------------------------");
 		return addTeacher;		
 	}
+	// 4-2. 교직원 등록시 이메일 중복검사
+	public int getTeacherEmail(String teacherEmail) {
+		logger.debug("4. TeacherService -- getTeacherEmail(String teacherEmail) : {}",teacherEmail);
+		int getTeacherEmail = teacherDao.selectTeacherEmail(teacherEmail);
+		logger.debug("-----------------------------------------");
+		return getTeacherEmail;	
+	}
+	
 	// 5. 교직원 수정
 	public int modifyTeacher(Teacher teacher) {
 		logger.debug("5. TeacherService -- modifyTeacher(Teacher teacher) : {}",teacher);

@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class TeacherController {
@@ -109,6 +110,15 @@ public class TeacherController {
 		return "redirect:/";
 		}	
 	
+	// 5-3. 교직원 등록시 이메일 중복검사
+	@RequestMapping(value="/TeacherEmailCheck", method = RequestMethod.POST)
+	public @ResponseBody int getTeacherEmail(@RequestParam("teacherEmail")String teacherEmail) {
+		logger.debug("5-3. TeacherController --  getTeacherEmail : {}", teacherEmail);
+		int result = teacherService.getTeacherEmail(teacherEmail);
+		logger.debug("result : {}", result);
+		logger.debug("-----------------------------------------");
+		return result;
+	}
 	// 6-1. 교직원 수정 화면
 	@RequestMapping(value="/TeacherModify", method = RequestMethod.GET)
 	public String teacherModify() {

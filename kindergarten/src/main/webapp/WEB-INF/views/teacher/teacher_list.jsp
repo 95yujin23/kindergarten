@@ -84,8 +84,8 @@
 								<td>${teacherList.teacherEntryDate}</td>
 								<td>${teacherList.teacherPosition}</td>
 								<td>${teacherList.teacherPayStep}</td>
-								<td><a href="${pageContext.request.contextPath}/TeacherModify">수정</a></td> <!-- 수정화면 -->
-								<td><a href="${pageContext.request.contextPath}/TeacherRemove">삭제</a></td>
+								<td><a href="${pageContext.request.contextPath}/TeacherModify?teacherCd=${teacherList.teacherCd}">수정</a></td> <!-- 수정화면 -->
+								<td><a href="${pageContext.request.contextPath}/TeacherRemove?teacherCd=${teacherList.teacherCd}">삭제</a></td>
 							</tr>
 						</tbody>
 					</c:forEach>

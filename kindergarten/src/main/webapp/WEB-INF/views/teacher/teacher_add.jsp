@@ -71,7 +71,12 @@
 								</div>
 								<div class="form-group">
 								    <label>Email</label>
-								    <input class="form-control" id="teacherEmail" name="teacherEmail" placeholder="이메일">
+								    <input type="email" class="form-control" name="teacherEmail" placeholder="이메일">
+								</div>
+								<div class="form-group">
+								    <label>Email</label>
+								    <input type="email" class="form-control" id="teacherEmail" name="teacherEmail" placeholder="이메일">
+								    <button type="button" id="emailCheck">중복확인</button>
 								</div>
 								<div class="form-group">
 								    <label>Phone</label>
@@ -81,7 +86,7 @@
 								    <label>PassWord</label>
 								    <input class="form-control" id="teacherPw" name="teacherPw" placeholder="임시비밀번호">
 								</div>
-								<button type="submit">등록</button>
+								<button id="addButton" type="button">등록</button>
 							</form>
 						</div>
 					</div>
@@ -110,5 +115,35 @@
 
 	<!-- Custom Theme JavaScript -->
 	<script src="resources/vendor/js/sb-admin-2.js"></script>
+	
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#addButton").click(function() {
+			$("#addForm").submit();
+		});
+		$("#emailCheck").click(function() {
+			if($("#teacherEmail").val()){
+				$.ajax({
+					url : '/TeacherEmailCheck'
+					, type : "post"
+					, data : {teacherEmail : $("#teacherEmail").val()}
+					, success : function (data) {
+						if(data==1){
+							alert("이미 사용 중인 이메일 입니다.");
+							$("#teacherEmail").val("");
+							$("#teacherEmail").focus();
+						}else if(data==0){
+							alert("사용 가능한 이메일 입니다.")
+						}
+					}
+				});
+			}else{
+				alert("이메일을 입력해주세요.");
+				$("#teacherEmail").focus();
+			}
+		});
+	});
+</script>
+<!-- type="text/javascript" 부분은 HTML5에서는 생략할 수 있다. -->
 </body>
 </html>
