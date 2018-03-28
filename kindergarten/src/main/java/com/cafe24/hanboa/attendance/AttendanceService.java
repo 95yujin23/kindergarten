@@ -100,4 +100,24 @@ public class AttendanceService {
 		logger.debug("-------------------------------------------------------------");
 		return attendanceDao.selectKidsAttendanceOne(kids);
 	}
+	// 3. 영유아 하원 입력(업데이트)
+	public void updateKidsAttendance(String kidsCd) {
+		String sampleTime = "170000";
+		String inDate = new SimpleDateFormat("yyyyMMdd").format(new Date());
+		String inTime = new SimpleDateFormat("HHmmss").format(new Date());
+		int sampleTimeEx = Integer.parseInt(sampleTime);
+		int inTimeEx = Integer.parseInt(inTime);
+		String kidsRestLateType = "";
+		if(inTimeEx < sampleTimeEx) {
+			kidsRestLateType = "조퇴";
+		}
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("kidsCd", kidsCd);
+		map.put("kidsComeHome", inTime);
+		map.put("kidsAttendanceDay", inDate);
+		map.put("kidsRestLateType", kidsRestLateType);
+		attendanceDao.updateKidsAttendance(map);
+		logger.debug("updateKidsAttendance AttendanceService.java");
+		logger.debug("-------------------------------------------------------------");	
+	}
 }

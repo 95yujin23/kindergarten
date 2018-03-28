@@ -113,4 +113,13 @@
 		FROM TB_KIDS_ATTENDANCE
 		WHERE KIDS_CD = #{kidsCd}
 	</select>
+	<!-- 영유아 하원 입력(업데이트) -->
+	<update id="updateKidsAttendance" parameterType="java.util.Map">
+		UPDATE TB_KIDS_ATTENDANCE
+		SET
+			KIDS_COME_HOME = #{kidsComeHome}
+			, KIDS_REST_LATE_TYPE = #{kidsRestLateType}
+		WHERE KIDS_CD = #{kidsCd}
+		AND KIDS_ATTENDANCE_DAY = #{kidsAttendanceDay}
+	</update>
 </mapper>

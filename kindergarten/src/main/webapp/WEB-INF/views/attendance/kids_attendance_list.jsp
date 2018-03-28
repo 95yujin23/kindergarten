@@ -17,6 +17,7 @@
 						<th>등원일</th>
 						<th>등원시간</th>
 						<th>하원시간</th>
+						<th>특이사항</th>
 						<th>지각조퇴구분</th>
 					</tr>
 				</thead>
@@ -27,6 +28,7 @@
 							<td>${attendanceList.kidsAttendanceDay}</td>
 							<td>${attendanceList.kidsAttendance}</td>
 							<td>${attendanceList.kidsComeHome}</td>
+							<td>${attendanceList.kidsReason}</td>
 							<td>${attendanceList.kidsRestLateType}</td>
 						</tr>
 					</tbody>

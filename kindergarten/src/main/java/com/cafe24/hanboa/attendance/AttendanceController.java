@@ -112,10 +112,23 @@ public class AttendanceController {
 		return "attendance/kids_attendance_list";
 	}
 	// 2-2. 영유아 등하원 개인 조회(영유아용)
+	@RequestMapping(value="/kids_attendance_list_one", method = RequestMethod.GET)
 	public String kidsAttendanceListOne(Model model, String kids) {
 		List<KidsAttendance> list = attendanceService.selectKidsAttendanceOne(kids);
 		logger.debug("{} <- kidsAttendanceListOne AttendanceController.java", list);
 		model.addAttribute("list", list);
 		return "attendance/kids_attendance_list_one";
+	}
+	// 3. 영유아 하원 입력(업데이트)
+	@RequestMapping(value="/kids_attendance_update", method = RequestMethod.POST)
+	public String kidsAttendanceUpdate(HttpSession session, String kidsCd) {
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
+		if(loginTeacher == null) {
+			// loginTeacher의 값이 null이라면 login화면으로
+			return "redirect:/Login";
+		}
+		attendanceService.updateKidsAttendance(kidsCd);
+		return "redirect:/kids_attendance_list";
 	}
 }

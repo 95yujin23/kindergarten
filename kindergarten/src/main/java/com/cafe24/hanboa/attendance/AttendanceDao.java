@@ -35,7 +35,6 @@ public class AttendanceDao {
 		logger.debug("AttendanceDao.java 2-2. selectTeacherAttendanceOne() 메소드 실행");
 		return sqlSessionTemlate.selectList(localName+"selectTheacherAttendanceOne", teacherCd);
 	}
-	
 	// 3. 교직원 퇴근 입력(업데이트)
 	public int updateTheacherAttendance(Map<String, String> map) {
 		logger.debug("AttendanceDao.java 3. updateTheacherAttendance() 메소드 실행");
@@ -59,4 +58,10 @@ public class AttendanceDao {
 		logger.debug("AttendanceDao.java 2-2. selectKidsAttendanceOne() 메소드 실행");
 		return sqlSessionTemlate.selectList(localName+"selectKidsAttendanceOne", kids);
 	}
+	// 3. 영유아 하원 입력(업데이트)
+	public int updateKidsAttendance(Map<String, String> map) {
+		logger.debug("AttendanceDao.java 2-2. updateKidsAttendance() 메소드 실행");
+		return sqlSessionTemlate.update(localName+"updateKidsAttendance", map);
+	}
+	
 }
