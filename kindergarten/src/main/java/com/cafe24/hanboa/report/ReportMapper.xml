@@ -112,6 +112,7 @@
 				,group_nm as groupNm
 				,detail as detail
 			FROM hanboa.TB_REPORT_RESOURCE		
+			ORDER BY group_nm
 	</select>
 	
 	<!-- report_division 추가 (일지자원추가) -->
@@ -132,4 +133,43 @@
 		SET report_nm = #{reportNm}
 		WHERE report_cd = #{reportCd}
 	</update>
+	
+	<!-- report_division 삭제 -->
+	<delete id="removeReportDivision"
+			parameterType="com.cafe24.hanboa.report.ReportDivision">
+		DELETE
+		FROM hanboa.TB_REPORT_DIVISION
+		WHERE report_cd = #{reportCd}
+	</delete>
+	
+	<!-- report_resource 추가 -->
+	<insert id="addReportResource"
+			parameterType="com.cafe24.hanboa.report.ReportResource">
+		<selectKey resultType="String" keyProperty="reportResourceCd" order="BEFORE">
+			SELECT CONCAT('RE_RE', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_REPORT_RESOURCE))
+		</selectKey>
+		INSERT INTO TB_REPORT_RESOURCE VALUES (
+		#{reportResourceCd}
+		,#{groupNm}
+		,#{detail}
+		)
+	</insert>
+	
+	<!-- report_resource 수정 -->
+	<update id="modifyReportResource"
+			parameterType="com.cafe24.hanboa.report.ReportResource">
+		UPDATE
+			TB_REPORT_RESOURCE
+		SET group_nm = #{groupNm}
+			,detail = #{detail}
+		WHERE report_resource_cd = #{reportResourceCd}
+	</update>
+	
+	<!-- report_resource 삭제 -->
+	<delete id="removeReportResource"
+			parameterType="com.cafe24.hanboa.report.ReportResource">
+		DELETE
+		FROM hanboa.TB_REPORT_RESOURCE
+		WHERE report_resource_cd = #{reportResourceCd}
+	</delete>
 </mapper>

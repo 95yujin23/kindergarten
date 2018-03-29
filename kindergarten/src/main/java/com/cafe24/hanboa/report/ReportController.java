@@ -100,7 +100,7 @@ public class ReportController {
 		return "report/kids_report_setting";
 	}
 	
-	// 일지자원코드 추가
+	// 일지구분 추가
 	@RequestMapping(value="/addReportDivision", method=RequestMethod.POST)
 	public String addReportDivision(Model model ,HttpServletRequest request, ReportDivision reportDivision) {
 		logger.debug("ReportController addReportResource() 메소드 실행");
@@ -108,8 +108,20 @@ public class ReportController {
 		 String addReportDivision = request.getParameter("addReportDivision");
 		 logger.debug("ReportController addReportDivision() 메소드 실행 addReportDivision is : {} " , addReportDivision);
 		 model.addAttribute("addReportDivision",addReportDivision);
-		
 		 reportService.addReportDivision(reportDivision);
+		return "redirect:/reportSetting";
+	}
+	
+	// 일지자원 추가
+	@RequestMapping(value="addReportResource", method=RequestMethod.POST)
+	public String addReportResource(ReportResource reportResource
+									,@RequestParam(value="groupNm", defaultValue="") String groupNm
+									,@RequestParam(value="detail", defaultValue="") String detail) {
+		logger.debug("ReportController addReportResource() 메소드 실행");
+		logger.debug("ReportController modifyReportDivision() 메소드 실행 groupNm is : {}", groupNm);
+		logger.debug("ReportController modifyReportDivision() 메소드 실행 detail is : {}", detail);
+		
+		reportService.addReportResource(reportResource);
 		
 		return "redirect:/reportSetting";
 	}
@@ -125,7 +137,45 @@ public class ReportController {
 		
 		reportService.modifyReportDivision(reportDivision);
 		return "redirect:/reportSetting";
+	}
+	//영유아일지구분 삭제 report_division
+	@RequestMapping(value="/removeReportDivision", method=RequestMethod.GET)
+	public String removeReportDivision(ReportDivision reportDivision
+									,@RequestParam(value="reportCd", defaultValue="") String reportCd
+									,@RequestParam(value="reportNm", defaultValue="") String reportNm) {
 		
+		reportService.removeReportDivision(reportDivision);
+		return "redirect:/reportSetting";
+	}
+	
+	//영유아일지자원 수정 report_resource
+	@RequestMapping(value="/modifyReportResource", method=RequestMethod.POST)
+	public String modifyReportResource(Model model, ReportResource reportResource
+									,@RequestParam(value="", defaultValue="") String groupNm
+									,@RequestParam(value="", defaultValue="") String detail) {
+		
+		logger.debug("ReportController modifyReportResource() 메소드 실행");
+		logger.debug("ReportController modifyReportResource() 메소드 실행 groupNm is : {}", groupNm);
+		logger.debug("ReportController modifyReportResource() 메소드 실행 detail is : {}", detail);
+		
+		reportService.modifyReportResource(reportResource);
+		
+		return "redirect:/reportSetting";
+	}
+	
+	//영유아일지자원 삭제 report_resource
+	@RequestMapping(value="/removeReportResource", method=RequestMethod.GET)
+	public String removeReportResource(ReportResource reportResource
+									,@RequestParam(value="") String reportResourceCd
+									) {
+		
+		logger.debug("ReportController removeReportResource() 메소드 실행");
+		logger.debug("ReportController removeReportResource() 메소드 실행 groupNm is : {}", reportResourceCd);
+		
+		
+		reportService.removeReportResource(reportResource);
+		
+		return "redirect:/reportSetting";
 	}
 }
 	

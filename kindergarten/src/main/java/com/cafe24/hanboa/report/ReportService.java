@@ -72,17 +72,39 @@ public class ReportService {
 		return list;
 	}
 	
-	// 일지자원코드 추가
+	// 일지구분 추가
 	public void addReportDivision(ReportDivision reportDivision) {
 		logger.debug("ReportService addReportDivision() 메소드 실행 ");
 		reportDao.addReportDivision(reportDivision);
-		
 	}
 	
-	//  일지구분 수정
+	// 일지자원 추가
+	public void addReportResource(ReportResource reportResource) {
+		logger.debug("ReportService addReportResource() 메소드 실행 ");
+		reportDao.addReportResource(reportResource);
+	}
+	
+	//  일지구분 수정 report_division
 	public void modifyReportDivision(ReportDivision reportDivision) {
 		logger.debug("ReportService modifyReportDivision() 메소드 실행 ");
 		reportDao.modifyReportDivision(reportDivision);
-		
+	}
+	
+	// 일지구분 삭제 report_division
+	public void removeReportDivision(ReportDivision reportDivision) {
+		logger.debug("ReportService removeReportDivision() 메소드 실행 ");
+		reportDao.removeReportDivision(reportDivision);
+	}
+	
+	// 일지자원 수정 report_resource
+	public void modifyReportResource(ReportResource reportResource) {
+		logger.debug("ReportService modifyReportResource() 메소드 실행 ");
+		reportDao.modifyReportResource(reportResource);
+	}
+	
+	// 일지자원 삭제 report_resource
+	public void removeReportResource(ReportResource reportResource) {
+		logger.debug("ReportService removeReportResource() 메소드 실행 ");
+		reportDao.removeReportResource(reportResource);
 	}
 }

@@ -51,7 +51,7 @@
  <div class="col-lg-6">
   <div class="panel panel-default">
    <div class="panel-heading">
-    <h2 class="page-header">일지설정</h2>
+    <h2 class="page-header">일지구분</h2> <!--  ********************* 일지 구분 부분  ********************* -->
     <!-- reportdivision 메뉴 추가 -->
     <div>
     	 <a href="#demo" class="btn btn-success" data-toggle="collapse"><i class="fas fa-plus" ></i></a>
@@ -76,8 +76,7 @@
       </tr>
      </thead>
      
-     <!--  -->
-     <c:forEach var="reportDivision" items="${list}">
+     <c:forEach var="reportDivision" varStatus="status" items="${list}">
      <tbody>
       <tr>
        <td>${reportDivision.reportCd}</td>
@@ -85,50 +84,69 @@
        <td style="text-align:center">
        
        	<!-- Button trigger modal -->
-<a  href="${pageContext.request.contextPath}/report/kids_report_setting?reportCd=${reportDivision.reportCd}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-  <i class="fas fa-pencil-alt"></i>
-</a>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">일지명 수정</h4>
-      </div>
-      <div class="modal-body">
-      <form action="${pageContext.request.contextPath}/modifyReportDivision" method="POST">
-        <label for="ex2">일지명 : </label>
-        <input type="hidden" name="reportCd" value="${reportDivision.reportCd }">
-        <input type="text" name="reportNm" value="${reportDivision.reportNm}">
-        <button type="submit" class="btn btn-primary">완료</button>
-       </form>
-      </div>
+	<a href="${pageContext.request.contextPath}/report/kids_report_setting?reportCd=${reportDivision.reportCd}" type="button" varStatus="status" class="btn btn-primary" data-toggle="modal" data-target="#myModal1}">
+	  <i class="fas fa-pencil-alt"></i></a>
+	 </td>
+       <td style="text-align:center"><a class="btn btn-danger" href="${pageContext.request.contextPath}/removeReportDivision?reportCd=${reportDivision.reportCd}"><i class="fas fa-trash-alt"></i></a></td>
+      </tr>
+     </tbody>
+     </c:forEach>
+     
+     <!-- Modal -->
+	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">일지명 수정</h4>
+	      </div>
+		      
+	      <div class="modal-body">
+	      <form action="${pageContext.request.contextPath}/modifyReportDivision" method="POST">
+	        <label for="ex2">일지명 : </label>
+	        <input type="hidden" name="reportCd" value="${reportDivision.reportCd }">
+	        <input type="text" name="reportNm" value="${reportDivision.reportNm}">
+	        <button type="submit" class="btn btn-primary">완료</button>
+	       </form>
+	      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
       </div>
     </div>
   </div>
 </div>
-	
-	 </td>
-       <td style="text-align:center"><a class="btn btn-danger" href="${pageContext.request.contextPath}/report/kids_report_setting?reportResourceCd=${reportDivision.reportCd}"><i class="fas fa-trash-alt"></i></a></td>
-      </tr>
-     </tbody>
-     </c:forEach>
+
+<!-- /modal -->
+
     </table>
    </div>	
   
   </div>
  </div>
-
-
+ 
+ 
+ 
 
  <div class="col-lg-6">
   <div class="panel panel-default">
    <div class="panel-heading">
-    <h2 class="page-header">일지설정</h2>
+    <h2 class="page-header">일지자원</h2> <!--  ********************* 일지 구분 부분  ********************* -->
+    <!-- reportdivision 메뉴 추가 -->
+    
+	  <div>
+	    	 <a href="#demo1" class="btn btn-success" data-toggle="collapse"><i class="fas fa-plus" ></i></a>
+	  <div id="demo1" class="collapse">
+	    <!-- 내용 -->
+	    <form action="${pageContext.request.contextPath}/addReportResource" method="POST">
+	    <div class="input-group">
+	    	<span class="input-group-addon" id="sizing-addon2">일지명</span>
+	    	<input type="text" id="addReportDivision" class="form-control" name="groupNm" size="10">
+	    	<span class="input-group-addon" id="sizing-addon2">상세내용</span>
+	    	<input type="text" id="addReportDivision" class="form-control" name="detail" size="10">
+	    	</div>
+	    	<button type="submit" class="btn btn-primary btn-sm" style="float:right;">추가</button>
+	    </form>
+	    </div>
     <table class="table table-hover">
      <thead>
       <tr>
@@ -147,8 +165,42 @@
        <td>${reportResource.reportResourceCd}</td>
        <td>${reportResource.groupNm}</td>
        <td>${reportResource.detail}</td>
-       <td style="text-align:center"><a class="btn btn-warning" href="${pageContext.request.contextPath}/report/kids_report_setting?reportResourceCd=${reportResource.reportResourceCd}"><i class="fas fa-pencil-alt"></i></a></td>
-       <td style="text-align:center"><a class="btn btn-danger" href="${pageContext.request.contextPath}/report/kids_report_setting?reportResourceCd=${reportResource.reportResourceCd}"><i class="fas fa-trash-alt"></i></a></td>
+       <td style="text-align:center">
+       
+	       	<!-- Button trigger modal -->
+		<a  href="${pageContext.request.contextPath}/report/kids_report_setting?reportResourceCd=${reportResource.reportResourceCd}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
+		  <i class="fas fa-pencil-alt"></i>
+		</a>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">일지자원 수정</h4>
+		      </div>
+			    
+		      <div class="modal-body">
+		      <form action="${pageContext.request.contextPath}/modifyReportResource" method="POST">
+		        <label for="ex2">일지명 : </label>
+		        <input type="hidden" name="reportResourceCd" value="${reportResource.reportResourceCd}">
+		        <input type="text" name="groupNm" value="${reportResource.groupNm}">
+		       	<label for="ex2">상세내용 : </label>
+		        <input type="text" name="detail" value="${reportResource.detail}">
+		        <button type="submit" class="btn btn-primary">완료</button>
+		       </form>
+		      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- /modal -->
+       
+       </td>
+       <td style="text-align:center"><a class="btn btn-danger" href="${pageContext.request.contextPath}/removeReportResource?reportResourceCd=${reportResource.reportResourceCd}"><i class="fas fa-trash-alt"></i></a></td>
       </tr>
      </tbody>
      </c:forEach>

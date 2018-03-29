@@ -68,7 +68,7 @@ public class ReportDao {
 		return sqlSession.selectList(localName + "selectReportResourceList");
 	}
 	
-	// 일지자원코드 추가
+	// 일지구분 추가
 	public int addReportDivision(ReportDivision reportDivision) {
 		return sqlSession.insert(localName + "addReportDivision", reportDivision);
 	}
@@ -77,6 +77,29 @@ public class ReportDao {
 	public int modifyReportDivision(ReportDivision reportDivision) {
 		return sqlSession.update(localName + "modifyReportDivision", reportDivision);
 	}
+	
+	// 일지구분 삭제
+	public int removeReportDivision(ReportDivision reportDivision) {
+		return sqlSession.delete(localName + "removeReportDivision", reportDivision);
+	}
+	
+	// 일지자원 추가
+	public int addReportResource(ReportResource reportResource) {
+		return sqlSession.insert(localName + "addReportResource", reportResource);
+		//맵퍼 추가하면됌
+	}
+	
+	//일지자원 수정
+	public int modifyReportResource(ReportResource reportResource) {
+		return sqlSession.update(localName + "modifyReportResource", reportResource);
+	}
+	
+	//일지자원 삭제
+	public int removeReportResource(ReportResource reportResource) {
+		return sqlSession.delete(localName + "removeReportResource", reportResource);
+	}
+	
+	
 
 	
 	
