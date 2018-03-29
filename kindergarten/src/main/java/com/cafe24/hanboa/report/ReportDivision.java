@@ -19,4 +19,6 @@ public class ReportDivision {
 	public void setReportNm(String reportNm) {
 		this.reportNm = reportNm;
 	}
+
+	
 }

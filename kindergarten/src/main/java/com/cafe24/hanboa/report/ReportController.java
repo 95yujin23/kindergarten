@@ -4,6 +4,7 @@ package com.cafe24.hanboa.report;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -60,7 +61,7 @@ public class ReportController {
 								,@RequestParam(value="reportPointList", defaultValue="") String reportPoint
 								,Map<String, Object> map) {
 	
-		logger.debug("reportSearch() 메소드 실행 ");
+		logger.debug("ReportController reportSearch() 메소드 실행 ");
 		
 		logger.debug("reportSearch() classPoint is : {}  ", classPoint);
 		logger.debug("reportSearch() teacherPoint is : {}  ",teacherPoint);
@@ -88,14 +89,44 @@ public class ReportController {
 	@RequestMapping(value="/reportSetting")
 	public String reportSetting(Model model,HttpSession session) {
 		
-		logger.debug("reportSetting() 메소드 실행 ");
+		logger.debug("ReportController reportSetting() 메소드 실행 ");
 		
 		List<ReportDivision> list = reportService.selectReportDivisionListForSearch();
+		List<ReportResource> resourceList = reportService.selectReportResourceList();
 		
 		model.addAttribute("list", list);
+		model.addAttribute("resourceList", resourceList);
 		
 		return "report/kids_report_setting";
 	}
 	
+	// 일지자원코드 추가
+	@RequestMapping(value="/addReportDivision", method=RequestMethod.POST)
+	public String addReportDivision(Model model ,HttpServletRequest request, ReportDivision reportDivision) {
+		logger.debug("ReportController addReportResource() 메소드 실행");
+		
+		 String addReportDivision = request.getParameter("addReportDivision");
+		 logger.debug("ReportController addReportDivision() 메소드 실행 addReportDivision is : {} " , addReportDivision);
+		 model.addAttribute("addReportDivision",addReportDivision);
+		
+		 reportService.addReportDivision(reportDivision);
+		
+		return "redirect:/reportSetting";
+	}
 	
+	//영유아일지구분 수정 report_division
+	@RequestMapping(value="/modifyReportDivision", method=RequestMethod.POST)
+	public String modifyReportDivision(Model model,ReportDivision reportDivision
+									,@RequestParam(value="reportCd", defaultValue="") String reportCd
+									,@RequestParam(value="reportNm", defaultValue="") String reportNm) {
+		logger.debug("ReportController modifyReportDivision() 메소드 실행");
+		logger.debug("ReportController modifyReportDivision() 메소드 실행 reportCd is : {}", reportCd);
+		logger.debug("ReportController modifyReportDivision() 메소드 실행 reportNm is : {}", reportNm);
+		
+		reportService.modifyReportDivision(reportDivision);
+		return "redirect:/reportSetting";
+		
+	}
 }
+	
+

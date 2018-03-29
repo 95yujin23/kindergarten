@@ -63,6 +63,20 @@ public class ReportDao {
 		logger.debug("ReportDao ---> selectReportListForSearch() 메소드 실행");
 		return sqlSession.selectList(localName + "selectReportForSearch",map);
 	}
+	
+	public List<ReportResource> selectReportResourceList() {
+		return sqlSession.selectList(localName + "selectReportResourceList");
+	}
+	
+	// 일지자원코드 추가
+	public int addReportDivision(ReportDivision reportDivision) {
+		return sqlSession.insert(localName + "addReportDivision", reportDivision);
+	}
+	
+	// 일지구분 수정
+	public int modifyReportDivision(ReportDivision reportDivision) {
+		return sqlSession.update(localName + "modifyReportDivision", reportDivision);
+	}
 
 	
 	

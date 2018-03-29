@@ -22,6 +22,8 @@
 <!-- Custom Fonts -->
 <link href="./resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -46,61 +48,116 @@
 <!-- content -->
 <div id="page-wrapper">
 	<div class="row">
-		<div class="col-lg-3" style="display:inline; float:left">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-				<h2 class="page-header">일지설정</h2>
-<table class="table table-hover">
-	<thead>
-		<tr>
-		<th>일지자원코드</th>
-		<th>일지명</th>
-		</tr>
-	</thead>
+ <div class="col-lg-6">
+  <div class="panel panel-default">
+   <div class="panel-heading">
+    <h2 class="page-header">일지설정</h2>
+    <!-- reportdivision 메뉴 추가 -->
+    <div>
+    	 <a href="#demo" class="btn btn-success" data-toggle="collapse"><i class="fas fa-plus" ></i></a>
+  <div id="demo" class="collapse">
+    <!-- 내용 -->
+    <form action="${pageContext.request.contextPath}/addReportDivision" method="POST">
+    <div class="form-group col-xs-3">
+    	<input type="text" id="addReportDivision" name="reportNm" class="form-control" size="10"  style="display:inline-block;float:left;">
+    	</div>
+    	<button type="submit" class="btn btn-primary btn-sm" style="display:inline-block;">추가</button>
+    	
+    </form>
+  </div>
+  </div>
+    <table class="table table-hover">
+     <thead>
+      <tr>
+      <th>일지자원코드</th>
+      <th>일지명</th>
+      <th style="text-align:center">수정</th>
+      <th style="text-align:center">삭제</th>
+      </tr>
+     </thead>
+     
+     <!--  -->
+     <c:forEach var="reportDivision" items="${list}">
+     <tbody>
+      <tr>
+       <td>${reportDivision.reportCd}</td>
+       <td>${reportDivision.reportNm}</td>
+       <td style="text-align:center">
+       
+       	<!-- Button trigger modal -->
+<a  href="${pageContext.request.contextPath}/report/kids_report_setting?reportCd=${reportDivision.reportCd}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  <i class="fas fa-pencil-alt"></i>
+</a>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">일지명 수정</h4>
+      </div>
+      <div class="modal-body">
+      <form action="${pageContext.request.contextPath}/modifyReportDivision" method="POST">
+        <label for="ex2">일지명 : </label>
+        <input type="hidden" name="reportCd" value="${reportDivision.reportCd }">
+        <input type="text" name="reportNm" value="${reportDivision.reportNm}">
+        <button type="submit" class="btn btn-primary">완료</button>
+       </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+      </div>
+    </div>
+  </div>
+</div>
 	
-	<!--  -->
-	<c:forEach var="reportDivision" items="${list}">
-	<tbody>
-		<tr>
-			<td>${reportDivision.reportCd}</td>
-			<td>${reportDivision.reportNm}</td>
-		</tr>
-	</tbody>
-	</c:forEach>
-</table>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col-lg-3" style="display:inline; float:left">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-				<h2 class="page-header">일지설정</h2>
-<table class="table table-hover">
-	<thead>
-		<tr>
-		<th>일지자원코드</th>
-		<th>일지명</th>
-		</tr>
-	</thead>
-	
-	<!--  -->
-	<c:forEach var="reportDivision" items="${list}">
-	<tbody>
-		<tr>
-			<td>${reportDivision.reportCd}</td>
-			<td>${reportDivision.reportNm}</td>
-		</tr>
-	</tbody>
-	</c:forEach>
-</table>
-				</div>
-			</div>
-		</div>
-	</div>
-	
+	 </td>
+       <td style="text-align:center"><a class="btn btn-danger" href="${pageContext.request.contextPath}/report/kids_report_setting?reportResourceCd=${reportDivision.reportCd}"><i class="fas fa-trash-alt"></i></a></td>
+      </tr>
+     </tbody>
+     </c:forEach>
+    </table>
+   </div>	
+  
+  </div>
+ </div>
+
+
+
+ <div class="col-lg-6">
+  <div class="panel panel-default">
+   <div class="panel-heading">
+    <h2 class="page-header">일지설정</h2>
+    <table class="table table-hover">
+     <thead>
+      <tr>
+      <th>일지자원코드</th>
+      <th>일지명</th>
+      <th>상세내용</th>
+      <th style="text-align:center">수정</th>
+      <th style="text-align:center">삭제</th>
+      </tr>
+     </thead>
+     
+     <!--  -->
+     <c:forEach var="reportResource" items="${resourceList}">
+     <tbody>
+      <tr>
+       <td>${reportResource.reportResourceCd}</td>
+       <td>${reportResource.groupNm}</td>
+       <td>${reportResource.detail}</td>
+       <td style="text-align:center"><a class="btn btn-warning" href="${pageContext.request.contextPath}/report/kids_report_setting?reportResourceCd=${reportResource.reportResourceCd}"><i class="fas fa-pencil-alt"></i></a></td>
+       <td style="text-align:center"><a class="btn btn-danger" href="${pageContext.request.contextPath}/report/kids_report_setting?reportResourceCd=${reportResource.reportResourceCd}"><i class="fas fa-trash-alt"></i></a></td>
+      </tr>
+     </tbody>
+     </c:forEach>
+    </table>
+   </div>
+  
+  </div>
+ </div>
+</div>
 </div>
 
 

@@ -60,17 +60,29 @@ public class ReportService {
 		return list;
 	}
 	
-	/*public List<ReportList> selectReportListForSearch(HashMap<String,Object> map) {
-		logger.debug("selectReportListForSearch() 메소드 실행 ");
-		List<ReportList> list = reportDao.selectReportListForSearch(map);
-		return list;
-		
-	}*/
-	
 	public List<Map<String,Object>> selectReportListForSearch(Map<String,Object> map, HttpSession session){
 		logger.debug("ReportService selectReportListForSearch() 메소드 실행 ");
 		List<Map<String,Object>> list = reportDao.selectReportListForSearch(map, session);
 		logger.debug("ReportService selectReportListForSearch() list is :  {} ", list);
 		return list;
+	}
+	// report_resource list
+	public List<ReportResource> selectReportResourceList() {
+		List<ReportResource> list = reportDao.selectReportResourceList();
+		return list;
+	}
+	
+	// 일지자원코드 추가
+	public void addReportDivision(ReportDivision reportDivision) {
+		logger.debug("ReportService addReportDivision() 메소드 실행 ");
+		reportDao.addReportDivision(reportDivision);
+		
+	}
+	
+	//  일지구분 수정
+	public void modifyReportDivision(ReportDivision reportDivision) {
+		logger.debug("ReportService modifyReportDivision() 메소드 실행 ");
+		reportDao.modifyReportDivision(reportDivision);
+		
 	}
 }
