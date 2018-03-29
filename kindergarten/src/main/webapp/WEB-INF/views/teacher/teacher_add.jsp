@@ -124,7 +124,7 @@
 		$("#emailCheck").click(function() {
 			if($("#teacherEmail").val()){
 				$.ajax({
-					url : '/TeacherEmailCheck'
+					url : 'TeacherEmailCheck'
 					, type : "post"
 					, data : {teacherEmail : $("#teacherEmail").val()}
 					, success : function (data) {
