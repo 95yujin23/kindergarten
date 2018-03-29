@@ -70,7 +70,7 @@
 							<td>${femo.femoRegistrationDate}</td>
 							<td>${femo.femoRegistrant}</td>
 							<td>${femo.licenseKindergarten}</td>
-							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/feeding/feedingApplication_modify?feedingApplicationCd=${feap.feedingApplicationCd}"><i class="fa fa-pencil"></i></a></td>
+							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/feeding/feedingMonthly_modify?feedingMonthlyCd=${femo.feedingMonthlyCd}"><i class="fa fa-pencil"></i></a></td>
 							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}"><i class="fa fa-trash"></i></a></td>
 						</tr>
 					</tbody>	

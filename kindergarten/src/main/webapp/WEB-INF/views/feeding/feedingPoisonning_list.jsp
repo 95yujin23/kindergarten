@@ -64,7 +64,7 @@
 							<td>${fepo.fopoRegistrationDate}</td>
 							<td>${fepo.registrant}</td>
 							<td>${fepo.licenseKindergarten}</td>
-							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/feeding/feedingPoisonning_modify?feedingApplicationCd=${feap.feedingApplicationCd}"><i class="fa fa-pencil"></i></a></td>
+							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/feeding/feedingPoisonning_modify?foodPoisonningGenerationCd=${fepo.foodPoisonningGenerationCd}"><i class="fa fa-pencil"></i></a></td>
 							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}"><i class="fa fa-trash"></i></a></td>
 						</tr>
 					</tbody>	

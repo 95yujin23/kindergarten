@@ -17,9 +17,23 @@ public class FeedingMonthlyDao {
 	
 	String localName = "com.cafe24.hanboa.feeding.FeedingMapper.";
 	
+	//1. 전제조회
 	public List<FeedingMonthly> getFeedingMonthlyList(){
+		logger.debug("< -- getFeedingMonthlyList FeedingMonthlyDao.java");
 		return sessionTemplate.selectList(localName+"getfemoList");
-		
 	}
+	
+	//2. 수정정보요청
+	public FeedingMonthly modifyGetFeedingMonthly(String feedingMonthly) {
+		logger.debug("< -- modifyGetFeedingMonthly FeedingMonthlyDao.java",feedingMonthly);
+		return sessionTemplate.selectOne(localName+"getfemoOne",feedingMonthly);
+	}
+		
+	//3. 수정처리
+	public int FeedingMonthlyModify(FeedingMonthly feedingMonthly) {
+		logger.debug("< -- FeedingMonthlyModify FeedingMonthlyDao.java",feedingMonthly);
+		return sessionTemplate.update(localName+"modifyFemo",feedingMonthly);		
+	}
+	
 
 }

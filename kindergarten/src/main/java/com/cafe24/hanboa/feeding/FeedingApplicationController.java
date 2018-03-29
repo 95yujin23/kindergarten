@@ -20,12 +20,12 @@ public class FeedingApplicationController {
 	private static final Logger logger = LoggerFactory.getLogger(FeedingApplicationController.class);
 	
 	//1. 목록조회
-	@RequestMapping(value="/feeding/feeding_application")
+	@RequestMapping(value="/feeding/feedingApplication_list")
 	public String feedingApplicationList(Model model, HttpSession session) {
 		List<FeedingApplication> list = feapService.getFeedingApplicationList();
 		logger.debug("{} <- list FeedingApplicationController.java",list);
 		model.addAttribute("list",list);		
-		return "feeding/feeding_application";	
+		return "feeding/feedingApplication_list";	
 	}
 	
 	//2.수정 정보요청
@@ -34,15 +34,14 @@ public class FeedingApplicationController {
 		FeedingApplication feedingApplication = feapService.modifyGetfeap(feedingApplicationCd);
 		model.addAttribute("feedingApplication", feedingApplication);
 		logger.debug("{} <- feedingApplication FeedingApplicationController.java",feedingApplication);
-		return "feeding/feedingApplication_modify";
+		return "/feeding/feedingApplication_modify";
 	}
 	
-	/*// 3.수정 처리요청
+	// 3.수정 처리요청
 	@RequestMapping(value="/feeding/feedingApplication_modify", method = RequestMethod.POST)
 	public String feedingApplicationModify(FeedingApplication feedingApplication) {
 		return null;		
-	}
-			
-	*/
+	}			
+	
 
 }

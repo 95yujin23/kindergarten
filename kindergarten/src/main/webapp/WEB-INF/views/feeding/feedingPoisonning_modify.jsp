@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>FeedingApplication Modify</title>
+<title>feedingPoisonning Modify</title>
 <!-- Bootstrap Core CSS -->
 <link href="../resources/vendor/css/bootstrap.min.css" rel="stylesheet">
 <!-- MetisMenu CSS -->
@@ -33,37 +33,36 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			
 			<div class="col-lg-1"></div>
 			<div class="col-lg-11">
-			<h2>수정화면</h2>
-			<form id="feedingApplicationModifyForm" action="${pageContext.request.contextPath}/feeding/feedingApplication_modify" method="post">
-				<table class="table table-hover">
+			<h2>식중독발생처리현황 수정화면</h2>
+			<form id="feedingMonthlyModifyForm" action="${pageContext.request.contextPath}/feeding/feedingPoisonning_modify" method="post">
+					<table class="table table-hover">
 					<thead>
 						<tr>
-							<th>급식신청 코드</th>							
-							<th>영유아 코드</th>
-							<th>월별급식 코드</th>
-							<th>수입급식비</th>
-							<th>마감회계(수입급식비)</th>
-							<th>마감유무</th>
-							<th>급식구분</th>
+							<th>식중독발생및처리 코드</th>
+							<th>월별급식코드</th>
+							<th>발생일자</th>
+							<th>전체아동수</th>
+							<th>발생아동수</th>
+							<th>식중독종류</th>
+							<th>처리결과</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="text" value="${feedingApplication.feedingApplicationCd}" name="feedingApplicationCd"></td>
-							<td><input type="text" value="${feedingApplication.kidsCd}" name="kidsCd"></td>										
-							<td><input type="text" value="${feedingApplication.feedingMonthlyCd}" name="feedingMonthlyCd"></td>
-							<td><input type="text" value="${feedingApplication.feapExpenseMonth}" name="feapExpenseMonth"></td>
-							<td><input type="text" value="${feedingApplication.feapClosingIncome}" name="feapClosingIncome"></td>
-							<td><input type="text" value="${feedingApplication.feapClosingOption}" name="feapClosingOption"></td> 
-							<td><input type="text" value="${feedingApplication.feapDivision}" name="feapDivision"></td> 
+							<td><input type="text" value="${feedingPoisonning.foodPoisonningGenerationCd}" name="foodPoisonningGenerationCd"></td>	
+							<td><input type="text" value="${feedingPoisonning.feedingMonthlyCd}" name="feedingMonthlyCd"></td>	
+							<td><input type="text" value="${feedingPoisonning.fepoGenerationDate}" name="fepoGenerationDate"></td>	
+							<td><input type="text" value="${feedingPoisonning.fopoWholeKidsCount}" name="fopoWholeKidsCount"></td>	
+							<td><input type="text" value="${feedingPoisonning.fopoGeneratedKidsCount}" name="fopoGeneratedKidsCount"></td>							
+							<td><input type="text" value="${feedingPoisonning.fopoFoodPoisonningKids}" name="fopoFoodPoisonningKids"></td>
+							<td><input type="text" value="${feedingPoisonning.fopoProcessingResult}" name="fopoProcessingResult"></td>			
 						</tr>
 					</tbody>
 				</table>
-				<button id="modifyButton" class="btn" type="button">수정</button>
-				<button class="btn" type="reset">초기화</button>
+				<button id="modifyButton" class="btn" type="submit">수정</button>
+				<button class="btn" type="reset">초기화</button> 
 			</form>
 			</div>
 		</div>
