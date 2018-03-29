@@ -64,7 +64,7 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6">
-							<form id="addForm" action="${pageContext.request.contextPath}/TeacherAdd" method="POST">
+							<form id="addForm" action="${pageContext.request.contextPath}/TotalResourceAdd" method="POST">
 								<div class="form-group">
 								    <label>통합자원코드 그룹명</label>
 								    <input class="form-control" id="resourceGroupNm" name="resourceGroupNm" placeholder="특별활동 or 안전교육및점검">
