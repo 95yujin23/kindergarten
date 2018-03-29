@@ -26,7 +26,7 @@
 									Project
 								</a>
 							</li>
-							<li><a href="${pageContext.request.contextPath}/team">
+							<li><a href="${pageContext.request.contextPath}/ㅆeam">
 									Team
 								</a>
 							</li>
@@ -48,23 +48,19 @@
 						<li><a href="#">교직원<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
 								<li><a href="${pageContext.request.contextPath}/TeacherList">교직원 전체 조회</a></li>
-								<li><a href="${pageContext.request.contextPath}/TeacherSelect">교직원 개인 조회</a></li>
 								<li><a href="${pageContext.request.contextPath}/TeacherAdd">교직원 등록</a></li>
 							</ul>	
 						</li>
 						<li><a href="#">교직원 인건비 지급<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
 								<li><a href="${pageContext.request.contextPath}/TeacherPayList">인건비 지급 전체 조회</a></li>
-								<li><a href="${pageContext.request.contextPath}/TeacherPaySelect">인건비 지급 개인 조회</a></li>
 								<li><a href="${pageContext.request.contextPath}/TeacherPayAdd">인건비 지급 등록</a></li>
 							</ul>	
 						</li>
 						<li><a href="#">교직원 근태<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/teacher_attendance">교직원 출퇴근 등록</a></li>
-								<li><a href="${pageContext.request.contextPath}/teacher_attendance_list">교직원 근태 전체 조회</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
+								<li><a href="${pageContext.request.contextPath}/TeacherAttendance">교직원 출퇴근 등록</a></li>
+								<li><a href="${pageContext.request.contextPath}/TeacherAttendanceList">교직원 근태 전체 조회</a></li>
 							</ul>	
 						</li>
 					</ul>
@@ -78,13 +74,11 @@
 						<li><a href="${pageContext.request.contextPath}/KidsList">유아목록</a></li>
 						<li><a href="#">출석관리<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/kids_attendance">등하원 등록</a></li>
-								<li><a href="${pageContext.request.contextPath}/kids_attendance_list">등하원 전체 조회</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
+								<li><a href="${pageContext.request.contextPath}/KidsAttendance">등하원 등록</a></li>
+								<li><a href="${pageContext.request.contextPath}/KidsAttendanceList">등하원 전체 조회</a></li>
 							</ul>	
 						</li>
-						<li><a href="${pageContext.request.contextPath}/kidsClass">반 현황</a></li>
+						<li><a href="${pageContext.request.contextPath}/KidsClass">반 현황</a></li>
 					</ul>
 				</li>
 				
@@ -93,14 +87,12 @@
 						영유아 일지 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/kidsReport">일지목록</a></li>
-						
+						<li><a href="${pageContext.request.contextPath}/KidsReportList">일지목록</a></li>
 						<li><a href="#">일지관리<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/reportSetting">일지설정</a></li>
+								<li><a href="${pageContext.request.contextPath}/ReportSetting">일지설정</a></li>
 							</ul>
-						<li><a href="icons.html"> Icons</a></li>
-						<li><a href="grid.html">Grid</a></li>
+						</li>
 					</ul>
 				</li>
 				
@@ -109,12 +101,8 @@
 						계획안 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/.">?</a></li>
-						<li><a href="${pageContext.request.contextPath}/.">?</a></li>
-						<li><a href="${pageContext.request.contextPath}/.">?</a></li>
-						<li><a href="${pageContext.request.contextPath}/.">?</a></li>
-						<li><a href="icons.html"> Icons</a></li>
-						<li><a href="grid.html">Grid</a></li>
+						<li><a href="${pageContext.request.contextPath}/PlanFormList">계획안양식 조회</a></li> <!-- 양식을 불러온 다음 등록? -->
+						<li><a href="${pageContext.request.contextPath}/PlanList">계획안 목록 조회</a></li>
 					</ul>
 				</li>
 					
@@ -123,11 +111,18 @@
 						특별활동 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/program/program_detail">내특별활동</a></li> <!-- 영유아 -->
-						<li><a href="${pageContext.request.contextPath}/program/program_application">특별활동신청</a></li> <!-- 영유아 -->
-						<li><a href="${pageContext.request.contextPath}/program/program_add">특별활동등록</a></li> <!-- 교직원 -->
-						<li><a href="${pageContext.request.contextPath}/program/program_modify">특별활동수정</a></li> <!-- 교직원 -->
-						<li><a href="${pageContext.request.contextPath}/program/program_list">특별활동조회</a></li> <!-- 교직원 -->
+						<li><a href="#">특별활동<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="${pageContext.request.contextPath}/ProgramList">특별활동조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/ProgramAdd">특별활동등록</a></li>
+							</ul>
+						</li>
+						<li><a href="#">특별활동 신청<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="${pageContext.request.contextPath}/ProgramDetail">내특별활동</a></li>
+								<li><a href="${pageContext.request.contextPath}/ProgramApplication">특별활동신청</a></li>
+							</ul>
+						</li>
 					</ul>
 				</li>
 					
@@ -138,33 +133,28 @@
 					<ul class="nav nav-second-level">
 						<li><a href="#">식단<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/feeding/feedingMenu_list">식단 조회</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
+								<li><a href="${pageContext.request.contextPath}/FeedingMenuList">식단 조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/FeedingMenuAdd">식단 등록</a></li>
 							</ul>
 						</li>
 						<li><a href="#">급식신청<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/feeding/feedingApplication_list">급식 신청 조회</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-							</ul>					
+								<li><a href="${pageContext.request.contextPath}/FeedingApplicationList">급식 신청 조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/FeedingApplicationAdd">급식 신청 등록</a></li>
+							</ul>
+						</li>					
 						<li><a href="#">월별급식<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/feeding/feedingMonthly_list">월 급식비 조회</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-							</ul>					
+								<li><a href="${pageContext.request.contextPath}/FeedingMonthlyList">월 급식비 조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/FeedingMonthlyAdd">월 급식비 등록</a></li>
+							</ul>	
+						</li>				
 						<li><a href="#">식중독발생및처리<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/feeding/feedingPoisonning_list">식중독발생및처리 조회</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-							</ul>					
+								<li><a href="${pageContext.request.contextPath}/FeedingPoisonningList">식중독발생및처리 조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/FeedingPoisonningAdd">식중독발생및처리 등록</a></li>
+							</ul>
+						</li>					
 					</ul>
 				</li>
 					
@@ -183,36 +173,34 @@
 						회계 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/.">?</a></li>
-						<li><a href="${pageContext.request.contextPath}/.">?</a></li>
-						<li><a href="${pageContext.request.contextPath}/.">?</a></li>
-						<li><a href="${pageContext.request.contextPath}/.">?</a></li>
-					</ul>
-				</li>	
-				
-				<!-- 11. 거래처관리 메뉴 -->
-				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>
-						거래처 관리<span class="fa arrow"></span>
-					</a>
-					<ul class="nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/client/client_list">거래처목록</a></li>
-						<li><a href="${pageContext.request.contextPath}/client/client_add">거래처등록</a></li>
-						<li><a href="${pageContext.request.contextPath}/client/client_modify">거래처수정</a></li>
+						<li><a href="#">전표 관리<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="${pageContext.request.contextPath}/StatementList">전표 조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/StatementAdd">전표 등록</a></li>
+							</ul>
+						</li>
+						<li><a href="#">전표분류 관리<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="${pageContext.request.contextPath}/StatementCategoryList">급식 신청 조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/StatementCategoryAdd">급식 신청 등록</a></li>
+							</ul>	
+						</li>					
+						<li><a href="#">계약 관리<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="${pageContext.request.contextPath}/ContractList">계약 목록</a></li>
+								<li><a href="${pageContext.request.contextPath}/ContractListAdd">계약 등록</a></li>
+							</ul>		
+						</li>				
+						<li><a href="#">거래처 관리<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="${pageContext.request.contextPath}/ClientList">거래처 목록</a></li>
+								<li><a href="${pageContext.request.contextPath}/ClientAdd">거래처 등록</a></li>
+							</ul>	
+						</li>				
 					</ul>
 				</li>
-				
-				<!-- 12. 계약관리 메뉴 -->
-				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>
-						계약 관리<span class="fa arrow"></span>
-					</a>
-					<ul class="nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/contract/contract_list">계약목록</a></li>
-						<li><a href="${pageContext.request.contextPath}/contract/contract_add">계약등록</a></li>
-						<li><a href="${pageContext.request.contextPath}/contract/contract_modify">계약수정</a></li>						
-					</ul>
-				</li>								
 
-				<!-- 13. 통합자원코드 메뉴 -->
+				<!-- 11. 통합자원코드 메뉴 -->
 				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>
 						통합자원코드 관리<span class="fa arrow"></span>
 					</a>
@@ -222,7 +210,7 @@
 					</ul>
 				</li>									
 
-				<!-- 14. 유치원라이센스 메뉴 -->
+				<!-- 12. 유치원라이센스 메뉴 -->
 				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>
 						유치원라이센스 관리<span class="fa arrow"></span>
 					</a>
