@@ -46,12 +46,23 @@ public class ClientController {
 	}
 	
 	//4. 등록
-	@RequestMapping(value="/client/client_add", method=RequestMethod.POST)
+	@RequestMapping(value="/ClientAdd", method=RequestMethod.POST)
 	public String clientAdd(Model model, Client client) {
 		clientService.cleintAdd(client);
-		return "redirect:/client/client_list";
+		logger.debug("{} < -- clientAdd ClientController.java",client);
+		return "redirect:/client/client_list";		
+	}
+	
+	// 5. 등록화면
+	@RequestMapping(value="/ClientAdd", method=RequestMethod.GET)
+	public String clientAdd() {
+		logger.debug("{} <-- clientAdd ClientController insertForm");
+		return "client/client_add";
 		
 	}
+	
+	
+	
 	
 	
 	

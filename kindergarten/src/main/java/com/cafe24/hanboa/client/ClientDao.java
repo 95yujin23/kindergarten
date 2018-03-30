@@ -37,6 +37,7 @@ public class ClientDao {
 	}
 	// 5.등록
 	public int insertClient(Client client) {
+		logger.debug("{} < -- insertClient ClientDao.java",client);
 		return sqlSession.insert(localName+"clientAdd", client);		
 	}
 	
