@@ -21,7 +21,7 @@ public class ClientController {
 	private static final Logger logger = LoggerFactory.getLogger(Client.class);
 	
 	// 1.목록조회
-	@RequestMapping(value="/client/client_list")
+	@RequestMapping(value="/ClientList")
 	public String clientList(Model model, HttpSession session) {
 		List<Client> list = clientService.getClientList();
 		logger.debug("{} <- list clientController.java",list);
@@ -43,6 +43,14 @@ public class ClientController {
 		clientService.updateClient(client);
 		logger.debug("{} <-clientModify ClientController.java", client);
 		return "redirect:/client/client_list";
+	}
+	
+	//4. 등록
+	@RequestMapping(value="/client/client_add", method=RequestMethod.POST)
+	public String clientAdd(Model model, Client client) {
+		clientService.cleintAdd(client);
+		return "redirect:/client/client_list";
+		
 	}
 	
 	

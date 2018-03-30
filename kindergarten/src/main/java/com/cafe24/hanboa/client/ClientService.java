@@ -42,6 +42,12 @@ public class ClientService {
 		logger.debug("{} <- deleteClient ClientService.java", delete);
 		return delete;		
 	}
+	//5.등록
+	public int cleintAdd(Client client) {
+		int insertClinet = clientDao.insertClient(client);
+		return insertClinet;
+		
+	}
 	
 	
 }
