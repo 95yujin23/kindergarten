@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class AttendanceService {
-	//출석 처리 서비스
+	//출석 처리 Service
 	@Autowired
 	private AttendanceDao attendanceDao;
 	private static final Logger logger = LoggerFactory.getLogger(AttendanceService.class);
@@ -43,6 +43,14 @@ public class AttendanceService {
 		logger.debug("-------------------------------------------------------------");	
 		return attendanceDao.selectTeacherAttendance();
 	}
+	// 2-1-1. 교직원 출퇴근 조회(원장용) 페이징 & 검색
+//	public List<TeacherAttendance> selectTeacherAttendanceByPage() {
+//		logger.debug("selectTeacherAttendance selectTeacherAttendanceByPage.java");
+//		logger.debug("-------------------------------------------------------------");	
+//		List<TeacherAttendance> list = attendanceDao.selectTeacherAttendanceListByPage();
+//		logger.debug("{} <- list AttendanceService.java", list);
+//		return list;
+//	}
 	// 2-2. 교직원 출퇴근 전체 조회(선생님용)
 	public List<TeacherAttendance> selectTeacherAttendanceOne(String teacherCd) {
 		logger.debug("selectTeacherAttendanceOne AttendanceService.java");
@@ -60,7 +68,7 @@ public class AttendanceService {
 		if(inTimeEx < sampleTimeEx) {
 			teacherRestLateType = "조퇴";
 		}
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("teacherCd", teacherCd);
 		map.put("teacherGetOff", inTime);
 		map.put("teacherAttendanceDay", inDate);
@@ -111,7 +119,7 @@ public class AttendanceService {
 		if(inTimeEx < sampleTimeEx) {
 			kidsRestLateType = "조퇴";
 		}
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("kidsCd", kidsCd);
 		map.put("kidsComeHome", inTime);
 		map.put("kidsAttendanceDay", inDate);

@@ -8,18 +8,18 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>FeedingApplication List</title>
-<link href="../resources/vendor/css/bootstrap.min.css" rel="stylesheet">
+<link href="/resources/vendor/css/bootstrap.min.css" rel="stylesheet">
 <!-- MetisMenu CSS -->
-<link href="../resources/vendor/css/metisMenu.min.css" rel="stylesheet">
+<link href="/resources/vendor/css/metisMenu.min.css" rel="stylesheet">
 <!-- Custom CSS -->
-<link href="../resources/vendor/css/sb-admin-2.css" rel="stylesheet">
+<link href="/resources/vendor/css/sb-admin-2.css" rel="stylesheet">
 <!-- Morris Charts CSS -->
-<link href="../resources/vendor/css/morris.css" rel="stylesheet">
+<link href="/resources/vendor/css/morris.css" rel="stylesheet">
 <!-- Custom Fonts -->
-<link href="../resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="/resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<div id "wrapper">
+	<div id ="wrapper">
 		<!-- TOP : Navigation -->
 		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<c:import url="../inc/top.jsp"></c:import>

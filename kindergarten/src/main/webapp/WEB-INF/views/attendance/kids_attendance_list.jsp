@@ -4,10 +4,27 @@
 <html>
 <head>
 <title>Teacher Attendance List</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+<!-- Bootstrap Core CSS -->
+<link href="resources/vendor/css/bootstrap.min.css" rel="stylesheet">
+<!-- MetisMenu CSS -->
+<link href="resources/vendor/css/metisMenu.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="resources/vendor/css/sb-admin-2.css" rel="stylesheet">
+<!-- Morris Charts CSS -->
+<link href="resources/vendor/css/morris.css" rel="stylesheet">
+<!-- Custom Fonts -->
+<link href="resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css"></head>
 <body>
+	<div id="wrapper">
+		<!-- TOP : Navigation -->
+		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+		<c:import url="../inc/top.jsp"></c:import>
+		<!-- TOP -->
+		<!-- LEFT : Navigation -->
+		<c:import url="../inc/left.jsp"></c:import>
+		<!-- LEFT -->
+		</nav>
+	</div>
 	<div class="container">
 		<div class="row">
 			<table class="table table-hover">
@@ -36,5 +53,8 @@
 			</table>
 		</div>
 	</div>
+	<!-- FOOTER : Navigation -->
+	<c:import url="../inc/footer.jsp"></c:import>
+	<!-- FOOTER -->
 </body>
 </html>

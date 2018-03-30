@@ -68,6 +68,7 @@
 								<div class="form-group">
 								    <label>Email</label>
 								    <input class="form-control" id="teacherEmail" name="teacherEmail" placeholder="이메일">
+									중복여부 : <email />
 								</div>
 								<div class="form-group">
 								    <label>PassWord</label>
@@ -82,6 +83,7 @@
 		</div>
 	</div>
 </div>
+
 	<!-- FOOTER : Navigation -->
 	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->
@@ -102,5 +104,24 @@
 
 	<!-- Custom Theme JavaScript -->
 	<script src="resources/vendor/js/sb-admin-2.js"></script>
+	
+	<script>
+	$(document).ready(function(){
+		$("#teacherEmail").keyup(function(){
+			$.ajax({
+				type		: "post"
+				,url		: '${pageContext.request.contextPath}/TeacherEmailCheck'
+				,data		: {teacherEmail : $("#teacherEmail").val()}
+				,success	: function(data){
+					if(data == 0){
+						$("email").html("아이디가 없습니다.")
+					}else{
+						$("email").html("아이디가 확인되었습니다.")						
+					}
+				}
+			})
+		});
+	});
+	</script>
 </body>
 </html>

@@ -48,14 +48,15 @@
 		,client_registrant
 		,license_kindergarten)
 		VALUES
-		(${clientCd}
-		,${clientPhone}
-		,${clientType}
-		,${clientNm}
-		,${clientAddress}
-		,${clientRegistrationDate}
-		,${clientRegistrant}
-		,${licenseKindergarten})		
+		(#{clientCd}
+		,#{clientPhone}
+		,#{clientType}
+		,#{clientNm}
+		,#{clientManager}
+		,#{clientAddress}
+		,#{clientRegistrationDate}
+		,#{clientRegistrant}
+		,#{licenseKindergarten})		
 	</insert>
 	
 <!-- 수정처리 -->

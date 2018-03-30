@@ -26,7 +26,8 @@ public class ClientService {
 	//2.업데이트 정보요청
 	public Client modifyGetClient(String clientCd) {
 		Client client = clientDao.modifyGetClient(clientCd);
-		logger.debug("{} <- updateClient ClientDao.java");
+		logger.debug("{} <- updateClient ClientDao.java",clientCd);
+		logger.debug("{} <- updateClient ClientDao.java",client);
 		return client;
 	}
 	
@@ -34,13 +35,23 @@ public class ClientService {
 	public int updateClient(Client client) {
 		int modifyClient = clientDao.updateClient(client);
 		logger.debug("{} <- updateClient ClientService.java", client);
+		logger.debug("{} <- updateClient ClientService.java", modifyClient);
 		return modifyClient;
 	}
 	//4. 삭제
 	public int deleteClient(String clientCd) {
 		int delete = clientDao.deleteClient(clientCd);
+		logger.debug("{} <- deleteClient ClientService.java", clientCd);
 		logger.debug("{} <- deleteClient ClientService.java", delete);
 		return delete;		
+	}
+	//5.등록
+	public int cleintAdd(Client client) {
+		int insertClinet = clientDao.insertClient(client);
+		logger.debug("{} < -- cleintAdd clientDao.java",client);
+		logger.debug("{} < -- cleintAdd clientDao.java",insertClinet);
+		return insertClinet;
+		
 	}
 	
 	

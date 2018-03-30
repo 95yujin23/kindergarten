@@ -21,7 +21,7 @@ public class ClientController {
 	private static final Logger logger = LoggerFactory.getLogger(Client.class);
 	
 	// 1.목록조회
-	@RequestMapping(value="/client/client_list")
+	@RequestMapping(value="/ClientList")
 	public String clientList(Model model, HttpSession session) {
 		List<Client> list = clientService.getClientList();
 		logger.debug("{} <- list clientController.java",list);
@@ -44,6 +44,25 @@ public class ClientController {
 		logger.debug("{} <-clientModify ClientController.java", client);
 		return "redirect:/client/client_list";
 	}
+	
+	//4. 등록
+	@RequestMapping(value="/ClientAdd", method=RequestMethod.POST)
+	public String clientAdd(Model model, Client client) {
+		clientService.cleintAdd(client);
+		logger.debug("{} < -- clientAdd ClientController.java",client);
+		return "redirect:/client/client_list";		
+	}
+	
+	// 5. 등록화면
+	@RequestMapping(value="/ClientAdd", method=RequestMethod.GET)
+	public String clientAdd() {
+		logger.debug("{} <-- clientAdd ClientController insertForm");
+		return "client/client_add";
+		
+	}
+	
+	
+	
 	
 	
 	

@@ -20,7 +20,7 @@ public class FeedingMenuController {
 	private static final Logger logger = LoggerFactory.getLogger(FeedingMenuController.class);
 	
 	//1. 목록조회
-	@RequestMapping(value="/feeding/feedingMenu_list")
+	@RequestMapping(value="/FeedingMenuList")
 	public String feedingMenuList(Model model, HttpSession session) {
 		List<FeedingMenu> list = femeService.getFeedingMenuList();
 		logger.debug("{} <- feedingMenuList FeedingMenuController.java",list);

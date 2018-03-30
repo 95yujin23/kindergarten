@@ -18,8 +18,21 @@ public class FeedingPoisonningDao {
 	
 	String localName = "com.cafe24.hanboa.feeding.FeedingMapper.";
 	
+	//1. 전체조회
 	public List<FeedingPoisonning> selectFeedingPoisonningList(){
-		return sqlSession.selectList(localName+"getFepoList");
+		return sqlSession.selectList(localName+"getFepoList");		
+	}
+	
+	//2. 수정정보요청
+	public FeedingPoisonning feedingPoisonningGetModify(String feedingPoisonning) {
+		logger.debug("{} < -- feedingPoisonningGetModify FeedingPoisonningDao.java",feedingPoisonning);
+		return sqlSession.selectOne(localName+"getFepoOne",feedingPoisonning);		
+	}
+	
+	//3. 수정처리
+	public int feedingPoisonningModify(FeedingPoisonning feedingPoisonning) {
+		logger.debug("{} < --feedingPoisonningModify FeedingPoisonningDao.java",feedingPoisonning);
+		return sqlSession.update(localName+"modifyFepo",feedingPoisonning );
 		
 	}
 

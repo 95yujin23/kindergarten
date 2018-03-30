@@ -16,10 +16,30 @@ public class FeedingMonthlyService {
 	private FeedingMonthlyDao femoDao;
 	private static Logger logger = LoggerFactory.getLogger(FeedingMonthlyService.class);
 	
+	//1. 전체조회
 	public List<FeedingMonthly> selectFeedingMontlhyList(){
 		List<FeedingMonthly> list = femoDao.getFeedingMonthlyList();
+		logger.debug("{} < -- selectFeedingMontlhyList FeedingMonthlyService.java",list);
 		return list;
+	}
+	
+	//2. 수정정보요청
+	public FeedingMonthly modifyGetFeedingMonthly(String feedingMonthlyCd) {
+		FeedingMonthly modifyFemo = femoDao.modifyGetFeedingMonthly(feedingMonthlyCd);
+		logger.debug("{} < -- modifyGetFeedingMonthly FeedingMonthlyService.java",feedingMonthlyCd);
+		logger.debug("{} < -- modifyGetFeedingMonthly FeedingMonthlyService.java",modifyFemo);
+		return modifyFemo;		
+	}
+	
+	//3. 수정처리
+	public int feedingMonthlyModify(FeedingMonthly feedingMonthly) {
+		int feedingMonthlyUpdate = femoDao.FeedingMonthlyModify(feedingMonthly);
+		logger.debug("{} < -- feedingMonthlyModify FeedingMonthlyService.java",feedingMonthly);
+		logger.debug("{} < -- feedingMonthlyModify FeedingMonthlyService.java",feedingMonthlyUpdate);
+		return feedingMonthlyUpdate;
 		
 	}
+		
+	
 
 }

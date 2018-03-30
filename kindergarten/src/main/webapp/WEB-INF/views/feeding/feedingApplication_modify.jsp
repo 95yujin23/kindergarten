@@ -10,15 +10,15 @@
 <meta name="author" content="">
 <title>FeedingApplication Modify</title>
 <!-- Bootstrap Core CSS -->
-<link href="../resources/vendor/css/bootstrap.min.css" rel="stylesheet">
+<link href="/resources/vendor/css/bootstrap.min.css" rel="stylesheet">
 <!-- MetisMenu CSS -->
-<link href="../resources/vendor/css/metisMenu.min.css" rel="stylesheet">
+<link href="/resources/vendor/css/metisMenu.min.css" rel="stylesheet">
 <!-- Custom CSS -->
-<link href="../resources/vendor/css/sb-admin-2.css" rel="stylesheet">
+<link href="/resources/vendor/css/sb-admin-2.css" rel="stylesheet">
 <!-- Morris Charts CSS -->
-<link href="../resources/vendor/css/morris.css" rel="stylesheet">
+<link href="/resources/vendor/css/morris.css" rel="stylesheet">
 <!-- Custom Fonts -->
-<link href="../resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="/resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="wrapper">
@@ -37,7 +37,7 @@
 			<div class="col-lg-1"></div>
 			<div class="col-lg-11">
 			<h2>수정화면</h2>
-			<form id="feedingApplicationModifyForm" action="${pageContext.request.contextPath}/feeding/feeding_application" method="post">
+			<form id="feedingApplicationModifyForm" action="${pageContext.request.contextPath}/feeding/feedingApplication_modify" method="post">
 				<table class="table table-hover">
 					<thead>
 						<tr>

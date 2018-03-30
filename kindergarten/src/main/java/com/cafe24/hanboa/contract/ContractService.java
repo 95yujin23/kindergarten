@@ -37,6 +37,12 @@ public class ContractService {
 		return modifycontract;	
 	}
 	
+	//4.입력처리
+	public int insertContract(Contract contract) {
+		int contractInsert = contractDao.insertContract(contract);
+		return contractInsert;		
+	}
+	
 	
 
 }

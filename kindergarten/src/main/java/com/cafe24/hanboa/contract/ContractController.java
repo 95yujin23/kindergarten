@@ -21,7 +21,7 @@ public class ContractController {
 	private static final Logger logger = LoggerFactory.getLogger(Contract.class);
 	
 	// 1. 목록조회
-	@RequestMapping(value="/contract/contract_list")
+	@RequestMapping(value="/ContractList")
 	public String contractList(Model model, HttpSession session) {
 		logger.info("1. ContractController -- ContractList : {}");
 		List<Contract> list = contractService.getContractList();
@@ -46,7 +46,21 @@ public class ContractController {
 	public String contractModify(Model model, Contract contract) {
 		contractService.modifyContract(contract);
 		logger.debug("{} < - contractModify 메서드실행 ContractController.java",contract);
-		return "redirect:/contract/contract_list";
+		return "redirect:/contract/contract_list";		
+	}
+	
+	// 4. 등록화면
+	@RequestMapping(value="/ContractAdd", method=RequestMethod.GET)
+	public String contractAdd() {
+		logger.debug("{} < -- contractAdd ContractController.java contractInsertForm");
+		return "contract/contract_add";
 		
+	}
+	
+	// 5. 등록
+	@RequestMapping(value="/ContractAdd", method=RequestMethod.POST)
+	public String contractAdd(Model model, Contract contract) {
+		contractService.insertContract(contract);
+		return "redirect:/contract/contract_list";	
 	}
 }
