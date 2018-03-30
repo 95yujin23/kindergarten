@@ -72,7 +72,7 @@
 								</div>
 								<div class="form-group">
 								    <label>생년월일</label>
-								    <input class="form-control" id="kidsDateOfBirth" name="kidsDateOfBirth" placeholder="생년월일">
+								    <input type="date" class="form-control" id="kidsDateOfBirth" name="kidsDateOfBirth" placeholder="생년월일">
 								</div>
 								<div class="form-group">
 								    <label>주소</label>

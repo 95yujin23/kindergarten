@@ -1,5 +1,6 @@
 package com.cafe24.hanboa.kids;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -74,8 +75,25 @@ public class KidsController {
 	
 	// 4-2. 영유아 등록
 	@RequestMapping(value="/KidsAdd", method = RequestMethod.POST)
-	public String kidsAdd(Model model) {
+	public String kidsAdd(Model model, HttpSession session, KidsCommand kidsCommand) throws IOException {
 		logger.debug("4-2. KidsController -- KidsAdd");
+		//resource 폴더 경로
+		String path = "c:\\upload\\kids";
+		//session.getServletContext().getRealPath("/");
+		// "/"의 실제경로를 받아오는 RealPath매서드 실행
+		logger.debug("path : {}",path);
+		//path += "resources/upload/kids"; //kids파일 경로 더해줌
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
+		logger.debug("loginTeacher : {}", loginTeacher);
+		if(loginTeacher == null) {
+			// loginTeacher의 값이 null이라면 login화면으로
+			return "redirect:/Login";
+		}
+		// null이 아니라면 loginTeacher세션에서 라이센스를 받아서 kids객체에 셋팅한다.
+		kidsCommand.setLicenseKindergarten(loginTeacher.getLicenseKindergarten());
+		logger.debug("kidsCommand : {}", kidsCommand);
+		kidsService.addKids(kidsCommand, path);
 		logger.debug("-----------------------------------------");
 		return "redirect:/";
 		}	

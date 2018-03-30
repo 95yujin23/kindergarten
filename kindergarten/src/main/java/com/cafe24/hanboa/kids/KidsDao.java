@@ -39,10 +39,15 @@ public class KidsDao {
 		logger.debug("3. KidsDao --  Kids selectKidsOne(String kidsCd) : {}",kidsCd);
 		return sqlSession.selectOne(localName + "getKidsOne",kidsCd);
 	}
-	// 4. 영유아 등록
+	// 4-1. 영유아 등록
 	public int insertKids(Kids kids) {
-		logger.debug("4. KidsDao -- int insertKids(Kids kids) : {}",kids);
+		logger.debug("4-1. KidsDao -- int insertKids(Kids kids) : {}",kids);
 		return sqlSession.insert(localName + "insertKids",kids);
+	}
+	// 4-2. 영유아 파일 등록
+	public int insertKidsFile(KidsFile kidsFile) {
+		logger.debug("4-2. KidsDao -- int insertKidsFile(KidsFile kidsFile) : {}",kidsFile);
+		return sqlSession.insert(localName + "insertKidsFile",kidsFile);
 	}
 	// 5. 영유아 수정
 	public int updateKids(Kids kids) {

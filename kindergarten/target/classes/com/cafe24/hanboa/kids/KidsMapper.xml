@@ -92,9 +92,9 @@
 <!-- 영유아 등록 -->
 	<insert id="insertKids"
 			parameterType="com.cafe24.hanboa.kids.Kids">
-			<!-- selectKey설정 - #{kidsCd} : 문자열(TEAC_) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 --> 
+			<!-- selectKey설정 - #{kidsCd} : 문자열(KIDS_) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 --> 
 			<selectKey resultType="String" keyProperty="kidsCd" order="BEFORE">
-				SELECT CONCAT('KIDS', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_KIDS ))
+				SELECT CONCAT('KIDS_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_KIDS ))
 			</selectKey>
 		INSERT INTO hanboa.TB_KIDS (
 			kids_cd
@@ -123,7 +123,54 @@
 			,#{licenseKindergarten}
 		)
 	</insert>
-			
+	
+<!-- 영유아 파일 등록 -->
+	<insert id="insertKidsFile"
+			parameterType="com.cafe24.hanboa.kids.KidsFile">
+			<!-- selectKey설정 - #{kidsFileCd} : 문자열(KI_FI_) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 --> 
+			<selectKey resultType="String" keyProperty="kidsFileCd" order="BEFORE">
+				SELECT CONCAT('KI_FI_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_KIDS ))
+			</selectKey>
+		INSERT INTO hanboa.TB_KIDS_FILE(
+			kids_cd
+			,kids_file_cd
+			,kids_file_nm
+			,kids_file_ext
+			,kids_file_size
+		)
+		VALUES(
+			#{kidsCd}
+			,#{kidsFileCd}
+			,#{kidsFileNm}
+			,#{kidsFileExt}
+			,#{kidsFileSize}
+		);
+	</insert>
+
+<!-- 영유아와 영유아파일을 모두 가지는 resultMap 설정 -->		
+	<resultMap type="com.cafe24.hanboa.kids.KidsAndKidsFile"
+				id="KidsAndKidsFile">
+		<result property="kidsCd" column="kids_cd"></result>
+		<result property="kidsNm" column="kids_nm"></result>
+		<result property="kidsDateOfBirth" column="kids_date_of_birth"></result>
+		<result property="kidsAddress" column="kids_address"></result>
+		<result property="kidsParentPhone" column="kids_parent_phone"></result>
+		<result property="kidsSparePhone" column="kids_spare_phone"></result>
+		<result property="kidsGender" column="kids_gender"></result>
+		<result property="kidsCommutingType" column="kids_commuting_type"></result>
+		<result property="kidsCaution" column="kids_caution"></result>
+		<result property="kidsAdmission" column="kids_admission"></result>
+		<result property="kidsGraduation" column="kids_graduation"></result>
+		<result property="licenseKindergarten" column="license_kindergarten"></result>
+		<collection property="list" 
+					ofType="com.cafe24.hanboa.kids.KidsFile">
+			<result property="kidsFileCd" column="kids_file_cd"></result>
+			<result property="kidsFileNm" column="kids_file_nm"></result>
+			<result property="kidsFileExt" column="kids_file_ext"></result>
+			<result property="kidsFileSize" column="kids_file_size"></result>
+		</collection>
+	</resultMap>
+		
 <!-- 영유아 수정 -->
 	<update id="updateKids"
 			parameterType="com.cafe24.hanboa.kids.Kids">

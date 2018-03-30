@@ -5,7 +5,7 @@ public class KidsFile {
 	private String kidsCd;
 	private String kidsFileNm;
 	private String kidsFileExt;
-	private String kidsFileSize;
+	private long kidsFileSize;
 	
 	public String getKidsFileCd() {
 		return kidsFileCd;
@@ -31,10 +31,10 @@ public class KidsFile {
 	public void setKidsFileExt(String kidsFileExt) {
 		this.kidsFileExt = kidsFileExt;
 	}
-	public String getKidsFileSize() {
+	public long getKidsFileSize() {
 		return kidsFileSize;
 	}
-	public void setKidsFileSize(String kidsFileSize) {
+	public void setKidsFileSize(long kidsFileSize) {
 		this.kidsFileSize = kidsFileSize;
 	}
 	
