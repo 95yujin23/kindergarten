@@ -69,4 +69,8 @@
         <constructor-arg index="0" ref="sqlSessionFactory" />
     </bean>
     
+    <!-- 파일업로드를 위한 multipartResolver 빈 추가 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></bean>
+
+    
 </beans>
