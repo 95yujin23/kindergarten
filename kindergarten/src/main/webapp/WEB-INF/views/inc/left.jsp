@@ -71,7 +71,11 @@
 						영유아 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/KidsList">유아목록</a></li>
+						<li><a href="#">영유아관리<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+						<li><a href="${pageContext.request.contextPath}/KidsList">영유아 목록</a></li>
+						<li><a href="${pageContext.request.contextPath}/KidsAdd">영유아 등록</a></li>
+							</ul>
 						<li><a href="#">출석관리<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
 								<li><a href="${pageContext.request.contextPath}/KidsAttendance">등하원 등록</a></li>
