@@ -70,7 +70,7 @@
 			parameterType="com.cafe24.hanboa.teacher.Teacher">
 		<!-- selectKey설정 - #{teacherCd} : 문자열(TEAC_) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 --> 
 		<selectKey resultType="String" keyProperty="teacherCd" order="BEFORE">
-			SELECT CONCAT('TEAC', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_TEACHERS ))
+			SELECT CONCAT('TEAC_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_TEACHERS ))
 		</selectKey>
 		INSERT INTO hanboa.TB_TEACHERS (
 			teacher_cd
