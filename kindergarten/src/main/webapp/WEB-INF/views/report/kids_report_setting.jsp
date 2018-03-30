@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<!-- javascript -->
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" ></script>
 
 <!-- Bootstrap Core CSS -->
 <link href="./resources/vendor/css/bootstrap.min.css" rel="stylesheet">
@@ -76,55 +78,51 @@
       </tr>
      </thead>
      
-     <c:forEach var="reportDivision" varStatus="status" items="${list}">
+     <c:forEach var="reportDivision" varStatus="vs" items="${list}">
      <tbody>
       <tr>
-       <td>${reportDivision.reportCd}</td>
-       <td>${reportDivision.reportNm}</td>
+       <td id="modify_${vs.index}">${reportDivision.reportCd}</td>
+       <td id="modify_${vs.index}">${reportDivision.reportNm}</td>
        <td style="text-align:center">
        
-       	<!-- Button trigger modal -->
-	<a href="${pageContext.request.contextPath}/report/kids_report_setting?reportCd=${reportDivision.reportCd}" type="button" varStatus="status" class="btn btn-primary" data-toggle="modal" data-target="#myModal1}">
-	  <i class="fas fa-pencil-alt"></i></a>
+	 <!--  <button type="button" class="btn btn-primary" data-toggle="modal" data-targer="#myModal" name="modify">
+	  <i class="fas fa-pencil-alt"></i>
+	  	</button> -->
+	  	
+	  <a ${pageContext.request.contextPath}/report/kids_report_setting?reportCd=${reportDivision.reportCd}" class="modal-param" data-toggle="modal" data-target="#myModal" data-unique="${vs.index}"><i class="fas fa-pencil-alt"></i> </a>
+
 	 </td>
        <td style="text-align:center"><a class="btn btn-danger" href="${pageContext.request.contextPath}/removeReportDivision?reportCd=${reportDivision.reportCd}"><i class="fas fa-trash-alt"></i></a></td>
       </tr>
      </tbody>
      </c:forEach>
-     
-     <!-- Modal -->
-	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
+
+<!-- Small modal -->
+	
+	<div class="modal fade bs-example-modal-sm" id="myModal">
+	  <div class="modal-dialog modal-sm">
+	  <!-- modal content -->
 	    <div class="modal-content">
-	      <div class="modal-header">
+	    <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	        <h4 class="modal-title" id="myModalLabel">일지명 수정</h4>
 	      </div>
-		      
-	      <div class="modal-body">
+	      <!-- Modal body -->
+	       <div class="modal-body">
 	      <form action="${pageContext.request.contextPath}/modifyReportDivision" method="POST">
-	        <label for="ex2">일지명 : </label>
-	        <input type="hidden" name="reportCd" value="${reportDivision.reportCd }">
-	        <input type="text" name="reportNm" value="${reportDivision.reportNm}">
+	        <label for="reportDivisionCd">일지명 : </label>
+	        <input id="reportDivisionCd" type="hidden"  class="form-control" name="reportCd" id="reportCd">
+	        <input id="reportDivisionNm" type="text" name="reportNm" id="reportNm" value="${reportDivision.reportNm}">
 	        <button type="submit" class="btn btn-primary">완료</button>
 	       </form>
-	      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- /modal -->
-
+	    </div>
+	  </div>
+	</div>
+<!-- /small modal -->
     </table>
    </div>	
-  
   </div>
  </div>
- 
- 
  
 
  <div class="col-lg-6">
@@ -168,23 +166,26 @@
        <td style="text-align:center">
        
 	       	<!-- Button trigger modal -->
-		<a  href="${pageContext.request.contextPath}/report/kids_report_setting?reportResourceCd=${reportResource.reportResourceCd}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
+		<a href="${pageContext.request.contextPath}/report/kids_report_setting?reportResourceCd=${reportResource.reportResourceCd}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
 		  <i class="fas fa-pencil-alt"></i>
-		</a>
+		</a></td>
 		
 		<!-- Modal -->
 		<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
+		  
+		  <!-- Modal content -->
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		        <h4 class="modal-title" id="myModalLabel">일지자원 수정</h4>
 		      </div>
-			    
+			    <!-- Modal body -->
 		      <div class="modal-body">
+		      
 		      <form action="${pageContext.request.contextPath}/modifyReportResource" method="POST">
 		        <label for="ex2">일지명 : </label>
-		        <input type="hidden" name="reportResourceCd" value="${reportResource.reportResourceCd}">
+		        <input type="hidden" id="modifyReportResource" name="reportResourceCd" value="${reportResource.reportResourceCd}">
 		        <input type="text" name="groupNm" value="${reportResource.groupNm}">
 		       	<label for="ex2">상세내용 : </label>
 		        <input type="text" name="detail" value="${reportResource.detail}">
@@ -199,7 +200,7 @@
 	</div>
 	<!-- /modal -->
        
-       </td>
+       
        <td style="text-align:center"><a class="btn btn-danger" href="${pageContext.request.contextPath}/removeReportResource?reportResourceCd=${reportResource.reportResourceCd}"><i class="fas fa-trash-alt"></i></a></td>
       </tr>
      </tbody>
@@ -234,5 +235,19 @@
 
 	<!-- Custom Theme JavaScript -->
 	<script src="resources/vendor/js/sb-admin-2.js"></script>
+	 
+	 
+	 <script>
+ 	
+	 $(document).ready(function(){
+ 		$(".modal-param").on('click',function(){
+  			var key = $(this).attr('data-unique');
+  			var name = $(".modify_"+key).text();
+  			$("#reportNm").val(name)
+ 		})
+ 	})
+ 	
+ </script>
+
 </body>
 </html>

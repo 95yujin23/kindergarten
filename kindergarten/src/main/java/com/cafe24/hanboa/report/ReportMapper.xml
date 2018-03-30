@@ -112,7 +112,7 @@
 				,group_nm as groupNm
 				,detail as detail
 			FROM hanboa.TB_REPORT_RESOURCE		
-			ORDER BY group_nm
+			ORDER BY report_resource_cd
 	</select>
 	
 	<!-- report_division 추가 (일지자원추가) -->
@@ -146,7 +146,7 @@
 	<insert id="addReportResource"
 			parameterType="com.cafe24.hanboa.report.ReportResource">
 		<selectKey resultType="String" keyProperty="reportResourceCd" order="BEFORE">
-			SELECT CONCAT('RE_RE', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_REPORT_RESOURCE))
+			SELECT CONCAT('RE_RE', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_REPORT_RESOURCE ORDER BY report_resource_cd))
 		</selectKey>
 		INSERT INTO TB_REPORT_RESOURCE VALUES (
 		#{reportResourceCd}

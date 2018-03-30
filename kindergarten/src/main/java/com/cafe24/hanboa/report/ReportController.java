@@ -29,7 +29,7 @@ public class ReportController {
 	private static final Logger logger = LoggerFactory.getLogger(ReportController.class);
 	
 	// 1. 영유아일지 전체 조회
-	@RequestMapping(value="/kidsReport")
+	@RequestMapping(value="/KidsReportList")
 	public String kidsReport(Model model) {
 	
 			/*	List<Report> list = reportService.selectAllReport();*/
@@ -86,7 +86,7 @@ public class ReportController {
 	}
 	
 	// 유아일지 설정화면
-	@RequestMapping(value="/reportSetting")
+	@RequestMapping(value="/ReportSetting")
 	public String reportSetting(Model model,HttpSession session) {
 		
 		logger.debug("ReportController reportSetting() 메소드 실행 ");
@@ -109,7 +109,7 @@ public class ReportController {
 		 logger.debug("ReportController addReportDivision() 메소드 실행 addReportDivision is : {} " , addReportDivision);
 		 model.addAttribute("addReportDivision",addReportDivision);
 		 reportService.addReportDivision(reportDivision);
-		return "redirect:/reportSetting";
+		return "redirect:/ReportSetting";
 	}
 	
 	// 일지자원 추가
@@ -123,7 +123,7 @@ public class ReportController {
 		
 		reportService.addReportResource(reportResource);
 		
-		return "redirect:/reportSetting";
+		return "redirect:/ReportSetting";
 	}
 	
 	//영유아일지구분 수정 report_division
@@ -136,7 +136,7 @@ public class ReportController {
 		logger.debug("ReportController modifyReportDivision() 메소드 실행 reportNm is : {}", reportNm);
 		
 		reportService.modifyReportDivision(reportDivision);
-		return "redirect:/reportSetting";
+		return "redirect:/ReportSetting";
 	}
 	//영유아일지구분 삭제 report_division
 	@RequestMapping(value="/removeReportDivision", method=RequestMethod.GET)
@@ -145,7 +145,7 @@ public class ReportController {
 									,@RequestParam(value="reportNm", defaultValue="") String reportNm) {
 		
 		reportService.removeReportDivision(reportDivision);
-		return "redirect:/reportSetting";
+		return "redirect:/ReportSetting";
 	}
 	
 	//영유아일지자원 수정 report_resource
@@ -160,7 +160,7 @@ public class ReportController {
 		
 		reportService.modifyReportResource(reportResource);
 		
-		return "redirect:/reportSetting";
+		return "redirect:/ReportSetting";
 	}
 	
 	//영유아일지자원 삭제 report_resource
@@ -175,7 +175,7 @@ public class ReportController {
 		
 		reportService.removeReportResource(reportResource);
 		
-		return "redirect:/reportSetting";
+		return "redirect:/ReportSetting";
 	}
 }
 	

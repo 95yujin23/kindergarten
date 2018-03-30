@@ -26,7 +26,7 @@
 									Project
 								</a>
 							</li>
-							<li><a href="${pageContext.request.contextPath}/ㅆeam">
+							<li><a href="${pageContext.request.contextPath}/Team">
 									Team
 								</a>
 							</li>
