@@ -183,23 +183,23 @@
 	 */
 	/* 키업방식 */
 	$(document).ready(function(){
-			$("#teacherEmail").keyup(function(){
-				//var gogo="teacher_ajax_id="+$("#teacher_ajax_id").val();
-				$.ajax({
-					type : "post"
-					,url  : '${pageContext.request.contextPath}/TeacherEmailCheck'
-					,data : {teacherEmail : $("#teacherEmail").val()}
-					,success : function(data){
-						if (data == 1){
-							$("email").html("이미 사용 중인 이메일 입니다.")
-							}else{
-							$("email").html("사용 가능한 이메일 입니다.")
-							
-						}
+		$("#teacherEmail").keyup(function(){
+			//var gogo="teacher_ajax_id="+$("#teacher_ajax_id").val();
+			$.ajax({
+				type		: "post"
+				,url		: '${pageContext.request.contextPath}/TeacherEmailCheck'
+				,data		: {teacherEmail : $("#teacherEmail").val()}
+				,success	: function(data){
+					if (data == 1){
+						$("email").html("이미 사용 중인 이메일 입니다.")
+					}else{
+						$("email").html("사용 가능한 이메일 입니다.")
+						
 					}
-				})
-			});
+				}
+			})
 		});
+	});
 </script>
 
 <script>
