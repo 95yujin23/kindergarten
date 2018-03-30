@@ -86,6 +86,8 @@
 						<tbody>
 							<tr>
 								<td>${kidsList.kidsNm}</td>
+								<%-- <td><img src="${pageContext.request.contextPath}/resources/upload/kids/e950bf0e-7b47-4248-95e7-3d8eac06ab29.jpg"></td> --%>
+								<!-- 영유아코드별로 사진받아오기 -->
 								<td>${kidsList.kidsDateOfBirth}</td>
 								<td>${kidsList.kidsAddress}</td>
 								<td>${kidsList.kidsParentPhone}</td>

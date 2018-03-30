@@ -146,6 +146,31 @@
 			,#{kidsFileSize}
 		);
 	</insert>
+<!-- 영유아와 영유아 파일 조회 -->
+	<select id="getKidsAndKidsFile"
+			parameterType="String"
+			resultMap="KidsAndKidsFile">
+		SELECT
+			K.kids_cd
+			,K.kids_nm
+			,K.kids_date_of_birth
+			,K.kids_address
+			,K.kids_parent_phone
+			,K.kids_spare_phone
+			,K.kids_gender
+			,K.kids_commuting_type
+			,K.kids_caution
+			,K.kids_admission
+			,K.license_kindergarten
+			,F.kids_file_cd
+			,F.kids_file_nm
+			,F.kids_file_ext
+			,F.kids_file_size
+		FROM TB_KIDS K
+		INNER JOIN TB_KIDS_FILE F
+		ON K.kids_cd = F.kids_file_cd
+		WHERE K.kids_cd = #{kidsCd}
+	</select>
 
 <!-- 영유아와 영유아파일을 모두 가지는 resultMap 설정 -->		
 	<resultMap type="com.cafe24.hanboa.kids.KidsAndKidsFile"

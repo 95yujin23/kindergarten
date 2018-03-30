@@ -29,6 +29,13 @@ public class KidsDao {
 		// parameter로 map에 값을 담아서 넘겨준다. keyword의 value값
 		return sqlSession.selectList(localName + "getKidsList", map);
 	}
+	// 1-2. 영유아 파일 조회
+	public KidsAndKidsFile selectKidsFile(String kidsCd) {
+		logger.debug("1. KidsDao --  KidsAndKidsFile selectKidsFile(String kidsCd) 매서드 실행");
+		logger.debug("String kidsCd : {}",kidsCd);
+		// parameter로 map에 값을 담아서 넘겨준다. keyword의 value값
+		return sqlSession.selectOne(localName + "getKidsAndKidsFile", kidsCd);
+	}
 	// 2. 편성 반별 영유아 조회 : 선생님이 맡은 반
 	public List<Kids> selectKidsListByClass(Teacher teacher){
 		logger.debug("2. KidsDao -- List<Kids> selectKidsListByClass(Teacher teacher) : {}",teacher);

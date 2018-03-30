@@ -32,6 +32,13 @@ public class KidsService {
 		logger.debug("-----------------------------------------");
 		return list;
 	}
+	// 1-2. 영유아파일조회
+	public KidsAndKidsFile getKidsFile(String kidsCd) {
+		logger.debug("1. KidsService -- KidsAndKidsFile getKidsFile(String kidsCd) : {}", kidsCd);
+		KidsAndKidsFile kidsAndKidsFile = kidsDao.selectKidsFile(kidsCd);
+		logger.debug("KidsAndKidsFile : {}", kidsAndKidsFile);
+		return kidsAndKidsFile;
+	}
 	// 2. 영유아 편성 반별 조회
 	public List<Kids> getKidsListByClass(Teacher teacher){
 		logger.debug("2. KidsService -- List<Kids> getKidsListByClass(Teacher teacher) : {}", teacher);

@@ -63,7 +63,19 @@ public class KidsController {
 	}
 	
 	// 3. 영유아 개인 조회
-	
+	/*// Book 파일리스트
+	@RequestMapping(value="/book/bookFileList")
+	public String BookFile(@RequestParam(value="bookId", required=true) int bookId,HttpSession session, Model model) {
+		// 세션에 로그인 값을 확인하고 로그인 정보가 없으면 리다이렉트
+		if(session.getAttribute("loginMember")==null) {
+			return "redirect:/member/login";
+		}
+		logger.debug("BookFile 메서드 bookId is {}",bookId);
+		BookAndBookFile bookAndBookFile =  bookService.getBookFileList(bookId);
+		logger.debug("BookFile 메서드 bookAndBookFile is {}",bookAndBookFile);
+		model.addAttribute("bookAndBookFile", bookAndBookFile);
+		return "/book/bookFileList";
+	}*/
 	
 	// 4-1. 영유아 등록 화면
 	@RequestMapping(value="/KidsAdd", method = RequestMethod.GET)
@@ -78,11 +90,12 @@ public class KidsController {
 	public String kidsAdd(Model model, HttpSession session, KidsCommand kidsCommand) throws IOException {
 		logger.debug("4-2. KidsController -- KidsAdd");
 		//resource 폴더 경로
-		String path = "c:\\upload\\kids";
-		//session.getServletContext().getRealPath("/");
+		//String path = "c:\\upload\\kids";
+		String path = session.getServletContext().getRealPath("/");
+		
 		// "/"의 실제경로를 받아오는 RealPath매서드 실행
 		logger.debug("path : {}",path);
-		//path += "resources/upload/kids"; //kids파일 경로 더해줌
+		path += "resources/upload/kids/"; //kids파일 경로 더해줌
 		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
 		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
 		logger.debug("loginTeacher : {}", loginTeacher);
