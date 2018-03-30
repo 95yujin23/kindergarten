@@ -21,7 +21,7 @@ public class ProgramController {
 		public String ProgramModify(Program program) {
 			programService.programModify(program);
 			logger.debug("{} <- ProgramModify ProgramController.java", program);
-			return "redirect:program/program_list";
+			return "redirect:/ProgramList";
 		}
 	// Program 수정 정보요청
 		@RequestMapping(value = "/program/program_modify", method = RequestMethod.GET)
@@ -30,10 +30,10 @@ public class ProgramController {
 			logger.debug("{} <- programCd ProgramController.java", programCd);
 			logger.debug("{} <- program ProgramController.java", program);
 			model.addAttribute("program", program);
-			return "program/program_modify";
+			return "/program/program_modify";
 		}
 	// Program 전체 조회(교직원)
-		@RequestMapping(value = "/program/program_list", method = RequestMethod.GET)
+		@RequestMapping(value = "/ProgramList", method = RequestMethod.GET)
 		public String ProgramList(Model model) {
 			List<Program> list = programService.selectProgramList();
 			logger.debug("{} <- list ProgramController.java", list);
