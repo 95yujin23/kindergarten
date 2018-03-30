@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cafe24.hanboa.attendance.AttendanceMapper">
-	<!-- 교직원 -->
+	<!-- 교직원 start -->
 	<!-- 1. 교직원 출근 입력 -->
-	<insert id="insertTheacherAttendance" parameterType="com.cafe24.hanboa.attendance.TeacherAttendance">
+	<insert id="insertTeacherAttendance" parameterType="com.cafe24.hanboa.attendance.TeacherAttendance">
 		<!-- selectKey설정 - #{attendanceCd} : 문자열(ATTE) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 --> 
 		<selectKey resultType="String" keyProperty="attendanceCd" order="BEFORE">
-			SELECT CONCAT('ATTE', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_TEACHER_ATTENDANCES ))
+			SELECT CONCAT('ATTE', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_TEACHER_ATTENDANCE ))
 		</selectKey>
-		INSERT INTO TB_TEACHER_ATTENDANCES (
-			ATTENDANCES_CD
+		INSERT INTO TB_TEACHER_ATTENDANCE (
+			ATTENDANCE_CD
 			, TEACHER_CD
 			, TEACHER_ATTENDANCE_DAY
 			, TEACHER_ATTENDANCE
@@ -26,42 +26,62 @@
 		)
 	</insert>
 	<!-- 교직원 출퇴근 조회(원장용) -->
-	<select id="selectTheacherAttendance" parameterType="String" resultType="com.cafe24.hanboa.attendance.TeacherAttendance">
+	<select id="selectTeacherAttendance" parameterType="String" resultType="com.cafe24.hanboa.attendance.TeacherAttendance">
 		SELECT
-			ATTENDANCES_CD as attendanceCd
-			, TEACHER_CD as teacherCd
-			, TEACHER_ATTENDANCE_DAY as teacherAttendanceDay
-			, TEACHER_ATTENDANCE as teacherAttendance
-			, TEACHER_GET_OFF as teacherGetOff
-			, TEACHER_REST_LATE_TYPE as teacherRestLateType
-			, LICENSE_KINDERGARTEN as licenseKindergarten
-		FROM TB_TEACHER_ATTENDANCES
+			ATTENDANCE_CD AS attendanceCd
+			, TEACHER_CD AS teacherCd
+			, TEACHER_ATTENDANCE_DAY AS teacherAttendanceDay
+			, TEACHER_ATTENDANCE AS teacherAttendance
+			, TEACHER_GET_OFF AS teacherGetOff
+			, TEACHER_REST_LATE_TYPE AS teacherRestLateType
+			, LICENSE_KINDERGARTEN AS licenseKindergarten
+		FROM TB_TEACHER_ATTENDANCE
 	</select>
-	<!-- 교직원 출퇴근 개별 조회(선생님용) -->
-	<select id="selectTheacherAttendanceOne" parameterType="String" resultType="com.cafe24.hanboa.attendance.TeacherAttendance">
+	<!-- 
+	교직원 출퇴근 조회(원장용) 페이징 & 검색 
+	<select id="selectTeacherAttendanceListByPage" parameterType="teacherAttendanceVo" resultType="teacherAttendanceVo">
 		SELECT
-			ATTENDANCES_CD as attendanceCd
-			, TEACHER_CD as teacherCd
-			, TEACHER_ATTENDANCE_DAY as teacherAttendanceDay
-			, TEACHER_ATTENDANCE as teacherAttendance
-			, TEACHER_GET_OFF as teacherGetOff
-			, TEACHER_REST_LATE_TYPE as teacherRestLateType
-			, LICENSE_KINDERGARTEN as licenseKindergarten
-		FROM TB_TEACHER_ATTENDANCES
+			t.TEACHER_NM
+			, a.TEACHER_ATTENDANCE_DAY
+			, a.TEACHER_ATTENDANCE
+			, a.TEACHER_GET_OFF
+			, a.TEACHER_REST_LATE_TYPE
+		FROM TB_TEACHER_ATTENDANCE a LEFT JOIN TB_TEACHERS t
+		ON a.TEACHER_CD = t.TEACHER_CD 
+	</select>
+	-->
+	<!-- 교직원 출퇴근 개별 조회(선생님용) -->
+	<select id="selectTeacherAttendanceOne" parameterType="String" resultType="com.cafe24.hanboa.attendance.TeacherAttendance">
+		SELECT
+			ATTENDANCE_CD AS attendanceCd
+			, TEACHER_CD AS teacherCd
+			, TEACHER_ATTENDANCE_DAY AS teacherAttendanceDay
+			, TEACHER_ATTENDANCE AS teacherAttendance
+			, TEACHER_GET_OFF AS teacherGetOff
+			, TEACHER_REST_LATE_TYPE AS teacherRestLateType
+			, LICENSE_KINDERGARTEN AS licenseKindergarten
+		FROM TB_TEACHER_ATTENDANCE
 		WHERE TEACHER_CD = #{teacherCd}
 	</select>
 	<!-- 교직원 퇴근 업데이트 -->
-	<update id="updateTheacherAttendance" parameterType="java.util.Map">
-		UPDATE TB_TEACHER_ATTENDANCES
+	<update id="updateTeacherAttendance" parameterType="java.util.Map">
+		UPDATE TB_TEACHER_ATTENDANCE
 		SET
 			TEACHER_GET_OFF = #{teacherGetOff}
 			, TEACHER_REST_LATE_TYPE = #{teacherRestLateType}
 		WHERE TEACHER_CD = #{teacherCd}
 		AND TEACHER_ATTENDANCE_DAY = #{teacherAttendanceDay}
 	</update>
+	<!-- 교직원 이름 조회 -->
+	<select id="selectTeacherName" resultType="com.cafe24.hanboa.teacher.Teacher">
+		SELECT 
+			TEACHER_NM as teacherNm 
+		FROM TB_TEACHERS
+	</select>
+	<!-- 교직원 end -->
 	
 	
-	<!-- 영유아 -->
+	<!-- 영유아 start -->
 	<!-- 1. 영유아 등원 입력 -->
 	<insert id="insertKidsAttendance" parameterType="com.cafe24.hanboa.attendance.KidsAttendance">
 		<!-- selectKey설정 - #{attendanceCd} : 문자열(ATTE) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 --> 
@@ -89,27 +109,27 @@
 	<!-- 교직원 등하원 전체 조회(교직원용) -->
 	<select id="selectKidsAttendance" parameterType="String" resultType="com.cafe24.hanboa.attendance.KidsAttendance">
 		SELECT
-			ATTENDANCE_CD as attendanceCd
-			, KIDS_CD as kidsCd
-			, KIDS_ATTENDANCE_DAY as kidsAttendanceDay
-			, KIDS_ATTENDANCE as kidsAttendance
-			, KIDS_COME_HOME as kidsComeHome
-			, KIDS_REST_LATE_TYPE as kidsRestLateType
-			, KIDS_REASON as kidsReason
-			, LICENSE_KINDERGARTEN as licenseKindergarten
+			ATTENDANCE_CD AS attendanceCd
+			, KIDS_CD AS kidsCd
+			, KIDS_ATTENDANCE_DAY AS kidsAttendanceDay
+			, KIDS_ATTENDANCE AS kidsAttendance
+			, KIDS_COME_HOME AS kidsComeHome
+			, KIDS_REST_LATE_TYPE AS kidsRestLateType
+			, KIDS_REASON AS kidsReason
+			, LICENSE_KINDERGARTEN AS licenseKindergarten
 		FROM TB_KIDS_ATTENDANCE
 	</select>
 	<!-- 교직원 등하원 개인 조회(영유아용) -->
 	<select id="selectKidsAttendanceOne" parameterType="String" resultType="com.cafe24.hanboa.attendance.KidsAttendance">
 		SELECT
-			ATTENDANCE_CD as attendanceCd
-			, KIDS_CD as kidsCd
-			, KIDS_ATTENDANCE_DAY as kidsAttendanceDay
-			, KIDS_ATTENDANCE as kidsAttendance
-			, KIDS_COME_HOME as kidsComeHome
-			, KIDS_REST_LATE_TYPE as kidsRestLateType
-			, KIDS_REASON as kidsReason
-			, LICENSE_KINDERGARTEN as licenseKindergarten
+			ATTENDANCE_CD AS attendanceCd
+			, KIDS_CD AS kidsCd
+			, KIDS_ATTENDANCE_DAY AS kidsAttendanceDay
+			, KIDS_ATTENDANCE AS kidsAttendance
+			, KIDS_COME_HOME AS kidsComeHome
+			, KIDS_REST_LATE_TYPE AS kidsRestLateType
+			, KIDS_REASON AS kidsReason
+			, LICENSE_KINDERGARTEN AS licenseKindergarten
 		FROM TB_KIDS_ATTENDANCE
 		WHERE KIDS_CD = #{kidsCd}
 	</select>
@@ -122,4 +142,5 @@
 		WHERE KIDS_CD = #{kidsCd}
 		AND KIDS_ATTENDANCE_DAY = #{kidsAttendanceDay}
 	</update>
+	<!-- 영유아 end -->
 </mapper>

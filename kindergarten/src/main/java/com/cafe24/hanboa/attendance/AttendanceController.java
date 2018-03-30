@@ -16,22 +16,22 @@ import com.cafe24.hanboa.teacher.Teacher;
 
 @Controller
 public class AttendanceController {
-	// 출석관련컨트롤러
+	// 출석 처리 eController
 	@Autowired
 	private AttendanceService attendanceService;
 	private static final Logger logger = LoggerFactory.getLogger(AttendanceController.class);
 	
 	// 교직원
 	// 1-1. 교직원 출근 입력 요청
-	@RequestMapping(value="/teacher_attendance", method = RequestMethod.GET)
-	public String theacherAttendance() {
-		logger.debug("1. AttendanceController theacherAttendance()메소드 실행 ");
+	@RequestMapping(value="/TeacherAttendance", method = RequestMethod.GET)
+	public String teacherAttendance() {
+		logger.debug("1. AttendanceController teacherAttendance()메소드 실행 ");
 		logger.debug("------------------------------------------------------------");
 		return "attendance/teacher_attendance";
 	}
 	// 1-2. 교직원 출근 입력
-	@RequestMapping(value="/teacher_attendance", method = RequestMethod.POST)
-	public String theacherAttendance(Model model, HttpSession session, Teacher teacher, TeacherAttendance teacherAttendance) {
+	@RequestMapping(value="/TeacherAttendance", method = RequestMethod.POST)
+	public String teacherAttendance(Model model, HttpSession session, Teacher teacher, TeacherAttendance teacherAttendance) {
 		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
 		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
 		if(loginTeacher == null) {
@@ -42,19 +42,19 @@ public class AttendanceController {
 		teacherAttendance.setTeacherCd(loginTeacher.getTeacherCd());
 		teacherAttendance.setLicenseKindergarten(loginTeacher.getLicenseKindergarten());
 		attendanceService.insertTeacherAttendance(teacherAttendance);
-		logger.debug("{} <- theacherAttendance AttendanceController.java", teacherAttendance);
-		return "redirect:/teacher_attendance_list";
+		logger.debug("{} <- teacherAttendance AttendanceController.java", teacherAttendance);
+		return "redirect:/TeacherAttendanceList";
 	}
 	// 2-1. 교직원 출퇴근 전체 조회(원장용)
 	@RequestMapping(value="/teacher_all_attendance_list", method = RequestMethod.GET)
 	public String teacherAttendanceList(Model model) {
 		List<TeacherAttendance> list = attendanceService.selectTeacherAttendance();
-		logger.debug("{} <- theacherAttendanceList AttendanceController.java", list);
+		logger.debug("{} <- teacherAttendanceList AttendanceController.java", list);
 		model.addAttribute("list", list);
 		return "attendance/teacher_all_attendance_list";
 	}
 	// 2-2. 교직원 출퇴근 전체 조회(선생님용)
-	@RequestMapping(value="/teacher_attendance_list", method = RequestMethod.GET)
+	@RequestMapping(value="/TeacherAttendanceList", method = RequestMethod.GET)
 	public String teacherAttendanceListOne(HttpSession session, Model model, String teacherCd) {
 		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
 		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
@@ -78,20 +78,20 @@ public class AttendanceController {
 		}
 		teacherCd = loginTeacher.getTeacherCd();
 		attendanceService.updateTeacherAttendance(teacherCd);
-		return "redirect:/teacher_attendance_list";
+		return "redirect:/TeacherAttendanceList";
 	}
 	
 	
 	// 영유아
 	// 1-1. 영유아 등원 입력 요청
-	@RequestMapping(value="/kids_attendance", method = RequestMethod.GET)
+	@RequestMapping(value="/KidsAttendance", method = RequestMethod.GET)
 	public String kidsAttendance() {
 		logger.debug("1. AttendanceController kidsAttendance()메소드 실행 ");
 		logger.debug("------------------------------------------------------------");
 		return "attendance/kids_attendance";
 	}
 	// 1-2. 영유아 등원 입력
-	@RequestMapping(value="/kids_attendance", method = RequestMethod.POST)
+	@RequestMapping(value="/KidsAttendance", method = RequestMethod.POST)
 	public String kidsAttendance(Model model, HttpSession session, KidsAttendance kidsAttendance) {
 		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
 		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
@@ -101,10 +101,10 @@ public class AttendanceController {
 		}
 		kidsAttendance.setLicenseKindergarten(loginTeacher.getLicenseKindergarten());
 		attendanceService.insertKidsAttendance(kidsAttendance);
-		return "redirect:/kids_attendance_list";
+		return "redirect:/KidsAttendanceList";
 	}
 	// 2-1. 영유아 등하원 전체 조회(교직원용)
-	@RequestMapping(value="/kids_attendance_list", method = RequestMethod.GET)
+	@RequestMapping(value="/KidsAttendanceList", method = RequestMethod.GET)
 	public String kidsAttendanceList(Model model) {
 		List<KidsAttendance> list = attendanceService.selectKidsAttendance();
 		logger.debug("{} <- kidsAttendanceList AttendanceController.java", list);
@@ -129,6 +129,6 @@ public class AttendanceController {
 			return "redirect:/Login";
 		}
 		attendanceService.updateKidsAttendance(kidsCd);
-		return "redirect:/kids_attendance_list";
+		return "redirect://KidsAttendanceList";
 	}
 }
