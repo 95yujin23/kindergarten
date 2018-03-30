@@ -33,7 +33,13 @@ public class ContractDao {
 	// 3. 수정처리
 	public int modifyContract(Contract contract) {
 		logger.debug("{} < - modifyContract ContractDao.java",contract);
-		return sqlSession.update(localName+"contractModify", contract);		
+		return sqlSession.update(localName+"contractModify", contract);
+	}
+	
+	// 4. 입력처리
+	public int insertContract(Contract contract) {
+		logger.debug("{} < -- insertContract ContractDao.java");
+		return sqlSession.insert(localName+"contractAdd",contract);
 	}
 
 }
