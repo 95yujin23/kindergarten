@@ -2,21 +2,56 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cafe24.hanboa.ProgramMapper">	
-	<insert id="ProgramAdd" parameterType="com.cafe24.hanboa.program.Program">
-		INSERT INTO TB_PROGRAM
-			(PROGRAM_CD, TOTAL_RESOURCE_CD, 
-			PROGRAM_NM, PROGRAM_NUMBER_WEEK, 
-			PROGRAM_OPERATION_TIME, PROGRAM_OUTSOURCING_COST, 
-			PROGRAM_CLOSING_CD, PROGRAM_CLOSING_DIVISION, 
-			CONTRACT_CD, PROGRAM_REGISTRATION_DATE, 
-			PROGRAM_REGISTRANT, LICENSE_KINDERGARTEN) 
-		VALUES 
-			(${programCd}, ${totalResourceCd}, 
-			${programNm}, ${programNumberWeek}, 
-			${programOperationTime}, ${programOutsourcingCost}, 
-			${programClosingCd}, ${programClosingDivision}, 
-			${contractCd}, ${programRegistrationDate}, 
-			${programRegistrant}, ${licenseKindergarten});
+	<!-- 특별활동 -->
+	<!-- 1-1. 특별활동 등록 : 특별활동 등록을 위한 통합자원 코드 불러오기 -->
+	<select id="callTotalResource" resultType="com.cafe24.hanboa.totalResource.TotalResource">
+		SELECT 
+			TOTAL_RESOURCE_CD AS totalResourceCd
+			, RESOURCE_NM AS resourceNm
+		FROM TB_TOTAL_RESOURCE
+		WHERE RESOURCE_GROUP_NM = "특별활동"
+	</select>
+	<!-- 1-2. 특별활동 등록 : 특별활동 등록을 위한 통합자원 코드 불러오기 -->
+	<select id="callContract" resultType="com.cafe24.hanboa.contract.Contract">
+		SELECT
+			CONTRACT_CD as contractCd
+			,CONTRACT_CONTENTS as contractContents
+			,CONTRACT_TYPE as contractType
+		FROM TB_CONTRACT	
+	</select>
+	<!-- 1-3. 특별활동 등록 -->
+	<insert id="insertProgram" parameterType="com.cafe24.hanboa.program.Program">
+		<!-- selectKey설정 - #{attendanceCd} : 문자열(ATTE) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 --> 
+		<selectKey resultType="String" keyProperty="programCd" order="BEFORE">
+			SELECT CONCAT('PROG', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_PROGRAM ))
+		</selectKey>
+		INSERT INTO TB_PROGRAM (
+			PROGRAM_CD AS programCd
+			, TOTAL_RESOURCE_CD AS totalResourceCd
+			, PROGRAM_NM AS programNm
+			, PROGRAM_NUMBER_WEEK AS programNumberWeek
+			, PROGRAM_OPERATION_TIME AS programOperationTime
+			, PROGRAM_OUTSOURCING_COST AS programOutsourcingCost
+			, PROGRAM_CLOSING_CD AS programClosingCd
+			, PROGRAM_CLOSING_DIVISION AS programClosingDivision
+			, CONTRACT_CD AS contractCd
+			, PROGRAM_REGISTRATION_DATE AS programRegistrationDate
+			, PROGRAM_REGISTRANT AS programRegistrant
+			, LICENSE_KINDERGARTEN AS licenseKindergarten
+		) VALUES (
+			${programCd}
+			, ${totalResourceCd}
+			, ${programNm}
+			, ${programNumberWeek}
+			, ${programOperationTime}
+			, ${programOutsourcingCost}
+			, ${programClosingCd}
+			, ${programClosingDivision}
+			, ${contractCd}
+			, ${programRegistrationDate}
+			, ${programRegistrant}
+			, ${licenseKindergarten}
+		);
 	</insert>
 	<select id="getProgramList" parameterType="String" resultType="com.cafe24.hanboa.program.Program">
 		SELECT  
