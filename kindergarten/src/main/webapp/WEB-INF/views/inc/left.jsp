@@ -192,7 +192,7 @@
 						<li><a href="#">계약 관리<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
 								<li><a href="${pageContext.request.contextPath}/ContractList">계약 목록</a></li>
-								<li><a href="${pageContext.request.contextPath}/ContractListAdd">계약 등록</a></li>
+								<li><a href="${pageContext.request.contextPath}/ContractAdd">계약 등록</a></li>
 							</ul>		
 						</li>				
 						<li><a href="#">거래처 관리<span class="fa arrow"></span></a>
