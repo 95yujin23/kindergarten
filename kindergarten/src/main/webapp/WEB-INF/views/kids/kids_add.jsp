@@ -64,7 +64,8 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6">
-							<form id="addForm" action="${pageContext.request.contextPath}/KidsAdd" method="POST">
+							<form id="addForm" action="${pageContext.request.contextPath}/KidsAdd" method="POST"
+								enctype="multipart/form-data">
 								<div class="form-group">
 								    <label>이름</label>
 								    <input class="form-control" id="kidsNm" name="kidsNm" placeholder="이름">
@@ -97,7 +98,12 @@
 								    <label>주의사항</label>
 								    <input class="form-control" id="kidsCaution" name="kidsCaution" placeholder="주의사항">
 								</div>
+								<div class="form-group">
+								    <label>사진</label>
+								    <input type="file" class="form-control" id="file" name="file" multiple="multiple">
+								</div>
 								<button type="submit">등록</button>
+								<button type="reset">초기화</button>
 							</form>
 						</div>
 					</div>
