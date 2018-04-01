@@ -7121,7 +7121,8 @@ button.close {
 	.navbar:after, .navbar:before, .pager:after, .pager:before, .panel-body:after,
 	.panel-body:before, .row:after, .row:before {
 	display: table;
-	content: " "
+	content: " ";
+	color: #c0c0c0
 }
 
 .btn-group-vertical>.btn-group:after, .btn-toolbar:after, .clearfix:after,

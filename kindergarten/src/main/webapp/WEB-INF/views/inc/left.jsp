@@ -18,7 +18,7 @@
 				<c:if test="${empty sessionScope.loginTeacher}">
 				
 				<!-- 1. 프로젝트 및 팀 소개 메뉴 -->
-				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
+				<li><a href="#"><i class="fa fa-home fa-fw"></i>
 						Project & Team Introduce<span class="fa arrow"></span>
 					</a>
 						<ul class="nav nav-second-level">
@@ -34,14 +34,14 @@
 				</li>
 				
 				<!-- 2. 프로젝트 시작 : 로그인 -->
-				<li><a href="${pageContext.request.contextPath}/Login"><i class="fa fa-dashboard fa-fw"></i>
+				<li><a href="${pageContext.request.contextPath}/Login"><i class="fa fa-sign-in fa-fw"></i>
 						Project Start
 					</a>
 				</li>
 				</c:if>		
 				
 				<!-- 3. 교직원 메뉴 -->				
-				<li><a href="#"><i class="fa fa-table fa-fw"></i>
+				<li><a href="#"><i class="fa fa-user fa-fw"></i>
 						교직원 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
@@ -67,7 +67,7 @@
 				</li>
 				
 				<!-- 4. 영유아 메뉴 -->
-				<li><a href="#"><i class="fa fa-edit fa-fw"></i>
+				<li><a href="#"><i class="fa fa-child fa-fw"></i>
 						영유아 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
@@ -87,7 +87,7 @@
 				</li>
 				
 				<!-- 5. 영유아 일지 메뉴 -->
-				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>
+				<li><a href="#"><i class="fa fa-file-text-o fa-fw"></i>
 						영유아 일지 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
@@ -101,7 +101,7 @@
 				</li>
 				
 				<!-- 6. 계획안 메뉴 -->
-				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
+				<li><a href="#"><i class="fa fa-file-text fa-fw"></i>
 						계획안 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
@@ -111,7 +111,7 @@
 				</li>
 					
 				<!-- 7. 특별활동 메뉴 -->
-				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
+				<li><a href="#"><i class="fa fa-dribbble fa-fw"></i>
 						특별활동 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
@@ -131,7 +131,7 @@
 				</li>
 					
 				<!-- 8. 급식 메뉴 -->
-				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>
+				<li><a href="#"><i class="fa fa-cutlery fa-fw"></i>
 						급식 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
@@ -163,7 +163,7 @@
 				</li>
 					
 				<!-- 9. 안전교육및점검 메뉴 -->
-				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>
+				<li><a href="#"><i class="fa fa-fire-extinguisher fa-fw"></i>
 						안전교육및점검 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
@@ -173,7 +173,7 @@
 				</li>
 				
 				<!-- 10. 회계 메뉴 -->
-				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>
+				<li><a href="#"><i class="fa fa-won fa-fw"></i>
 						회계 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
@@ -205,7 +205,7 @@
 				</li>
 
 				<!-- 11. 통합자원코드 메뉴 -->
-				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>
+				<li><a href="#"><i class="fa fa-archive fa-fw"></i>
 						통합자원코드 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
@@ -215,7 +215,7 @@
 				</li>									
 
 				<!-- 12. 유치원라이센스 메뉴 -->
-				<li><a href="#"><i class="fa fa-wrench fa-fw"></i>
+				<li><a href="#"><i class="fa fa-gears fa-fw"></i>
 						유치원라이센스 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">

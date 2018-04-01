@@ -41,19 +41,19 @@
 
 	<!-- TOP : Navigation -->
 	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-	<c:import url="./inc/top.jsp"></c:import>
+	<c:import url="../inc/top.jsp"></c:import>
 	<!-- TOP -->
 	</nav>
 
 	<!-- LEFT : Navigation -->
-	<c:import url="./inc/left.jsp"></c:import>
+	<c:import url="../inc/left.jsp"></c:import>
 	<!-- LEFT -->
 </div>
 
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<h5><strong>프로젝트 주제</strong></h5>
+					<h1 class="page-header">프로젝트 주제</h1>
 					<h3>
 						영유아 교육기관 통합 관리 시스템 (Kindergarten Total Management System) &nbsp;
 						<a href="/start" class="btn btn-app"><i class="fa fa-play"></i> 프로젝트 시작 </a>
@@ -62,24 +62,20 @@
 		</div>
 			
 			<div class="row">
-				<div class="col-lg-12 col-md-12">
-					<div class="panel">
-						<div class="panel-heading">
+				<div class="col-lg-12">
 							<div class="row">
-								<div class="col-xs-12">
-								<h2>프로젝트 목표</h2>
-								<div class="clearfix"></div>
+								<div class="col-lg-12">
+								<h1 class="page-header">프로젝트 목표</h1>
 								</div>
-								<div class="col-xs-12">
+								<div class="col-lg-12">
 				
 									<div>--</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				
-				<div class="col-lg-12 col-md-12">
+				<div class="row">
+				<div class="col-lg-12">
 					<div class="panel">
 						<div class="panel-heading">
 							<div class="row">
@@ -110,6 +106,7 @@
 	
 					</div>
 				</div>
+			
 		<div class="col-lg-12 col-md-12">
 		<div class="panel">
 			<div class="panel-heading">
@@ -206,7 +203,7 @@
 			</div>
 </div>
 	<!-- FOOTER : Navigation -->
-	<c:import url="./inc/footer.jsp"></c:import>
+	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->
 
 	<!-- jQuery -->

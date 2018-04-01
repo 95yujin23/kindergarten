@@ -8,10 +8,12 @@
 				class="icon-bar"></span> <span class="icon-bar"></span> <span
 				class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="index.html">OHAYOU</a>
+		<a class="navbar-brand" href="${pageContext.request.contextPath}/">OHAYOU</a>
 	</div>
 	<ul class="nav navbar-top-links navbar-right">
-
+	<li class="dropdown">
+	<a href="${pageContext.request.contextPath}/SiteMap">사이트맵</a>
+	</li>
 		<!-- 교직원 상태창 : 교직원만 보이게 하기 (원장x)-->
 		<li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -35,10 +37,6 @@
 						<span class="pull-right text-muted small">1년간</span>
 					</a>
 				</li>
-<!-- 						<li class="divider"></li>
-						<li><a class="text-center" href="#"> <strong>See
-									All Alerts</strong> <i class="fa fa-angle-right"></i>
-						</a></li> -->
 			</ul>
 		</li>
 		
