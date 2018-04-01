@@ -29,7 +29,7 @@
 		VALUES (
 			#{licenseKindergarten}
 			,#{kindergartenNm}
-			,#{licenseGrantDay}
+			,CURDATE()
 			,#{licenseExpirationDay}
 			,#{kindergartenAddress}
 			,#{kindergartenPhone}
