@@ -117,7 +117,7 @@
 					<ul class="nav nav-second-level">
 						<li><a href="#">특별활동<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/ProgramList">특별활동조회</a></li>
+								<li><a href="${pageContext.request.contextPath}/ProgramList">특별활동전체조회</a></li>
 								<li><a href="${pageContext.request.contextPath}/ProgramAdd">특별활동등록</a></li>
 							</ul>
 						</li>
@@ -125,6 +125,7 @@
 							<ul class="nav nav-third-level">
 								<li><a href="${pageContext.request.contextPath}/ProgramDetail">내특별활동</a></li>
 								<li><a href="${pageContext.request.contextPath}/ProgramApplication">특별활동신청</a></li>
+								<li><a href="${pageContext.request.contextPath}/ProgramApplicationList">특별활동신청전체조회</a></li>
 							</ul>
 						</li>
 					</ul>
