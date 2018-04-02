@@ -7,13 +7,12 @@ public class Program {
 	private int programNumberWeek;
 	private int programOperationTime;
 	private int programOutsourcingCost;
-	private int programClosingCd;
+	private String programClosingCd;
 	private String programClosingDivision;
 	private String contractCd;
 	private String programRegistrationDate;
 	private String programRegistrant;
 	private String licenseKindergarten;
-	
 	public String getProgramCd() {
 		return programCd;
 	}
@@ -50,10 +49,10 @@ public class Program {
 	public void setProgramOutsourcingCost(int programOutsourcingCost) {
 		this.programOutsourcingCost = programOutsourcingCost;
 	}
-	public int getProgramClosingCd() {
+	public String getProgramClosingCd() {
 		return programClosingCd;
 	}
-	public void setProgramClosingCd(int programClosingCd) {
+	public void setProgramClosingCd(String programClosingCd) {
 		this.programClosingCd = programClosingCd;
 	}
 	public String getProgramClosingDivision() {
@@ -86,4 +85,5 @@ public class Program {
 	public void setLicenseKindergarten(String licenseKindergarten) {
 		this.licenseKindergarten = licenseKindergarten;
 	}
+	
 }

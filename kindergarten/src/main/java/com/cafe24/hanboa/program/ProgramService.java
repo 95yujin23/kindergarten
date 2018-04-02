@@ -24,7 +24,7 @@ public class ProgramService {
 	public List<TotalResource> callTotalResource() {
 		return programDao.callTotalResource();
 	}
-	// 1-2. 특별활동 등록 : 특별활동 등록을 위한 통합자원 코드 불러오기
+	// 1-2. 특별활동 등록 : 특별활동 등록을 위한 계약 코드 불러오기
 	public List<Contract> callContract() {
 		return programDao.callContract();
 	}

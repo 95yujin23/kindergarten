@@ -23,16 +23,19 @@ public class ProgramController {
 	private ProgramService programService;
 	private static final Logger logger = LoggerFactory.getLogger(ProgramController.class);
 	
-	// 1-1. 특별활동 등록을 위한 통합자원 코드 불러오기 및 입력 요청
+	// 1-1. 특별활동 등록을 위한 통합자원 코드, 계약 코드 불러오기 및 입력 요청
 	@RequestMapping(value="/ProgramAdd", method=RequestMethod.GET)
 	public String ProgramInsert(Model model) {
 		List<TotalResource> resource = programService.callTotalResource();
 		List<Contract> contract = programService.callContract();
 		model.addAttribute("resource", resource);
 		model.addAttribute("contract", contract);
+		logger.debug("1. ProgramController ProgramInsert()메소드 실행 ");
+		logger.debug("------------------------------------------------------------");
 		return "program/program_add";
 	}
 	// 1-2. 특별활동 등록 입력
+	@RequestMapping(value="/ProgramAdd", method=RequestMethod.POST)
 	public String ProgramInsert(Model model, HttpSession session, Teacher teacher, Program program) {
 		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
 		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
@@ -43,6 +46,7 @@ public class ProgramController {
 		// null이 아니라면 loginTeacher세션에서 교원번호와 라이센스를 받아서 teacher객체에 셋팅한다.
 		program.setLicenseKindergarten(loginTeacher.getLicenseKindergarten());
 		programService.insertProgram(program);
+		logger.debug("{} <- ProgramInsert ProgramController.java", program);
 		return "redirect:/ProgramList";
 	}
 	
