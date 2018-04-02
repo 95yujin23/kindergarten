@@ -55,8 +55,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 			<h1 class="page-header">통합자원코드 목록</h1>
-			<h1>교직원 목록</h1>
-				<table>
+				<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
 							<th>통합자원 코드</th>
@@ -72,8 +71,8 @@
 								<td>${totalResourceList.totalResourceCd}</td>
 								<td>${totalResourceList.resourceGroupNm}</td>
 								<td>${totalResourceList.resourceNm}</td>
-								<td><a href="${pageContext.request.contextPath}/TotalResourceModify?totalResourceCd=${totalResourceList.totalResourceCd}">수정</a></td> <!-- 수정화면 -->
-								<td><a href="${pageContext.request.contextPath}/TotalResourceRemove?totalResourceCd=${totalResourceList.totalResourceCd}">삭제</a></td>
+								<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/TotalResourceModify?totalResourceCd=${totalResourceList.totalResourceCd}"><i class="fa fa-pencil"></i></a></td> <!-- 수정화면 -->
+								<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/TotalResourceRemove?totalResourceCd=${totalResourceList.totalResourceCd}"><i class="fa fa-trash"></i></a></td>
 							</tr>
 						</tbody>
 					</c:forEach>

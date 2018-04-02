@@ -54,9 +54,8 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-			<h1 class="page-header">교직원 등록</h1>
-			<h1>교직원 목록</h1>
-				<table>
+			<h1 class="page-header">교직원 목록</h1>
+				<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
 							<th>교직원 코드</th>
@@ -84,8 +83,8 @@
 								<td>${teacherList.teacherEntryDate}</td>
 								<td>${teacherList.teacherPosition}</td>
 								<td>${teacherList.teacherPayStep}</td>
-								<td><a href="${pageContext.request.contextPath}/TeacherModify?teacherCd=${teacherList.teacherCd}">수정</a></td> <!-- 수정화면 -->
-								<td><a href="${pageContext.request.contextPath}/TeacherRemove?teacherCd=${teacherList.teacherCd}">삭제</a></td>
+								<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/TeacherModify?teacherCd=${teacherList.teacherCd}"><i class="fa fa-pencil"></i></a></td> <!-- 수정화면 -->
+								<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/TeacherRemove?teacherCd=${teacherList.teacherCd}"><i class="fa fa-trash"></i></a></td>
 							</tr>
 						</tbody>
 					</c:forEach>

@@ -71,7 +71,7 @@
 					</select> 
 					<button class="btn btn-success" type="submit" value="검색">검색</button>
 				</form>
-				<table border=1>
+				<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
 							<th>안전교육및점검실행코드</th>
@@ -86,6 +86,8 @@
 							<th>안전 마감유무</th>
 							<th>안전 등록인</th>
 							<th>안전 등록날짜</th>
+							<th>수정</th>
+							<th>삭제</th>
 						</tr>
 					</thead>
 					<c:forEach var="safetyList" items="${list}">
@@ -104,6 +106,9 @@
 								<td>${safetyList.safetyClosingDivision}</td>
 								<td>${safetyList.safetyRegistrant}</td>
 								<td>${safetyList.safetyRegistrationDate}</td>
+								<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/SafetyModify?safetyExecutionCd=${safetyList.safetyExecutionCd}"><i class="fa fa-pencil"></i></a></td> <!-- 수정화면 -->
+								<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/SafetyRemove?safetyExecutionCd=${safetyList.safetyExecutionCd}"><i class="fa fa-trash"></i></a></td>
+								
 							</tr>
 						</tbody>
 					</c:forEach>
