@@ -49,4 +49,9 @@ public class ProgramDao {
 		logger.debug("{} <- program ProgramDao.java 3-2. programModify() 메소드 실행", program);
 		return sqlSesionTamplate.update(localName+"programModify", program);
 	}
+	// 4. 특별활동 삭제
+	public int programDelete(String programCd) {
+		logger.debug("{} <- programCd ProgramDao.java 4. programDelete() 메소드 실행", programCd);
+		return sqlSesionTamplate.delete(localName+"programDelete", programCd);
+	}
 }

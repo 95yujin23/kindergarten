@@ -53,4 +53,9 @@ public class ProgramService {
 		logger.debug("{} <- programModify ProgramService.java", programOne);
 		return programOne;
 	}
+	// 4. 특별활동 삭제
+	public int programDelete(String programCd) {
+		int programOne = programDao.programDelete(programCd);
+		return programOne;
+	}
 }

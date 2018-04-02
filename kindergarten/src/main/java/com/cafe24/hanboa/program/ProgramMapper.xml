@@ -97,4 +97,10 @@
 			, PROGRAM_REGISTRANT = #{programRegistrant}
 		WHERE PROGRAM_CD = #{programCd}
 	</update>
+	<!-- 4. 특별활동 삭제 -->
+	<delete id="programDelete" parameterType="com.cafe24.hanboa.program.Program">
+		DELETE 
+		FROM TB_PROGRAM 
+		WHERE  PROGRAM_CD = #{programCd}
+	</delete>
 </mapper>

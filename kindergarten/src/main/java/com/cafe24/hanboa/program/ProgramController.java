@@ -79,4 +79,16 @@ public class ProgramController {
 		logger.debug("{} <- ProgramModify ProgramController.java", program);
 		return "redirect:/ProgramList";
 	}
+	// 4. 특별활동 삭제
+	@RequestMapping(value="/ProgramDelete", method=RequestMethod.GET)
+	public String ProgramDelete(HttpSession session, Teacher teacher, @RequestParam(value = "programCd", required = true) String programCd) {
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
+		if(loginTeacher == null) {
+			// loginTeacher의 값이 null이라면 login화면으로
+			return "redirect:/Login";
+		}
+		programService.programDelete(programCd);
+		return "redirect:/ProgramList";
+	}
 }
