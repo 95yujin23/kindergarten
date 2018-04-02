@@ -153,18 +153,24 @@ public class TeacherController {
 	@RequestMapping(value="/TeacherPayList")
 	public String teacherPayList(Model model, HttpSession session
 								,@RequestParam(value="year", defaultValue="") String year
-							 	,@RequestParam(value="month", defaultValue="") String month) {
+							 	,@RequestParam(value="month", defaultValue="") String month
+							 	,@RequestParam(value="currentPage", defaultValue="1") int currentPage
+							 	,@RequestParam(value="pagePerRow", defaultValue="5") int pagePerRow) {
 		logger.debug("8. TeacherController -- TeacherPayList");
-		logger.debug("year : {}", year);
-		logger.debug("month : {}", month);
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("year", year);
-		map.put("month", month);
-		logger.debug("map : {}", map);
-		List<TeacherAndTeacherPay> list = teacherService.getTeacherPayList(map);
-		logger.debug("list : {}", list);
+		if(session.getAttribute("loginTeacher")==null) {
+			return "redirect:/Login";
+		}else if(session.getAttribute("loginTeacher")!=null) {
+			HashMap<String, Object> map = teacherService.getTeacherPayList(currentPage, pagePerRow, month, year);
+			logger.debug("HashMap<String, Object> map : {}",map);
+			List<TeacherAndTeacherPay> list = (List<TeacherAndTeacherPay>) map.get("list");
+			logger.debug("List<TeacherAndTeacherPay> list : {}",list);
+			int countPage = (Integer) map.get("countPage");
+			logger.debug("int countPage : {}",countPage);
+			model.addAttribute("list", list);
+			model.addAttribute("countPage", countPage);
+			return "teacher/teacher_pay_list";
+		}
 		logger.debug("-----------------------------------------");
-		model.addAttribute("list", list);
 		return "teacher/teacher_pay_list";
 		}	
 	

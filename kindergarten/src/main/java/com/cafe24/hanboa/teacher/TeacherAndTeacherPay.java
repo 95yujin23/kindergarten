@@ -17,7 +17,7 @@ public class TeacherAndTeacherPay {
 	String payCd;
 	int payPayment;
 	int payClosingCd;
-	String payClosingOption;
+	String payClosingDivision;
 	String payRegistrationDate;
 	String payRegistrant;
 	public String getTeacherCd() {
@@ -110,11 +110,11 @@ public class TeacherAndTeacherPay {
 	public void setPayClosingCd(int payClosingCd) {
 		this.payClosingCd = payClosingCd;
 	}
-	public String getPayClosingOption() {
-		return payClosingOption;
+	public String getPayClosingDivision() {
+		return payClosingDivision;
 	}
-	public void setPayClosingOption(String payClosingOption) {
-		this.payClosingOption = payClosingOption;
+	public void setPayClosingDivision(String payClosingDivision) {
+		this.payClosingDivision = payClosingDivision;
 	}
 	public String getPayRegistrationDate() {
 		return payRegistrationDate;
@@ -136,8 +136,8 @@ public class TeacherAndTeacherPay {
 				+ ", teacherAddress=" + teacherAddress + ", teacherEntryDate=" + teacherEntryDate + ", teacherPosition="
 				+ teacherPosition + ", teacherBank=" + teacherBank + ", teacherAccount=" + teacherAccount
 				+ ", teacherPayStep=" + teacherPayStep + ", licenseKindergarten=" + licenseKindergarten + ", payCd="
-				+ payCd + ", payPayment=" + payPayment + ", payClosingCd=" + payClosingCd + ", payClosingOption="
-				+ payClosingOption + ", payRegistrationDate=" + payRegistrationDate + ", payRegistrant=" + payRegistrant
+				+ payCd + ", payPayment=" + payPayment + ", payClosingCd=" + payClosingCd + ", payClosingDivision="
+				+ payClosingDivision + ", payRegistrationDate=" + payRegistrationDate + ", payRegistrant=" + payRegistrant
 				+ "]";
 	}
 }

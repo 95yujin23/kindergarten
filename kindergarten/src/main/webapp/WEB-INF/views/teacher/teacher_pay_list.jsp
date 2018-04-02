@@ -54,8 +54,7 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-			<h1 class="page-header">교직원 등록</h1>
-			<h1>교직원 목록</h1>
+			<h1 class="page-header">교직원 인건비 목록</h1>
 			<form action="${pageContext.request.contextPath}/TeacherPayList" method="post">
 					<select name="year" class="form-control">
 					<!-- 검색 조건을 검색 처리후 결과화면에 보여주기 위해 c:out 출력태그 사용 (삼항연산자) -->
@@ -82,11 +81,13 @@
 					</select> 
 					<button class="btn btn-success" type="submit" value="검색">검색</button>
 				</form>
-				<table>
+				<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
-							<th>인건비코드</th>
-							<th>선생님코드</th>
+							<th>교직원 이름</th>
+							<th>호봉</th>
+							<th>급여 은행</th>
+							<th>급여 계좌</th>
 							<th>지급금</th>
 							<th>마감코드</th>
 							<th>마감유무</th>
@@ -100,18 +101,69 @@
 						<tbody>
 							<tr>
 								<td>${teacherPayList.teacherNm}</td>
+								<td>${teacherPayList.teacherPayStep}</td>
+								<td>${teacherPayList.teacherBank}</td>
+								<td>${teacherPayList.teacherAccount}</td>
 								<td>${teacherPayList.payPayment}</td>
-								<%-- <td>${teacherPayList.payPayment}</td>
 								<td>${teacherPayList.payClosingCd}</td>
-								<td>${teacherPayList.payClosingOption}</td>
+								<td>${teacherPayList.payClosingDivision}</td>
 								<td>${teacherPayList.payRegistrationDate}</td>
-								<td>${teacherPayList.payRegistrant}</td> --%>
-								<td><a href="${pageContext.request.contextPath}/TeacherPayModify">수정</a></td> <!-- 수정화면 -->
-								<td><a href="${pageContext.request.contextPath}/TeacherPayRemove">삭제</a></td>
+								<td>${teacherPayList.payRegistrant}</td>
+								<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/TeacherPayModify?payCd=${teacherPayList.payCd}"><i class="fa fa-pencil"></i></a></td> <!-- 수정화면 -->
+								<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/TeacherPayRemove?payCd=${teacherPayList.payCd}"><i class="fa fa-trash"></i></a></td>
 							</tr>
 						</tbody>
 					</c:forEach>
 				</table>
+			<div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
+		<ul class="pagination justify-content-center">
+			<c:set var="currentPage" value="${currentPage}"/>
+			<c:set var="countPage" value="${countPage}"/>
+			<c:choose>
+				<c:when test="${currentPage eq 1}">
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath}/TeacherPayList?currentPage=${currentPage}" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+						<span class="sr-only">Previous</span>
+						</a>
+					</li>
+				</c:when>
+				<c:when test="${currentPage ne 1}">
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath}/TeacherPayList?currentPage=${currentPage-1}" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+						<span class="sr-only">Previous</span>
+						</a>
+					</li>
+				</c:when>
+			</c:choose>
+			<c:forEach var="i" begin="1" end="${countPage}" step="1">
+				<li class="page-item">
+					<a class="page-link" href="${pageContext.request.contextPath}/TeacherPayList?currentPage=${i}">
+						${i}
+					</a>
+				</li>
+			</c:forEach>
+			<c:choose>
+				<c:when test="${currentPage eq countPage}">
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath}/TeacherPayList?currentPage=${currentPage}" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+							<span class="sr-only">Next</span>
+						</a>
+					</li>
+				</c:when>
+				<c:when test="${currentPage ne countPage}">
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath}/TeacherPayList?currentPage=${currentPage+1}" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+							<span class="sr-only">Next</span>
+						</a>
+					</li>
+				</c:when>
+			</c:choose>
+		</ul>
+	</nav>
 			</div>
 			</div>
 		</div>

@@ -136,7 +136,7 @@
 			,pay_registrant			AS payRegistrant
 			,license_kindergarten	AS licenseKindergarten
 		FROM hanboa.TB_TEACHER_PAY
-	</select> -->
+	</select>  -->
 	
 <!-- 교직원 인건비 지급 목록 개인 조회 -->
 	<select id="getTeacherPayOne"
@@ -223,15 +223,32 @@
 
 <!-- 교직원 인건비 연 & 월 별 조회-->
 	<select id="getTeacherPayList" resultMap="TeacherAndTeacherPay" parameterType="java.util.Map">
-		SELECT T.teacher_nm
+		SELECT 
+			T.teacher_nm
+			,T.teacher_cd
+			,T.teacher_pay_step
+			,T.teacher_bank
+			,T.teacher_account
 			,TP.pay_payment
+			,TP.pay_closing_cd
+			,TP.pay_closing_division
+			,TP.pay_registration_date
+			,TP.pay_registrant
 		FROM TB_TEACHERS T
 		JOIN TB_TEACHER_PAY TP
 		ON T.teacher_cd = TP.teacher_cd
 		WHERE year(pay_registration_date) LIKE CONCAT('%',#{year},'%')
 		AND month(pay_registration_date) LIKE CONCAT('%',#{month},'%')
+		LIMIT #{startPage}, #{pagePerRow}
 	</select>
 	
+<!-- 교직원 인건비 지급 총 목록 수 -->
+	<select id="getTeacherPayTotalCount" resultType="Integer">
+		SELECT 
+			COUNT(*)
+		FROM TB_TEACHER_PAY	
+		</select>
+		
 <!-- TeacherAndTeacherPay list parameter getting : resultMap 설정-->
 
 <!-- resultMap : Teacher -->
@@ -257,7 +274,7 @@
 		<result property="payCd" column="pay_cd"></result>
 		<result property="payPayment" column="pay_payment"></result>
 		<result property="payClosingCd" column="pay_closing_cd"></result>
-		<result property="payClosingOption" column="pay_closing_option"></result>
+		<result property="payClosingDivision" column="pay_closing_division"></result>
 		<result property="payRegistrationDate" column="pay_registration_date"></result>
 		<result property="payRegistrant" column="pay_registrant"></result>
 	</resultMap>

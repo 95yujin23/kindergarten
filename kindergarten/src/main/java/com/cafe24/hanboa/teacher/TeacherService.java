@@ -2,6 +2,7 @@ package com.cafe24.hanboa.teacher;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,13 +69,46 @@ public class TeacherService {
 		logger.debug("-----------------------------------------");
 		return removeTeacher;
 	}
-	// 7. 인건비 지급 목록 조회
-	public List<TeacherAndTeacherPay> getTeacherPayList(HashMap<String, Object> map) {
-		logger.debug("7. TeacherService -- getTeacherPayList(HashMap<String, Object> map)");
-		logger.debug(" map : {}", map);
+	// 7-1. 인건비 지급 목록 조회
+	public HashMap<String, Object> getTeacherPayList(int currentPage, int pagePerRow, String month, String year) {
+		logger.debug("7. TeacherService -- getTeacherPayList(int currentPage, int pagePerRow)");
+		logger.debug(" currentPage : {}", currentPage);
+		logger.debug(" pagePerRow : {}", pagePerRow);
+		// 페이징 작업
+		int startPage = 0;
+		if(currentPage!=1) { //현재 페이지가 1이 아닌 조건
+			startPage = (currentPage-1)*pagePerRow;
+			//시작페이지 = (현재페이지-1) * 5(보여줄목록수) 
+		}
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("startPage", startPage);
+		map.put("pagePerRow", pagePerRow);
+		map.put("month",month);
+		map.put("year",year);
 		List<TeacherAndTeacherPay> list = teacherDao.selectTeacherPayList(map);
+		logger.debug("teacherDao.selectTeacherPayList(map) -- List<TeacherAndTeacherPay> : {}", list);
+		int TotalCount = teacherDao.selectTeacherPayTotalCount();
+		logger.debug("teacherDao.selectTeacherPayTotalCount() -- int TotalCount : {}", TotalCount);
+		int countPage = TotalCount/pagePerRow;
+						//페이지 수 = 총 목록수/보여줄목록수
+		if(TotalCount%pagePerRow!=0) { //총 목록 수를 보여줄 목록수로 나눴을 때 나머지가 0이 아닌 조건
+			countPage++; //countPage에 1씩 더한다.
+		}
+		logger.debug("TotalCount/pagePerRow = int countPage : {}", countPage);
+		//return
+		HashMap<String, Object> returnMap = new HashMap<String, Object>();
+		returnMap.put("list", list);
+		returnMap.put("countPage",countPage);
+		logger.debug("HashMap<String, Object> returnMap : {}", returnMap);
 		logger.debug("-----------------------------------------");
-		return list;
+		return returnMap;
+	}
+	// 7-2. 인건비 지급 총 목록 수
+	public int getTeacherPayTotalCount() {
+		logger.debug("7. TeacherService -- getTeacherPayTotalCount()");
+		int totalCount = teacherDao.selectTeacherPayTotalCount();
+		logger.debug("-----------------------------------------");
+		return totalCount;
 	}
 	// 8. 인건비 지급 개인 조회
 	public List<TeacherPay> getTeacherPayOne(Teacher teacher) {
