@@ -62,7 +62,7 @@
 						<td>${program.contractCd}</td>
 						<td>${program.programRegistrationDate}</td>
 						<td>${program.programRegistrant}</td>
-						<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/program/program_modify?programCd=${program.programCd}"><i class="fa fa-pencil"></i></a></td>
+						<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/ProgramModify?programCd=${program.programCd}"><i class="fa fa-pencil"></i></a></td>
 						<td><a class="btn btn-danger" href="${pageContext.request.contextPath}"><i class="fa fa-trash"></i></a></td>
 					</tr>
 				</tbody>

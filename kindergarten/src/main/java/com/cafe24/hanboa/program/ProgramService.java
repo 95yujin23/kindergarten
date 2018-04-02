@@ -36,20 +36,18 @@ public class ProgramService {
 		logger.debug("{} <- insertProgram ProgramService.java", program);
 		logger.debug("-------------------------------------------------------------");	
 	}
-	
-	
-	// Program 전체 조회(교직원)
+	// 2. 특별활동 전체조회
 	public List<Program> selectProgramList() {
 		logger.debug("{} <- selectProgramList ProgramService.java");
 		return programDao.getProgramList();
 	}	
-	// Program 수정 정보요청
+	// 3-1. 특별활동 업데이트 정보요청
 	public Program getProgramOne(String programCd) {
 		Program program = programDao.modifyGetProgram(programCd);
 		logger.debug("{} <- getProgramOne ProgramService.java", program);
 		return program;
 	}
-	// Program 수정
+	// 3-2. 특별활동 업데이트
 	public int programModify(Program program) {
 		int programOne = programDao.programModify(program);
 		logger.debug("{} <- programModify ProgramService.java", programOne);

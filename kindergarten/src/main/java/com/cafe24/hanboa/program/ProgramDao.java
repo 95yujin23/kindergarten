@@ -34,18 +34,19 @@ public class ProgramDao {
 		logger.debug("ProgramDao.java 1-3. insertProgram() 메소드 실행");
 		return sqlSesionTamplate.insert(localName+"insertProgram", program);
 	}
-	// 전체조회
+	// 2. 특별활동 전체조회
 	public List<Program> getProgramList() {
+		logger.debug("ProgramDao.java 2. getProgramList() 메소드 실행");
 		 return sqlSesionTamplate.selectList(localName+"getProgramList");
 	}
-	// 업데이트 정보요청
+	// 3-1. 특별활동 업데이트 정보요청
 	public Program modifyGetProgram(String programCd) {
-		logger.debug("{} <- programCd modifyGetProgram ProgramDao.java", programCd);
+		logger.debug("{} <- programCd ProgramDao.java 3-1. modifyGetProgram() 메소드 실행", programCd);
 		return sqlSesionTamplate.selectOne(localName+"selectProgramOne", programCd);
 	}
-	// 업데이트
+	// 3-2. 특별활동 업데이트
 	public int programModify(Program program) {
-		logger.debug("{} <- updateProgram ProgramDao.java", program);
+		logger.debug("{} <- program ProgramDao.java 3-2. programModify() 메소드 실행", program);
 		return sqlSesionTamplate.update(localName+"programModify", program);
 	}
 }

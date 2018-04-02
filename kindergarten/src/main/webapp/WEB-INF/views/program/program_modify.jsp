@@ -4,10 +4,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
 <title>Program Modify</title>
 <!-- Bootstrap Core CSS -->
 <link href="resources/vendor/css/bootstrap.min.css" rel="stylesheet">
@@ -19,6 +15,14 @@
 <link href="resources/vendor/css/morris.css" rel="stylesheet">
 <!-- Custom Fonts -->
 <link href="resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript"src="<c:url value="/resources/vendor/js/jquery.min.js"/>"></script>
+<script>
+	$(document).ready(function() {
+		$('#ProgramModifyButton').click(function() {
+			$('#ProgramModifyForm').submit();
+		})
+	})
+</script>
 </head>
 <body>
 	<div id="wrapper">
@@ -35,57 +39,72 @@
 		<div class="row">
 			<div class="col-lg-1"></div>
 			<div class="col-lg-11">
-			<h2>수정화면</h2>
-			<form id="programModifyForm" action="${pageContext.request.contextPath}/program/program_list" method="post">
-				<input type="hidden" value="${program.programCd}" name="programCd">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>특별활동프로그램명</th>
-							<th>주당운영횟수(회)</th>
-							<th>1회운영시간(분)</th>
-							<th>외주금액</th>
-							<th>마감유무</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><input type="text" value="${program.programNm}" name="programNm"></td>							
-							<td>
-								<select name="programNumberWeek">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
-							</td>
-							<td>
-								<select name="programOperationTime">
-									<option value="10">10</option>
-									<option value="20">20</option>
-									<option value="30">30</option>
-									<option value="40">40</option>
-									<option value="50">50</option>
-									<option value="60">60</option>
-								</select>
-							</td>
-							<td><input type="text" value="${program.programOutsourcingCost}" name="programOutsourcingCost"></td>
-							<td>
-								<select name="programClosingDivision">
-									<option value="마감전">마감전</option>
-									<option value="마감완료">마감완료</option>
-								</select>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<button id="modifyButton" class="btn" type="submit">수정</button>
-				<button class="btn" type="reset">초기화</button>
-			</form>
+				<form id="ProgramModifyForm" action="${pageContext.request.contextPath}/ProgramModify" method="post">
+					<input type="hidden" value="${program.programCd}" name="programCd">
+					<table class="table table-bordered">
+					<tr>
+						<td>특별활동프로그램명</td>
+						<td>
+							<input type="text" name="programNm" value="${program.programNm}">
+						</td>
+					</tr>
+					<tr>
+						<td>주당운영횟수(회)</td>
+						<td>
+							<select name="programNumberWeek">
+								<option value=1>1회</option>
+								<option value=2>2회</option>
+								<option value=3>3회</option>
+								<option value=4>4회</option>
+								<option value=5>5회</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>1회운영시간(분)</td>
+						<td>
+							<select name="programOperationTime">
+								<option value=10>10분</option>
+								<option value=20>20분</option>
+								<option value=30>30분</option>
+								<option value=40>40분</option>
+								<option value=50>50분</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>외주금액</td>
+						<td>
+							<input type="number" name="programOutsourcingCost" value="${program.programOutsourcingCost}">
+						</td>
+					</tr>
+					<tr>
+						<td>마감회계_지출특별활동비</td>
+						<td>
+							<input type="text" name="programClosingCd" value="${program.programClosingCd}">
+						</td>
+					</tr>
+					<tr>
+						<td>마감유무</td>
+						<td>
+							<select name="programClosingDivision">
+								<option value="마감전">마감전</option>
+								<option value="마감완료">마감완료</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>등록인</td>
+						<td>
+							<input type="text" name="programRegistrant" value="${program.programRegistrant}">
+						</td>
+					</tr>
+					</table>
+					<button id="ProgramModifyButton" type="button">수정</button>
+				</form>
 			</div>
 		</div>
-	</div>	
+	</div>
 	<!-- FOOTER : Navigation -->
 	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->

@@ -49,16 +49,16 @@ public class ProgramController {
 		logger.debug("{} <- ProgramInsert ProgramController.java", program);
 		return "redirect:/ProgramList";
 	}
-	
-	// Program 수정 처리요청
-	@RequestMapping(value="/program/program_modify", method=RequestMethod.POST)
-	public String ProgramModify(Program program) {
-		programService.programModify(program);
-		logger.debug("{} <- ProgramModify ProgramController.java", program);
-		return "redirect:/ProgramList";
+	// 2. 특별활동 전체조회
+	@RequestMapping(value = "/ProgramList", method = RequestMethod.GET)
+	public String ProgramList(Model model) {
+		List<Program> list = programService.selectProgramList();
+		logger.debug("{} <- list ProgramController.java", list);
+		model.addAttribute("list", list);
+		return "program/program_list";
 	}
-	// Program 수정 정보요청
-	@RequestMapping(value = "/program/program_modify", method = RequestMethod.GET)
+	// 3-1. 특별활동 업데이트 정보요청
+	@RequestMapping(value = "/ProgramModify", method = RequestMethod.GET)
 	public String ProgramModify(Model model, @RequestParam(value = "programCd", required = true) String programCd) {
 		Program program = programService.getProgramOne(programCd);
 		logger.debug("{} <- programCd ProgramController.java", programCd);
@@ -66,12 +66,17 @@ public class ProgramController {
 		model.addAttribute("program", program);
 		return "/program/program_modify";
 	}
-	// Program 전체 조회(교직원)
-	@RequestMapping(value = "/ProgramList", method = RequestMethod.GET)
-	public String ProgramList(Model model) {
-		List<Program> list = programService.selectProgramList();
-		logger.debug("{} <- list ProgramController.java", list);
-		model.addAttribute("list", list);
-		return "program/program_list";
+	// 3-2. 특별활동 업데이트
+	@RequestMapping(value="/ProgramModify", method=RequestMethod.POST)
+	public String ProgramModify(HttpSession session, Teacher teacher, Program program) {
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
+		if(loginTeacher == null) {
+			// loginTeacher의 값이 null이라면 login화면으로
+			return "redirect:/Login";
+		}
+		programService.programModify(program);
+		logger.debug("{} <- ProgramModify ProgramController.java", program);
+		return "redirect:/ProgramList";
 	}
 }

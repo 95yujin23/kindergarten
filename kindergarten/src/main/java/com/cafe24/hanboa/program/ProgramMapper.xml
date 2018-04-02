@@ -53,6 +53,7 @@
 			, #{licenseKindergarten}
 		)
 	</insert>
+	<!-- 2. 특별활동 전체조회 -->
 	<select id="getProgramList" parameterType="String" resultType="com.cafe24.hanboa.program.Program">
 		SELECT  
 			PROGRAM_CD AS programCd
@@ -69,19 +70,21 @@
 			, LICENSE_KINDERGARTEN AS licenseKindergarten
 		FROM TB_PROGRAM
 	</select>
+	<!-- 3-1. 특별활동 업데이트 정보요청 개별조회 -->
 	<select id="selectProgramOne" parameterType="String" resultType="com.cafe24.hanboa.program.Program">
 		SELECT  
 			PROGRAM_CD AS programCd
-			, TOTAL_RESOURCE_CD AS totalResourceCd
 			, PROGRAM_NM AS programNm
 			, PROGRAM_NUMBER_WEEK AS programNumberWeek
 			, PROGRAM_OPERATION_TIME AS programOperationTime
 			, PROGRAM_OUTSOURCING_COST AS programOutsourcingCost
 			, PROGRAM_CLOSING_CD AS programClosingCd
 			, PROGRAM_CLOSING_DIVISION AS programClosingDivision
+			, PROGRAM_REGISTRANT AS programRegistrant
 		FROM TB_PROGRAM
 		WHERE PROGRAM_CD = #{programCd}
 	</select>
+	<!-- 3-2. 특별활동 업데이트 -->
 	<update id="programModify" parameterType="com.cafe24.hanboa.program.Program">
 		UPDATE TB_PROGRAM
 		SET 
@@ -91,9 +94,7 @@
 			, PROGRAM_OUTSOURCING_COST = #{programOutsourcingCost}
 			, PROGRAM_CLOSING_CD = #{programClosingCd}
 			, PROGRAM_CLOSING_DIVISION = #{programClosingDivision}
+			, PROGRAM_REGISTRANT = #{programRegistrant}
 		WHERE PROGRAM_CD = #{programCd}
 	</update>
-	<select id="">
-		SELECT 
-	</select>
 </mapper>
