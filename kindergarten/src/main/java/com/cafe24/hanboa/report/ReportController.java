@@ -177,6 +177,13 @@ public class ReportController {
 		
 		return "redirect:/ReportSetting";
 	}
+	
+	//일지추가화면
+	@RequestMapping(value="/reportAdd")
+	public String reportAdd() {
+		
+		return "report/report_add";
+	}
 }
 	
 

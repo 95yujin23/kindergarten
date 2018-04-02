@@ -85,7 +85,7 @@
        <td class="reportNm">${reportDivision.reportNm}</td>
        <td style="text-align:center">
        
-       <button type="button" class="btn btn-primary" class="mod" data-toggle="modal" data-target="#myModal" onclick="get();"><i class="fas fa-pencil-alt"></i></button>
+       <button type="button" class="btn btn-primary mod" data-toggle="modal" data-target="#myModal"><i class="fas fa-pencil-alt"></i></button>
 		
 	  <%-- <a ${pageContext.request.contextPath}/report/kids_report_setting?reportCd=${reportDivision.reportCd}" class="modal-param" data-toggle="modal" data-target="#myModal" data-unique="${vs.index}"><i class="fas fa-pencil-alt"></i> </a> --%>
 	 </td>
@@ -109,7 +109,7 @@
 	      <form action="${pageContext.request.contextPath}/modifyReportDivision" method="POST">
 	        <label for="reportDivisionCd">일지명 : </label>
 	        <input id="reportDivisionCd" type="hidden" name="reportCd">
-	        <input id="reportDivisionNm" type="text" class="form-control" name="reportNm" value="">
+	        <input id="reportDivisionNm" type="text" class="form-control" name="reportNm">
 	        <button type="submit" class="btn btn-primary">완료</button>
 	       </form>
 	    </div>
@@ -163,12 +163,17 @@
        <td style="text-align:center">
        
 	       	<!-- Button trigger modal -->
-		<a href="${pageContext.request.contextPath}/report/kids_report_setting?reportResourceCd=${reportResource.reportResourceCd}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
+		<button class="btn btn-primary mod1" data-toggle="modal" data-target="#myModal2">
 		  <i class="fas fa-pencil-alt"></i>
-		</a></td>
+		</button></td>
 		
-		<!-- Modal -->
-		<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+       <td style="text-align:center"><a class="btn btn-danger" href="${pageContext.request.contextPath}/removeReportResource?reportResourceCd=${reportResource.reportResourceCd}"><i class="fas fa-trash-alt"></i></a></td>
+      </tr>
+     </tbody>
+     </c:forEach>
+     
+     <!-- Modal -->
+		<div class="modal fade mod1" id="myModal2">
 		  <div class="modal-dialog">
 		  
 		  <!-- Modal content -->
@@ -182,14 +187,14 @@
 		      
 		      <form action="${pageContext.request.contextPath}/modifyReportResource" method="POST">
 		        <label for="ex2">일지명 : </label>
-		        <input type="hidden" id="modifyReportResource" name="reportResourceCd" value="${reportResource.reportResourceCd}">
-		        <input type="text" id="groupNm" name="groupNm" value="${reportResource.groupNm}">
+		        <input type="hidden" id="reportResourceCd" name="reportResourceCd">
+		        <input type="text" id="groupNm" name="groupNm">
 		       	<label for="ex2">상세내용 : </label>
-		        <input type="text" id="detail" name="detail" value="${reportResource.detail}">
+		        <input type="text" id="detail" name="detail">
 		        <button type="submit" class="btn btn-primary">완료</button>
 		       </form>
 		      </div>
-	      <div class="modal-footer">
+	      <div class="modal-footer">`
 	        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 	      </div>
 	    </div>
@@ -198,10 +203,7 @@
 	<!-- /modal -->
        
        
-       <td style="text-align:center"><a class="btn btn-danger" href="${pageContext.request.contextPath}/removeReportResource?reportResourceCd=${reportResource.reportResourceCd}"><i class="fas fa-trash-alt"></i></a></td>
-      </tr>
-     </tbody>
-     </c:forEach>
+     
     </table>
    </div>
   
@@ -216,39 +218,72 @@
 	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->
 
-	<!-- jQuery -->
-	<script src="resources/vendor/js/jquery.min.js"></script>
+	
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="resources/vendor/js/bootstrap.min.js"></script>
+	
+	<!-- jQuery -->
+	<script src="resources/vendor/js/jquery.min.js"></script>
+	 
 
 	<!-- Metis Menu Plugin JavaScript -->
 	<script src="resources/vendor/js/metisMenu.min.js"></script>
 
 	<!-- Morris Charts JavaScript -->
-	<script src="resources/vendor/js/raphael.min.js"></script>
+	<!-- <script src="resources/vendor/js/raphael.min.js"></script>
 	<script src="resources/vendor/js/morris.min.js"></script>
-	<script src="resources/vendor/js/morris-data.js"></script>
+	<script src="resources/vendor/js/morris-data.js"></script> -->
 
 	<!-- Custom Theme JavaScript -->
 	<script src="resources/vendor/js/sb-admin-2.js"></script>
-	 <script>
+	
+	<script>
 
-	/*  $(document).ready(function() {
-		
-		 $('.mod').on('click', function (e) {
-			 var text = document.getElementById('target');
-			 alert(target.innerText);
-			 $(".modal #reportDivisionNm").val(text);
-			 modal.val(text)
-		 })
-		 
-	 }) */
+	$(document).ready(function() {
+			var modal = $(".modal");
+			
+			var vm = $(this).parent()
+			console.log(vm);
+			$(".mod").on("click", function (e) { 
+				
+				var vm = $(this).parent().parent().children();
+				console.log($(vm[0]).text());
+				console.log($(vm[1]).text());
+				
+				var reportDivisionCd = $(vm[0]).text();
+				var reportDivisionNm = $(vm[1]).text();
+				$("#reportDivisionCd").val(reportDivisionCd)
+				$("#reportDivisionNm").val(reportDivisionNm)
+			})
+	 })
 	 
-	 function get(){
-		var target = document.getElementById("target");
-		alert(target.innerText);
-	}
+	 $(document).ready(function(){
+		 
+		 var modal1 = $("#myModal2");
+			
+			var vm1 = $(this).parent()
+			console.log(vm1);
+			$(".mod1").on("click", function (e){
+				
+				var vm1 = $(this).parent().parent().children();
+				console.log($(vm1[0]).text());
+				console.log($(vm1[1]).text());
+				console.log($(vm1[2]).text());
+				
+				/* console.log($(this).parent().parent().children()); */
+				
+				var reportResourceCd = $(vm1[0]).text();
+				var groupNm = $(vm1[1]).text();
+				var detail = $(vm1[2]).text();
+				$("#reportResourceCd").val(reportResourceCd)
+				$("#groupNm").val(groupNm)
+				$("#detail").val(detail)
+				
+			})
+		 
+	 })
+	 
 	 
  </script>
 	 
