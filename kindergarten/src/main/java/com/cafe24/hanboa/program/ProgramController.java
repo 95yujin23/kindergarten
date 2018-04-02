@@ -1,6 +1,7 @@
 package com.cafe24.hanboa.program;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.hanboa.contract.Contract;
+import com.cafe24.hanboa.kids.Kids;
 import com.cafe24.hanboa.teacher.Teacher;
 import com.cafe24.hanboa.totalResource.TotalResource;
 
@@ -23,6 +25,7 @@ public class ProgramController {
 	private ProgramService programService;
 	private static final Logger logger = LoggerFactory.getLogger(ProgramController.class);
 	
+	// 특별활동
 	// 1-1. 특별활동 등록을 위한 통합자원 코드, 계약 코드 불러오기 및 입력 요청
 	@RequestMapping(value="/ProgramAdd", method=RequestMethod.GET)
 	public String ProgramInsert(Model model) {
@@ -90,5 +93,46 @@ public class ProgramController {
 		}
 		programService.programDelete(programCd);
 		return "redirect:/ProgramList";
+	}
+	
+	// 특별활동신청
+	// 1-1. 특별활동신청 등록을 위한 영유아 목록, 특별활동 목록 입력 요청
+	@RequestMapping(value="/ProgramApplication", method=RequestMethod.GET)
+	public String ProgramApplicationInsert(Model model) {
+		List<Kids> kids = programService.callKids();
+		List<Program> program = programService.callProgram();
+		model.addAttribute("kids", kids);
+		model.addAttribute("program", program);
+		logger.debug("1. ProgramController ProgramApplInsert()메소드 실행 ");
+		logger.debug("------------------------------------------------------------");
+		return "program/program_application";
+	}
+	// 1-2. 특별활동신청 등록 입력
+	@RequestMapping(value="/ProgramApplication", method=RequestMethod.POST)
+	public String ProgramApplication(Model model, HttpSession session, Teacher teacher, ProgramApplication programApplication) {
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
+		if(loginTeacher == null) {
+			// loginTeacher의 값이 null이라면 login화면으로
+			return "redirect:/Login";
+		}
+		// null이 아니라면 loginTeacher세션에서 교원번호와 라이센스를 받아서 teacher객체에 셋팅한다.
+		programApplication.setLicenseKindergarten(loginTeacher.getLicenseKindergarten());
+		programService.insertProgramApplication(programApplication);
+		return "redirect:/ProgramApplicationList";
+	}
+	// 2. 특별활동신청 전체조회
+	@RequestMapping(value="/ProgramApplicationList", method=RequestMethod.GET)
+	public String selectProgramApplicationList(Model model
+											, @RequestParam(value="searchOption", required = false) String searchOption
+											, @RequestParam(value="keyword", required = false) String keyword) {
+		Map<String, Object> map = programService.getProgramApplicationList(searchOption, keyword);
+		List<ProgramApplication> list = (List<ProgramApplication>)(map.get("list"));
+		String searchOptionWord = (String)map.get("keyword");
+		String searchWord = (String)map.get("searchOption");
+		model.addAttribute("searchOption", searchOptionWord);
+		model.addAttribute("keyword", searchWord);
+		model.addAttribute("list", list);
+		return "/program/program_application_list";
 	}
 }

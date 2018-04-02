@@ -6,12 +6,11 @@ public class ProgramApplication {
 	private String programCd;
 	private String PRAPDivision;
 	private int PRAPCost;
-	private int PRAPClosingCd;
+	private String PRAPClosingCd;
 	private String PRAPClosingDivision;
 	private String PRAPRegistrationDate;
 	private String PRAPRegistrant;
 	private String licenseKindergarten;
-	
 	public String getProgramApplCd() {
 		return programApplCd;
 	}
@@ -42,10 +41,10 @@ public class ProgramApplication {
 	public void setPRAPCost(int pRAPCost) {
 		PRAPCost = pRAPCost;
 	}
-	public int getPRAPClosingCd() {
+	public String getPRAPClosingCd() {
 		return PRAPClosingCd;
 	}
-	public void setPRAPClosingCd(int pRAPClosingCd) {
+	public void setPRAPClosingCd(String pRAPClosingCd) {
 		PRAPClosingCd = pRAPClosingCd;
 	}
 	public String getPRAPClosingDivision() {

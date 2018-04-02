@@ -2,7 +2,9 @@ package com.cafe24.hanboa.program;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cafe24.hanboa.contract.Contract;
+import com.cafe24.hanboa.kids.Kids;
 import com.cafe24.hanboa.totalResource.TotalResource;
 
 @Service
@@ -20,6 +23,7 @@ public class ProgramService {
 	private ProgramDao programDao;
 	private static final Logger logger = LoggerFactory.getLogger(ProgramService.class);
 	
+	// 특별활동
 	// 1-1. 특별활동 등록 : 특별활동 등록을 위한 통합자원 코드 불러오기 
 	public List<TotalResource> callTotalResource() {
 		return programDao.callTotalResource();
@@ -57,5 +61,35 @@ public class ProgramService {
 	public int programDelete(String programCd) {
 		int programOne = programDao.programDelete(programCd);
 		return programOne;
+	}
+	
+	// 특별활동신청
+	// 1-1. 특별활동신청 등록 : 특별활동신청 등록을 위한 영유아 목록 불러오기
+	public List<Kids> callKids() {
+		return programDao.callKids();
+	}
+	// 1-2. 특별활동신청 등록 : 특별활동신청 등록을 위한 특별활동 목록 불러오기
+	public List<Program> callProgram() {
+		return programDao.callProgram();
+	}
+	// 1-3. 특별활동신청 등록
+	public void insertProgramApplication(ProgramApplication programApplication) {
+		String inDate = new SimpleDateFormat("yyyyMMdd").format(new Date());
+		programApplication.setPRAPRegistrationDate(inDate);
+		programDao.insertProgramApplication(programApplication);
+		logger.debug("{} <- insertProgramApplication ProgramService.java", programApplication);
+		logger.debug("-------------------------------------------------------------");	
+	}
+	// 2. 특별활동신청 전체조회
+	public Map<String, Object> getProgramApplicationList(String searchOption, String keyword) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("searchOption", searchOption);
+		map.put("keyword", keyword);
+		List<ProgramApplication> list = programDao.getProgramApplicationList(map);
+		logger.debug("{} <- searchOption getProgramApplicationList ProgramService.java", searchOption);
+		logger.debug("{} <- keyword getProgramApplicationList ProgramService.java", keyword);
+		logger.debug("-------------------------------------------------------------");	
+		map.put("list", list);
+		return map;
 	}
 }

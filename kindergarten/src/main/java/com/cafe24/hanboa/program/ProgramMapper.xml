@@ -103,4 +103,71 @@
 		FROM TB_PROGRAM 
 		WHERE  PROGRAM_CD = #{programCd}
 	</delete>
+	
+	<!-- 특별활동신청 -->
+	<!-- 1-1. 특별활동신청 등록 : 특별활동신청 등록을 위한 영유아 목록 불러오기 -->
+	<select id="callKids" resultType="com.cafe24.hanboa.kids.Kids">
+		SELECT 
+			KIDS_CD AS kidsCd
+			, KIDS_NM AS kidsNm
+		FROM TB_KIDS
+	</select>
+	<!-- 1-2. 특별활동신청 등록 : 특별활동신청 등록을 위한 특별활동 목록 불러오기 -->
+	<select id="callProgram" resultType="com.cafe24.hanboa.program.Program">
+		SELECT
+			PROGRAM_CD AS programCd
+			, PROGRAM_NM AS programNm
+			, PROGRAM_NUMBER_WEEK AS programNumberWeek
+			, PROGRAM_OPERATION_TIME AS programOperationTime
+			, PROGRAM_OUTSOURCING_COST AS programOutsourcingCost
+		FROM TB_PROGRAM
+	</select>
+	<!-- 1-3. 특별활동신청 등록 -->
+	<insert id="insertProgramApplication" parameterType="com.cafe24.hanboa.program.ProgramApplication">
+		<!-- selectKey설정 - #{programApplCd} : 문자열(PROG) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 --> 
+		<selectKey resultType="String" keyProperty="programApplCd" order="BEFORE">
+			SELECT CONCAT('PR', '_', 'AP', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_PROGRAM_APPLICATION ))
+		</selectKey>
+		INSERT INTO TB_PROGRAM_APPLICATION (
+			PROGRAM_APPL_CD
+			, KIDS_CD
+			, PROGRAM_CD
+			, PRAP_DIVISION
+			, PRAP_COST
+			, PRAP_CLOSING_CD
+			, PRAP_CLOSING_DIVISION
+			, PRAP_REGISTRATION_DATE
+			, PRAP_REGISTRANT
+			, LICENSE_KINDERGARTEN
+		) VALUES (
+			#{programApplCd}
+			, #{kidsCd}
+			, #{programCd}
+			, #{PRAPDivision}
+			, #{PRAPCost}
+			, #{PRAPClosingCd}
+			, #{PRAPClosingDivision}
+			, #{PRAPRegistrationDate}
+			, #{PRAPRegistrant}
+			, #{licenseKindergarten}
+		)
+	</insert>
+	<!-- 2. 특별활동신청 전체조회 -->
+	<select id="getProgramApplicationList" parameterType="java.util.Map" resultType="com.cafe24.hanboa.program.ProgramApplication">
+		SELECT 
+			PROGRAM_APPL_CD AS programApplCd
+			, KIDS_CD AS kidsCd
+			, PROGRAM_CD AS programCd
+			, PRAP_DIVISION AS PRAPDivision
+			, PRAP_COST AS PRAPCost
+			, PRAP_CLOSING_CD AS PRAPClosingCd
+			, PRAP_CLOSING_DIVISION AS PRAPClosingDivision
+			, PRAP_REGISTRATION_DATE AS PRAPRegistrationDate
+			, PRAP_REGISTRANT AS PRAPRegistrant
+			, LICENSE_KINDERGARTEN AS licenseKindergarten
+		FROM TB_PROGRAM_APPLICATION
+		<if test="keyword != null">
+			WHERE ${searchOption} LIKE CONCAT('%',#{keyword},'%')
+		</if>
+	</select>
 </mapper>
