@@ -25,16 +25,27 @@ public class FeedingMenuService {
 	
 	// 2. 수정정보요청
 	public FeedingMenu modifyGetfeedingMenu(String feedingMenuCd) {
-		FeedingMenu feedingMenu = femeDao.modifyGetFeedingMenu(feedingMenuCd);
-		logger.debug("{} <- feedingmenu FeedingMenuService.java",feedingMenu);
-		return feedingMenu;
+		FeedingMenu ModiftGetfeedingMenu = femeDao.modifyGetFeedingMenu(feedingMenuCd);
+		logger.debug("{} <- feedingmenu FeedingMenuService.java",feedingMenuCd);
+		logger.debug("{} <- feedingmenu FeedingMenuService.java",ModiftGetfeedingMenu);
+		return ModiftGetfeedingMenu;
 	}
 	
 	// 3.수정처리
 	public int updateFeedingMenu(FeedingMenu feedingMenu) {
 		int modifyFeedingMenu = femeDao.updateFeedingMenu(feedingMenu);
 		logger.debug("{} <-- updateFeedingMenu FeedingMenuService.java",feedingMenu);
-		return modifyFeedingMenu;
+		logger.debug("{} <-- updateFeedingMenu FeedingMenuService.java",modifyFeedingMenu);
+		return modifyFeedingMenu;		
+	}
+	
+	// 4.입력처리
+	public int insertFeedingMenu(FeedingMenu feedingMenu) {
+		int insertFeme = femeDao.insertFeedingMenu(feedingMenu);
+		logger.debug("{} < -- insertFeedingMenu FeedingMenuService.java",feedingMenu);
+		logger.debug("{} < -- insertFeedingMenu FeedingMenuService.java",insertFeme);
+		return insertFeme;
 		
 	}
+	
 }

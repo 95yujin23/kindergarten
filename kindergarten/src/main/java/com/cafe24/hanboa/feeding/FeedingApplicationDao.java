@@ -25,7 +25,19 @@ public class FeedingApplicationDao {
 	// 2. 업데이트 정보요청
 	public FeedingApplication modifyGetFeedingApplication(String feedingApplication) {
 		logger.debug("{} <- modifyGetFeedingApplication FeedingApplicationDao.java",feedingApplication);
-		return sqlSession.selectOne(localName+"selectFeapONE",feedingApplication);		
+		return sqlSession.selectOne(localName+"selectFeapONE",feedingApplication);
+	}
+	
+	// 3. 업데이트
+	public int modifyFeap(FeedingApplication feedingApplication) {
+		logger.debug("{} < -- modifyFeap FeedingApplicationDao.java",feedingApplication);
+		return sqlSession.update(localName+"feapModify",feedingApplication);
+	}
+	
+	//4.입력처리
+	public int feedingApplicationAdd(FeedingApplication feedingApplication) {
+		logger.debug("{} <-- feedingApplicationAdd FeedingApplicationDao.java",feedingApplication);
+		return sqlSession.insert(localName+"feapInsert",feedingApplication);		
 	}
 	
 }

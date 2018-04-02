@@ -22,16 +22,22 @@ public class FeedingMenuDao {
 		return sessionTemplate.selectList(localName+"getFeedingMenuList");
 	}
 	
-	//2. 수정정보요청
-	public FeedingMenu modifyGetFeedingMenu(String feedingMenuCd) {
-		logger.debug("{} <-- modifyGetFeedingMenu FeedingMenuDao.java",feedingMenuCd);
-		return sessionTemplate.selectOne(localName+"getFemeOne",feedingMenuCd);		
+	// 2. 수정정보요청
+	public FeedingMenu modifyGetFeedingMenu(String feedingMenu) {
+		logger.debug("{} <-- modifyGetFeedingMenu FeedingMenuDao.java",feedingMenu);
+		return sessionTemplate.selectOne(localName+"getFemeOne",feedingMenu);		
 	}
 	
-	//3. 수정처리
+	// 3. 수정처리
 	public int updateFeedingMenu(FeedingMenu feedingMenu) {
 		logger.debug("{} <-- updateFeedingMenu FeedingMenuDao.java",feedingMenu);
 		return sessionTemplate.update(localName+"modifyFeme",feedingMenu);
+	}
+	
+	// 4. 입력처리
+	public int insertFeedingMenu(FeedingMenu feedingMenu) {
+		logger.debug("{} < -- insertFeedingMenu FeedingMenuDao.java",feedingMenu);
+		return sessionTemplate.insert(localName+"insertFeme",feedingMenu);		
 	}
 	
 	

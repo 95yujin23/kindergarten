@@ -37,13 +37,26 @@ public class FeedingMenuController {
 		model.addAttribute("feedingMenu",feedingMenu);
 		return "feeding/feedingMenu_modify";		
 	}
-	//3. 수정처리 근데 안됨....................ㅅㅂ
+	//3. 수정처리
 	@RequestMapping(value="/feeding/feedingMenu_modify",method=RequestMethod.POST)
 	public String feedingMenuModify(Model model, FeedingMenu feedingMenu) {
 		femeService.updateFeedingMenu(feedingMenu);
 		logger.debug("{} <-- feedingMenuModify FeedingMenuController.java",feedingMenu);
 		return "redirect:/feeding/feedingMenu_list";	
 	}
+	//4. 입력화면
+	@RequestMapping(value="/FeedingMenuAdd", method=RequestMethod.GET)
+	public String feedingMenuAdd() {
+		logger.debug("{} <-- feedingMenuAdd(addForm) FeedingMenuController.java ");
+		return "feeding/feedingMenu_add";		
+	}
 	
+	//5. 입력
+	@RequestMapping(value="/FeedingMenuAdd", method=RequestMethod.POST)
+	public String feedingMenuAdd(Model model, FeedingMenu feedingMenu) {
+		femeService.insertFeedingMenu(feedingMenu);
+		logger.debug("{} < -- feedingMenuAdd FeedingMenuController.java",feedingMenu);
+		return "redirect:/feeding/feedingMenu_list";
+	}
 
 }

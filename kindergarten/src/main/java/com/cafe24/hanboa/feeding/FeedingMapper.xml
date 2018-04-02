@@ -32,6 +32,7 @@
 		FROM hanboa.TB_FEEDING_APPLICATION
 		WHERE feeding_application_cd = #{feedingApplicationCd}
 	</select>
+	
 <!-- 급식신청 업데이트 -->	
 	<update id="feapModify" parameterType="com.cafe24.hanboa.feeding.FeedingApplication">
 		UPDATE TB_FEEDING_APPLICATION
@@ -45,7 +46,33 @@
 			,feap_division = #{feapDivision}
 		WHERE feeding_application_cd = #{feedingApplicationCd}
 	</update>
-			
+	
+<!-- 급식신청 등록 -->
+	<insert id="feapInsert" 
+			parameterType="com.cafe24.hanboa.feeding.FeedingApplication">
+	INSERT INTO TB_FEEDING_APPLICATION
+			(feeding_application_cd
+			,kids_cd
+			,feeding_monthly_cd
+			,feap_expense_month
+			,feap_closing_income
+			,feap_closing_option
+			,feap_division
+			,feap_registration_date
+			,feap_registrant
+			,license_kindergarten)
+	VALUES
+			(#{feedingApplicationCd})
+			,#{kidsCd}
+			,#{feedingMonthlyCd}
+			,#{feapExpenseMonth}
+			,#{feapClosingIncome}
+			,#{feapClosingOption}
+			,#{feapDivision}
+			,#{feapRegistrationDate}
+			,#{feapRegistrant}
+			,#{licenseKindergarten})			
+	</insert>			
 	
 <!-- 식단메뉴조회 -->
 	<select id="getFeedingMenuList"
@@ -61,6 +88,7 @@
 			,license_kindergarten as licenseKindergarten
 	FROM TB_FEEDING_MENU		
 	</select>
+	
 <!-- 식단메뉴 항목벽조회 -->
 	<select id = "getFemeOne"
 			resultType="com.cafe24.hanboa.feeding.FeedingMenu">
@@ -75,6 +103,7 @@
 	FROM TB_FEEDING_MENU
 	WHERE feeding_menu_cd = #{feedingMenuCd}			
 	</select>
+	
 <!-- 식단 메뉴 업데이트 -->
 	<update id = "modifyFeme"
 			parameterType = "com.cafe24.hanboa.feeding.FeedingMenu">
@@ -89,6 +118,29 @@
 			,feme_manager = #{menuManager}
 	WHERE feeding_menu_cd = #{feedingMenuCd}
 	</update>
+	
+<!-- 식단메뉴등록 -->
+	<insert id = "insertFeme"
+			parameterType = "com.cafe24.hanboa.feeding.FeedingMenu">
+	INSERT INTO TB_FEEDING_MENU(
+		feeding_menu_cd
+		,feme_date
+		,feme_lunch_calory_protein
+		,feme_morning_snack
+		,feme_afternoon_snack
+		,feme_origin
+		,feme_manager
+		,license_kindergarten)		
+	VALUES(
+		#{feedingMenuCd}
+		,#{menuDate}
+		,#{lunchCaloryProtein}
+		,#{morningSnack}
+		,#{afternoonSnack}
+		,#{origin}
+		,#{menuManager}
+		,#{licenseKindergarten})
+	</insert>
 			
 <!-- 월별급식 조회 -->
 	<select id="getfemoList"
@@ -125,8 +177,9 @@
 			,femo_closing_cost as femoClosingCost
 			,femo_closing_option as femoClosingOption
 	FROM TB_FEEDING_MONTHLY
-	WHERE feeding_monthly_cd = #{feedingMonthlyCd}			
+	WHERE feeding_monthly_cd = #{feedingMonthlyCd}	 		
 	</select>
+	
 <!-- 월별급식 수정 -->
 	<update id="modifyFemo"
 			parameterType="com.cafe24.hanboa.feeding.FeedingMonthly">
@@ -176,6 +229,7 @@
 		FROM TB_FOOD_POISONNING_PROCESSING
 		WHERE food_poisonning_generation_cd = #{foodPoisonningGenerationCd}
 	</select>
+	
 <!-- 식중독 수정 -->
 	<update id ="modifyFepo"
 			parameterType="com.cafe24.hanboa.feeding.FeedingPoisonning">

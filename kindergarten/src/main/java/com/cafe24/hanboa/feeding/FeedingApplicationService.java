@@ -30,4 +30,20 @@ public class FeedingApplicationService {
 		return modifyGet;
 	}
 	
+	//3. 수정처리
+	public int modifyFeap(FeedingApplication feedingApplication) {
+		int modifyFeedingApplication = feedingApplicationDao.modifyFeap(feedingApplication);
+		logger.debug("{} <-- modifyFeap FeedingApplicationService,java",feedingApplication);
+		logger.debug("{} <-- modifyFeap FeedingApplicationService,java",modifyFeedingApplication);
+		return modifyFeedingApplication;		
+	}
+	
+	//4.입력처리
+	public int feapAdd(FeedingApplication feedingApplication) {
+		int feapinsert = feedingApplicationDao.feedingApplicationAdd(feedingApplication);
+		logger.debug("{} < -- feedingApplicationAdd FeedingApplicationService.java",feedingApplication);
+		logger.debug("{} < -- feedingApplicationAdd FeedingApplicationService.java",feapinsert);
+		return feapinsert;
+	}
+	
 }
