@@ -68,7 +68,7 @@
     </form>
   </div>
   </div>
-    <table class="table table-hover">
+    <table class="table table-hover" id="reportDivisonBoard">
      <thead>
       <tr>
       <th>일지자원코드</th>
@@ -79,21 +79,18 @@
      </thead>
      
      <c:forEach var="reportDivision" varStatus="vs" items="${list}">
-     <tbody>
+     <tbody id="target">
       <tr>
-       <td id="modify_${vs.index}">${reportDivision.reportCd}</td>
-       <td id="modify_${vs.index}">${reportDivision.reportNm}</td>
+       <td class="reportCd">${reportDivision.reportCd}</td>
+       <td class="reportNm">${reportDivision.reportNm}</td>
        <td style="text-align:center">
        
-	 <!--  <button type="button" class="btn btn-primary" data-toggle="modal" data-targer="#myModal" name="modify">
-	  <i class="fas fa-pencil-alt"></i>
-	  	</button> -->
-	  	
-	  <a ${pageContext.request.contextPath}/report/kids_report_setting?reportCd=${reportDivision.reportCd}" class="modal-param" data-toggle="modal" data-target="#myModal" data-unique="${vs.index}"><i class="fas fa-pencil-alt"></i> </a>
-
+       <button type="button" class="btn btn-primary" class="mod" data-toggle="modal" data-target="#myModal" onclick="get();"><i class="fas fa-pencil-alt"></i></button>
+		
+	  <%-- <a ${pageContext.request.contextPath}/report/kids_report_setting?reportCd=${reportDivision.reportCd}" class="modal-param" data-toggle="modal" data-target="#myModal" data-unique="${vs.index}"><i class="fas fa-pencil-alt"></i> </a> --%>
 	 </td>
        <td style="text-align:center"><a class="btn btn-danger" href="${pageContext.request.contextPath}/removeReportDivision?reportCd=${reportDivision.reportCd}"><i class="fas fa-trash-alt"></i></a></td>
-      </tr>
+     </tr>
      </tbody>
      </c:forEach>
 
@@ -111,8 +108,8 @@
 	       <div class="modal-body">
 	      <form action="${pageContext.request.contextPath}/modifyReportDivision" method="POST">
 	        <label for="reportDivisionCd">일지명 : </label>
-	        <input id="reportDivisionCd" type="hidden"  class="form-control" name="reportCd" id="reportCd">
-	        <input id="reportDivisionNm" type="text" name="reportNm" id="reportNm" value="${reportDivision.reportNm}">
+	        <input id="reportDivisionCd" type="hidden" name="reportCd">
+	        <input id="reportDivisionNm" type="text" class="form-control" name="reportNm" value="">
 	        <button type="submit" class="btn btn-primary">완료</button>
 	       </form>
 	    </div>
@@ -186,9 +183,9 @@
 		      <form action="${pageContext.request.contextPath}/modifyReportResource" method="POST">
 		        <label for="ex2">일지명 : </label>
 		        <input type="hidden" id="modifyReportResource" name="reportResourceCd" value="${reportResource.reportResourceCd}">
-		        <input type="text" name="groupNm" value="${reportResource.groupNm}">
+		        <input type="text" id="groupNm" name="groupNm" value="${reportResource.groupNm}">
 		       	<label for="ex2">상세내용 : </label>
-		        <input type="text" name="detail" value="${reportResource.detail}">
+		        <input type="text" id="detail" name="detail" value="${reportResource.detail}">
 		        <button type="submit" class="btn btn-primary">완료</button>
 		       </form>
 		      </div>
@@ -235,19 +232,28 @@
 
 	<!-- Custom Theme JavaScript -->
 	<script src="resources/vendor/js/sb-admin-2.js"></script>
-	 
-	 
 	 <script>
- 	
-	 $(document).ready(function(){
- 		$(".modal-param").on('click',function(){
-  			var key = $(this).attr('data-unique');
-  			var name = $(".modify_"+key).text();
-  			$("#reportNm").val(name)
- 		})
- 	})
- 	
+
+	/*  $(document).ready(function() {
+		
+		 $('.mod').on('click', function (e) {
+			 var text = document.getElementById('target');
+			 alert(target.innerText);
+			 $(".modal #reportDivisionNm").val(text);
+			 modal.val(text)
+		 })
+		 
+	 }) */
+	 
+	 function get(){
+		var target = document.getElementById("target");
+		alert(target.innerText);
+	}
+	 
  </script>
+	 
+	
 
 </body>
+
 </html>
