@@ -20,7 +20,8 @@
 	</select>
 <!-- 급식신청 항목별조회 -->
 	<select id = "selectFeapONE"
-			resultType="com.cafe24.hanboa.feeding.FeedingApplication">
+			resultType="com.cafe24.hanboa.feeding.FeedingApplication"
+			parameterType="String">
 		SELECT 
 			feeding_application_cd as feedingApplicationCd
 			,kids_cd as kidsCd
@@ -62,7 +63,7 @@
 			,feap_registrant
 			,license_kindergarten)
 	VALUES
-			(#{feedingApplicationCd})
+			(#{feedingApplicationCd}
 			,#{kidsCd}
 			,#{feedingMonthlyCd}
 			,#{feapExpenseMonth}
@@ -244,6 +245,33 @@
 			,fopo_processing_result = #{fopoProcessingResult}
 		WHERE food_poisonning_generation_cd = #{foodPoisonningGenerationCd}
 	</update>
+
+<!-- 식중독 입력  -->
+	<insert id="fepoAdd"
+			parameterType="com.cafe24.hanboa.feeding.FeedingPoisonning">
+	INSERT INTO TB_FOOD_POISONNING_PROCESSING
+			(food_poisonning_generation_cd
+			,feeding_monthly_cd 
+			,fopo_generation_date 
+			,fopo_whole_kids_count 
+			,fopo_generated_kids_count 
+			,fopo_food_poisonning_kids
+			,fopo_processing_result 
+			,fopo_registration_date 
+			,fopo_registrant 
+			,license_kindergarten)
+	VALUES
+			(#{foodPoisonningGenerationCd}
+			,#{feedingMonthlyCd}
+			,#{fepoGenerationDate}
+			,#{fopoWholeKidsCount}
+			,#{fopoGeneratedKidsCount}
+			,#{fopoFoodPoisonningKids}
+			,#{fopoProcessingResult}
+			,#{fopoRegistrationDate}
+			,#{registrant}
+			,#{licenseKindergarten})			
+	</insert>
 
 
 

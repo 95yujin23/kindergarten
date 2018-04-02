@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>FeedingApplication Add</title>
+<title>FeedingMenu Add</title>
 <link href="resources/vendor/css/bootstrap.min.css" rel="stylesheet">
 <!-- MetisMenu CSS -->
 <link href="resources/vendor/css/metisMenu.min.css" rel="stylesheet">
@@ -34,55 +34,55 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">급식신청 등록</h1>
+			<h1 class="page-header">식중독 발생및 처리현황 등록</h1>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-				   급식신청 등록
+				   식중독 발생및 처리현황 등록
 				</div>
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6">
-							<form id="addForm" action="${pageContext.request.contextPath}/FeedingApplicationAdd" method="POST">
+							<form id="addForm" action="${pageContext.request.contextPath}/FeedingPoisonningAdd" method="POST">
 								<div class="form-group">
-								    <label>급식신청코드</label>
-								    <input class="form-control" id="feedingApplicationCd" name="feedingApplicationCd" placeholder="급식신청코드">
-								</div>
-								<div class="form-group">
-								    <label>영유아코드</label>
-								    <input class="form-control" id="kidsCd" name="kidsCd" placeholder="영유아코드">
+								    <label>식중독발생및처리코드</label>
+								    <input class="form-control" id="foodPoisonningGenerationCd" name="foodPoisonningGenerationCd" placeholder="식중독발생및처리코드">
 								</div>
 								<div class="form-group">
 								    <label>월별급식코드</label>
 								    <input class="form-control" id="feedingMonthlyCd" name="feedingMonthlyCd" placeholder="월별급식코드">
 								</div>
 								<div class="form-group">
-								    <label>수입급식비</label>
-								    <input class="form-control" id="feapExpenseMonth" name="feapExpenseMonth" placeholder="수입급식비">
+								    <label>발생일자</label>
+								    <input class="form-control" id="fepoGenerationDate" name="fepoGenerationDate" placeholder="발생일자">
 								</div>
 								<div class="form-group">
-								    <label>마감회계_수입급식비</label>
-								    <input class="form-control" id="feapClosingIncome" name="feapClosingIncome" placeholder="마감회계_수입급식비">
+								    <label>전체아동수</label>
+								    <input class="form-control" id="fopoWholeKidsCount" name="fopoWholeKidsCount" placeholder="전체아동수">
 								</div>
 								<div class="form-group">
-								    <label>마감유무</label>
-								    <input class="form-control" id="feapClosingOption" name="feapClosingOption" placeholder="마감유무">
+								    <label>발생아동수</label>
+								    <input class="form-control" id="fopoGeneratedKidsCount" name="fopoGeneratedKidsCount" placeholder="발생아동수">
 								</div>
 								<div class="form-group">
-								    <label>급식구분자</label>
-								    <input class="form-control" id="feapDivision" name="feapDivision" placeholder="급식구분자">
+								    <label>식중독종류</label>
+								    <input class="form-control" id="fopoFoodPoisonningKids" name="fopoFoodPoisonningKids" placeholder="식중독종류">
+								</div>
+								<div class="form-group">
+								    <label>처리결과</label>
+								    <input class="form-control" id="fopoProcessingResult" name="fopoProcessingResult" placeholder="처리결과">
 								</div>
 									<div class="form-group">
 								    <label>등록날짜</label>
-								    <input type="date" class="form-control" id="feapRegistrationDate" name="feapRegistrationDate" placeholder="등록날짜">
+								    <input class="form-control" id="fopoRegistrationDate" name="fopoRegistrationDate" placeholder="등록날짜">
 								</div>
 								<div class="form-group">
 								    <label>등록인</label>
-								    <input class="form-control" id="feapRegistrant" name="feapRegistrant" placeholder="등록인">
-								</div>	
+								    <input class="form-control" id="registrant" name="registrant" placeholder="등록인">
+								</div>		
 								<div class="form-group">
 								    <label>유치원 라이센스</label>
 								    <input class="form-control" id="licenseKindergarten" name="licenseKindergarten" placeholder="유치원라이센스">

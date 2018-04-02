@@ -35,7 +35,7 @@ public class FeedingApplicationController {
 		model.addAttribute("feedingApplication", feedingApplication);
 		logger.debug("{} <- feedingApplication FeedingApplicationController.java",feedingApplicationCd);
 		logger.debug("{} <- feedingApplication FeedingApplicationController.java",feedingApplication);
-		return "/feeding/feedingApplication_modify";
+		return "feeding/feedingApplication_modify";
 	}
 	
 	// 3.수정 처리요청

@@ -56,7 +56,7 @@ public class FeedingMenuController {
 	public String feedingMenuAdd(Model model, FeedingMenu feedingMenu) {
 		femeService.insertFeedingMenu(feedingMenu);
 		logger.debug("{} < -- feedingMenuAdd FeedingMenuController.java",feedingMenu);
-		return "redirect:/feeding/feedingMenu_list";
+		return "redirect:/";
 	}
 
 }

@@ -27,6 +27,7 @@ public class FeedingPoisonningController {
 		model.addAttribute("list",list);
 		return "/feeding/feedingPoisonning_list";
 	}
+	
 	// 2. 수정정보요청
 	@RequestMapping(value="/feeding/feedingPoisonning_modify", method=RequestMethod.GET)
 	public String feedingPoisonningModify(Model model, @RequestParam(value="foodPoisonningGenerationCd", required=true) String foodPoisonningGenerationCd){
@@ -40,7 +41,14 @@ public class FeedingPoisonningController {
 	public String feedingPoisonningModify(FeedingPoisonning feedingPoisonning) {
 		fepoService.feedingPoisonningModify(feedingPoisonning);
 		logger.debug("{} < -- feedingPoisonningModify FeedingPoisonningController.java",feedingPoisonning);
-		return "redirect:/feeding/feedingPoisonning_list";
+		return "redirect:/feeding/feedingPoisonning_list";		
+	}
+	
+	// 4. 입력화면
+	@RequestMapping(value="/FeedingPoisonningAdd", method=RequestMethod.GET)
+	public String FeedingPoisonningAdd() {
+		logger.debug("{} <-- FeedingPoisonningAdd(addFrom) FeedingPoisonningController.java");
+		return "/feeding/feedingPoisonning_list";
 		
 	}
 	
