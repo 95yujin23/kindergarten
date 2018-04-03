@@ -33,7 +33,7 @@ public class ProgramController {
 		List<Contract> contract = programService.callContract();
 		model.addAttribute("resource", resource);
 		model.addAttribute("contract", contract);
-		logger.debug("1. ProgramController ProgramInsert()메소드 실행 ");
+		logger.debug("1. ProgramController.java ProgramInsert()메소드 실행 ");
 		logger.debug("------------------------------------------------------------");
 		return "program/program_add";
 	}
@@ -56,7 +56,9 @@ public class ProgramController {
 	@RequestMapping(value = "/ProgramList", method = RequestMethod.GET)
 	public String ProgramList(Model model) {
 		List<Program> list = programService.selectProgramList();
+		logger.debug("2. ProgramController.java ProgramList()메소드 실행 ");
 		logger.debug("{} <- list ProgramController.java", list);
+		logger.debug("------------------------------------------------------------");
 		model.addAttribute("list", list);
 		return "program/program_list";
 	}
@@ -64,8 +66,10 @@ public class ProgramController {
 	@RequestMapping(value = "/ProgramModify", method = RequestMethod.GET)
 	public String ProgramModify(Model model, @RequestParam(value = "programCd", required = true) String programCd) {
 		Program program = programService.getProgramOne(programCd);
+		logger.debug("3. ProgramController.java ProgramModify()메소드 실행 ");
 		logger.debug("{} <- programCd ProgramController.java", programCd);
 		logger.debug("{} <- program ProgramController.java", program);
+		logger.debug("------------------------------------------------------------");
 		model.addAttribute("program", program);
 		return "/program/program_modify";
 	}
@@ -92,6 +96,8 @@ public class ProgramController {
 			return "redirect:/Login";
 		}
 		programService.programDelete(programCd);
+		logger.debug("4. ProgramController.java ProgramDelete()메소드 실행 ");
+		logger.debug("------------------------------------------------------------");
 		return "redirect:/ProgramList";
 	}
 	
@@ -121,11 +127,12 @@ public class ProgramController {
 		programService.insertProgramApplication(programApplication);
 		return "redirect:/ProgramApplicationList";
 	}
-	// 2. 특별활동신청 전체조회
+	// 2. 특별활동신청 전체조회+검색
 	@RequestMapping(value="/ProgramApplicationList", method=RequestMethod.GET)
 	public String selectProgramApplicationList(Model model
 											, @RequestParam(value="searchOption", required = false) String searchOption
 											, @RequestParam(value="keyword", required = false) String keyword) {
+		logger.debug("2. ProgramController selectProgramApplicationList()메소드 실행 ");
 		Map<String, Object> map = programService.getProgramApplicationList(searchOption, keyword);
 		List<ProgramApplication> list = (List<ProgramApplication>)(map.get("list"));
 		String searchOptionWord = (String)map.get("keyword");
@@ -133,6 +140,30 @@ public class ProgramController {
 		model.addAttribute("searchOption", searchOptionWord);
 		model.addAttribute("keyword", searchWord);
 		model.addAttribute("list", list);
+		logger.debug("------------------------------------------------------------");
 		return "/program/program_application_list";
+	}
+	// 3-1. 특별활동신청 업데이트 정보요청 개별조회
+	@RequestMapping(value="/ProgramApplicationModify", method=RequestMethod.GET)
+	public String ProgramApplicationModify(Model model, HttpSession session, Teacher teacher, @RequestParam(value = "programApplCd", required = true) String programApplCd) {
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
+		if(loginTeacher == null) {
+			// loginTeacher의 값이 null이라면 login화면으로
+			return "redirect:/Login";
+		}
+		ProgramApplication programApplication = programService.GetProgramApplication(programApplCd);
+		logger.debug("3. ProgramController.java ProgramApplicationModify()메소드 실행 ");
+		logger.debug("{} <- programCd ProgramController.java", programApplCd);
+		logger.debug("{} <- program ProgramController.java", programApplication);
+		logger.debug("------------------------------------------------------------");
+		model.addAttribute("programApplication", programApplication);
+		return "/program/program_application_modify";
+	}
+	@RequestMapping(value="/ProgramApplicationModify", method=RequestMethod.POST)
+	public String ProgramApplicationModify(ProgramApplication programApplication) {
+		programService.programApplicationModify(programApplication);
+		logger.debug("{} <- ProgramModify ProgramController.java", programApplication);
+		return "redirect:/ProgramApplicationList";
 	}
 }

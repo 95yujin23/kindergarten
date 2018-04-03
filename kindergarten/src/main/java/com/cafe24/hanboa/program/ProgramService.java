@@ -38,7 +38,6 @@ public class ProgramService {
 		program.setProgramRegistrationDate(inDate);
 		programDao.insertProgram(program);
 		logger.debug("{} <- insertProgram ProgramService.java", program);
-		logger.debug("-------------------------------------------------------------");	
 	}
 	// 2. 특별활동 전체조회
 	public List<Program> selectProgramList() {
@@ -78,9 +77,8 @@ public class ProgramService {
 		programApplication.setPRAPRegistrationDate(inDate);
 		programDao.insertProgramApplication(programApplication);
 		logger.debug("{} <- insertProgramApplication ProgramService.java", programApplication);
-		logger.debug("-------------------------------------------------------------");	
 	}
-	// 2. 특별활동신청 전체조회
+	// 2. 특별활동신청 전체조회+검색
 	public Map<String, Object> getProgramApplicationList(String searchOption, String keyword) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("searchOption", searchOption);
@@ -88,8 +86,19 @@ public class ProgramService {
 		List<ProgramApplication> list = programDao.getProgramApplicationList(map);
 		logger.debug("{} <- searchOption getProgramApplicationList ProgramService.java", searchOption);
 		logger.debug("{} <- keyword getProgramApplicationList ProgramService.java", keyword);
-		logger.debug("-------------------------------------------------------------");	
 		map.put("list", list);
 		return map;
+	}
+	// 3-1. 특별활동신청 업데이트 정보요청 개별조회
+	public ProgramApplication GetProgramApplication(String programApplCd) {
+		ProgramApplication programApplication = programDao.modifyGetProgramApplication(programApplCd);
+		logger.debug("{} <- GetProgramApplication ProgramService.java", programApplication);
+		return programApplication;
+	}
+	// 3-2. 특별활동신청 업데이트
+	public int programApplicationModify(ProgramApplication programApplication) {
+		int programApplicationOne = programDao.modifyProgramApplication(programApplication);
+		logger.debug("{} <- programApplicationModify ProgramService.java", programApplicationOne);
+		return programApplicationOne;
 	}
 }

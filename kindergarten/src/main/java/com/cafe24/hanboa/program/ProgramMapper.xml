@@ -152,7 +152,7 @@
 			, #{licenseKindergarten}
 		)
 	</insert>
-	<!-- 2. 특별활동신청 전체조회 -->
+	<!-- 2. 특별활동신청 전체조회+검색-->
 	<select id="getProgramApplicationList" parameterType="java.util.Map" resultType="com.cafe24.hanboa.program.ProgramApplication">
 		SELECT 
 			PROGRAM_APPL_CD AS programApplCd
@@ -170,4 +170,28 @@
 			WHERE ${searchOption} LIKE CONCAT('%',#{keyword},'%')
 		</if>
 	</select>
+	<!-- 3-1. 특별활동신청 업데이트 정보요청 개별조회 -->
+	<select id="selectProgramApplicationOne" parameterType="String" resultType="com.cafe24.hanboa.program.ProgramApplication">
+		SELECT 
+			PROGRAM_APPL_CD AS programApplCd
+			, PROGRAM_CD AS programCd
+			, PRAP_DIVISION AS PRAPDivision
+			, PRAP_COST AS PRAPCost
+			, PRAP_CLOSING_CD AS PRAPClosingCd
+			, PRAP_CLOSING_DIVISION AS PRAPClosingDivision
+			, PRAP_REGISTRATION_DATE AS PRAPRegistrationDate
+			, PRAP_REGISTRANT AS PRAPRegistrant
+		FROM TB_PROGRAM_APPLICATION
+		WHERE PROGRAM_APPL_CD = #{programApplCd} 
+	</select>
+	<!-- 3-2. 특별활동신청 업데이트 -->
+	<update id="programApplicationModify" parameterType="com.cafe24.hanboa.program.ProgramApplication">
+		UPDATE TB_PROGRAM_APPLICATION
+		SET
+			PRAP_DIVISION = #{PRAPDivision}
+			, PRAP_CLOSING_CD = #{PRAPClosingCd}
+			, PRAP_CLOSING_DIVISION = #{PRAPClosingDivision}
+			, PRAP_REGISTRANT = #{PRAPRegistrant}
+		WHERE PROGRAM_APPL_CD = #{programApplCd} 
+	</update>
 </mapper>
