@@ -67,12 +67,12 @@
 							<form id="loginForm" action="${pageContext.request.contextPath}/Login" method="POST">
 								<div class="form-group">
 								    <label>Email</label>
-								    <input class="form-control" id="teacherEmail" name="teacherEmail" placeholder="이메일">
+								    <input class="form-control" id="teacherEmail" name="teacherEmail" placeholder="이메일" value="hee@kinder.com">
 									중복여부 : <email />
 								</div>
 								<div class="form-group">
 								    <label>PassWord</label>
-								    <input class="form-control" id="teacherPw" name="teacherPw" placeholder="비밀번호">
+								    <input class="form-control" id="teacherPw" name="teacherPw" placeholder="비밀번호" value="pw1234">
 								</div>
 								<button type="submit">LOGIN</button>
 							</form>
