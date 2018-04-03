@@ -58,10 +58,10 @@
 			<form action="${pageContext.request.contextPath}/KidsList" method="post">
 					<select name="keyword" class="form-control">
 					<!-- 검색 조건을 검색 처리후 결과화면에 보여주기 위해 c:out 출력태그 사용 (삼항연산자) -->
-					<option value="all"		<c:out value="${keyword}"/>>전체보기</option>
-					<option value="행복반"	<c:out value="${keyword}"/>>행복반</option>
-					<option value="사랑반"	<c:out value="${keyword}"/>>사랑반</option>
-					<option value="소망반"	<c:out value="${keyword}"/>>소망반</option>
+					<option value="">전체보기</option>
+					<option value="행복반">행복반</option>
+					<option value="사랑반">사랑반</option>
+					<option value="소망반">소망반</option>
 					</select> 
 					<button class="btn btn-success" type="submit" value="검색">검색</button>
 				</form>

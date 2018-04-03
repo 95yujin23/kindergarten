@@ -58,16 +58,16 @@
 			<form action="${pageContext.request.contextPath}/SafetyList" method="post">
 					<select name="year" class="form-control">
 					<!-- 검색 조건을 검색 처리후 결과화면에 보여주기 위해 c:out 출력태그 사용 (삼항연산자) -->
-					<option value="all"		<c:out value="${year}"/>>모든 해</option>
-					<option value="2016"	<c:out value="${year}"/>>2016년</option>
-					<option value="2017"	<c:out value="${year}"/>>2017년</option>
-					<option value="2018"	<c:out value="${year}"/>>2018년</option>					
+					<option value=""	>모든 해</option>
+					<option value="2016">2016년</option>
+					<option value="2017">2017년</option>
+					<option value="2018">2018년</option>					
 					</select> 
 					<select name="division" class="form-control">
 					<!-- 검색 조건을 검색 처리후 결과화면에 보여주기 위해 c:out 출력태그 사용 (삼항연산자) -->
-					<option value="all"		<c:out value="${division}"/>>전체</option>
-					<option value="점검"		<c:out value="${division}"/>>점검</option>
-					<option value="교육"		<c:out value="${division}"/>>교육</option>
+					<option value=""	>전체</option>
+					<option value="점검">점검</option>
+					<option value="교육">교육</option>
 					</select> 
 					<button class="btn btn-success" type="submit" value="검색">검색</button>
 				</form>

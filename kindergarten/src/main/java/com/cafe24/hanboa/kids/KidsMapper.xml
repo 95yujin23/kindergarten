@@ -28,7 +28,14 @@
 		WHERE KC.class_nm LIKE CONCAT('%',#{keyword},'%')
 		<!-- <include refid="search"></include> -->
 		<!-- WHERE절을 include 태그로 삽입 --></select>
-	
+
+	<!-- <sql id="search">
+		<choose>
+			<when test="keyword == 'all'">
+			WHERE KC.class_nm LIKE CONCAT('%',"",'%')
+			</when>
+		</choose>
+	</sql>	 -->
 	<!-- <sql id = "search">
 		<choose>
 		전체 검색

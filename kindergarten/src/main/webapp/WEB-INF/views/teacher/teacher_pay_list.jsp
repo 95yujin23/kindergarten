@@ -163,10 +163,10 @@
 				</c:when>
 			</c:choose>
 		</ul>
-	</nav>
 			</div>
 			</div>
 		</div>
+	</div>
 	</div>
 </div>
 	<!-- FOOTER : Navigation -->
