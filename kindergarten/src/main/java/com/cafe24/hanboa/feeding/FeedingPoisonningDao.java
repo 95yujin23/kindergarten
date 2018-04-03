@@ -38,8 +38,13 @@ public class FeedingPoisonningDao {
 	// 4.입력처리
 	public int feedingPoisonningAdd(FeedingPoisonning feedingPoisonning) {
 		logger.debug("{} <-- feedingPoisonningAdd FeedingPoisonningDao.java",feedingPoisonning);
-		return sqlSession.insert(localName+"fepoAdd",feedingPoisonning);
-		
+		return sqlSession.insert(localName+"fepoAdd",feedingPoisonning);		
+	}
+	
+	//5.삭제처리
+	public int feedingPoisonningDelete(String foodPoisonningGenerationCd) {
+		logger.debug("{}<-- feedingPoisonningDelete메서드실행 FeedingPoisonningDao.java",foodPoisonningGenerationCd);
+		return sqlSession.delete(localName+"fepoDelete",foodPoisonningGenerationCd);	
 	}
 
 }
