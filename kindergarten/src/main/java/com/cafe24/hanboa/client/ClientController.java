@@ -57,8 +57,14 @@ public class ClientController {
 	@RequestMapping(value="/ClientAdd", method=RequestMethod.GET)
 	public String clientAdd() {
 		logger.debug("{} <-- clientAdd ClientController insertForm");
-		return "client/client_add";
-		
+		return "client/client_add";		
+	}
+	
+	// 6. 삭제
+	@RequestMapping(value="/ClientDelete" , method=RequestMethod.GET)
+	public String clientDelete(Model model , @RequestParam(value="clientCd",required=true) String clientCd) {
+		clientService.deleteClient(clientCd);
+		return "redirect:/";
 	}
 	
 	

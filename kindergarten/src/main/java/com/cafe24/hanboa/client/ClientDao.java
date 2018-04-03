@@ -33,13 +33,14 @@ public class ClientDao {
 	}
 	// 4.삭제
 	public int deleteClient(String clientCd) {
-		return sqlSession.delete(localName+"deleteClient", clientCd);
+		return sqlSession.delete(localName+"clientDelete", clientCd);
 	}
 	// 5.등록
 	public int insertClient(Client client) {
 		logger.debug("{} < -- insertClient ClientDao.java",client);
 		return sqlSession.insert(localName+"clientAdd", client);		
 	}
+
 	
 	
 

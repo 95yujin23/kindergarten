@@ -37,38 +37,46 @@
 	</select>
 <!-- 거래처 등록 -->
 	<insert id = "clientAdd" parameterType="com.cafe24.hanboa.client.Client">
-	INSERT INTO TB_CLIENT
-		(client_cd
-		,client_phone
-		,client_type
-		,client_nm
-		,client_manager
-		,client_address
-		,client_registration_date
-		,client_registrant
-		,license_kindergarten)
-	VALUES
-		(#{clientCd}
-		,#{clientPhone}
-		,#{clientType}
-		,#{clientNm}
-		,#{clientManager}
-		,#{clientAddress}
-		,#{clientRegistrationDate}
-		,#{clientRegistrant}
-		,#{licenseKindergarten})		
+		INSERT INTO TB_CLIENT
+			(client_cd
+			,client_phone
+			,client_type
+			,client_nm
+			,client_manager
+			,client_address
+			,client_registration_date
+			,client_registrant
+			,license_kindergarten)
+		VALUES
+			(#{clientCd}
+			,#{clientPhone}
+			,#{clientType}
+			,#{clientNm}
+			,#{clientManager}
+			,#{clientAddress}
+			,#{clientRegistrationDate}
+			,#{clientRegistrant}
+			,#{licenseKindergarten})		
 	</insert>
 	
 <!-- 수정처리 -->
-<update id ="clientModify" parameterType="com.cafe24.hanboa.client.Client">
-	UPDATE TB_CLIENT
-	SET
-		client_nm = #{clientNm}
-		, client_phone = #{clientPhone}
-		, client_manager = #{clientManager}
-		, client_address = #{clientAddress}
-		, client_type = #{clientType}
-	WHERE client_cd = #{clientCd}
-</update>
+	<update id ="clientModify" parameterType="com.cafe24.hanboa.client.Client">
+		UPDATE TB_CLIENT
+		SET
+			client_nm = #{clientNm}
+			, client_phone = #{clientPhone}
+			, client_manager = #{clientManager}
+			, client_address = #{clientAddress}
+			, client_type = #{clientType}
+		WHERE client_cd = #{clientCd}
+	</update>
+
+<!-- 삭제처리 -->
+	<delete id="clientDelete" parameterType="com.cafe24.hanboa.client.Client">
+		DELETE 
+		FROM TB_CLIENT
+		WHERE client_nm = #{clientNm}
+	</delete>
+
 
 </mapper>
