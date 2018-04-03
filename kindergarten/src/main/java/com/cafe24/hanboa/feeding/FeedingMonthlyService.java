@@ -46,6 +46,14 @@ public class FeedingMonthlyService {
 		logger.debug("{} <-- feedingMonthlyAdd메서드실행 FeedingMonthlyService.java",femoAdd);
 		return femoAdd;		
 	}
+	
+	//5.삭제처리
+	public int feedingMonthlyDelete(String feedingMonthlyCd) {
+		int delete = femoDao.feedingMonthlyDelete(feedingMonthlyCd);
+		logger.debug("{} < -- feedingMonthlyDelete메서드 실행 FeedingMonthlyService.java",feedingMonthlyCd);
+		logger.debug("{} < -- feedingMonthlyDelete메서드 실행 FeedingMonthlyService.java",delete);
+		return delete;
+	}
 		
 	
 

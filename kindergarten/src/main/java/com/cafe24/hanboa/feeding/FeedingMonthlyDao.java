@@ -41,5 +41,11 @@ public class FeedingMonthlyDao {
 		return sessionTemplate.insert(localName+"AddFemo",feedingMonthly);
 	}
 	
+	//5.삭제처리
+	public int feedingMonthlyDelete(String feedingMonthlyCd) {
+		logger.debug("{} < --feedingMonthlyDelete메서드 실행  FeedingMonthlyDao.java",feedingMonthlyCd);
+		return sessionTemplate.delete(localName+"femoDelete",feedingMonthlyCd);		
+	}
+	
 
 }
