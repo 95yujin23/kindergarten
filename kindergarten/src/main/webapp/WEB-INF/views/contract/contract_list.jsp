@@ -65,7 +65,7 @@
 							<td>${contract.contractRegistrant}</td>
 							<td>${contract.licenseKindergarten}</td>
 							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/contract/contract_modify?contractCd=${contract.contractCd}"><i class="fa fa-pencil"></i></a></td>
-							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}"><i class="fa fa-trash"></i></a></td>
+							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/Contractdelete?contractCd=${contract.contractCd}"><i class="fa fa-trash"></i></a></td>
 						</tr>
 					</tbody>	
 					</c:forEach>

@@ -42,7 +42,16 @@ public class ContractService {
 		int contractInsert = contractDao.insertContract(contract);
 		logger.debug("{} < - insertContract 메서드 실행 ContractService.java",contract);
 		logger.debug("{} < - insertContract 메서드 실행 ContractService.java",contractInsert);
-		return contractInsert;		
+		return contractInsert;
+	}
+	
+	// 5. 삭제처리
+	public int contractDelete(String contractCd) {
+		int delete = contractDao.contractDelete(contractCd);
+		logger.debug("{} < -- contractDelete메서드 실행 ContractService.java",contractCd);
+		logger.debug("{} < -- contractDelete메서드 실행 ContractService.java",delete);
+		return delete;
+		
 	}
 	
 	

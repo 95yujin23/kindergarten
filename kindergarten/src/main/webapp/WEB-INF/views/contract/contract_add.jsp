@@ -76,8 +76,9 @@
 								    <input class="form-control" id="contractType" name="contractType" placeholder="계약구분">
 								</div>
 								<div class="form-group">
-								    <label>계약구분</label>
-								    <input class="form-control" id="contractRegistrationDate" name="contractRegistrationDate" placeholder="계약구분">
+								    <label>등록날짜</label>
+								    <input class="form-control" type="date" id="contractRegistrationDate" name="contractRegistrationDate" placeholder="등록날짜">
+								</div>
 								<div class="form-group">
 								    <label>등록인</label>
 								    <input class="form-control" id="contractRegistrant" name="contractRegistrant" placeholder="등록인">

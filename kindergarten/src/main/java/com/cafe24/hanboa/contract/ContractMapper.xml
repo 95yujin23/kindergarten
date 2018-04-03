@@ -73,4 +73,12 @@
 			,contract_amount = #{contractAmount}
 		WHERE contract_cd = #{contractCd}
 	</update>
+	
+<!-- 계약 삭제 -->
+	<delete id="contractDelete" parameterType="com.cafe24.hanboa.contract.Contract">
+		DELETE 
+		FROM TB_CONTRACT
+		WHERE contract_cd = #{contractCd}
+	</delete>
+	
 </mapper>

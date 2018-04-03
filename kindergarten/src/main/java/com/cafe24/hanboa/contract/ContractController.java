@@ -64,4 +64,13 @@ public class ContractController {
 		contractService.insertContract(contract);
 		return "redirect:/";
 	}
+	
+	//6. 삭제
+	@RequestMapping(value="/Contractdelete" , method=RequestMethod.GET)
+	public String contractDelete(Model model , @RequestParam(value="contractCd" , required=true)String contractCd) {
+		logger.debug("{} < -- contractDelete 메서드 실행 ContractController.java",contractCd);
+		contractService.contractDelete(contractCd);
+		return "redirect:/";
+		
+	}
 }

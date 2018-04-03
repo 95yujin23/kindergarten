@@ -18,7 +18,7 @@ public class ContractDao {
 	
 	// 1.목록조회
 	public List<Contract> selectContarct(){
-		logger.debug(" ContractDao -- List<Contract> selectContarct()");
+		logger.debug(" ContractDao -- List<Contract> selectContarct()메서드 실행");
 		//return sqlSession.selectList(localName,"getContractList222");
 		//return sqlSession.selectList(localName+"getContractList222");
 		return sqlSession.selectList(localName+"getContractList");		
@@ -32,14 +32,20 @@ public class ContractDao {
 	
 	// 3. 수정처리
 	public int modifyContract(Contract contract) {
-		logger.debug("{} < - modifyContract ContractDao.java",contract);
+		logger.debug("{} < - modifyContract메서드 실행 ContractDao.java",contract);
 		return sqlSession.update(localName+"contractModify", contract);
 	}
 	
 	// 4. 입력처리
 	public int insertContract(Contract contract) {
-		logger.debug("{} < -- insertContract ContractDao.java");
+		logger.debug("{} < -- insertContract메서드 실행 ContractDao.java");
 		return sqlSession.insert(localName+"contractAdd",contract);
+	}
+	
+	// 5. 삭제처리
+	public int contractDelete(String contractCd) {
+		logger.debug("{} < -- contractDelete메서드 실행 ContractDao.java");
+		return sqlSession.delete(localName+"contractDelete",contractCd);
 	}
 
 }
