@@ -3,6 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
 <title>Teacher Attendance List</title>
 <!-- Bootstrap Core CSS -->
 <link href="resources/vendor/css/bootstrap.min.css" rel="stylesheet">
@@ -14,7 +19,8 @@
 <link href="resources/vendor/css/morris.css" rel="stylesheet">
 <!-- Custom Fonts -->
 <link href="resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-<script type="text/javascript"src="<c:url value="/resources/vendor/js/jquery.min.js"/>"></script>
+<!-- jQuery -->
+<script src="resources/vendor/js/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#searchButton').click(function(){
@@ -34,7 +40,12 @@
 		<!-- LEFT -->
 		</nav>
 	</div>
-	<div class="container">
+	<div id="page-wrapper">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">교직원 출퇴근 목록</h1>
+			</div>
+		</div>
 		<div class="row">
 		<!-- 검색처리 시작 
 			<form action="${pageContext.request.contextPath}/attendance/teacher_all_attendance_list?keyword=${keyword}" method="get" id="searchAttendanceForm" class="col-lg-3 col-sm-3 form-inline">
@@ -46,8 +57,7 @@
 				</div>
 			</form>
 			 검색처리 끝 -->
-			<div class="col-lg-1"></div>
-			<div class="col-lg-11">
+			<div class="col-lg-12">
 				<table class="table table-hover">
 					<thead>
 						<tr>
@@ -74,5 +84,15 @@
 	<!-- FOOTER : Navigation -->
 	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->
+	<!-- Bootstrap Core JavaScript -->
+	<script src="resources/vendor/js/bootstrap.min.js"></script>
+	<!-- Metis Menu Plugin JavaScript -->
+	<script src="resources/vendor/js/metisMenu.min.js"></script>
+	<!-- Morris Charts JavaScript -->
+	<script src="resources/vendor/js/raphael.min.js"></script>
+	<script src="resources/vendor/js/morris.min.js"></script>
+	<script src="resources/vendor/js/morris-data.js"></script>
+	<!-- Custom Theme JavaScript -->
+	<script src="resources/vendor/js/sb-admin-2.js"></script>
 </body>
 </html>
