@@ -61,7 +61,7 @@
 							<td>${feme.menuManager}</td>
 							<td>${feme.licenseKindergarten}</td>
 							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/feeding/feedingMenu_modify?feedingMenuCd=${feme.feedingMenuCd}"><i class="fa fa-pencil"></i></a></td>
-							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}"><i class="fa fa-trash"></i></a></td>
+							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/FeedingMenuDelete?feedingMenuCd=${feme.feedingMenuCd}"><i class="fa fa-trash"></i></a></td>
 						</tr>
 					</tbody>	
 					</c:forEach>

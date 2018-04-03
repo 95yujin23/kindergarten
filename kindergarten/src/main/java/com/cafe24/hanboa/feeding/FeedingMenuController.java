@@ -42,7 +42,7 @@ public class FeedingMenuController {
 	public String feedingMenuModify(Model model, FeedingMenu feedingMenu) {
 		femeService.updateFeedingMenu(feedingMenu);
 		logger.debug("{} <-- feedingMenuModify FeedingMenuController.java",feedingMenu);
-		return "redirect:/feeding/feedingMenu_list";	
+		return "redirect:/FeedingMenuList";	
 	}
 	//4. 입력화면
 	@RequestMapping(value="/FeedingMenuAdd", method=RequestMethod.GET)
@@ -56,7 +56,15 @@ public class FeedingMenuController {
 	public String feedingMenuAdd(Model model, FeedingMenu feedingMenu) {
 		femeService.insertFeedingMenu(feedingMenu);
 		logger.debug("{} < -- feedingMenuAdd FeedingMenuController.java",feedingMenu);
-		return "redirect:/";
+		return "redirect:/FeedingMenuList";
+	}
+	
+	//6. 삭제처리
+	@RequestMapping(value="/FeedingMenuDelete", method=RequestMethod.GET)
+	public String feedingMenuDelete(Model model, @RequestParam(value="feedingMenuCd", required=true)String feedingMenuCd) {
+		femeService.feedingMenuDelete(feedingMenuCd);
+		logger.debug("{} <-- feedingMenuDelete메서드 실행 FeedingMenuController.java",feedingMenuCd);
+		return "redirect:/FeedingMenuList";		
 	}
 
 }

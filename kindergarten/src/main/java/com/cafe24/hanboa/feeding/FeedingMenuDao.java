@@ -40,6 +40,12 @@ public class FeedingMenuDao {
 		return sessionTemplate.insert(localName+"insertFeme",feedingMenu);		
 	}
 	
+	//5.삭제처리
+	public int feedingMenuDelete(String feedingMenuCd) {
+		logger.debug("{} < -- feedingMenuDelete메서드 실행 FeedingMenuDao.java",feedingMenuCd);
+		return sessionTemplate.delete(localName+"femeDelete",feedingMenuCd);		
+	}
+	
 	
 
 }

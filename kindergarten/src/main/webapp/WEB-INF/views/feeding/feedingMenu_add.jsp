@@ -53,7 +53,7 @@
 								</div>
 								<div class="form-group">
 								    <label>식단일자</label>
-								    <input class="form-control" id="menuDate" name="menuDate" placeholder="식단일자">
+								    <input class="form-control" type="date" id="menuDate" name="menuDate" placeholder="식단일자">
 								</div>
 								<div class="form-group">
 								    <label>중식(열량/단백질)</label>

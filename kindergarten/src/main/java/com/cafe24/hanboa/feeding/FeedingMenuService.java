@@ -44,8 +44,15 @@ public class FeedingMenuService {
 		int insertFeme = femeDao.insertFeedingMenu(feedingMenu);
 		logger.debug("{} < -- insertFeedingMenu FeedingMenuService.java",feedingMenu);
 		logger.debug("{} < -- insertFeedingMenu FeedingMenuService.java",insertFeme);
-		return insertFeme;
-		
+		return insertFeme;		
+	}
+	
+	//5. 삭제처리
+	public int feedingMenuDelete(String feedingMenuCd) {
+		int delete = femeDao.feedingMenuDelete(feedingMenuCd);
+		logger.debug("{} <-- feedingMenuDelete메서드 실행 FeedingMenuService.java",feedingMenuCd);
+		logger.debug("{} <-- feedingMenuDelete메서드 실행 FeedingMenuService.java",delete);
+		return delete;		
 	}
 	
 }
