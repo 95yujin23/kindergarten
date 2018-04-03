@@ -36,8 +36,15 @@ public class FeedingMonthlyService {
 		int feedingMonthlyUpdate = femoDao.FeedingMonthlyModify(feedingMonthly);
 		logger.debug("{} < -- feedingMonthlyModify FeedingMonthlyService.java",feedingMonthly);
 		logger.debug("{} < -- feedingMonthlyModify FeedingMonthlyService.java",feedingMonthlyUpdate);
-		return feedingMonthlyUpdate;
-		
+		return feedingMonthlyUpdate;		
+	}
+	
+	//4. 입력처리
+	public int feedingMonthlyAdd(FeedingMonthly feedingMonthly) {
+		int femoAdd = femoDao.feedingMonthlyAdd(feedingMonthly);
+		logger.debug("{} <-- feedingMonthlyAdd메서드실행 FeedingMonthlyService.java",feedingMonthly);
+		logger.debug("{} <-- feedingMonthlyAdd메서드실행 FeedingMonthlyService.java",femoAdd);
+		return femoAdd;		
 	}
 		
 	

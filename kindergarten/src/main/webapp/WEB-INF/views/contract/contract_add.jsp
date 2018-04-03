@@ -53,11 +53,11 @@
 								</div>
 								<div class="form-group">
 								    <label>계약시작일자</label>
-								    <input class="form-control" id="contractStartDate" name="contractStartDate" placeholder="계약시작일자">
+								    <input class="form-control" type="date" id="contractStartDate" name="contractStartDate" placeholder="계약시작일자">
 								</div>
 								<div class="form-group">
 								    <label>계약종료일자</label>
-								    <input class="form-control" id="contractEndDate" name="contractEndDate" placeholder="계약종료일자">
+								    <input class="form-control" type="date" id="contractEndDate" name="contractEndDate" placeholder="계약종료일자">
 								</div>
 								<div class="form-group">
 								    <label>거래처코드</label>

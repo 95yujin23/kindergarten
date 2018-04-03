@@ -44,7 +44,22 @@ public class FeedingMonthlyController {
 	public String feedingMonthlyModify(Model model, FeedingMonthly feedingMonthly) {
 		femoService.feedingMonthlyModify(feedingMonthly);
 		logger.debug("< -- feedingMonthlyModify FeedingMonthlyController.java",feedingMonthly);
-		return "redirect:/feeding/feedingMonthly_list";
+		return "redirect:/feeding/feedingMonthly_list";		
+	}
+	
+	//4. 입력화면
+	@RequestMapping(value="/FeedingMonthlyAdd" , method=RequestMethod.GET)
+	public String feedingMonthlyAdd() {
+		logger.debug("{} < -- feedingMonthlyAdd(Form) FeedingMonthlyController.java");
+		return "/feeding/feedingMonthly_add";		
+	}
+	
+	//5. 입력처리
+	@RequestMapping(value="/FeedingMonthlyAdd" , method=RequestMethod.POST)
+	public String feedingMonthlyAdd(Model model, FeedingMonthly feedingMonthly) {
+		femoService.feedingMonthlyAdd(feedingMonthly);
+		logger.debug("{} <-- feedingMonthlyAdd메서드 실행 FeedingMonthlyController.java",feedingMonthly);
+		return "redirect:/";
 		
 	}
 	

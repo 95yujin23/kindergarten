@@ -35,5 +35,11 @@ public class FeedingMonthlyDao {
 		return sessionTemplate.update(localName+"modifyFemo",feedingMonthly);		
 	}
 	
+	//4.입력처리
+	public int feedingMonthlyAdd(FeedingMonthly feedingMonthly) {
+		logger.debug("<-- feedingMonthlyAdd 메서드 실행 FeedingMonthlyDao.java");
+		return sessionTemplate.insert(localName+"AddFemo",feedingMonthly);
+	}
+	
 
 }

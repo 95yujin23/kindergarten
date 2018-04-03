@@ -7,19 +7,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>FeedingMenu Add</title>
-<!-- Bootstrap Core CSS -->
+<title>FeedingMonthly Add</title>
 <link href="resources/vendor/css/bootstrap.min.css" rel="stylesheet">
-
 <!-- MetisMenu CSS -->
 <link href="resources/vendor/css/metisMenu.min.css" rel="stylesheet">
-
 <!-- Custom CSS -->
 <link href="resources/vendor/css/sb-admin-2.css" rel="stylesheet">
-
 <!-- Morris Charts CSS -->
 <link href="resources/vendor/css/morris.css" rel="stylesheet">
-
 <!-- Custom Fonts -->
 <link href="resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
@@ -39,55 +34,67 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">식중독 발생및 처리현황 등록</h1>
+			<h1 class="page-header">월별급식 등록</h1>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-				   식중독 발생및 처리현황 등록
+				   월별급식 등록
 				</div>
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6">
-							<form id="addForm" action="${pageContext.request.contextPath}/FeedingPoisonningAdd" method="POST">
-								<div class="form-group">
-								    <label>식중독발생및처리코드</label>
-								    <input class="form-control" id="foodPoisonningGenerationCd" name="foodPoisonningGenerationCd" placeholder="식중독발생및처리코드">
-								</div>
+							<form id="addForm" action="${pageContext.request.contextPath}/FeedingMonthlyAdd" method="POST">
 								<div class="form-group">
 								    <label>월별급식코드</label>
 								    <input class="form-control" id="feedingMonthlyCd" name="feedingMonthlyCd" placeholder="월별급식코드">
 								</div>
 								<div class="form-group">
-								    <label>발생일자</label>
-								    <input class="form-control" id="fepoGenerationDate" name="fepoGenerationDate" placeholder="발생일자">
+								    <label>급식실시(월)</label>
+								    <input class="form-control" id="femoFeedingMonth" name="femoFeedingMonth" placeholder="급식실시(월)">
 								</div>
 								<div class="form-group">
-								    <label>전체아동수</label>
-								    <input class="form-control" id="fopoWholeKidsCount" name="fopoWholeKidsCount" placeholder="전체아동수">
+								    <label>급식실시(년)</label>
+								    <input class="form-control" id="femoFeedingYear" name="femoFeedingYear" placeholder="급식실시(년)">
 								</div>
 								<div class="form-group">
-								    <label>발생아동수</label>
-								    <input class="form-control" id="fopoGeneratedKidsCount" name="fopoGeneratedKidsCount" placeholder="발생아동수">
+								    <label>조리사(명)</label>
+								    <input class="form-control" id="femoCook" name="femoCook" placeholder="조리사(명)">
 								</div>
 								<div class="form-group">
-								    <label>식중독종류</label>
-								    <input class="form-control" id="fopoFoodPoisonningKids" name="fopoFoodPoisonningKids" placeholder="식중독종류">
+								    <label>급식운영방식</label>
+								    <input class="form-control" id="femoOperationMethod" name="femoOperationMethod" placeholder="급식운영방식">
 								</div>
 								<div class="form-group">
-								    <label>처리결과</label>
-								    <input class="form-control" id="fopoProcessingResult" name="fopoProcessingResult" placeholder="처리결과">
+								    <label>집단급식소신고여부</label>
+								    <input class="form-control" id="femoCafeteriaReportedCheck" name="femoCafeteriaReportedCheck" placeholder="집단급식소신고여부">
 								</div>
-									<div class="form-group">
+								<div class="form-group">
+								    <label>계약코드</label>
+								    <input class="form-control" id="contractCd" name="contractCd" placeholder="담당자">
+								</div>
+								<div class="form-group">
+								    <label>지출급식비</label>
+								    <input class="form-control" id="femoExpenditureCost" name="femoExpenditureCost" placeholder="지출급식비">
+								</div>
+								<div class="form-group">
+								    <label>마감회계_지출급식비</label>
+								    <input class="form-control" id="femoClosingCost" name="femoClosingCost" placeholder="마감회계_지출급식비">
+								</div>
+								<div class="form-group">
+								    <label>마감유무</label>
+								    <input class="form-control" id="femoClosingOption" name="femoClosingOption" placeholder="마감유무">
+								</div>
+								<div class="form-group">
 								    <label>등록날짜</label>
-								    <input class="form-control" type="date" id="fopoRegistrationDate" name="fopoRegistrationDate" placeholder="등록날짜">
+								    <input class="form-control" type="date" id="femoRegistrationDate" name="femoRegistrationDate" placeholder="등록날짜">
 								</div>
 								<div class="form-group">
 								    <label>등록인</label>
-								    <input class="form-control" id="registrant" name="registrant" placeholder="등록인">
-								</div>		
+								    <input class="form-control" id="femoRegistrant" name="femoRegistrant" placeholder="등록인">
+								</div>	
 								<div class="form-group">
 								    <label>유치원 라이센스</label>
 								    <input class="form-control" id="licenseKindergarten" name="licenseKindergarten" placeholder="유치원라이센스">
@@ -123,4 +130,4 @@
 	<!-- Custom Theme JavaScript -->
 	<script src="resources/vendor/js/sb-admin-2.js"></script>
 </body>
-</html>
+</html></html>

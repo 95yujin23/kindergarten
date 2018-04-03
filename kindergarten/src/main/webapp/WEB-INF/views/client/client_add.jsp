@@ -46,7 +46,7 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6">
-							<form id="addForm" action="${pageContext.request.contextPath}/CleintaAdd" method="POST">
+							<form id="addForm" action="${pageContext.request.contextPath}/ClientAdd" method="POST">
 								<div class="form-group">
 								    <label>거래처코드</label>
 								    <input class="form-control" id="clientCd" name="clientCd" placeholder="거래처코드">

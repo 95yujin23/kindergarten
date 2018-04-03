@@ -50,7 +50,7 @@ public class ClientController {
 	public String clientAdd(Model model, Client client) {
 		clientService.cleintAdd(client);
 		logger.debug("{} < -- clientAdd ClientController.java",client);
-		return "redirect:/client/client_list";		
+		return "redirect:/";		
 	}
 	
 	// 5. 등록화면

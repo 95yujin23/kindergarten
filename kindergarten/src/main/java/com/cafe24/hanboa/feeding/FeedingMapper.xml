@@ -198,6 +198,40 @@
 			,femo_closing_option = #{femoClosingOption}
 	WHERE feeding_monthly_cd = #{feedingMonthlyCd}				
 	</update>
+	
+<!-- 월별급식 등록 -->
+	<insert id="AddFemo"
+			parameterType="com.cafe24.hanboa.feeding.FeedingMonthly">
+	INSERT INTO TB_FEEDING_MONTHLY(
+			feeding_monthly_cd
+			,femo_feeding_month
+			,femo_feeding_year
+			,femo_cook
+			,femo_operation_method
+			,femo_cafeteria_reported_check
+			,contract_cd 
+			,femo_expenditure_cost
+			,femo_closing_cost
+			,femo_closing_option
+			,femo_registration_date
+			,femo_registrant
+			,license_kindergarten)
+	VALUES(
+			#{feedingMonthlyCd}
+			,#{femoFeedingMonth}
+			,#{femoFeedingYear}
+			,#{femoCook}
+			,#{femoOperationMethod}
+			,#{femoCafeteriaReportedCheck}
+			,#{contractCd}
+			,#{femoExpenditureCost}
+			,#{femoClosingCost}
+			,#{femoClosingOption}
+			,#{femoRegistrationDate}
+			,#{femoRegistrant}
+			,#{licenseKindergarten})			
+	</insert>
+	
 			
 <!-- 식중독현황 조회 -->
 	<select id="getFepoList"

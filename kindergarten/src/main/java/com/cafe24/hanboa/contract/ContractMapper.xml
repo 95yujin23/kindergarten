@@ -39,8 +39,8 @@
 <!-- 계약 등록 -->
 	<insert id = "contractAdd" 
 			parameterType="com.cafe24.hanboa.contract.Contract">
-		INSERT INTO TB_CONTRACT
-			(contract_cd
+		INSERT INTO TB_CONTRACT(
+			contract_cd
 			,contract_start_date
 			,contract_end_date
 			,client_cd
@@ -50,17 +50,17 @@
 			,contract_registration_date
 			,contract_registrant
 			,license_kindergarten)
-			VALUES
-			(${contractCd}
-			,${contractStartDate}
-			,${contractEndDate}
-			,${clientCd}
-			,${contractAmount}
-			,${contractContents}
-			,${contractType}
-			,${contractRegistrationDate}
-			,${contractRegistrant}
-			,${licenseKindergarten})
+		VALUES(
+			#{contractCd}
+			,#{contractStartDate}
+			,#{contractEndDate}
+			,#{clientCd}
+			,#{contractAmount}
+			,#{contractContents}
+			,#{contractType}
+			,#{contractRegistrationDate}
+			,#{contractRegistrant}
+			,#{licenseKindergarten})
 	</insert>
 <!-- 계약 수정 -->
 	<update id = "contractModify" parameterType="com.cafe24.hanboa.contract.Contract">

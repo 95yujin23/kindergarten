@@ -48,7 +48,19 @@ public class FeedingPoisonningController {
 	@RequestMapping(value="/FeedingPoisonningAdd", method=RequestMethod.GET)
 	public String FeedingPoisonningAdd() {
 		logger.debug("{} <-- FeedingPoisonningAdd(addFrom) FeedingPoisonningController.java");
-		return "/feeding/feedingPoisonning_list";
+		return "/feeding/feedingPoisonning_add";		
+	}
+	
+	// 5.입력처리
+	@RequestMapping(value="/FeedingPoisonningAdd", method=RequestMethod.POST)
+	public String FeedingPoisonningAdd(Model model, FeedingPoisonning feedingPoisonning
+											,@RequestParam(value="foodPoisonningGenerationCd") String foodPoisonningGenerationCd) {
+		logger.debug("feedingPoisonning_add.jsp ---> FeedingPoisonningAdd 넘어오는 값 : {}", foodPoisonningGenerationCd);
+		fepoService.feedingPoisonningAdd(feedingPoisonning);
+		
+		logger.debug("feedingPoisonning_add.jsp ---> FeedingPoisonningAdd 넘어오는 값 : {}", foodPoisonningGenerationCd);
+		logger.debug("{} < -- FeedingPoisonningAdd FeedingPoisonningController.java",feedingPoisonning);
+		return "redirect:/";
 		
 	}
 	

@@ -60,7 +60,8 @@ public class ContractController {
 	// 5. 등록
 	@RequestMapping(value="/ContractAdd", method=RequestMethod.POST)
 	public String contractAdd(Model model, Contract contract) {
+		logger.debug("{} <-- contractAdd(입력처리) ContractController.java",contract);
 		contractService.insertContract(contract);
-		return "redirect:/contract/contract_list";	
+		return "redirect:/";
 	}
 }

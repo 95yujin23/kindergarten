@@ -36,7 +36,14 @@ public class FeedingPoisonningService {
 		int modifyFepo = fepoDao.feedingPoisonningModify(feedingPoisonning);
 		logger.debug("{} <-- feedingPoisonningModify FeedingPoisonningService.java",feedingPoisonning);
 		logger.debug("{} <-- feedingPoisonningModify FeedingPoisonningService.java",modifyFepo);
-		return modifyFepo;
-		
+		return modifyFepo;		
+	}
+	
+	// 4. 입력처리
+	public int feedingPoisonningAdd(FeedingPoisonning feedingPoisonning) {
+		int fepoAdd = fepoDao.feedingPoisonningAdd(feedingPoisonning);
+		logger.debug("{} <-- feedingPoisonningAdd FeedingPoisonningService.java",feedingPoisonning);
+		logger.debug("{} <-- feedingPoisonningAdd FeedingPoisonningService.java",fepoAdd);
+		return fepoAdd;		
 	}
 }

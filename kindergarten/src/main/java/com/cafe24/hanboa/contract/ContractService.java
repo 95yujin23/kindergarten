@@ -33,13 +33,15 @@ public class ContractService {
 	//3.수정처리
 	public int modifyContract(Contract contract) {
 		int modifycontract = contractDao.modifyContract(contract);
-		logger.debug("{} < - modifyContrac t메서드 실행 ContractService.java",contract);
+		logger.debug("{} < - modifyContrac 메서드 실행 ContractService.java",contract);
 		return modifycontract;	
 	}
 	
 	//4.입력처리
 	public int insertContract(Contract contract) {
 		int contractInsert = contractDao.insertContract(contract);
+		logger.debug("{} < - insertContract 메서드 실행 ContractService.java",contract);
+		logger.debug("{} < - insertContract 메서드 실행 ContractService.java",contractInsert);
 		return contractInsert;		
 	}
 	
