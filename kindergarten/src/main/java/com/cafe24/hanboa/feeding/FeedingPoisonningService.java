@@ -46,4 +46,13 @@ public class FeedingPoisonningService {
 		logger.debug("{} <-- feedingPoisonningAdd FeedingPoisonningService.java",fepoAdd);
 		return fepoAdd;		
 	}
+	
+	//5. 삭제처리
+	public int feedingPoisonningDelete(String foodPoisonningGenerationCd) {
+		int delete = fepoDao.feedingPoisonningDelete(foodPoisonningGenerationCd);
+		logger.debug("{} <--feedingPoisonningDelete메서드 실행 FeedingPoisonningService.java ",foodPoisonningGenerationCd);
+		logger.debug("{} <--feedingPoisonningDelete메서드 실행 FeedingPoisonningService.java ",delete);
+		return delete;
+		
+	}
 }

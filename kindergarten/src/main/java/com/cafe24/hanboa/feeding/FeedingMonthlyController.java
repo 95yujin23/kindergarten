@@ -21,12 +21,12 @@ public class FeedingMonthlyController {
 	private static Logger logger = LoggerFactory.getLogger(FeedingMonthlyController.class);
 	
 	//1. 전체조회
-	@RequestMapping(value="feeding/feedingMonthly_list")
+	@RequestMapping(value="FeedingMonthlyList")
 	public String feedingMonthlyList(Model model, HttpSession session) {
 		List<FeedingMonthly> list = femoService.selectFeedingMontlhyList();
 		logger.debug("{} <- feedingMonthlyList FeedingMonthlyController.java",list);
 		model.addAttribute("list",list);
-		return "feeding/feedingMonthly_list";
+		return "/feeding/feedingMonthly_list";
 	}
 	
 	//2. 수정정보요청
@@ -44,7 +44,7 @@ public class FeedingMonthlyController {
 	public String feedingMonthlyModify(Model model, FeedingMonthly feedingMonthly) {
 		femoService.feedingMonthlyModify(feedingMonthly);
 		logger.debug("< -- feedingMonthlyModify FeedingMonthlyController.java",feedingMonthly);
-		return "redirect:/feeding/feedingMonthly_list";		
+		return "redirect:/FeedingMonthlyList";		
 	}
 	
 	//4. 입력화면
@@ -59,8 +59,15 @@ public class FeedingMonthlyController {
 	public String feedingMonthlyAdd(Model model, FeedingMonthly feedingMonthly) {
 		femoService.feedingMonthlyAdd(feedingMonthly);
 		logger.debug("{} <-- feedingMonthlyAdd메서드 실행 FeedingMonthlyController.java",feedingMonthly);
-		return "redirect:/";
-		
+		return "redirect:/FeedingMonthlyList";		
+	}
+	
+	//6.삭제처리
+	@RequestMapping(value="/FeedingMonthlyDelete", method=RequestMethod.GET)
+	public String feedingMonthlydelete(Model model, @RequestParam(value="feedingMonthlyCd",required=true)String feedingMonthlyCd) {
+		femoService.feedingMonthlyDelete(feedingMonthlyCd);
+		logger.debug("{} <-- feedingMonthlydelete메서드 실행 FeedingMonthlyController.java",feedingMonthlyCd);
+		return "redirect:/FeedingMonthlyList";		
 	}
 	
 

@@ -8,15 +8,15 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>FeedingPoisonningProcessing List</title>
-<link href="/resources/vendor/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/vendor/css/bootstrap.min.css" rel="stylesheet">
 <!-- MetisMenu CSS -->
-<link href="/resources/vendor/css/metisMenu.min.css" rel="stylesheet">
+<link href="resources/vendor/css/metisMenu.min.css" rel="stylesheet">
 <!-- Custom CSS -->
-<link href="/resources/vendor/css/sb-admin-2.css" rel="stylesheet">
+<link href="resources/vendor/css/sb-admin-2.css" rel="stylesheet">
 <!-- Morris Charts CSS -->
-<link href="/resources/vendor/css/morris.css" rel="stylesheet">
+<link href="resources/vendor/css/morris.css" rel="stylesheet">
 <!-- Custom Fonts -->
-<link href="/resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id= "wrapper">
@@ -65,7 +65,7 @@
 							<td>${fepo.registrant}</td>
 							<td>${fepo.licenseKindergarten}</td>
 							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/feeding/feedingPoisonning_modify?foodPoisonningGenerationCd=${fepo.foodPoisonningGenerationCd}"><i class="fa fa-pencil"></i></a></td>
-							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}"><i class="fa fa-trash"></i></a></td>
+							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/FeedingPoisonningDelete?foodPoisonningGenerationCd=${fepo.foodPoisonningGenerationCd}"><i class="fa fa-trash"></i></a></td>
 						</tr>
 					</tbody>	
 					</c:forEach>

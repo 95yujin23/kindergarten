@@ -20,7 +20,7 @@ public class FeedingPoisonningController {
 	private static final Logger logger = LoggerFactory.getLogger(FeedingApplicationController.class);
 	
 	// 1. 전체조회
-	@RequestMapping(value="/feeding/feedingPoisonning_list")
+	@RequestMapping(value="/FeedingPoisonningList")
 	public String feedingPoisonningList(Model model, HttpSession session) {
 		List<FeedingPoisonning> list = fepoService.getFeedingPoisonningList();
 		logger.debug("{} < - feedingPoisonningList FeedingPoisonningController.java",list);
@@ -41,7 +41,7 @@ public class FeedingPoisonningController {
 	public String feedingPoisonningModify(FeedingPoisonning feedingPoisonning) {
 		fepoService.feedingPoisonningModify(feedingPoisonning);
 		logger.debug("{} < -- feedingPoisonningModify FeedingPoisonningController.java",feedingPoisonning);
-		return "redirect:/feeding/feedingPoisonning_list";		
+		return "redirect:/FeedingPoisonningList";		
 	}
 	
 	// 4. 입력화면
@@ -60,8 +60,15 @@ public class FeedingPoisonningController {
 		
 		logger.debug("feedingPoisonning_add.jsp ---> FeedingPoisonningAdd 넘어오는 값 : {}", foodPoisonningGenerationCd);
 		logger.debug("{} < -- FeedingPoisonningAdd FeedingPoisonningController.java",feedingPoisonning);
-		return "redirect:/";
-		
+		return "redirect:/FeedingPoisonningList";		
+	}
+	
+	//6.삭제처리
+	@RequestMapping(value="FeedingPoisonningDelete" , method=RequestMethod.GET)
+	public String feedingPoisonningDelete(Model model, @RequestParam(value="foodPoisonningGenerationCd", required=true)String foodPoisonningGenerationCd) {
+		fepoService.feedingPoisonningDelete(foodPoisonningGenerationCd);
+		logger.debug("{}<-- feedingPoisonningDelete실행 FeedingPoisonningController.java",foodPoisonningGenerationCd);
+		return "redirect:/FeedingPoisonningList";
 	}
 	
 	
