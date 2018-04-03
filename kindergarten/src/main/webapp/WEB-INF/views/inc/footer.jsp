@@ -3,7 +3,7 @@
 <footer>
 	<div class="pull-right">
 		<a href="http://ksmart.or.kr/">한국스마트정보교육원</a>
-		25기 1팀 프로젝트 - 프랜차이즈카페 통합 관리 시스템
+		26기 4팀 OHAYO 프로젝트 - 영유아 교육기관 통합 관리 시스템(Kindergarten Total Management System) 
 	</div>
 	<div class="clearfix"></div>
 </footer>
