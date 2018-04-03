@@ -82,7 +82,12 @@
 								<li><a href="${pageContext.request.contextPath}/KidsAttendanceList">등하원 전체 조회</a></li>
 							</ul>	
 						</li>
-						<li><a href="${pageContext.request.contextPath}/KidsClass">반 현황</a></li>
+						<li><a href="#">영유아 반 관리<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="${pageContext.request.contextPath}/KidsClassFormation">반 편성</a></li>
+								<li><a href="${pageContext.request.contextPath}/KidsClass">반 현황</a></li>
+							</ul>	
+						</li>
 					</ul>
 				</li>
 				
