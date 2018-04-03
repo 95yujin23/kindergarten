@@ -194,4 +194,10 @@
 			, PRAP_REGISTRANT = #{PRAPRegistrant}
 		WHERE PROGRAM_APPL_CD = #{programApplCd} 
 	</update>
+	<!-- 4. 특별활동신청 삭제 -->
+	<delete id="programApplicationDelete" parameterType="com.cafe24.hanboa.program.ProgramApplication">
+		DELETE 
+		FROM TB_PROGRAM_APPLICATION 
+		WHERE PROGRAM_APPL_CD = #{programApplCd}
+	</delete>
 </mapper>

@@ -160,10 +160,25 @@ public class ProgramController {
 		model.addAttribute("programApplication", programApplication);
 		return "/program/program_application_modify";
 	}
+	// 3-2. 특별활동신청 업데이트
 	@RequestMapping(value="/ProgramApplicationModify", method=RequestMethod.POST)
 	public String ProgramApplicationModify(ProgramApplication programApplication) {
 		programService.programApplicationModify(programApplication);
 		logger.debug("{} <- ProgramModify ProgramController.java", programApplication);
+		return "redirect:/ProgramApplicationList";
+	}
+	// 4. 특별활동신청 삭제
+	@RequestMapping(value="/ProgramApplicationDelete", method=RequestMethod.GET)
+	public String ProgramApplicationDelete(HttpSession session, Teacher teacher, @RequestParam(value = "programApplCd", required = true) String programApplCd) {
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
+		if(loginTeacher == null) {
+			// loginTeacher의 값이 null이라면 login화면으로
+			return "redirect:/Login";
+		}
+		programService.programApplicationDelete(programApplCd);
+		logger.debug("4. ProgramController.java ProgramApplicationDelete()메소드 실행 ");
+		logger.debug("------------------------------------------------------------");
 		return "redirect:/ProgramApplicationList";
 	}
 }

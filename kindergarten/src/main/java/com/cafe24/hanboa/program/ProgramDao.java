@@ -83,11 +83,17 @@ public class ProgramDao {
 	}
 	// 3-1. 특별활동신청 업데이트 정보요청 개별조회
 	public ProgramApplication modifyGetProgramApplication(String programApplCd) {
-		logger.debug("{} <- programApplCd ProgramDao.java 2. getProgramApplicationList() 메소드 실행", programApplCd);
+		logger.debug("{} <- programApplCd ProgramDao.java 3-1. getProgramApplicationList() 메소드 실행", programApplCd);
 		return sqlSesionTamplate.selectOne(localName+"selectProgramApplicationOne", programApplCd);
 	}
 	// 3-2. 특별활동신청 업데이트
 	public int modifyProgramApplication(ProgramApplication programApplication) {
+		logger.debug("{} <- programApplication ProgramDao.java 3-2. modifyProgramApplication() 메소드 실행", programApplication);
 		return sqlSesionTamplate.update(localName+"programApplicationModify", programApplication);
+	}
+	// 4. 특별활동신청 삭제
+	public int programApplicationDelete(String programApplCd) {
+		logger.debug("{} <- programApplCd ProgramDao.java 3-2. programApplicationDelete() 메소드 실행", programApplCd);
+		return sqlSesionTamplate.delete(localName+"programApplicationDelete", programApplCd);
 	}
 }

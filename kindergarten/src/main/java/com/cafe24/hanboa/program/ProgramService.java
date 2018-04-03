@@ -101,4 +101,10 @@ public class ProgramService {
 		logger.debug("{} <- programApplicationModify ProgramService.java", programApplicationOne);
 		return programApplicationOne;
 	}
+	// 4. 특별활동신청 삭제
+	public int programApplicationDelete(String programApplCd) {
+		int programApplicationOne = programDao.programApplicationDelete(programApplCd);
+		logger.debug("{} <- programApplicationDelete ProgramService.java", programApplicationOne);
+		return programApplicationOne;
+	}
 }
