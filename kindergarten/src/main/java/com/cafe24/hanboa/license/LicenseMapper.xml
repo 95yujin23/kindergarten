@@ -3,8 +3,9 @@
 <mapper namespace="com.cafe24.hanboa.license.LicenseMapper">
 
 <!-- 유치원 라이센스 조회 -->
-	<select id="getLicense"
-			resultType="com.cafe24.hanboa.license.License">
+	<select id="getLicenseOne"
+			resultType="com.cafe24.hanboa.license.License"
+			parameterType="com.cafe24.hanboa.license.License">
 		SELECT
 			license_kindergarten		AS	licenseKindergarten
 			,kindergarten_nm			AS	kindergartenNm
@@ -12,7 +13,8 @@
 			,license_expiration_day		AS	licenseExpirationDay	
 			,kindergarten_address		AS	kindergartenAddress
 			,kindergarten_phone			AS	kindergartenPhone
-		FROM hanboa.TB_LICENSE			
+		FROM hanboa.TB_LICENSE		
+		WHERE license_kindergarten = #{licenseKindergarten}
 	</select>
 
 <!-- 유치원 라이센스 등록 : 관리자 -->

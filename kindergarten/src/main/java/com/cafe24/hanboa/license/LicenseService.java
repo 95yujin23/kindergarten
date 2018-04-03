@@ -14,4 +14,11 @@ public class LicenseService {
 
 	private static final Logger logger = LoggerFactory.getLogger(LicenseService.class);		
 
+	// 1-2. 라이센스 조회
+	public License getLicenseOne(License license) {
+		logger.debug("1-2. LicenseService -- getLicenseOne(String licenseKindergarten) : {}", license);
+		license = licenseDao.selectLicenseOne(license);
+		logger.debug("-----------------------------------------");
+		return license;	
+	}
 }
