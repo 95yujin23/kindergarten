@@ -2,8 +2,26 @@
 
 <mapper namespace="com.cafe24.hanboa.kids.KidsMapper">
 
-<!-- 영유아 목록 조회 -->	
+<!-- 모든 영유아 조회 (반편성 안된 영유아 포함) -->
 	<select id="getKidsList"
+			resultType="com.cafe24.hanboa.kids.Kids">
+		SELECT
+			 kids_cd				AS kidsCd
+			, kids_nm				AS kidsNm
+			, kids_date_of_birth	AS kidsDateOfBirth
+			, kids_address			AS kidsAddress
+			, kids_parent_phone		AS kidsParentPhone
+			, kids_spare_phone		AS kidsSparePhone
+			, kids_gender			AS kidsGender
+			, kids_commuting_type	AS kidsCommutingType
+			, kids_caution			AS kidsCaution
+			, kids_admission		AS kidsAdmission
+			, kids_graduation		AS kidsGraduation
+		FROM TB_KIDS
+	</select>
+
+<!-- 반 편성된 영유아 목록 조회 -->	
+	<select id="getKidsListByClass"
 			parameterType="java.util.Map"
 			resultType="com.cafe24.hanboa.kids.Kids">
 		SELECT 
@@ -52,8 +70,8 @@
 		</choose>
 	</sql> -->
 
-<!-- 영유아 편성 반별 조회-->
-	<select id="getKidsListByClass"
+<!-- 영유아 편성 반별 조회 : 선생님cd-->
+	<select id="getKidsListByTeacher"
 			resultType="com.cafe24.hanboa.kids.Kids"
 			parameterType="com.cafe24.hanboa.teacher.Teacher">
 		SELECT
@@ -153,6 +171,7 @@
 			,#{kidsFileSize}
 		);
 	</insert>
+	
 <!-- 영유아와 영유아 파일 조회 -->
 	<select id="getKidsAndKidsFile"
 			parameterType="String"
@@ -231,6 +250,14 @@
 			parameterType="com.cafe24.hanboa.kids.Kids">
 		DELETE
 		FROM hanboa.TB_KIDS
+		WHERE kids_cd = #{kidsCd}
+	</delete>
+
+<!-- 영유아 파일 삭제 -->	
+	<delete id="deleteKidsFile"
+			parameterType="com.cafe24.hanboa.kids.KidsFile">
+		DELETE
+		FROM hanboa.TB_KIDS_FILE
 		WHERE kids_cd = #{kidsCd}
 	</delete>
 	

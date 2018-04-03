@@ -22,12 +22,17 @@ public class KidsDao {
 	
 	String localName = "com.cafe24.hanboa.kids.KidsMapper.";
 	
-	// 1. 전체 영유아 조회 : 반 별로
-	public List<Kids> selectKidsList(HashMap<String, Object> map) {
+	// 1-1. 전체 영유아 조회
+	public List<Kids> selectKidsList(){
+		logger.debug("1. KidsDao -- List<Kids> selectKidsList() 매서드 실행");
+		return sqlSession.selectList(localName + "getKidsList");
+	}
+	// 1-2. 영유아 조회 : 반 별로
+	public List<Kids> selectKidsListByClass(HashMap<String, Object> map) {
 		logger.debug("1. KidsDao -- List<Kids> selectKidsList(HashMap<String, Object> map) 매서드 실행");
 		logger.debug("map : {}",map);
 		// parameter로 map에 값을 담아서 넘겨준다. keyword의 value값
-		return sqlSession.selectList(localName + "getKidsList", map);
+		return sqlSession.selectList(localName + "getKidsListByClass", map);
 	}
 	// 1-2. 영유아 파일 조회
 	public KidsAndKidsFile selectKidsFile(String kidsCd) {
@@ -37,9 +42,9 @@ public class KidsDao {
 		return sqlSession.selectOne(localName + "getKidsAndKidsFile", kidsCd);
 	}
 	// 2. 편성 반별 영유아 조회 : 선생님이 맡은 반
-	public List<Kids> selectKidsListByClass(Teacher teacher){
+	public List<Kids> selectKidsListByTeacher(Teacher teacher){
 		logger.debug("2. KidsDao -- List<Kids> selectKidsListByClass(Teacher teacher) : {}",teacher);
-		return sqlSession.selectList(localName + "getKidsListByClass",teacher);
+		return sqlSession.selectList(localName + "getKidsListByTeacher",teacher);
 	}
 	// 3. 영유아 개인 조회
 	public Kids selectKidsOne(String kidsCd) {
@@ -66,9 +71,14 @@ public class KidsDao {
 		logger.debug("5-2. KidsDao -- int updateKidsGraduation(String kidsCd) : {}",kidsCd);
 		return sqlSession.update(localName + "updateKidsGraduation",kidsCd);
 	}
-	// 6. 영유아 삭제
+	// 6-1. 영유아 삭제
 	public int deleteKids(String kidsCd) {
-		logger.debug("6. KidsDao -- int deleteKids(String kidsCd) : {}",kidsCd);
-		return sqlSession.update(localName + "deleteKids",kidsCd);
+		logger.debug("6-1. KidsDao -- int deleteKids(String kidsCd) : {}",kidsCd);
+		return sqlSession.delete(localName + "deleteKids",kidsCd);
+	}
+	// 6-2. 영유아 파일 삭제
+	public int deleteKidsFile(String kidsCd) {
+		logger.debug("6-2. KidsDao -- deleteKidsFile(String kidsCd) : {}",kidsCd);
+		return sqlSession.delete(localName + "deleteKidsFile",kidsCd);
 	}
 }

@@ -24,10 +24,20 @@ public class KidsService {
 	private KidsDao kidsDao;
 	private static final Logger logger = LoggerFactory.getLogger(TeacherService.class);
 	
-	// 1. 영유아목록조회
-	public List<Kids> getKidsList(HashMap<String, Object> map) {
+	
+	// 1-1. 영유아전체목록
+	public List<Kids> getKidsList(){
+		logger.debug("1. KidsService -- List<Kids> getKidsList()");
+		List<Kids> list = kidsDao.selectKidsList();
+		logger.debug("List<Kids> list {}", list);
+		logger.debug("-----------------------------------------");
+		return list;
+	}
+	
+	// 1-2. 영유아목록조회 (반별)
+	public List<Kids> getKidsListByClass(HashMap<String, Object> map) {
 		logger.debug("1. KidsService -- List<Kids> getKidsList(HashMap<String, Object> map) : {}", map);
-		List<Kids> list = kidsDao.selectKidsList(map);
+		List<Kids> list = kidsDao.selectKidsListByClass(map);
 		logger.debug("List<Kids> list {}", list);
 		logger.debug("-----------------------------------------");
 		return list;
@@ -39,10 +49,10 @@ public class KidsService {
 		logger.debug("KidsAndKidsFile : {}", kidsAndKidsFile);
 		return kidsAndKidsFile;
 	}
-	// 2. 영유아 편성 반별 조회
-	public List<Kids> getKidsListByClass(Teacher teacher){
+	// 2. 영유아 편성 반별 조회 (선생님이 편성된)
+	public List<Kids> getKidsListByTeacher(Teacher teacher){
 		logger.debug("2. KidsService -- List<Kids> getKidsListByClass(Teacher teacher) : {}", teacher);
-		List<Kids> list = kidsDao.selectKidsListByClass(teacher);
+		List<Kids> list = kidsDao.selectKidsListByTeacher(teacher);
 		logger.debug("List<Kids> : {}", list);
 		logger.debug("-----------------------------------------");
 		return list;
@@ -152,7 +162,9 @@ public class KidsService {
 	// 6. 영유아 삭제
 	public int removeKids(String kidsCd) {
 		logger.debug("3. KidsService -- removeKids(String kidsCd) : {}", kidsCd);
-		int removeKids = kidsDao.deleteKids(kidsCd);
+		int removeKids = 0;
+		removeKids = kidsDao.deleteKids(kidsCd);
+		removeKids = kidsDao.deleteKidsFile(kidsCd);
 		logger.debug("-----------------------------------------");
 		return removeKids;
 	}

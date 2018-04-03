@@ -54,7 +54,7 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-			<h1 class="page-header">영유아 목록</h1>
+			<h1 class="page-header">편성반이 없는 모든 영유아 목록</h1>
 			<form action="${pageContext.request.contextPath}/KidsList" method="post">
 					<select name="keyword" class="form-control">
 					<!-- 검색 조건을 검색 처리후 결과화면에 보여주기 위해 c:out 출력태그 사용 (삼항연산자) -->
