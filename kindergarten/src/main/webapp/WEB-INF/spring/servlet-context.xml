@@ -29,7 +29,7 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
     	<property name="url" value="jdbc:mysql://hanboa.cafe24.com/hanboa?useUnicode=true&amp;characterEncoding=utf-8"/>
-	<!-- <property name="url" value="jdbc:mysql://localhost/hanboa?useUnicode=true&amp;characterEncoding=utf-8"/> -->
+		<!-- <property name="url" value="jdbc:mysql://localhost/hanboa?useUnicode=true&amp;characterEncoding=utf-8"/> -->
         <property name="username" value="hanboa"/>
         <property name="password" value="ksmart!123"/>
     </bean>
@@ -59,6 +59,7 @@
                 <value>classpath:com/cafe24/hanboa/safety/SafetyMapper.xml</value>
                 <value>classpath:com/cafe24/hanboa/contract/ContractMapper.xml</value>
                 <value>classpath:com/cafe24/hanboa/totalResource/TotalResourceMapper.xml</value>
+                <value>classpath:com/cafe24/hanboa/classformation/ClassMapper.xml</value>
             </list>
         </property>
     </bean>
