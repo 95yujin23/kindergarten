@@ -6,8 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<!-- javascript -->
-<script src="https://code.jquery.com/jquery-3.1.0.min.js" ></script>
+<!-- <!-- javascript -->
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" ></script> -->
 
 <!-- Bootstrap Core CSS -->
 <link href="./resources/vendor/css/bootstrap.min.css" rel="stylesheet">
@@ -23,8 +23,6 @@
 
 <!-- Custom Fonts -->
 <link href="./resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -56,7 +54,7 @@
     <h2 class="page-header">일지구분</h2> <!--  ********************* 일지 구분 부분  ********************* -->
     <!-- reportdivision 메뉴 추가 -->
     <div>
-    	 <a href="#demo" class="btn btn-success" data-toggle="collapse"><i class="fas fa-plus" ></i></a>
+    	 <a href="#demo" class="btn btn-success" data-toggle="collapse"><i class="fa fa-plus" aria-hidden="true"></i></a>
   <div id="demo" class="collapse">
     <!-- 내용 -->
     <form action="${pageContext.request.contextPath}/addReportDivision" method="POST">
@@ -85,11 +83,11 @@
        <td class="reportNm">${reportDivision.reportNm}</td>
        <td style="text-align:center">
        
-       <button type="button" class="btn btn-primary mod" data-toggle="modal" data-target="#myModal"><i class="fas fa-pencil-alt"></i></button>
+       <button type="button" class="btn btn-primary mod" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
 		
 	  <%-- <a ${pageContext.request.contextPath}/report/kids_report_setting?reportCd=${reportDivision.reportCd}" class="modal-param" data-toggle="modal" data-target="#myModal" data-unique="${vs.index}"><i class="fas fa-pencil-alt"></i> </a> --%>
 	 </td>
-       <td style="text-align:center"><a class="btn btn-danger" href="${pageContext.request.contextPath}/removeReportDivision?reportCd=${reportDivision.reportCd}"><i class="fas fa-trash-alt"></i></a></td>
+       <td style="text-align:center"><a class="btn btn-danger" href="${pageContext.request.contextPath}/removeReportDivision?reportCd=${reportDivision.reportCd}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
      </tr>
      </tbody>
      </c:forEach>
@@ -129,7 +127,7 @@
     <!-- reportdivision 메뉴 추가 -->
     
 	  <div>
-	    	 <a href="#demo1" class="btn btn-success" data-toggle="collapse"><i class="fas fa-plus" ></i></a>
+	    	 <a href="#demo1" class="btn btn-success" data-toggle="collapse"><i class="fa fa-plus" aria-hidden="true"></i></a>
 	  <div id="demo1" class="collapse">
 	    <!-- 내용 -->
 	    <form action="${pageContext.request.contextPath}/addReportResource" method="POST">
@@ -164,17 +162,17 @@
        
 	       	<!-- Button trigger modal -->
 		<button class="btn btn-primary mod1" data-toggle="modal" data-target="#myModal2">
-		  <i class="fas fa-pencil-alt"></i>
+		  <i class="fa fa-pencil" aria-hidden="true"></i>
 		</button></td>
 		
-       <td style="text-align:center"><a class="btn btn-danger" href="${pageContext.request.contextPath}/removeReportResource?reportResourceCd=${reportResource.reportResourceCd}"><i class="fas fa-trash-alt"></i></a></td>
+       <td style="text-align:center"><a class="btn btn-danger" href="${pageContext.request.contextPath}/removeReportResource?reportResourceCd=${reportResource.reportResourceCd}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
       </tr>
      </tbody>
      </c:forEach>
      
      <!-- Modal -->
-		<div class="modal fade mod1" id="myModal2">
-		  <div class="modal-dialog">
+		<div class="modal fade bs-example-modal-sm mod1" id="myModal2">
+		  <div class="modal-dialog modal-sm">
 		  
 		  <!-- Modal content -->
 		    <div class="modal-content">
@@ -194,19 +192,12 @@
 		        <button type="submit" class="btn btn-primary">완료</button>
 		       </form>
 		      </div>
-	      <div class="modal-footer">`
-	        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-	      </div>
 	    </div>
 	  </div>
 	</div>
 	<!-- /modal -->
-       
-       
-     
     </table>
    </div>
-  
   </div>
  </div>
 </div>
@@ -220,13 +211,11 @@
 
 	
 
-	<!-- Bootstrap Core JavaScript -->
-	<script src="resources/vendor/js/bootstrap.min.js"></script>
-	
+	<!-- <!-- Bootstrap Core JavaScript -->
+	<script src="resources/vendor/js/bootstrap.min.js"></script> -->
 	<!-- jQuery -->
 	<script src="resources/vendor/js/jquery.min.js"></script>
-	 
-
+	
 	<!-- Metis Menu Plugin JavaScript -->
 	<script src="resources/vendor/js/metisMenu.min.js"></script>
 
@@ -239,39 +228,32 @@
 	<script src="resources/vendor/js/sb-admin-2.js"></script>
 	
 	<script>
-
+	jQuery("#side-menu").metisMenu();
 	$(document).ready(function() {
-			var modal = $(".modal");
+			var modal = $("#myModal");
 			
 			var vm = $(this).parent()
-			console.log(vm);
+			
 			$(".mod").on("click", function (e) { 
 				
 				var vm = $(this).parent().parent().children();
-				console.log($(vm[0]).text());
-				console.log($(vm[1]).text());
 				
 				var reportDivisionCd = $(vm[0]).text();
 				var reportDivisionNm = $(vm[1]).text();
 				$("#reportDivisionCd").val(reportDivisionCd)
 				$("#reportDivisionNm").val(reportDivisionNm)
 			})
-	 })
-	 
-	 $(document).ready(function(){
-		 
-		 var modal1 = $("#myModal2");
 			
-			var vm1 = $(this).parent()
-			console.log(vm1);
-			$(".mod1").on("click", function (e){
+			var modal1 = $("#myModal2");
+			
+			var vm1 = $(this).parent().parent();
+		
+			$(".mod1").on("click", function (e) { 
 				
 				var vm1 = $(this).parent().parent().children();
 				console.log($(vm1[0]).text());
 				console.log($(vm1[1]).text());
 				console.log($(vm1[2]).text());
-				
-				/* console.log($(this).parent().parent().children()); */
 				
 				var reportResourceCd = $(vm1[0]).text();
 				var groupNm = $(vm1[1]).text();
@@ -279,12 +261,8 @@
 				$("#reportResourceCd").val(reportResourceCd)
 				$("#groupNm").val(groupNm)
 				$("#detail").val(detail)
-				
-			})
-		 
-	 })
-	 
-	 
+		 })
+	 }) 
  </script>
 	 
 	
