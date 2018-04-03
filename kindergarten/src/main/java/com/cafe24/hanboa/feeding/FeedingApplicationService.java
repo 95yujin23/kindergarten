@@ -46,4 +46,13 @@ public class FeedingApplicationService {
 		return feapinsert;
 	}
 	
+	//5.삭제처리
+	public int feedingApplicationDelete(String feedingApplicationCd) {
+		int delete = feedingApplicationDao.feedingApplicationDelete(feedingApplicationCd);
+		logger.debug("{} < -- feedingApplicationDelete메서드 실행 FeedingApplicationService.java",feedingApplicationCd);
+		logger.debug("{} < -- feedingApplicationDelete메서드 실행 FeedingApplicationService.java",delete);
+		return delete;
+		
+	}
+	
 }

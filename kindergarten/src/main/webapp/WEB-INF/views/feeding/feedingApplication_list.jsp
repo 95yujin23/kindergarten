@@ -65,7 +65,7 @@
 							<td>${feap.feapRegistrant}</td>
 							<td>${feap.licenseKindergarten}</td>
 							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/feeding/feedingApplication_modify?feedingApplicationCd=${feap.feedingApplicationCd}"><i class="fa fa-pencil"></i></a></td>
-							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}"><i class="fa fa-trash"></i></a></td>
+							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/FeedingApplicationDelete?feedingApplicationCd=${feap.feedingApplicationCd}"><i class="fa fa-trash"></i></a></td>
 						</tr>
 					</tbody>	
 					</c:forEach>

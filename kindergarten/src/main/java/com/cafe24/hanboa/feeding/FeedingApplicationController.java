@@ -60,5 +60,13 @@ public class FeedingApplicationController {
 		return "redirect:/feeding/feedingApplication_list";		
 	}
 	
+	//6. 삭제처리
+	@RequestMapping(value="/FeedingApplicationDelete", method=RequestMethod.GET)
+	public String feedingApplicationDelete(Model model, @RequestParam(value="feedingApplicationCd", required=true)String feedingApplicationCd) {
+		feapService.feedingApplicationDelete(feedingApplicationCd);
+		logger.debug("{} < -- feedingApplicationDelete메서드 실행  FeedingApplicationController.java",feedingApplicationCd);
+		return "redirect:/";
+		}
+	
 
 }

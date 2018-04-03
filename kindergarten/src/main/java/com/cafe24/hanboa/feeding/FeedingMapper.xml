@@ -73,7 +73,15 @@
 			,#{feapRegistrationDate}
 			,#{feapRegistrant}
 			,#{licenseKindergarten})			
-	</insert>			
+	</insert>	
+	
+<!-- 급식신청 삭제 -->
+	<delete id = "feapDelete"
+			parameterType="com.cafe24.hanboa.feeding.FeedingApplication">
+	DELETE
+	FROM TB_FEEDING_APPLICATION
+	WHERE feeding_application_cd = #{feedingApplicationCd}
+	</delete>
 	
 <!-- 식단메뉴조회 -->
 	<select id="getFeedingMenuList"
@@ -142,6 +150,13 @@
 		,#{menuManager}
 		,#{licenseKindergarten})
 	</insert>
+<!-- 식단메뉴 삭제 -->
+	<delete id = "femeDelete"
+			parameterType="com.cafe24.hanboa.feeding.FeedingMenu">
+	DELETE
+	FROM TB_FEEDING_MENU
+	WHERE feeding_menu_cd = #{feedingMenuCd}
+	</delete>
 			
 <!-- 월별급식 조회 -->
 	<select id="getfemoList"
@@ -231,9 +246,16 @@
 			,#{femoRegistrant}
 			,#{licenseKindergarten})			
 	</insert>
-	
+
+<!-- 월별급식 삭제 -->
+	<delete id = "femoDelete"
+			parameterType="com.cafe24.hanboa.feeding.FeedingMonthly">
+		DELETE
+		FROM TB_FEEDING_MONTHLY
+		WHERE feeding_monthly_cd = #{feedingMonthlyCd}
+	</delete>	
 			
-<!-- 식중독현황 조회 -->
+<!-- 식중독처리현황 조회 -->
 	<select id="getFepoList"
 			resultType="com.cafe24.hanboa.feeding.FeedingPoisonning">
 		SELECT
@@ -250,7 +272,7 @@
 		FROM TB_FOOD_POISONNING_PROCESSING			
 	</select>
 	
-<!-- 식중독 항목별조회 -->
+<!-- 식중독처리현황 항목별조회 -->
 	<select id ="getFepoOne"
 			resultType="com.cafe24.hanboa.feeding.FeedingPoisonning">
 		SELECT
@@ -265,7 +287,7 @@
 		WHERE food_poisonning_generation_cd = #{foodPoisonningGenerationCd}
 	</select>
 	
-<!-- 식중독 수정 -->
+<!-- 식중독처리현황 수정 -->
 	<update id ="modifyFepo"
 			parameterType="com.cafe24.hanboa.feeding.FeedingPoisonning">
 		UPDATE TB_FOOD_POISONNING_PROCESSING
@@ -280,7 +302,7 @@
 		WHERE food_poisonning_generation_cd = #{foodPoisonningGenerationCd}
 	</update>
 
-<!-- 식중독 입력  -->
+<!-- 식중독처리현황 입력  -->
 	<insert id="fepoAdd"
 			parameterType="com.cafe24.hanboa.feeding.FeedingPoisonning">
 	INSERT INTO TB_FOOD_POISONNING_PROCESSING
@@ -306,6 +328,14 @@
 			,#{registrant}
 			,#{licenseKindergarten})			
 	</insert>
+	
+<!-- 식중독처리 현황 삭제 -->
+	<delete id = "fepoDelete"
+			parameterType="com.cafe24.hanboa.feeding.FeedingPoisonning">
+		DELETE
+		FROM TB_FOOD_POISONNING_PROCESSING
+		WHERE food_poisonning_generation_cd = #{foodPoisonningGenerationCd}
+	</delete>	
 
 
 
