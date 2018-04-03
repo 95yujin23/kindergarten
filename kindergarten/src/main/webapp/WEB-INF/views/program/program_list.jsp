@@ -19,6 +19,8 @@
 <link href="resources/vendor/css/morris.css" rel="stylesheet">
 <!-- Custom Fonts -->
 <link href="resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!-- jQuery -->
+<script src="resources/vendor/js/jquery.min.js"></script>
 </head>
 <body>
 	<div id="wrapper">
@@ -74,5 +76,15 @@
 	<!-- FOOTER : Navigation -->
 	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->
+	<!-- Bootstrap Core JavaScript -->
+	<script src="resources/vendor/js/bootstrap.min.js"></script>
+	<!-- Metis Menu Plugin JavaScript -->
+	<script src="resources/vendor/js/metisMenu.min.js"></script>
+	<!-- Morris Charts JavaScript -->
+	<script src="resources/vendor/js/raphael.min.js"></script>
+	<script src="resources/vendor/js/morris.min.js"></script>
+	<script src="resources/vendor/js/morris-data.js"></script>
+	<!-- Custom Theme JavaScript -->
+	<script src="resources/vendor/js/sb-admin-2.js"></script>
 </body>
 </html>
