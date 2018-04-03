@@ -58,14 +58,13 @@
 				<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
-							<th>교직원 코드</th>
 							<th>교직원 이름</th>
 							<th>생년월일</th>
 							<th>연락처</th>
 							<th>전자우편</th>
 							<th>자택 주소</th>
 							<th>입사일</th>
-							<th>직급/th>
+							<th>직급</th>
 							<th>호봉</th>
 							<th>수정</th>
 							<th>삭제</th>
@@ -74,7 +73,6 @@
 					<c:forEach var="teacherList" items="${list}">
 						<tbody>
 							<tr>
-								<td>${teacherList.teacherCd}</td>
 								<td>${teacherList.teacherNm}</td>
 								<td>${teacherList.teacherDateOfBirth}</td>
 								<td>${teacherList.teacherPhone}</td>

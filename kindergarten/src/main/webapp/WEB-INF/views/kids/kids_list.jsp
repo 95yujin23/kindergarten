@@ -65,7 +65,7 @@
 					</select> 
 					<button class="btn btn-success" type="submit" value="검색">검색</button>
 				</form>
-				<table border=1>
+				<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
 							<th>이름</th>
@@ -97,8 +97,8 @@
 								<td>${kidsList.kidsCaution}</td>
 								<td>${kidsList.kidsAdmission}</td>
 								<td>${kidsList.kidsGraduation}</td>
-								<td><a href="${pageContext.request.contextPath}/KidsModify?kidsCd=${kidsList.kidsCd}">수정</a></td>
-								<td><a href="${pageContext.request.contextPath}/KidsRemove?kidsCd=${kidsList.kidsCd}">삭제</a></td>
+								<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/KidsModify?kidsCd=${kidsList.kidsCd}"><i class="fa fa-pencil"></i></a></td>
+								<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/KidsRemove?kidsCd=${kidsList.kidsCd}"><i class="fa fa-trash"></i></a></td>
 							</tr>
 						</tbody>
 					</c:forEach>

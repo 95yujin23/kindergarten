@@ -74,15 +74,12 @@
 				<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
-							<th>안전교육및점검실행코드</th>
-							<th>통합자원코드</th>
-							<th>안전 교육 및 점검</th>
+							<th>안전 점검 및 교육 구분</th>
 							<th>안전 교육 및 점검 명</th>
 							<th>안전 실행시간(분)</th>
 							<th>안전 실시아동수</th>
 							<th>안전 주최</th>
 							<th>안전 교육및점검비</th>
-							<th>안전 교육구분</th>
 							<th>안전 마감유무</th>
 							<th>안전 등록인</th>
 							<th>안전 등록날짜</th>
@@ -93,16 +90,12 @@
 					<c:forEach var="safetyList" items="${list}">
 						<tbody>
 							<tr>
-								<td>${safetyList.safetyExecutionCd}</td>
-								<td>${safetyList.totalResourceCd}</td>
-								<td>${safetyList.resourceGroupNm}</td>
+								<td>${safetyList.safetyDivision}</td>
 								<td>${safetyList.resourceNm}</td>
 								<td>${safetyList.safetyTime}</td>
 								<td>${safetyList.safetyKidsCount}</td>
 								<td>${safetyList.safetyHost}</td>
 								<td>${safetyList.safetyExpenditureCost}</td>
-								<td>${safetyList.safetyClosingCd}</td>
-								<td>${safetyList.safetyDivision}</td>
 								<td>${safetyList.safetyClosingDivision}</td>
 								<td>${safetyList.safetyRegistrant}</td>
 								<td>${safetyList.safetyRegistrationDate}</td>

@@ -62,7 +62,23 @@
 				<div class="col-lg-12">
 							<div class="row">
 								<div class="col-lg-12">
-								<div id="map" style="width:500px;height:400px;"></div>
+								<table class="table table-striped table-bordered table-hover">
+									<tr>
+									<td>전화번호</td>
+									<td>${kindergarten.kindergartenPhone}</td>
+									</tr>
+									<tr>
+									<td>주소</td>
+									<td>${kindergarten.kindergartenAddress}</td>
+									</tr>
+									<tr>
+									<td>위치정보</td>
+									<td><div id="map" style="width:500px;height:400px;"></div></td>
+									
+									</tr>
+									
+								</table>
+								<!-- <div id="map" style="width:500px;height:400px;"></div> -->
 								<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=25d7e7832ecdbf853a349bb2f0f1b86f&libraries=services"></script>
 								<script>
 								var container = document.getElementById('map'); // 지도를 표시할 div
