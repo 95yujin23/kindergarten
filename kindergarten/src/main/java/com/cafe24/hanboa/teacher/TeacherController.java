@@ -73,7 +73,7 @@ public class TeacherController {
 		 *	3. 원장님이 부여받은 라이센스를 가지고 교직원을 등록
 		 * 	4. 라이센스가 원장이 등록한 교직원에게 부여
 		 */
-		return "redirect:/";
+		return "redirect:/Preview";
 			}
 	
 	// 4. 로그아웃
