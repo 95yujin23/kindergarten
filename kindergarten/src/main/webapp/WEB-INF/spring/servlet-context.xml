@@ -60,6 +60,7 @@
                 <value>classpath:com/cafe24/hanboa/contract/ContractMapper.xml</value>
                 <value>classpath:com/cafe24/hanboa/totalResource/TotalResourceMapper.xml</value>
                 <value>classpath:com/cafe24/hanboa/classformation/ClassMapper.xml</value>
+                <value>classpath:com/cafe24/hanboa/license/LicenseMapper.xml</value>
             </list>
         </property>
     </bean>
