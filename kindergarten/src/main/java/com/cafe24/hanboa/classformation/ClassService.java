@@ -23,4 +23,10 @@ public class ClassService {
 		return list;
 		
 	}
+	// 반편성 미분류 인원 추가하기
+	public void addUnClassification(ClassFormation classFormation){
+		logger.debug("ClassService --> addUnClassification()메소드 실행");
+		classDao.addUnClassification(classFormation);
+		
+	}
 }

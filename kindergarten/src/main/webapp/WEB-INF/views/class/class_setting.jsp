@@ -56,25 +56,29 @@
 	    	 <a href="#demo" class="btn btn-success" data-toggle="collapse"><i class="fa fa-plus" aria-hidden="true"></i></a>
 	  			<div id="demo" class="collapse">
 	    		<!-- 내용 -->
-			<!-- 전송퐁 시작 -->	    
-    		<form action="${pageContext.request.contextPath}/addKidsClass" method="POST">
-		    		<div class="form-group col-xs-3">
-	    				<div class="row">
-						  <div class="col-xs-4">
-						    <input type="text" class="form-control" placeholder=".col-xs-2">
-						  </div>
-						  <div class="col-xs-4">
-						    <input type="text" class="form-control" placeholder=".col-xs-3">
-						  </div>
-						  <div class="col-xs-4">
-						    <input type="text" class="form-control" placeholder=".col-xs-4">
-						  </div>
-						</div>
-	    				<button type="submit" class="btn btn-primary btn-sm">추가</button>
-	    			</div>	
-		    </form>
-		   </div>
-			<!-- 전송폼 종료 -->
+			<!-- 전송퐁 시작 -->
+			<!-- 반 생성 addkidsClass  -->
+    <form action="${pageContext.request.contextPath}/addKidsClass" method="POST" class="form-inline addKidsClassForm">
+		    	<div class="form-group">
+				    <label for="kdisclasNm">반이름</label> <!-- input id가 바뀌면 label이름도 바꿔준다. -->
+				    <input type="text" class="form-control" id="kidsclassNm" name="kidsclassNm">
+				 </div>
+				  <div class="form-group">
+				    <label for="createDate">생성날짜</label>
+				    <input type="date" class="form-control" id="createDate" name="createDate">
+				  </div>
+				  <div class="form-group">
+				    <label for="classKidsAge">해당 나이</label>
+				    <input type="email" class="form-control" id="classKidsAge" name="classKidsAge">
+				  </div>
+				  <div class="form-group">
+				    <input type="hidden" class="form-control" id="licenseKindergarten" value="${SessionName}">
+				  </div>
+				  <button type="submit" class="btn btn-primary btn-sm addKidsClass" onclick="addKidsClassCheck()">추가</button>
+			</form>
+		</div>	
+	  </div>
+	<!-- 전송폼 종료 -->
 			<table class="table table-hover">
 				<thead>
 
@@ -131,6 +135,16 @@
 
 	<!-- Custom Theme JavaScript -->
 	<script src="resources/vendor/js/sb-admin-2.js"></script>
+	
+	<script>
+		function addKidsClassCheck() {
+			form = document.addKidsClassForm;
+			if(form.kidsclassNm.value=="" || form.createDate.valeu="" || form.classKidsAge.value=""){
+				alert("모든 정보를 입력하셔야 합니다.");
+			}
+		}
+		
+	</script>
 
 </body>
 </html>

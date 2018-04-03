@@ -4,16 +4,16 @@ public class ClassFormation {
 	//영유아반편성 TB_KIDS_CLASS_FORMATION
 	// 영유아 반편성을 위한 테이블
 	
-	private String classFormationCd;
+	private String kidsClassFormationCd;
 	private String kidsCd;
 	private String kidsClassCd;
 	private String licenseKindergarten;
 	
-	public String getClassFormationCd() {
-		return classFormationCd;
+	public String getKidsClassFormationCd() {
+		return kidsClassFormationCd;
 	}
-	public void setClassFormationCd(String classFormationCd) {
-		this.classFormationCd = classFormationCd;
+	public void setKidsClassFormationCd(String kidsClassFormationCd) {
+		this.kidsClassFormationCd = kidsClassFormationCd;
 	}
 	public String getKidsCd() {
 		return kidsCd;
@@ -33,6 +33,8 @@ public class ClassFormation {
 	public void setLicenseKindergarten(String licenseKindergarten) {
 		this.licenseKindergarten = licenseKindergarten;
 	}
+	
+	
 	
 	
 }

@@ -2,6 +2,7 @@
 
 <mapper namespace="com.cafe24.hanboa.classformation.ClassMapper">
 	
+	
 	<select id="selectKidsClassList"
 			resultType="com.cafe24.hanboa.classformation.KidsClass">
 		SELECT
@@ -12,4 +13,18 @@
 			,license_kindergarten as licenseKindergarten
 		FROM hanboa.TB_KIDS_CLASS
 	</select>
+	
+	<insert id="addUnClassification"
+			parameterType="com.cafe24.hanboa.classformation.ClassFormation">
+		<!-- selectKey설정 - #{classFormationCd} : 문자열(CL_FO) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 -->
+		<selectKey resultType="String" keyProperty="kidsClassFormationCd" order="BEFORE">
+			SELECT CONCAT('CL_FO', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_KIDS_CLASS_FORMATION))
+		</selectKey>
+			INSERT INTO TB_KIDS_CLASS_FORMATION
+				(kids_class_formation_cd,kids_cd)
+			VALUES (
+				#{kidsClassFormationCd}, #{kidsCd}
+			)
+	
+	</insert>
 </mapper>

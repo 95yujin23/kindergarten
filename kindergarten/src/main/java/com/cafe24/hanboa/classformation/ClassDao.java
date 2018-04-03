@@ -19,8 +19,14 @@ public class ClassDao {
 	String localName = "com.cafe24.hanboa.classformation.ClassMapper.";
 	
 	// tb_kids_class lsit
-	public List<KidsClass> selectKidsClassList(){
+		public List<KidsClass> selectKidsClassList(){
 		logger.debug("ReportService selectReportList()메소드 실행");
 		return sqlSession.selectList(localName + "selectKidsClassList");
+		}
+	
+	
+	public int addUnClassification(ClassFormation classFormation){
+		logger.debug("ReportService addUnClassification()메소드 실행");
+		return sqlSession.insert(localName + "addUnClassification", classFormation);
 	}
 }
