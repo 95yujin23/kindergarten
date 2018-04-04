@@ -135,10 +135,10 @@ public class ProgramController {
 		logger.debug("2. ProgramController selectProgramApplicationList()메소드 실행 ");
 		Map<String, Object> map = programService.getProgramApplicationList(searchOption, keyword);
 		List<ProgramApplication> list = (List<ProgramApplication>)(map.get("list"));
-		String searchOptionWord = (String)map.get("keyword");
-		String searchWord = (String)map.get("searchOption");
-		model.addAttribute("keyword", searchOptionWord);
-		model.addAttribute("searchOption", searchWord);
+		String searchKeyword = (String)map.get("keyword");
+		String searchOptionWord = (String)map.get("searchOption");
+		model.addAttribute("keyword", searchKeyword);
+		model.addAttribute("searchOption", searchOptionWord);
 		model.addAttribute("list", list);
 		logger.debug("------------------------------------------------------------");
 		return "/program/program_application_list";
