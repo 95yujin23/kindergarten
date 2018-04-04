@@ -1,6 +1,5 @@
 package com.cafe24.hanboa.kids;
 
-import java.util.List;
 
 public class KidsAndKidsFile {
 	private String kidsCd;
@@ -15,7 +14,10 @@ public class KidsAndKidsFile {
 	private String kidsAdmission;
 	private String kidsGraduation;
 	private String licenseKindergarten;
-	List<KidsFile> list;
+	private String kidsFileCd;
+	private String kidsFileNm;
+	private String kidsFileExt;
+	private long kidsFileSize;
 	
 	public String getKidsCd() {
 		return kidsCd;
@@ -89,11 +91,29 @@ public class KidsAndKidsFile {
 	public void setLicenseKindergarten(String licenseKindergarten) {
 		this.licenseKindergarten = licenseKindergarten;
 	}
-	public List<KidsFile> getList() {
-		return list;
+	public String getKidsFileCd() {
+		return kidsFileCd;
 	}
-	public void setList(List<KidsFile> list) {
-		this.list = list;
+	public void setKidsFileCd(String kidsFileCd) {
+		this.kidsFileCd = kidsFileCd;
+	}
+	public String getKidsFileNm() {
+		return kidsFileNm;
+	}
+	public void setKidsFileNm(String kidsFileNm) {
+		this.kidsFileNm = kidsFileNm;
+	}
+	public String getKidsFileExt() {
+		return kidsFileExt;
+	}
+	public void setKidsFileExt(String kidsFileExt) {
+		this.kidsFileExt = kidsFileExt;
+	}
+	public long getKidsFileSize() {
+		return kidsFileSize;
+	}
+	public void setKidsFileSize(long kidsFileSize) {
+		this.kidsFileSize = kidsFileSize;
 	}
 	
 	@Override
@@ -102,6 +122,8 @@ public class KidsAndKidsFile {
 				+ ", kidsAddress=" + kidsAddress + ", kidsParentPhone=" + kidsParentPhone + ", kidsSparePhone="
 				+ kidsSparePhone + ", kidsGender=" + kidsGender + ", kidsCommutingType=" + kidsCommutingType
 				+ ", kidsCaution=" + kidsCaution + ", kidsAdmission=" + kidsAdmission + ", kidsGraduation="
-				+ kidsGraduation + ", licenseKindergarten=" + licenseKindergarten + ", list=" + list + "]";
+				+ kidsGraduation + ", licenseKindergarten=" + licenseKindergarten + ", kidsFileCd=" + kidsFileCd
+				+ ", kidsFileNm=" + kidsFileNm + ", kidsFileExt=" + kidsFileExt + ", kidsFileSize=" + kidsFileSize
+				+ "]";
 	}
 }

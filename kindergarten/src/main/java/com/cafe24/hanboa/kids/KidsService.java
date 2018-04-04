@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -36,18 +37,18 @@ public class KidsService {
 	
 	// 1-2. 영유아목록조회 (반별)
 	public List<Kids> getKidsListByClass(HashMap<String, Object> map) {
-		logger.debug("1. KidsService -- List<Kids> getKidsList(HashMap<String, Object> map) : {}", map);
+		logger.debug("1-2. KidsService -- List<Kids> getKidsList(HashMap<String, Object> map) : {}", map);
 		List<Kids> list = kidsDao.selectKidsListByClass(map);
 		logger.debug("List<Kids> list {}", list);
 		logger.debug("-----------------------------------------");
 		return list;
 	}
-	// 1-2. 영유아파일조회
-	public KidsAndKidsFile getKidsFile(String kidsCd) {
-		logger.debug("1. KidsService -- KidsAndKidsFile getKidsFile(String kidsCd) : {}", kidsCd);
-		KidsAndKidsFile kidsAndKidsFile = kidsDao.selectKidsFile(kidsCd);
-		logger.debug("KidsAndKidsFile : {}", kidsAndKidsFile);
-		return kidsAndKidsFile;
+	// 1-3. 영유아파일조회
+	public List<KidsAndKidsFile> getKidsAndKidsFile() {
+		logger.debug("1-3. KidsService -- KidsAndKidsFile getKidsFile");
+		List<KidsAndKidsFile> kidsList = kidsDao.selectKidsAndKidsFile();
+		logger.debug("List<KidsAndKidsFile> kidsList : {}", kidsList);
+		return kidsList;
 	}
 	// 2. 영유아 편성 반별 조회 (선생님이 편성된)
 	public List<Kids> getKidsListByTeacher(Teacher teacher){

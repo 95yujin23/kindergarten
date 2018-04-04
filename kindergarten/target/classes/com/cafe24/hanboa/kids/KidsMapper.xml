@@ -20,6 +20,18 @@
 		FROM TB_KIDS
 	</select>
 
+<!-- 영유아 파일 조회 -->
+	<select id="getKidsFileList"
+			resultType="com.cafe24.hanboa.kids.KidsFile">
+		SELECT
+			kids_cd			AS kidsCD
+			,kids_file_cd	AS kidsFileCd
+			,kids_file_nm	AS kidsFileNm
+			,kids_file_ext	AS kidsFileExt
+			,kids_file_size	AS kidsFileSize
+		FROM TB_KIDS_FILE
+	</select>
+
 <!-- 반 편성된 영유아 목록 조회 -->	
 	<select id="getKidsListByClass"
 			parameterType="java.util.Map"
@@ -174,7 +186,6 @@
 	
 <!-- 영유아와 영유아 파일 조회 -->
 	<select id="getKidsAndKidsFile"
-			parameterType="String"
 			resultMap="KidsAndKidsFile">
 		SELECT
 			K.kids_cd
@@ -194,8 +205,8 @@
 			,F.kids_file_size
 		FROM TB_KIDS K
 		INNER JOIN TB_KIDS_FILE F
-		ON K.kids_cd = F.kids_file_cd
-		WHERE K.kids_cd = #{kidsCd}
+		ON K.kids_cd = F.kids_cd
+		<!-- WHERE K.kids_cd = #{kidsCd} -->
 	</select>
 
 <!-- 영유아와 영유아파일을 모두 가지는 resultMap 설정 -->		
@@ -213,13 +224,10 @@
 		<result property="kidsAdmission" column="kids_admission"></result>
 		<result property="kidsGraduation" column="kids_graduation"></result>
 		<result property="licenseKindergarten" column="license_kindergarten"></result>
-		<collection property="list" 
-					ofType="com.cafe24.hanboa.kids.KidsFile">
-			<result property="kidsFileCd" column="kids_file_cd"></result>
-			<result property="kidsFileNm" column="kids_file_nm"></result>
-			<result property="kidsFileExt" column="kids_file_ext"></result>
-			<result property="kidsFileSize" column="kids_file_size"></result>
-		</collection>
+		<result property="kidsFileCd" column="kids_file_cd"></result>
+		<result property="kidsFileNm" column="kids_file_nm"></result>
+		<result property="kidsFileExt" column="kids_file_ext"></result>
+		<result property="kidsFileSize" column="kids_file_size"></result>
 	</resultMap>
 		
 <!-- 영유아 수정 -->

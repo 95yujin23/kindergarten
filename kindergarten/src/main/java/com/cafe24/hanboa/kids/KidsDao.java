@@ -11,14 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.cafe24.hanboa.teacher.Teacher;
-import com.cafe24.hanboa.teacher.TeacherDao;
 
 @Repository
 public class KidsDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	private static final Logger logger = LoggerFactory.getLogger(TeacherDao.class);
+	private static final Logger logger = LoggerFactory.getLogger(KidsDao.class);
 	
 	String localName = "com.cafe24.hanboa.kids.KidsMapper.";
 	
@@ -29,17 +28,16 @@ public class KidsDao {
 	}
 	// 1-2. 영유아 조회 : 반 별로
 	public List<Kids> selectKidsListByClass(HashMap<String, Object> map) {
-		logger.debug("1. KidsDao -- List<Kids> selectKidsList(HashMap<String, Object> map) 매서드 실행");
+		logger.debug("1-2. KidsDao -- List<Kids> selectKidsList(HashMap<String, Object> map) 매서드 실행");
 		logger.debug("map : {}",map);
 		// parameter로 map에 값을 담아서 넘겨준다. keyword의 value값
 		return sqlSession.selectList(localName + "getKidsListByClass", map);
 	}
-	// 1-2. 영유아 파일 조회
-	public KidsAndKidsFile selectKidsFile(String kidsCd) {
-		logger.debug("1. KidsDao --  KidsAndKidsFile selectKidsFile(String kidsCd) 매서드 실행");
-		logger.debug("String kidsCd : {}",kidsCd);
+	// 1-3. 영유아 파일 조회
+	public List<KidsAndKidsFile> selectKidsAndKidsFile() {
+		logger.debug("1-3. KidsDao --  KidsAndKidsFile selectKidsFile(String kidsCd) 매서드 실행");
 		// parameter로 map에 값을 담아서 넘겨준다. keyword의 value값
-		return sqlSession.selectOne(localName + "getKidsAndKidsFile", kidsCd);
+		return sqlSession.selectList(localName + "getKidsAndKidsFile");
 	}
 	// 2. 편성 반별 영유아 조회 : 선생님이 맡은 반
 	public List<Kids> selectKidsListByTeacher(Teacher teacher){

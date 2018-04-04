@@ -28,13 +28,24 @@ public class KidsController {
 	private static final Logger logger = LoggerFactory.getLogger(KidsController.class);
 	
 	// 1-1. 영유아 전체 조회
-	@RequestMapping(value="/KidsList")
+	/*@RequestMapping(value="/KidsList")
 	public String kidsList(Model model) {
 		List<Kids> list = kidsService.getKidsList();
 		logger.debug("KidsList : {}", list);
 		logger.debug("----------------------------------------");
 		model.addAttribute("list",list);
 		return "kids/kids_list";
+	}*/
+	// 1-1. 영유아 전체 조회
+		@RequestMapping(value="/KidsList")
+		public String kidsList(Model model) {
+			List<KidsAndKidsFile> list = kidsService.getKidsAndKidsFile();
+			logger.debug("List<KidsAndKidsFile> list : {}", list);
+			logger.debug("----------------------------------------");
+			model.addAttribute("list", list);
+			/*model.addAttribute("map1",map.get(kidsList));
+			model.addAttribute("map2",map.get(kidsFile));*/
+			return "kids/kids_list";
 	}
 	
 	// 1. 영유아 목록 반별 조회
