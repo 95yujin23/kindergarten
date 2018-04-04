@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafe24.hanboa.PlanMapper">
+	<!-- 계획안 카테고리  -->
+	<!-- 1. 계획안 카테고리 등록 -->
+	<insert id="insertPalnCategory" parameterType="com.cafe24.hanboa.plan.PlanCategory">
+		<!-- selectKey설정 - #{planCateCd} : 문자열(PL_CA) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 --> 
+		<selectKey resultType="String" keyProperty="planCateCd" order="BEFORE">
+			SELECT CONCAT('PL', '_', 'CA', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_PLAN_CATEGORY ))
+		</selectKey>
+		INSERT INTO TB_PLAN_CATEGORY (
+			PLAN_CATE_CD
+			, CATE_NM
+		) VALUES (
+			#{planCateCd}
+			, #{CateNm}
+		)
+	</insert>
+</mapper>

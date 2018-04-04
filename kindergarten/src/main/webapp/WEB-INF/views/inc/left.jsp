@@ -111,6 +111,12 @@
 						계획안 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
+						<li><a href="#">계획안 카테고리 관리<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="${pageContext.request.contextPath}/planCategoryList">계획안 카테고리 목록</a></li>
+								<li><a href="${pageContext.request.contextPath}/PlanCategoryAdd">계획안 카테고리 등록</a></li>
+							</ul>	
+						</li>
 						<li><a href="${pageContext.request.contextPath}/PlanFormList">계획안양식 조회</a></li> <!-- 양식을 불러온 다음 등록? -->
 						<li><a href="${pageContext.request.contextPath}/PlanList">계획안 목록 조회</a></li>
 					</ul>
