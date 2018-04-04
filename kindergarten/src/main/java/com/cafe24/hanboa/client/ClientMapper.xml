@@ -23,16 +23,14 @@
 			parameterType="String"
 			resultType="com.cafe24.hanboa.client.Client">
 		SELECT
-			client_cd as clientCd
-			,client_phone as clientPhone
+			client_cd as clientCd	
 			,client_type as clientType
 			,client_nm as clientNm
+			,client_phone as clientPhone
 			,client_manager as clientManager
 			,client_address as clientAddress
-			,client_registration_date as clientRegistrationDate
 			,client_registrant as clientRegistrant
-			,license_kindergarten as licenseKindergarten
-		FROM hanboa.TB_CLIENT
+		FROM TB_CLIENT
 		WHERE client_cd = #{clientCd}			
 	</select>
 <!-- 거래처 등록 -->
@@ -66,11 +64,12 @@
 	<update id ="clientModify" parameterType="com.cafe24.hanboa.client.Client">
 		UPDATE TB_CLIENT
 		SET
-			client_nm = #{clientNm}
-			, client_phone = #{clientPhone}
-			, client_manager = #{clientManager}
-			, client_address = #{clientAddress}
-			, client_type = #{clientType}
+			client_type = #{clientType}
+			,client_nm = #{clientNm}
+			,client_phone = #{clientPhone}
+			,client_manager = #{clientManager}
+			,client_address = #{clientAddress}
+			,client_registrant = #{clientRegistrant}
 		WHERE client_cd = #{clientCd}
 	</update>
 
@@ -78,7 +77,7 @@
 	<delete id="clientDelete" parameterType="com.cafe24.hanboa.client.Client">
 		DELETE 
 		FROM TB_CLIENT
-		WHERE client_nm = #{clientNm}
+		WHERE client_cd = #{clientCd}
 	</delete>
 
 

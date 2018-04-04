@@ -44,7 +44,7 @@ public class ClientController {
 	public String clientModify(Model model, Client client) {
 		clientService.updateClient(client);
 		logger.debug("{} <-clientModify ClientController.java", client);
-		return "redirect:/client/client_list";
+		return "redirect:/ClientList";
 	}
 	
 	//4. 등록
@@ -74,7 +74,7 @@ public class ClientController {
 	@RequestMapping(value="/ClientDelete" , method=RequestMethod.GET)
 	public String clientDelete(Model model , @RequestParam(value="clientCd",required=true) String clientCd) {
 		clientService.deleteClient(clientCd);
-		return "redirect:/";
+		return "redirect:/ClientList";
 	}
 	
 	

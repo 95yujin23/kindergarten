@@ -37,14 +37,13 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>거래처이름</th>
-						<th>연락망</th>
+						<th>이름</th>
+						<th>전화번호</th>
 						<th>거래처구분</th>
-						<th>거래처 담당자</th>
-						<th>거래처 주소</th>
+						<th>담당자</th>
+						<th>주소</th>
 						<th>등록날짜</th>
 						<th>등록인</th>
-						<th>유치원라이센스</th>
 						<th>수정</th>
 						<th>삭제</th>						
 					</tr>
@@ -59,7 +58,6 @@
 							<td>${clientList.clientAddress}</td>
 							<td>${clientList.clientRegistrationDate}</td>
 							<td>${clientList.clientRegistrant}</td>
-							<td>${clientList.licenseKindergarten}</td>
 							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/client/client_modify?clientCd=${clientList.clientCd}"><i class="fa fa-pencil"></i></a></td>
 							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/ClientDelete?clientCd=${clientList.clientCd}"><i class="fa fa-trash"></i></a></td>
 						</tr>

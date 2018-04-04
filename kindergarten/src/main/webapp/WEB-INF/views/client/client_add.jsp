@@ -49,12 +49,12 @@
 							<form id="addForm" action="${pageContext.request.contextPath}/ClientAdd" method="POST">
 								<div class="form-group">
 								    <label>거래처구분</label>
-								   	<select class="form-control" id="clientType" name="clientCd">
-								   		<option value=1>특별활동</option>
-								   		<option value=2>급식</option>
-								   		<option value=3>조경</option>
-								   		<option value=4>렌트카</option>
-								   		<option value=5>보험</option>				
+								   	<select class="form-control" id="clientType" name="clientType">
+								   		<option value="특별활동">특별활동</option>
+								   		<option value="급식">급식</option>
+								   		<option value="조경">조경</option>
+								   		<option value="렌트카">렌트카</option>
+								   		<option value="보험">보험</option>				
 								   	</select>
 								</div>
 								<div class="form-group">
