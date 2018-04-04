@@ -71,7 +71,7 @@
 								</div>
 								<div class="form-group">
 								    <label>생년월일</label>
-								    <input class="form-control" id="kidsDateOfBirth" name="kidsDateOfBirth" value="${kids.kidsDateOfBirth}">
+								    <input type="date" class="form-control" id="kidsDateOfBirth" name="kidsDateOfBirth" value="${kids.kidsDateOfBirth}">
 								</div>
 								<div class="form-group">
 								    <label>주소</label>
@@ -97,7 +97,14 @@
 								    <label>주의사항</label>
 								    <input class="form-control" id="kidsCaution" name="kidsCaution" value="${kids.kidsCaution}">
 								</div>
-								<button type="submit">수정</button>
+								<div class="form-group"><img src="${pageContext.request.contextPath}/resources/upload/kids/${kids.kidsFileNm}.jpg">
+								</div>
+								<div class="form-group">
+								    <label>사진</label>
+								    <input type="file" class="form-control" id="file" name="file" multiple="multiple">
+								</div>
+								<button type="submit">등록</button>
+								<button type="reset">초기화</button>
 							</form>
 						</div>
 					</div>

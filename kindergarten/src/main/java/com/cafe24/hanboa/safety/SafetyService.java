@@ -25,7 +25,6 @@ public class SafetyService {
 		public List<SafetyAndTotalResource> getSafetyList(HashMap<String, Object> map) {
 			logger.debug("1. SafetyService -- List<Safety> getSafetyList(HashMap<String, Object> map) : {}", map);
 			List<SafetyAndTotalResource> list = safetyDao.selectSafetyList(map);
-			//리스트에 못받아옴.... why?
 			logger.debug("SafetyService -- list : {}", list);
 			logger.debug("-----------------------------------------");
 			return list;
