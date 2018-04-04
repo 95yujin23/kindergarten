@@ -22,7 +22,7 @@
 <!-- jQuery -->
 <script src="resources/vendor/js/jquery.min.js"></script>
 <body>
-	<div id="wrapper">
+ <div id="wrapper">
 		<!-- TOP : Navigation -->
 		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<c:import url="../inc/top.jsp"></c:import>
@@ -65,6 +65,8 @@
 			</table>
 		</div>
 	</div>
+	
+	
 	<!-- FOOTER : Navigation -->
 	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->

@@ -29,4 +29,17 @@ public class ClassService {
 		classDao.addUnClassification(classFormation);
 		
 	}
+	
+	// 분류된 인원 리스트
+	public List<KidsFormation> kidsFormationList(KidsFormation kidsformation){
+		logger.debug("ClassService --> kidsFormationList()메소드 실행");
+		List<KidsFormation> list = classDao.kidsFormationList(kidsformation);
+		return list;
+	}
+	// 미분류 인원 리스트
+	public List<KidsFormation> unFormationKidsList(){
+		logger.debug("ClassService --> unFormationKidsList()메소드 실행");
+		List<KidsFormation> list = classDao.unFormationKidsList();
+		return list;
+	}
 }

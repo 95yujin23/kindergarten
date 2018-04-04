@@ -27,4 +27,36 @@
 			)
 	
 	</insert>
+	<!-- 분류 인원 리스트 -->
+	<select id="kidsFormationList"
+			resultType="com.cafe24.hanboa.classformation.KidsFormation">
+	SELECT
+			formation.kids_class_formation_cd as kidsClassFormationCd
+			,kids.kids_cd as kidsCd
+			,kids.kids_nm as kidsNm
+			,formation.kids_class_cd as kidsClassCd
+			,class.class_nm as classNm
+			,kids.kids_parent_phone as kidsParentPhone
+		FROM TB_KIDS_CLASS_FORMATION formation JOIN
+		TB_KIDS kids ON formation.kids_cd = kids.kids_cd
+		JOIN TB_KIDS_CLASS class ON class.kids_class_cd = formation.kids_class_cd
+		ORDER BY kids.kids_cd	
+	</select>
+	
+	<!-- 미분류 인원 리스트 -->
+	<select id="unFormationKidsList"
+			resultType="com.cafe24.hanboa.classformation.KidsFormation">
+	SELECT 
+		formation.kids_class_formation_cd as kidsClassForamtionCd
+		,kids.kids_cd as kidsCd
+		,kids.kids_nm as kidsNm
+		,formation.kids_class_cd as kidsClassCd
+		,class.class_nm as classNm
+		,kids.kids_parent_phone as kidsParentPhone
+	FROM TB_KIDS_CLASS_FORMATION formation JOIN
+	TB_KIDS kids ON formation.kids_cd = kids.kids_cd
+	JOIN TB_KIDS_CLASS class ON formation.kids_class_cd is null
+	GROUP BY kids.kids_cd 
+	
+	</select>
 </mapper>

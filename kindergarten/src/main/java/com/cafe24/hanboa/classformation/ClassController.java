@@ -1,15 +1,22 @@
 package com.cafe24.hanboa.classformation;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cafe24.hanboa.report.ReportController;
 
@@ -34,10 +41,26 @@ public class ClassController {
 			return "class/class_setting";
 		}
 	
-		//반 편성 화면
+		// 반 편성 화면
 		@RequestMapping(value="/KidsClassFormation")
-		public String kidsClassFormation() {
+		public String kidsClassFormation(Model model) {
 			return "class/kids_class_formation";
+		}
+		
+		//반 편성 화면 list
+		@RequestMapping(value="/formationKidsList")
+		public @ResponseBody Object getRecordList(HttpServletRequest request,
+				   								HttpServletResponse response,
+				   								@ModelAttribute("KidsFormation") KidsFormation kidsformation) {
+			logger.debug("ClassController kidsClassFormation() 메소드 실행");
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("data", classService.kidsFormationList(kidsformation));
+			/*List<KidsFormation> list = classService.kidsFormationList();
+			model.addAttribute("list",list);*/
+			Object result = map;
+			return result;
+			/*return "class/kids_class_formation";*/
 		}
 		
 		
@@ -51,5 +74,17 @@ public class ClassController {
 			
 			return "redirect:kids_class_formation";
 		}
+		
+		//반편성 분류된 유아 리스트
+		@RequestMapping(value="/unFormationKidsList", method=RequestMethod.GET)
+		public String unFormationKidsList(Model model, ClassFormation classFormation) {
+			logger.debug("ClassController unFormationKidsList() 메소드 실행");
+			List<KidsFormation> list = classService.unFormationKidsList();
+			
+			model.addAttribute("list",list);
+			return "class/kids_class_formation";
+			
+		}
+		
 
 }
