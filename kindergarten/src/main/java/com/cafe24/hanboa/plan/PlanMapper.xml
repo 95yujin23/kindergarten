@@ -16,8 +16,8 @@
 			, #{cateNm}
 		)
 	</insert>
-	<!-- 2. 계획안 카테고리 전체조회+검색 -->
-	<select id="getPlanList" parameterType="java.util.Map" resultType="com.cafe24.hanboa.plan.PlanCategory">
+	<!-- 2-1. 계획안 카테고리 전체조회+검색+페이징 -->
+	<select id="getPlanCategoryList" parameterType="java.util.Map" resultType="com.cafe24.hanboa.plan.PlanCategory">
 		SELECT
 			PLAN_CATE_CD AS planCateCd
 			, CATE_NM AS cateNm
@@ -25,5 +25,10 @@
 		<if test="keyword != null">
 			WHERE CATE_NM LIKE CONCAT('%',#{keyword},'%')
 		</if>
+		LIMIT #{startPage}, #{pagePerRow}
+	</select>
+	<!-- 2-2. 전체 계획안 카테고리 수(페이징) -->
+	<select id="selectPlanCategoryCountByPage" resultType="int">
+		SELECT COUNT(*) FROM TB_PLAN_CATEGORY
 	</select>
 </mapper>

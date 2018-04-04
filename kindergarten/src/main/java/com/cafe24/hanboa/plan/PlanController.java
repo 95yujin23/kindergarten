@@ -46,15 +46,22 @@ public class PlanController {
 	// 2. 계획안 카테고리 전체조회+검색
 	@RequestMapping(value="/PlanCategoryList", method=RequestMethod.GET)
 	public String PlanCategoryList(Model model
-								, @RequestParam(value="keyword", required = false) String keyword) {
+								, @RequestParam(value="keyword", required = false) String keyword
+								, @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
+								, @RequestParam(value = "pagePerRow", required = false, defaultValue = "10") int pagePerRow) {
 		logger.debug("2. PlanController.java PlanCategoryList()메소드 실행 ");
-		Map<String, Object> map = planService.selectPlanList(keyword);
+		logger.debug("{} <- currentPage PlanController.java", currentPage);
+		logger.debug("{} <- pagePerRow PlanController.java", pagePerRow);
+		logger.debug("{} <- keyword PlanController.java", keyword);
+		Map<String, Object> map = planService.selectPlanList(currentPage, pagePerRow, keyword);
 		List<PlanCategory> list = (List<PlanCategory>)(map.get("list"));
+		int countPage = (Integer)map.get("countPage");
 		String searchKeyword = (String)map.get("keyword");
-		model.addAttribute("keyword", searchKeyword);
 		model.addAttribute("list", list);
+		model.addAttribute("countPage", countPage);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("keyword", searchKeyword);
 		logger.debug("{} <- list PlanController.java", list);
-		logger.debug("{} <- searchKeyword PlanController.java", searchKeyword);
 		logger.debug("------------------------------------------------------------");
 		return "plan/plan_category_list";
 	}

@@ -44,8 +44,8 @@
 		<div class="row">
 			<div class="col-lg-1"></div>
 			<div class="col-lg-11">
-			<h2>계획안 카테고리 목록</h2>
-			<!-- 검색처리 시작 -->
+				<h2>계획안 카테고리 목록</h2>
+				<!-- 검색처리 시작 -->
 				<form action="${pageContext.request.contextPath}/PlanCategoryList?keyword=${keyword}" method="get" id="searchForm" class="form-inline">
 					<div class="input-group">
 						<input id="keyword" name="keyword" type="text" class="form-control" placeholder="Search">
@@ -54,25 +54,36 @@
 						</div>
 					</div>
 				</form>
-			<!-- 검색처리 끝 -->
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>카테고리명</th>
-						<th>수정</th>
-						<th>삭제</th>
-					</tr>
-				</thead>
-				<c:forEach var="list" items="${list}">
-					<tbody>
-					<tr>
-						<td>${list.cateNm}</td>							
-						<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/PlanCategoryModify?planCateCd=${list.planCateCd}"><i class="fa fa-pencil"></i></a></td>
-						<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/PlanCategoryDelete?planCateCd=${list.planCateCd}"><i class="fa fa-trash"></i></a></td>
-					</tr>
-				</tbody>
-				</c:forEach>
-			</table>
+				<!-- 검색처리 끝 -->
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>카테고리명</th>
+							<th>수정</th>
+							<th>삭제</th>
+						</tr>
+					</thead>
+					<c:forEach var="list" items="${list}">
+						<tbody>
+						<tr>
+							<td>${list.cateNm}</td>							
+							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/PlanCategoryModify?planCateCd=${list.planCateCd}"><i class="fa fa-pencil"></i></a></td>
+							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/PlanCategoryDelete?planCateCd=${list.planCateCd}"><i class="fa fa-trash"></i></a></td>
+						</tr>
+					</tbody>
+					</c:forEach>
+				</table>
+				<!-- 페이징 시작 -->
+				<nav aria-label="Page navigation example">
+					<ul class="pagination justify-content-center">
+						<c:forEach var="i" begin="1" end="${countPage}" step="1">
+							<li class="page-item">
+								<a class="page-link" href="${pageContext.request.contextPath}/PlanCategoryList?currentPage=${i}">${i}</a>
+							</li>
+						</c:forEach>
+					</ul>
+				</nav>
+				<!-- 페이징 끝 -->
 			</div>
 		</div>
 	</div>	

@@ -23,10 +23,18 @@ public class PlanDao {
 		logger.debug("PlanDao.java 1. insertPlanCategory() 메소드 실행");
 		return sqlSesionTamplate.insert(localName+"insertPalnCategory", planCategory);
 	}
-	// 2. 계획안 카테고리 전체조회+검색 
+	// 2-1. 계획안 카테고리 전체조회+검색 
 	public List<PlanCategory> getPlanList(Map<String, Object> map) {
 		logger.debug("PlanDao.java 2. getPlanList() 메소드 실행");
+		logger.debug("{} : <- startPage PlanDao.java", map.get("startPage"));
+		logger.debug("{} : <- pagePerRow PlanDao.java", map.get("pagePerRow"));
 		logger.debug("{} <- keyword PlanDao.java", map.get("keyword"));
-		return sqlSesionTamplate.selectList(localName+"getPlanList", map);
+		return sqlSesionTamplate.selectList(localName+"getPlanCategoryList", map);
+	}
+	// 2-2. 전체 계획안 카테고리 수(페이징)
+	public int selectPlanCategoryCountByPage(Map<String, Object> map) {
+		logger.debug(" <- selectPlanCategoryCountByPage PlanDao.java");
+		logger.debug("{} : word selectPlanCategoryCountByPage PlanDao.java", map.get("keyword"));
+		return sqlSesionTamplate.selectOne(localName+"selectPlanCategoryCountByPage", map);
 	}
 }
