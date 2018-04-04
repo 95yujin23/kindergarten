@@ -137,8 +137,8 @@ public class ProgramController {
 		List<ProgramApplication> list = (List<ProgramApplication>)(map.get("list"));
 		String searchOptionWord = (String)map.get("keyword");
 		String searchWord = (String)map.get("searchOption");
-		model.addAttribute("searchOption", searchOptionWord);
-		model.addAttribute("keyword", searchWord);
+		model.addAttribute("keyword", searchOptionWord);
+		model.addAttribute("searchOption", searchWord);
 		model.addAttribute("list", list);
 		logger.debug("------------------------------------------------------------");
 		return "/program/program_application_list";
