@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>SB Admin 2 - Bootstrap Admin Theme</title>
+<title>Kindergarten Total Management System</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="resources/vendor/css/bootstrap.min.css" rel="stylesheet">
@@ -20,8 +20,8 @@
 <!-- Custom CSS -->
 <link href="resources/vendor/css/sb-admin-2.css" rel="stylesheet">
 
-<!-- Morris Charts CSS -->
-<link href="resources/vendor/css/morris.css" rel="stylesheet">
+<!-- Bootstrap Social CSS -->
+<link href="resources/vendor/css/bootstrap-social.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link href="resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -32,7 +32,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+<link rel="shortcut icon" href="resources/vendor/image/favicon.ico" type="image/x-icon">​
 </head>
 
 <body>
@@ -51,72 +51,64 @@
 </div>
 
 		<div id="page-wrapper">
-			<div class="row">
-				<div class="col-lg-12">
-					<h1 class="page-header">프로젝트 주제</h1>
+		
+			 <div class="row">
+			 <br>
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+					<h1 class="page-header">프로젝트 소개</h1>
+						</div>
+					 <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#home" data-toggle="tab">주제</a>
+                                </li>
+                                <li><a href="#profile" data-toggle="tab">목표</a>
+                                </li>
+                                <li><a href="#messages" data-toggle="tab">기대효과</a>
+                                </li>
+                                <li><a href="#settings" data-toggle="tab">개발환경</a>
+                                </li>
+                        	</ul>
+					 <!-- Tab panes -->
+                            <div class="tab-content">
+                           	  <div class="tab-pane fade in active" id="home">
+						 <h3>주제</h3>
+					<p>
 					<h3>
 						영유아 교육기관 통합 관리 시스템 (Kindergarten Total Management System) &nbsp;
-						<a href="/start" class="btn btn-app"><i class="fa fa-play"></i> 프로젝트 시작 </a>
+						<a href="${pageContext.request.contextPath}/Login" class="btn btn-app"><i class="fa fa-play"></i> 프로젝트 시작 </a>
 					</h3>
-				</div>
-		</div>
-			
-			<div class="row">
-				<div class="col-lg-12">
-							<div class="row">
-								<div class="col-lg-12">
-								<h1 class="page-header">프로젝트 목표</h1>
-								</div>
-								<div class="col-lg-12">
-				
-									<div>--</div>
-								</div>
-							</div>
-						</div>
+					</p>
 					</div>
-				<div class="row">
-				<div class="col-lg-12">
-					<div class="panel">
-						<div class="panel-heading">
-							<div class="row">
-								<div class="col-xs-12">
-									<h2>기대효과</h2>
-									<div class="clearfix"></div>
-								</div>
-								<div class="col-xs-12 ">
-								<table class="table">
+							 <div class="tab-pane fade" id="profile">
+                                     <h3>목표</h3>
+                                    <p>영유아 교육기관의 업무 부담 감소로 인한 교육의 질적 향상 도모</p>
+                              		</div>
+			<div class="tab-pane fade" id="messages">
+			  <h3>기대효과</h3>
+			  <p><table class="table">
 							<tbody>
 								<tr>
 									<td>1</td>
-									<td>---</td>
+									<td>지면서류로 이루어지는 여러 작업을 하나의 시스템으로 통합 해 업무 시간을 단축한다.</td>
 								</tr>
 								<tr>
 									<td>2</td>
-									<td>---</td>
+									<td>유치원 현황 정보를 시스템 내에서 즉각 확인함으로써 편리함과 동시에 원할한 관리가 가능해진다.</td>
 								</tr>
 								<tr>
 									<td>3</td>
-									<td>---</td>
+									<td>교육부 지정 유아 교육기관 평가 인증 대비에 도움을 준다.</td>
 								</tr>
 							</tbody>
-						</table>
-								</div>
-							</div>
-						</div>
-	
+						</table></p>
 					</div>
-				</div>
-			
-		<div class="col-lg-12 col-md-12">
-		<div class="panel">
-			<div class="panel-heading">
-				<div class="row">
-					<div class="col-xs-12">
-						<h2>개발환경</h2>
-						<div class="clearfix"></div>
-					</div>
-					<div class="col-xs-12 ">
-								<table class="table">
+				<div class="tab-pane fade" id="settings">
+			 <h3>개발환경</h3>
+			 <p><table class="table table-striped">
 							<tbody>
 								<tr>
 									<td><strong>OS</strong></td>
@@ -161,38 +153,36 @@
 										1.3.1, Datatables, chart.js 2.7.1, Kakao 우편번호</td>
 								</tr>
 							</tbody>
-						</table>
-								</div>
+						</table></p>
 		
 		</div>
 		</div>
 			</div>
-			<div class="col-lg-12 col-md-12">		
-			<div class="panel">
-					<div class="panel-heading">
+			</div></div></div>
+			 <div class="row">
+                <div class="col-lg-12">
+			<div class="panel panel-default">
+                        <div class="panel-heading">
 						<h2>프로젝트 관련 자료</h2>
-						<div class="clearfix"></div>
 					</div>
-					<div class="panel-content">
-						<table class="table">
+					<div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
 							<tbody>
 								<tr>
-									<td></td>
-									<td>▼ 클릭하세요 ▼</td>
-								</tr>
-								<tr>
-									<td><strong>GITHUB 주소</strong></td>
-									<td><a href="https://github.com/hanboa1026/kindergarten.git">
-											https://github.com/hanboa1026/kindergarten.git </a></td>
+									<td><strong>GITHUB</strong></td>
+									<td><a href="https://github.com/hanboa1026/kindergarten.git"
+									 	class="btn btn-social btn-github">
+									<i class="fa fa-github"></i> https://github.com/hanboa1026/kindergarten.git </a></td>
 								</tr>
 								<tr>
 									<td><strong>ERD</strong></td>
-									<td><a href="/resources/img/ERD_logical.png">논리ERD</a> / <a
-										href="/resources/img/ERD_physical.png">물리ERD</a></td>
+									<td><a class="btn btn-default" href="/resources/img/ERD_logical.png">논리ERD</a><b></b>
+									<a class="btn btn-default" href="/resources/img/ERD_physical.png">물리ERD</a></td>
 								</tr>
 								<tr>
-									<td><strong>개발문서</strong></td>
-									<td><a id="filedown">개발문서 다운로드</a></td>
+									<td><strong>DOCUMENT</strong></td>
+									<td><a class="btn btn-danger" id="filedown">개발문서 다운로드</a></td>
 								</tr>
 							</tbody>
 						</table>
@@ -201,7 +191,7 @@
 			</div>
 			</div>
 			</div>
-</div>
+			</div>
 	<!-- FOOTER : Navigation -->
 	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->

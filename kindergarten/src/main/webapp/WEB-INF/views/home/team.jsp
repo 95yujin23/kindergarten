@@ -18,8 +18,8 @@
 <!-- Custom CSS -->
 <link href="resources/vendor/css/sb-admin-2.css" rel="stylesheet">
 
-<!-- Morris Charts CSS -->
-<link href="resources/vendor/css/morris.css" rel="stylesheet">
+<!-- Bootstrap Social CSS -->
+<link href="resources/vendor/css/bootstrap-social.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link href="resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -50,44 +50,64 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-						<h1 class="page-header">교육 과정</h1>
-		</div>
-					<div class="x_content">
-						<table class="table">
-							<tbody>
-								<tr>
-									<td><strong>교육 기관</strong></td>
-									<td><a href="http://ksmart.or.kr/">
-											한국스마트정보교육원</a></td>
-								</tr>
-								<tr>
-									<td><strong>교육명</strong></td>
-									<td>국가 기간/전략 산업 직종 훈련 (NCS) - 웹/어플 제품 SW개발자양성 (응용SW 및 DB엔지니어링 융합)</td>
-								</tr>
-								<tr>
-									<td><strong>교육 내용</strong></td>
-									<td>
-										1. 웹/모바일웹 화면 개발언어 : HTML5, JavaScript, JQuery, JQuery Mobile, Json 등 <br/>
+		 <br>
+		 <div class="panel panel-default">
+                        <div class="panel-heading">
+					<h1 class="page-header">교육 과정</h1>
+						</div>
+					 <!-- /.panel-heading -->
+					
+                        <div class="panel-body">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs">
+                            <li class="active"><a href="#home" data-toggle="tab">교육 기관</a>
+                                </li>
+                                <li><a href="#profile" data-toggle="tab">교육명</a>
+                                </li>
+                                <li><a href="#messages" data-toggle="tab">교육 내용</a>
+                                </li>
+                                <li><a href="#settings" data-toggle="tab">교육 기간</a>
+                                </li>
+                        	</ul>
+                         <!-- Tab panes -->
+                            <div class="tab-content">
+                           	  <div class="tab-pane fade in active" id="home">
+						 <h3>교육 기관</h3>
+					<p>
+					<a class="btn btn-default" href="http://ksmart.or.kr/">한국스마트정보교육원</a>
+					</p>
+					</div>
+					 <div class="tab-pane fade" id="profile">
+                                     <h3>교육명</h3>
+                                    <p>국가 기간/전략 산업 직종 훈련 (NCS) - 웹/어플 제품 SW개발자양성 (응용SW 및 DB엔지니어링 융합)</p>
+                              		</div>
+                       <div class="tab-pane fade" id="messages">
+                                     <h3>교육 내용</h3>
+                                    <p>1. 웹/모바일웹 화면 개발언어 : HTML5, JavaScript, JQuery, JQuery Mobile, Json 등 <br/>
 										2. 웹/모바일웹 서버측 개발언어 : Java, JSP, Servlet 등 <br/>
 										3. Framework : Spring, Mybatis 등 <br/>
 										4. Model : Model1, Model2, MVC <br/>
 										5. 팀프로젝트 실무
-									</td>
-								</tr>
-								<tr>
-									<td><strong>교육 기간</strong></td>
-									<td>2017.06.19 ~ 2017.12.27</td>
-								</tr>
-							</tbody>
-						</table>
+									</p>
+									</div>
+						 <div class="tab-pane fade" id="settings">
+                                     <h3>교육 기간</h3>
+                                    <p>2017.10.16 ~ 2018.04.20
+									</p>
+									</div>
+                              		</div>
+						
 					</div>
 				</div>
-		
+		</div>
                 <div class="col-lg-12">
-                    <h1 class="page-header">팀원 소개</h1>
-                </div>
+                 <div class="panel panel-default">
+                     <div class="panel-heading">
+					<h1 class="page-header">팀원 소개</h1>
+					</div>
                 <!-- /.col-lg-12 -->
             <!-- /.row -->
+               <div class="panel-body">
             <div class="row">
                 <div class="col-lg-3">
                     <div class="panel panel-danger">
@@ -120,7 +140,10 @@
                         </div>
                         </div>
                         <div class="panel-footer">
-                           <center><a href="http://blog.naver.com/hanboa1026" class="btn btn-danger btn-block">한보아 블로그</a></center>
+                        <center>
+                          <a class="btn btn-social btn-google-plus btn-sm" href="http://blog.naver.com/hanboa1026" class="btn btn-danger btn-block"><i class="fa fa-bold"></i>Blog</a>
+                      	 <a class="btn btn-social btn-github btn-sm" href="https://github.com/hanboa1026" class="btn btn-danger btn-block"><i class="fa fa-github"></i>Git</a>
+                         <a class="btn btn-social btn-bitbucket btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-h-square"></i>Host</a>
                         </div>
                     </div>
                      <div class="panel panel-danger">
@@ -133,36 +156,36 @@
                                 <div class="panel panel-red">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Collapsible Group Item #1</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">구현한 기능</a>
                                         </h4>
                                     </div>
                                     <div id="collapseOne" class="panel-collapse collapse in">
                                         <div class="panel-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        @@
                                         </div>
                                     </div>
                                 </div>
                                 <div class="panel panel-red">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Collapsible Group Item #2</a>
+                                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">미완성된 기능</a>
                                         </h4>
                                     </div>
                                     <div id="collapseTwo" class="panel-collapse collapse">
                                         <div class="panel-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        @@
                                         </div>
                                     </div>
                                 </div>
                                 <div class="panel panel-red">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Collapsible Group Item #3</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">보고서</a>
                                         </h4>
                                     </div>
                                     <div id="collapseThree" class="panel-collapse collapse">
                                         <div class="panel-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        @@
                                         </div>
                                     </div>
                                 </div>
@@ -196,12 +219,15 @@
                         </div>
                         </div>
                         <div class="panel-footer">
-                         <center><a href="#" class="btn btn-warning btn-block">박미란 블로그</a></center>
+  						<center>
+                          <a class="btn btn-social btn-google-plus btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-bold"></i>Blog</a>
+                      	 <a class="btn btn-social btn-github btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-github"></i>Git</a>
+                         <a class="btn btn-social btn-bitbucket btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-h-square"></i>Host</a>
                         </div>
                     </div>
                      <div class="panel panel-warning">
                         <div class="panel-heading">
-                            Collapsible Accordion Panel Group
+                            <center><strong>박미란 자기기술서</strong></center>
                         </div>
                         <!-- .panel-heading -->
                         <div class="panel-body">
@@ -209,36 +235,36 @@
                                 <div class="panel panel-yellow">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Collapsible Group Item #1</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">구현한 기능</a>
                                         </h4>
                                     </div>
                                     <div id="collapseOne" class="panel-collapse collapse in">
                                         <div class="panel-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                       @@
                                         </div>
                                     </div>
                                 </div>
                                 <div class="panel panel-yellow">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Collapsible Group Item #2</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">미완성된 기능</a>
                                         </h4>
                                     </div>
                                     <div id="collapseTwo" class="panel-collapse collapse">
                                         <div class="panel-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        @@
                                         </div>
                                     </div>
                                 </div>
                                 <div class="panel panel-yellow">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Collapsible Group Item #3</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">보고서</a>
                                         </h4>
                                     </div>
                                     <div id="collapseThree" class="panel-collapse collapse">
                                         <div class="panel-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+										@@
                                         </div>
                                     </div>
                                 </div>
@@ -271,13 +297,18 @@
 							</ul>
                         </div>
                         </div>
+                         
                         <div class="panel-footer">
-                                 <center><a href="#" class="btn btn-success btn-block">정은화 블로그</a></center>
+   						<center>
+                          <a class="btn btn-social btn-google-plus btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-bold"></i>Blog</a>
+                      	 <a class="btn btn-social btn-github btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-github"></i>Git</a>
+                         <a class="btn btn-social btn-bitbucket btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-h-square"></i>Host</a>
                         </div>
+                     
                     </div>
                      <div class="panel panel-success">
                         <div class="panel-heading">
-                            Collapsible Accordion Panel Group
+                           <center><strong>정은화 자기기술서</strong></center>
                         </div>
                         <!-- .panel-heading -->
                         <div class="panel-body">
@@ -285,36 +316,36 @@
                                 <div class="panel panel-green">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Collapsible Group Item #1</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">구현한 기능</a>
                                         </h4>
                                     </div>
                                     <div id="collapseOne" class="panel-collapse collapse in">
                                         <div class="panel-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        @@
                                         </div>
                                     </div>
                                 </div>
                                 <div class="panel panel-green">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Collapsible Group Item #2</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">미완성된 기능</a>
                                         </h4>
                                     </div>
                                     <div id="collapseTwo" class="panel-collapse collapse">
                                         <div class="panel-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                       	@@
                                         </div>
                                     </div>
                                 </div>
                                 <div class="panel panel-green">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Collapsible Group Item #3</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">보고서</a>
                                         </h4>
                                     </div>
                                     <div id="collapseThree" class="panel-collapse collapse">
                                         <div class="panel-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        @@
                                         </div>
                                     </div>
                                 </div>
@@ -347,13 +378,16 @@
 							</ul>
                         </div>
                         </div>
-                        <div class="panel-footer">
-                                 <center><a href="#" class="btn btn-info btn-block">김규원 블로그</a></center>
-                        </div>
-                    </div>
+                          <div class="panel-footer">
+ 						  <center>
+                          <a class="btn btn-social btn-google-plus btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-bold"></i>Blog</a>
+                      	 <a class="btn btn-social btn-github btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-github"></i>Git</a>
+                         <a class="btn btn-social btn-bitbucket btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-h-square"></i>Host</a>
+                     </div>
+                     </div>
                      <div class="panel panel-info">
                         <div class="panel-heading">
-                            Collapsible Accordion Panel Group
+                           <center><strong>김규원 자기기술서</strong></center>
                         </div>
                         <!-- .panel-heading -->
                         <div class="panel-body">
@@ -361,36 +395,36 @@
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Collapsible Group Item #1</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">구현한 기능</a>
                                         </h4>
                                     </div>
                                     <div id="collapseOne" class="panel-collapse collapse in">
                                         <div class="panel-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        @@
                                         </div>
                                     </div>
                                 </div>
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Collapsible Group Item #2</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">미완성된 기능</a>
                                         </h4>
                                     </div>
                                     <div id="collapseTwo" class="panel-collapse collapse">
                                         <div class="panel-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        @@
                                         </div>
                                     </div>
                                 </div>
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Collapsible Group Item #3</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">보고서</a>
                                         </h4>
                                     </div>
                                     <div id="collapseThree" class="panel-collapse collapse">
                                         <div class="panel-body">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        @@
                                         </div>
                                     </div>
                                 </div>
@@ -399,8 +433,10 @@
                         <!-- .panel-body -->
                     </div>
                 </div>
-                
                 </div>
+                        </div>    </div>
+       </div>
+       </div>
        </div>
 		
 	<!-- FOOTER : Navigation -->
