@@ -113,7 +113,7 @@
 					<ul class="nav nav-second-level">
 						<li><a href="#">계획안 카테고리 관리<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/planCategoryList">계획안 카테고리 목록</a></li>
+								<li><a href="${pageContext.request.contextPath}/PlanCategoryList">계획안 카테고리 목록</a></li>
 								<li><a href="${pageContext.request.contextPath}/PlanCategoryAdd">계획안 카테고리 등록</a></li>
 							</ul>	
 						</li>
