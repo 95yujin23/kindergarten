@@ -155,18 +155,16 @@
 	<!-- 2. 특별활동신청 전체조회+검색-->
 	<select id="getProgramApplicationList" parameterType="java.util.Map" resultType="com.cafe24.hanboa.program.ProgramApplication">
 		SELECT
-			k.KIDS_NM AS kidsNm
-			, p.PROGRAM_NM AS programNm
-			, pa.PROGRAM_APPL_CD AS programApplCd
-			, pa.PRAP_DIVISION AS PRAPDivision
-			, pa.PRAP_COST AS PRAPCost
-			, pa.PRAP_CLOSING_CD AS PRAPClosingCd
-			, pa.PRAP_CLOSING_DIVISION AS PRAPClosingDivision
-			, pa.PRAP_REGISTRATION_DATE AS PRAPRegistrationDate
-			, pa.PRAP_REGISTRANT AS PRAPRegistrant
-		FROM TB_PROGRAM_APPLICATION pa 
-		INNER JOIN TB_KIDS k ON pa.KIDS_CD = k.KIDS_CD
-		INNER JOIN TB_PROGRAM p ON pa.PROGRAM_CD = p.PROGRAM_CD
+			KIDS_CD AS kidsCd
+			, PROGRAM_CD AS programCd
+			, PROGRAM_APPL_CD AS programApplCd
+			, PRAP_DIVISION AS PRAPDivision
+			, PRAP_COST AS PRAPCost
+			, PRAP_CLOSING_CD AS PRAPClosingCd
+			, PRAP_CLOSING_DIVISION AS PRAPClosingDivision
+			, PRAP_REGISTRATION_DATE AS PRAPRegistrationDate
+			, PRAP_REGISTRANT AS PRAPRegistrant
+		FROM TB_PROGRAM_APPLICATION
 		<if test="keyword != null">
 			WHERE ${searchOption} LIKE CONCAT('%',#{keyword},'%')
 		</if>
