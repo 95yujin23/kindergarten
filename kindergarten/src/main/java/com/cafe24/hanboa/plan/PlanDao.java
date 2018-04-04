@@ -23,7 +23,7 @@ public class PlanDao {
 		logger.debug("PlanDao.java 1. insertPlanCategory() 메소드 실행");
 		return sqlSesionTamplate.insert(localName+"insertPalnCategory", planCategory);
 	}
-	// 2-1. 계획안 카테고리 전체조회+검색 
+	// 2-1. 계획안 카테고리 전체조회+검색+페이징
 	public List<PlanCategory> getPlanList(Map<String, Object> map) {
 		logger.debug("PlanDao.java 2. getPlanList() 메소드 실행");
 		logger.debug("{} : <- startPage PlanDao.java", map.get("startPage"));

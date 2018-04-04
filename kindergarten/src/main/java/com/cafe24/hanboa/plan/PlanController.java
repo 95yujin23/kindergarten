@@ -43,7 +43,7 @@ public class PlanController {
 		logger.debug("{} <- PlanCategoryInsert PlanController.java", planCategory);
 		return "redirect:/PlanCategoryList";
 	}
-	// 2. 계획안 카테고리 전체조회+검색
+	// 2. 계획안 카테고리 전체조회+검색+페이징
 	@RequestMapping(value="/PlanCategoryList", method=RequestMethod.GET)
 	public String PlanCategoryList(Model model
 								, @RequestParam(value="keyword", required = false) String keyword
