@@ -1,5 +1,9 @@
 package com.cafe24.hanboa.plan;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +22,14 @@ public class PlanService {
 	public void insertPlanCategory(PlanCategory planCategory) {
 		planDao.insertPlanCategory(planCategory);
 		logger.debug("{} <- insertPlanCategory PlanService.java", planCategory);
+	}
+	// 2. 계획안 카테고리 전체조회+검색
+	public Map<String, Object> selectPlanList(String keyword) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyword", keyword);
+		List<PlanCategory> list = planDao.getPlanList(map);
+		logger.debug("{} <- keyword selectPlanList PlanService.java", keyword);
+		map.put("list", list);
+		return map;
 	}
 }

@@ -13,7 +13,17 @@
 			, CATE_NM
 		) VALUES (
 			#{planCateCd}
-			, #{CateNm}
+			, #{cateNm}
 		)
 	</insert>
+	<!-- 2. 계획안 카테고리 전체조회+검색 -->
+	<select id="getPlanList" parameterType="java.util.Map" resultType="com.cafe24.hanboa.plan.PlanCategory">
+		SELECT
+			PLAN_CATE_CD AS planCateCd
+			, CATE_NM AS cateNm
+		FROM TB_PLAN_CATEGORY
+		<if test="keyword != null">
+			WHERE CATE_NM LIKE CONCAT('%',#{keyword},'%')
+		</if>
+	</select>
 </mapper>

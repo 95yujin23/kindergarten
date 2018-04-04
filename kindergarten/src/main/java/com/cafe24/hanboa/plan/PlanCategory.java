@@ -2,7 +2,7 @@ package com.cafe24.hanboa.plan;
 
 public class PlanCategory {
 	private String planCateCd;
-	private String CateNm;
+	private String cateNm;
 	public String getPlanCateCd() {
 		return planCateCd;
 	}
@@ -10,9 +10,9 @@ public class PlanCategory {
 		this.planCateCd = planCateCd;
 	}
 	public String getCateNm() {
-		return CateNm;
+		return cateNm;
 	}
 	public void setCateNm(String cateNm) {
-		CateNm = cateNm;
+		this.cateNm = cateNm;
 	}
 }

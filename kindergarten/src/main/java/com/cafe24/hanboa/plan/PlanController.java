@@ -1,13 +1,18 @@
 package com.cafe24.hanboa.plan;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.hanboa.teacher.Teacher;
 
@@ -36,6 +41,21 @@ public class PlanController {
 	public String PlanCategoryInsert(PlanCategory planCategory) {
 		planService.insertPlanCategory(planCategory);
 		logger.debug("{} <- PlanCategoryInsert PlanController.java", planCategory);
-		return "redirect:/planCategoryList";
+		return "redirect:/PlanCategoryList";
+	}
+	// 2. 계획안 카테고리 전체조회+검색
+	@RequestMapping(value="/PlanCategoryList", method=RequestMethod.GET)
+	public String PlanCategoryList(Model model
+								, @RequestParam(value="keyword", required = false) String keyword) {
+		logger.debug("2. PlanController.java PlanCategoryList()메소드 실행 ");
+		Map<String, Object> map = planService.selectPlanList(keyword);
+		List<PlanCategory> list = (List<PlanCategory>)(map.get("list"));
+		String searchKeyword = (String)map.get("keyword");
+		model.addAttribute("keyword", searchKeyword);
+		model.addAttribute("list", list);
+		logger.debug("{} <- list PlanController.java", list);
+		logger.debug("{} <- searchKeyword PlanController.java", searchKeyword);
+		logger.debug("------------------------------------------------------------");
+		return "plan/plan_category_list";
 	}
 }
