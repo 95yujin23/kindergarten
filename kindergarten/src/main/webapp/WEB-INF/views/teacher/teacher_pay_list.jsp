@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>교직원 목록 화면</title>
+<title>교직원 인건비 지급 목록 화면</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="resources/vendor/css/bootstrap.min.css" rel="stylesheet">

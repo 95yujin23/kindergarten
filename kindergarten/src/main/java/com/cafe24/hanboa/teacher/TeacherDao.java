@@ -19,9 +19,19 @@ public class TeacherDao {
 	String localName = "com.cafe24.hanboa.teacher.TeacherMapper.";
 	
 	// 1. 교직원 목록 조회
-	public List<Teacher> selectTeacherList() {
+	public List<Teacher> selectTeacherList(HashMap<String, Object> map) {
 		logger.debug("1. TeacherDao -- List<Teacher> selectTeacherList() 매서드 실행");
-		return sqlSession.selectList(localName+"getTeacherList");
+		return sqlSession.selectList(localName+"getTeacherList",map);
+	}	
+	// 1-2. 교직원 총 목록 수 조회
+	public int selectTeacherTotalCount() {
+		logger.debug("1. TeacherDao -- List<Teacher> selectTeacherList() 매서드 실행");
+		return sqlSession.selectOne(localName+"getTeacherTotalCount");
+	}
+	// 1-3. 교직원 이름 조회
+	public List<Teacher> selectTeacherNm() {
+		logger.debug("1. TeacherDao -- List<Teacher> selectTeacherNm() 매서드 실행");
+		return sqlSession.selectList(localName+"getTeacherNm");
 	}
 	// 2. 교직원 개인 조회
 	public Teacher selectTeacherOne(String teacherCd) {

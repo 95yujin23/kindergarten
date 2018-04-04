@@ -24,11 +24,24 @@ public class TeacherController {
 	
 	// 1. 교직원 전체 목록 조회
 	@RequestMapping(value="/TeacherList")
-	public String teacherList(Model model, HttpSession session) {
-		List<Teacher> list = teacherService.getTeacherList();
-		logger.info("1. TeacherController -- TeacherList : {}", list);
+	public String teacherList(Model model, HttpSession session
+							,@RequestParam(value="currentPage", defaultValue="1") int currentPage
+						 	,@RequestParam(value="pagePerRow", defaultValue="5") int pagePerRow) {
+		logger.debug("1. TeacherController -- TeacherList");
+		if(session.getAttribute("loginTeacher")==null) {
+			return "redirect:/Login";
+		}else if(session.getAttribute("loginTeacher")!=null) {
+			HashMap<String, Object> map = teacherService.getTeacherList(currentPage, pagePerRow);
+			logger.debug("HashMap<String, Object> map : {}",map);
+			List<Teacher> list = (List<Teacher>) map.get("list");
+			logger.debug("List<Teacher> list : {}",list);
+			int countPage = (Integer) map.get("countPage");
+			logger.debug("int countPage : {}",countPage);
+			model.addAttribute("list", list);
+			model.addAttribute("countPage", countPage);
+			return "teacher/teacher_list";
+		}
 		logger.debug("-----------------------------------------");
-		model.addAttribute("list",list);
 		return "teacher/teacher_list";
 	}
 	
@@ -194,10 +207,10 @@ public class TeacherController {
 	
 	// 10-1. 교직원 인건비 지급 등록 화면
 		@RequestMapping(value="/TeacherPayAdd", method = RequestMethod.GET)
-		public String teacherPayAdd(Model model) {
+		public String teacherPayAdd(Model model, int currentPage, int pagePerRow) {
 			logger.debug("10-1. TeacherController -- TeacherPayModifyForm");
 			//교직원 목록 가져오기 ( 교직원코드 & 교직원이름)
-			List<Teacher> list = teacherService.getTeacherList();
+			List<Teacher> list = teacherService.getTeacherNm();
 			logger.debug("list {} :",list);
 			//list에 교직원목록을 담아서 화면에 뿌려줌 : select의 option value
 			logger.debug("-----------------------------------------");

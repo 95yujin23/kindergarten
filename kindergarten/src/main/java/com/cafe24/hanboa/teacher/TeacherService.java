@@ -19,13 +19,47 @@ public class TeacherService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(TeacherService.class);
 	
-	// 1. 교직원 목록 조회
-	public List<Teacher> getTeacherList(){
-		List<Teacher> list = teacherDao.selectTeacherList();
-		logger.debug("1. TeacherService -- getTeacherList() : {}", list);
+	// 1-1. 교직원 목록 조회
+	public HashMap<String, Object> getTeacherList(int currentPage, int pagePerRow){
+		logger.debug("1-1. teacherDao -- HashMap<String, Object> getTeacherList(int currentPage, int pagePerRow)");
+		logger.debug("int currentPage : {}",currentPage);
+		logger.debug("int pagePerRow : {}",pagePerRow);
+		// 페이징 작업
+		int startPage = 0;
+		if(currentPage!=1) { //현재 페이지가 1이 아닌 조건
+			startPage = (currentPage-1)*pagePerRow;
+			//시작페이지 = (현재페이지-1) * 5(보여줄목록수) 
+		}
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("startPage", startPage);
+		map.put("pagePerRow", pagePerRow);
+		List<Teacher> list = teacherDao.selectTeacherList(map);
+		logger.debug("List<Teacher> : teacherDao.selectTeacherList(map) : {}", map);
+		int TotalCount = teacherDao.selectTeacherTotalCount();
+		logger.debug("int TotalCount : teacherDao.selectTeacherTotalCount() : {}", TotalCount);
+		int countPage = TotalCount/pagePerRow;
+						//페이지 수 = 총 목록수/보여줄목록수
+		if(TotalCount%pagePerRow!=0) { //총 목록 수를 보여줄 목록수로 나눴을 때 나머지가 0이 아닌 조건
+			countPage++; //countPage에 1씩 더한다.
+		}
+		logger.debug("TotalCount/pagePerRow = int countPage : {}", countPage);
+		//return
+		HashMap<String, Object> returnMap = new HashMap<String, Object>();
+		returnMap.put("list", list);
+		returnMap.put("countPage",countPage);
+		logger.debug("HashMap<String, Object> returnMap : {}", returnMap);
+		logger.debug("-----------------------------------------");
+		return returnMap;
+	}
+	
+	// 1-2. 교직원 이름 조회
+	public List<Teacher> getTeacherNm(){
+		List<Teacher> list = teacherDao.selectTeacherNm();
+		logger.debug("1-2. teacherDao -- List<Teacher> getTeacherNm() : {}", list);
 		logger.debug("-----------------------------------------");
 		return list;
 	}
+	
 	// 2. 교직원 개인 조회
 	public Teacher getTeacherOne(String memberCd){
 		Teacher teacher = teacherDao.selectTeacherOne(memberCd);
@@ -71,9 +105,11 @@ public class TeacherService {
 	}
 	// 7-1. 인건비 지급 목록 조회
 	public HashMap<String, Object> getTeacherPayList(int currentPage, int pagePerRow, String month, String year) {
-		logger.debug("7. TeacherService -- getTeacherPayList(int currentPage, int pagePerRow)");
-		logger.debug(" currentPage : {}", currentPage);
-		logger.debug(" pagePerRow : {}", pagePerRow);
+		logger.debug("7-1. teacherDao -- HashMap<String, Object> getTeacherPayList(int currentPage, int pagePerRow, String month, String year)");
+		logger.debug("int currentPage : {}",currentPage);
+		logger.debug("int pagePerRow : {}",pagePerRow);
+		logger.debug("String month : {}",month);
+		logger.debug("String year : {}",year);
 		// 페이징 작업
 		int startPage = 0;
 		if(currentPage!=1) { //현재 페이지가 1이 아닌 조건
@@ -86,9 +122,9 @@ public class TeacherService {
 		map.put("month",month);
 		map.put("year",year);
 		List<TeacherAndTeacherPay> list = teacherDao.selectTeacherPayList(map);
-		logger.debug("teacherDao.selectTeacherPayList(map) -- List<TeacherAndTeacherPay> : {}", list);
+		logger.debug("List<TeacherAndTeacherPay> : teacherDao.selectTeacherPayList(map) : {}", map);
 		int TotalCount = teacherDao.selectTeacherPayTotalCount();
-		logger.debug("teacherDao.selectTeacherPayTotalCount() -- int TotalCount : {}", TotalCount);
+		logger.debug("int TotalCount : teacherDao.selectTeacherPayTotalCount() : {}", TotalCount);
 		int countPage = TotalCount/pagePerRow;
 						//페이지 수 = 총 목록수/보여줄목록수
 		if(TotalCount%pagePerRow!=0) { //총 목록 수를 보여줄 목록수로 나눴을 때 나머지가 0이 아닌 조건

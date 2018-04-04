@@ -87,6 +87,55 @@
 						</tbody>
 					</c:forEach>
 				</table>
+				<div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
+		<ul class="pagination justify-content-center">
+			<c:set var="currentPage" value="${currentPage}"/>
+			<c:set var="countPage" value="${countPage}"/>
+			<c:choose>
+				<c:when test="${currentPage eq 1}">
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath}/TeacherList?currentPage=${currentPage}" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+						<span class="sr-only">Previous</span>
+						</a>
+					</li>
+				</c:when>
+				<c:when test="${currentPage ne 1}">
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath}/TeacherList?currentPage=${currentPage-1}" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+						<span class="sr-only">Previous</span>
+						</a>
+					</li>
+				</c:when>
+			</c:choose>
+			<c:forEach var="i" begin="1" end="${countPage}" step="1">
+				<li class="page-item">
+					<a class="page-link" href="${pageContext.request.contextPath}/TeacherList?currentPage=${i}">
+						${i}
+					</a>
+				</li>
+			</c:forEach>
+			<c:choose>
+				<c:when test="${currentPage eq countPage}">
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath}/TeacherList?currentPage=${currentPage}" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+							<span class="sr-only">Next</span>
+						</a>
+					</li>
+				</c:when>
+				<c:when test="${currentPage ne countPage}">
+					<li class="page-item">
+						<a class="page-link" href="${pageContext.request.contextPath}/TeacherList?currentPage=${currentPage+1}" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+							<span class="sr-only">Next</span>
+						</a>
+					</li>
+				</c:when>
+			</c:choose>
+		</ul>
+			</div>
 			</div>
 			</div>
 		</div>
