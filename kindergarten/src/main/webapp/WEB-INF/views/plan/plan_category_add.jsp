@@ -57,7 +57,7 @@
 								<form id="PlanCategoryAddForm" action="${pageContext.request.contextPath}/PlanCategoryAdd" method="post">
 									<div class="form-group">
 									    <label>특별활동프로그램명</label>
-									    <input class="form-control" type="text" name="CateNm" placeholder="카테고리이름">
+									    <input class="form-control" type="text" name="cateNm" placeholder="카테고리이름">
 									</div>
 									<button class="btn btn-default" id="PlanCategoryAddButton" type="button">등록</button>
 								</form>
