@@ -54,4 +54,9 @@ public class PlanService {
 		returnMap.put("countPage", countPage);
 		return returnMap;
 	}
+	// 3. 계획안 카테고리 삭제
+	public int planCategoryDelete(String planCateCd) {
+		int planOne = planDao.deletePlanCategory(planCateCd);
+		return planOne;
+	}
 }

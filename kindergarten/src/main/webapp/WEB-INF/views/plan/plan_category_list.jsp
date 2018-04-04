@@ -59,7 +59,6 @@
 					<thead>
 						<tr>
 							<th>카테고리명</th>
-							<th>수정</th>
 							<th>삭제</th>
 						</tr>
 					</thead>
@@ -67,7 +66,6 @@
 						<tbody>
 						<tr>
 							<td>${list.cateNm}</td>							
-							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/PlanCategoryModify?planCateCd=${list.planCateCd}"><i class="fa fa-pencil"></i></a></td>
 							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/PlanCategoryDelete?planCateCd=${list.planCateCd}"><i class="fa fa-trash"></i></a></td>
 						</tr>
 					</tbody>

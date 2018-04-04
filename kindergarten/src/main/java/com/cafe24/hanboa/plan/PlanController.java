@@ -65,4 +65,18 @@ public class PlanController {
 		logger.debug("------------------------------------------------------------");
 		return "plan/plan_category_list";
 	}
+	// 3. 계획안 카테고리 삭제
+	@RequestMapping(value="/PlanCategoryDelete", method=RequestMethod.GET)
+	public String planCategoryDelete(HttpSession session, Teacher teacher, @RequestParam(value = "planCateCd", required = true) String planCateCd) {
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
+		if(loginTeacher == null) {
+			// loginTeacher의 값이 null이라면 login화면으로
+			return "redirect:/Login";
+		}
+		planService.planCategoryDelete(planCateCd);
+		logger.debug("3. PlanController.java planCategoryDelete()메소드 실행 ");
+		logger.debug("------------------------------------------------------------");
+		return "redirect:/PlanCategoryList";
+	}
 }

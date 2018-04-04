@@ -31,4 +31,10 @@
 	<select id="selectPlanCategoryCountByPage" resultType="int">
 		SELECT COUNT(*) FROM TB_PLAN_CATEGORY
 	</select>
+	<!-- 3. 계획안 카테고리 삭제 -->
+	<delete id="deletePlanCategory" parameterType="com.cafe24.hanboa.plan.PlanCategory">
+		DELETE
+		FROM TB_PLAN_CATEGORY
+		WHERE PLAN_CATE_CD = #{planCateCd}
+	</delete>
 </mapper>

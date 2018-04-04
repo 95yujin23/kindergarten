@@ -33,8 +33,13 @@ public class PlanDao {
 	}
 	// 2-2. 전체 계획안 카테고리 수(페이징)
 	public int selectPlanCategoryCountByPage(Map<String, Object> map) {
-		logger.debug(" <- selectPlanCategoryCountByPage PlanDao.java");
+		logger.debug("selectPlanCategoryCountByPage PlanDao.java");
 		logger.debug("{} : word selectPlanCategoryCountByPage PlanDao.java", map.get("keyword"));
 		return sqlSesionTamplate.selectOne(localName+"selectPlanCategoryCountByPage", map);
+	}
+	// 3. 계획안 카테고리 삭제
+	public int deletePlanCategory(String planCateCd) {
+		logger.debug("{} <- planCateCd deletePlanCategory PlanDao.java", planCateCd);
+		return sqlSesionTamplate.delete(localName+"deletePlanCategory", planCateCd);
 	}
 }
