@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cafe24.hanboa.teacher.Teacher;
+
 @Controller
 public class ContractController {
 	@Autowired 
@@ -59,7 +61,15 @@ public class ContractController {
 	
 	// 5. 등록
 	@RequestMapping(value="/ContractAdd", method=RequestMethod.POST)
-	public String contractAdd(Model model, Contract contract) {
+	public String contractAdd(Model model,HttpSession session,Teacher teacher, Contract contract) {
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
+		if(loginTeacher == null) {
+			// loginTeacher의 값이 null이라면 login화면으로
+			return "redirect:/Login";
+		}
+		// null이 아니라면 loginTeacher세션에서 교원번호와 라이센스를 받아서 teacher객체에 셋팅한다.
+		contract.setLicenseKindergarten(loginTeacher.getLicenseKindergarten());
 		logger.debug("{} <-- contractAdd(입력처리) ContractController.java",contract);
 		contractService.insertContract(contract);
 		return "redirect:/";

@@ -1,5 +1,7 @@
 package com.cafe24.hanboa.contract;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -38,11 +40,11 @@ public class ContractService {
 	}
 	
 	//4.입력처리
-	public int insertContract(Contract contract) {
-		int contractInsert = contractDao.insertContract(contract);
+	public void insertContract(Contract contract) {
+		String inDate = new SimpleDateFormat("yyyyMMdd").format(new Date());
+		contract.setContractRegistrationDate(inDate);
+		contractDao.insertContract(contract);
 		logger.debug("{} < - insertContract 메서드 실행 ContractService.java",contract);
-		logger.debug("{} < - insertContract 메서드 실행 ContractService.java",contractInsert);
-		return contractInsert;
 	}
 	
 	// 5. 삭제처리

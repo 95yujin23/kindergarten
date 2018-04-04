@@ -30,15 +30,16 @@
 			,contract_amount as contractAmount
 			,contract_contents as contractContents
 			,contract_type as contractType
-			,contract_registration_date as contractRegistrationDate
 			,contract_registrant as contractRegistrant
-			,license_kindergarten as licenseKindergarten
-			FROM TB_CONTRACT
-			WHERE contract_cd = #{contractCd}
+		FROM TB_CONTRACT
+		WHERE contract_cd = #{contractCd}
 	</select>
 <!-- 계약 등록 -->
 	<insert id = "contractAdd" 
 			parameterType="com.cafe24.hanboa.contract.Contract">
+	<selectKey resultType="String" keyProperty="contractCd" order="BEFORE">
+			SELECT CONCAT('CONT', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_CONTRACT ))
+	</selectKey>
 		INSERT INTO TB_CONTRACT(
 			contract_cd
 			,contract_start_date
@@ -65,12 +66,14 @@
 <!-- 계약 수정 -->
 	<update id = "contractModify" parameterType="com.cafe24.hanboa.contract.Contract">
 		UPDATE TB_CONTRACT
-		SET
-			contract_type = #{contractType}
-			,contract_start_date = #{contractStartDate}
+		SET			
+			contract_start_date = #{contractStartDate}
 			,contract_end_date = #{contractEndDate}
-			,contract_contents = #{contractContents}
+			,cleint_cd = #{clientCd}
 			,contract_amount = #{contractAmount}
+			,contract_contents = #{contractContents}
+			,contract_type = #{contractType}
+			,contract_registrant = #{contractRegistrant}
 		WHERE contract_cd = #{contractCd}
 	</update>
 	

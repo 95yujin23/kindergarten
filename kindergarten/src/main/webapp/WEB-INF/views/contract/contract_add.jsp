@@ -48,10 +48,6 @@
 						<div class="col-lg-6">
 							<form id="addForm" action="${pageContext.request.contextPath}/ContractAdd" method="POST">
 								<div class="form-group">
-								    <label>계약코드</label>
-								    <input class="form-control" id="contractCd" name="contractCd" placeholder="계약코드">
-								</div>
-								<div class="form-group">
 								    <label>계약시작일자</label>
 								    <input class="form-control" type="date" id="contractStartDate" name="contractStartDate" placeholder="계약시작일자">
 								</div>
@@ -76,18 +72,10 @@
 								    <input class="form-control" id="contractType" name="contractType" placeholder="계약구분">
 								</div>
 								<div class="form-group">
-								    <label>등록날짜</label>
-								    <input class="form-control" type="date" id="contractRegistrationDate" name="contractRegistrationDate" placeholder="등록날짜">
-								</div>
-								<div class="form-group">
 								    <label>등록인</label>
 								    <input class="form-control" id="contractRegistrant" name="contractRegistrant" placeholder="등록인">
 								</div>
-								<div class="form-group">
-								    <label>유치원 라이센스</label>
-								    <input class="form-control" id="licenseKindergarten" name="licenseKindergarten" placeholder="유치원라이센스">
-								</div>
-					
+											
 								<button type="submit">등록</button>
 							</form>
 						</div>

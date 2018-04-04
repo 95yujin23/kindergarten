@@ -37,16 +37,14 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>CONTRACT_CD</th>
-						<th>CONTRACT_START_DATE</th>
-						<th>CONTRACT_END_DATE</th>
-						<th>CLEINT_CD</th>
-						<th>CONTRACT_AMOUNT</th>
-						<th>CONTRACT_CONTENTS</th>
-						<th>CONTRACT_TYPE</th>
-						<th>CONTRACT_REGISTRATION_DATE</th>
-						<th>CONTRACT_REGISTRANT</th>
-						<th>LICENSE_KINDERGARTEN</th>
+						<th>시작일</th>
+						<th>종료일</th>
+						<th>거래처코드</th>
+						<th>금액</th>
+						<th>내용</th>
+						<th>계약구분</th>
+						<th>등록날짜</th>
+						<th>등록인</th>
 						<th>수정</th>
 						<th>삭제</th>						
 					</tr>
@@ -54,7 +52,6 @@
 				<c:forEach var="contract" items="${list}">
 					<tbody>
 						<tr>
-							<td>${contract.contractCd}</td>
 							<td>${contract.contractStartDate}</td>
 							<td>${contract.contractEndDate}</td>
 							<td>${contract.clientCd}</td>
@@ -63,7 +60,6 @@
 							<td>${contract.contractType}</td>
 							<td>${contract.contractRegistrationDate}</td>
 							<td>${contract.contractRegistrant}</td>
-							<td>${contract.licenseKindergarten}</td>
 							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/contract/contract_modify?contractCd=${contract.contractCd}"><i class="fa fa-pencil"></i></a></td>
 							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/Contractdelete?contractCd=${contract.contractCd}"><i class="fa fa-trash"></i></a></td>
 						</tr>
