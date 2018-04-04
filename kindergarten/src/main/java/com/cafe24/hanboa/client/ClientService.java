@@ -1,5 +1,7 @@
 package com.cafe24.hanboa.client;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -46,12 +48,11 @@ public class ClientService {
 		return delete;		
 	}
 	//5.등록
-	public int cleintAdd(Client client) {
-		int insertClinet = clientDao.insertClient(client);
+	public void cleintAdd(Client client) {
+		String inDate = new SimpleDateFormat("yyyyMMdd").format(new Date());
+		client.setClientRegistrationDate(inDate);
+		clientDao.insertClient(client);
 		logger.debug("{} < -- cleintAdd clientDao.java",client);
-		logger.debug("{} < -- cleintAdd clientDao.java",insertClinet);
-		return insertClinet;
-		
 	}
 	
 	

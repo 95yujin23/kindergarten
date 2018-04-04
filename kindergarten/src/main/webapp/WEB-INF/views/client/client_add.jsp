@@ -48,21 +48,23 @@
 						<div class="col-lg-6">
 							<form id="addForm" action="${pageContext.request.contextPath}/ClientAdd" method="POST">
 								<div class="form-group">
-								    <label>거래처코드</label>
-								    <input class="form-control" id="clientCd" name="clientCd" placeholder="거래처코드">
-								</div>
-								<div class="form-group">
-								    <label>연락망</label>
-								    <input class="form-control" id="clientPhone" name="clientPhone" placeholder="연락망">
-								</div>
-								<div class="form-group">
 								    <label>거래처구분</label>
-								    <input class="form-control" id="clientType" name="clientType" placeholder="거래처구분">
+								   	<select class="form-control" id="clientType" name="clientCd">
+								   		<option value=1>특별활동</option>
+								   		<option value=2>급식</option>
+								   		<option value=3>조경</option>
+								   		<option value=4>렌트카</option>
+								   		<option value=5>보험</option>				
+								   	</select>
 								</div>
 								<div class="form-group">
 								    <label>거래처이름</label>
 								    <input class="form-control" id="clientNm" name="clientNm" placeholder="거래처이름">
 								</div>
+								<div class="form-group">
+								    <label>연락망</label>
+								    <input class="form-control" id="clientPhone" name="clientPhone" placeholder="연락망">
+								</div>										
 								<div class="form-group">
 								    <label>거래처 담당자</label>
 								    <input class="form-control" id="clientManager" name="clientManager" placeholder="거래처 담당자">
@@ -72,18 +74,10 @@
 								    <input class="form-control" id="clientAddress" name="clientAddress" placeholder="거래처 주소">
 								</div>
 								<div class="form-group">
-								    <label>등록날짜</label>
-								    <input class="form-control" id="clientRegistrationDate" name="clientRegistrationDate" placeholder="등록날짜">
-								</div>
-								<div class="form-group">
 								    <label>등록인</label>
 								    <input class="form-control" id="clientRegistrant" name="clientRegistrant" placeholder="등록인">
 								</div>
-								<div class="form-group">
-								    <label>유치원 라이센스</label>
-								    <input class="form-control" id="licenseKindergarten" name="licenseKindergarten" placeholder="유치원라이센스">
-								</div>
-					
+										
 								<button type="submit">등록</button>
 							</form>
 						</div>

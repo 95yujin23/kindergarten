@@ -37,6 +37,9 @@
 	</select>
 <!-- 거래처 등록 -->
 	<insert id = "clientAdd" parameterType="com.cafe24.hanboa.client.Client">
+	<selectKey resultType="String" keyProperty="clientCd" order="BEFORE">
+			SELECT CONCAT('CLIE', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_CLIENT ))
+	</selectKey>
 		INSERT INTO TB_CLIENT
 			(client_cd
 			,client_phone

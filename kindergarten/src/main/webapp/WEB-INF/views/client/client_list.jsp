@@ -37,15 +37,14 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>CLIENT_CD</th>
-						<th>CLIENT_PHONE</th>
-						<th>CLIENT_TYPE</th>
-						<th>CLEINT_NM</th>
-						<th>CLIENT_MANAGER</th>
-						<th>CLIENT_ADDRESS</th>
-						<th>CLIENT_REGISTRATION_DATE</th>
-						<th>CLIENT_REGISTRANT</th>
-						<th>LICENSE_KINDERGARTEN</th>
+						<th>거래처이름</th>
+						<th>연락망</th>
+						<th>거래처구분</th>
+						<th>거래처 담당자</th>
+						<th>거래처 주소</th>
+						<th>등록날짜</th>
+						<th>등록인</th>
+						<th>유치원라이센스</th>
 						<th>수정</th>
 						<th>삭제</th>						
 					</tr>
@@ -53,10 +52,9 @@
 				<c:forEach var="clientList" items="${list}">
 					<tbody>
 						<tr>
-							<td>${clientList.clientCd}</td>
+							<td>${clientList.clientNm}</td>
 							<td>${clientList.clientPhone}</td>
 							<td>${clientList.clientType}</td>
-							<td>${clientList.clientNm}</td>
 							<td>${clientList.clientManager}</td>
 							<td>${clientList.clientAddress}</td>
 							<td>${clientList.clientRegistrationDate}</td>
