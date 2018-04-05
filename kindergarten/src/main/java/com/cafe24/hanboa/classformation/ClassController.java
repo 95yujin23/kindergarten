@@ -47,7 +47,7 @@ public class ClassController {
 			return "class/kids_class_formation";
 		}
 		
-		//반 편성 화면 list
+		//반 편성 화면 list (편성된 아이들 보여주기)
 		@RequestMapping(value="/formationKidsList")
 		public @ResponseBody Object getRecordList(HttpServletRequest request,
 				   								HttpServletResponse response,
@@ -56,11 +56,21 @@ public class ClassController {
 			
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("data", classService.kidsFormationList(kidsformation));
-			/*List<KidsFormation> list = classService.kidsFormationList();
-			model.addAttribute("list",list);*/
 			Object result = map;
 			return result;
-			/*return "class/kids_class_formation";*/
+		}
+		
+		// 반 편성 화면 list 미편성 아이들 보여주기
+		@RequestMapping(value="/unformationkids")
+		public @ResponseBody Object getUnformationkids(HttpServletRequest request,
+				   								HttpServletResponse response,
+				   								@ModelAttribute("KidsFormation") KidsFormation kidsformation) {
+			logger.debug("ClassController getUnformationkids() 메소드 실행");
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("data", classService.unformationkids(kidsformation));
+			Object result = map;
+			return result;
 		}
 		
 		
@@ -75,16 +85,16 @@ public class ClassController {
 			return "redirect:kids_class_formation";
 		}
 		
-		//반편성 분류된 유아 리스트
+		/*//반편성 분류된 유아 리스트
 		@RequestMapping(value="/unFormationKidsList", method=RequestMethod.GET)
-		public String unFormationKidsList(Model model, ClassFormation classFormation) {
+		public String unFormationKidsList(Model model, KidsFormation kidsformation) {
 			logger.debug("ClassController unFormationKidsList() 메소드 실행");
-			List<KidsFormation> list = classService.unFormationKidsList();
+			List<KidsFormation> list = classService.unformationkids(kidsformation);
 			
 			model.addAttribute("list",list);
-			return "class/kids_class_formation";
+			return "result";
 			
-		}
+		}*/
 		
 
 }

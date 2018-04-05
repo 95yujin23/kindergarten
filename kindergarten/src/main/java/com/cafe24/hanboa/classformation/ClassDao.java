@@ -30,15 +30,17 @@ public class ClassDao {
 		return sqlSession.insert(localName + "addUnClassification", classFormation);
 	}
 	
-	// 분류 인원 리스트
+	// 분류 인원 리스트 ajax
 	public List<KidsFormation> kidsFormationList(KidsFormation kidsformation){
 		logger.debug("ReportService addUnClassification()메소드 실행");
 		return sqlSession.selectList(localName + "kidsFormationList");
 	}
 	
-	// 미분류 인원 리스트
-	public List<KidsFormation> unFormationKidsList(){
+	// 미분류 인원 리스트 ajax
+	public List<KidsFormation> unFormationKidsList(KidsFormation kidsformation){
 		logger.debug("ReportService unFormationKidsList()메소드 실행");
 		return sqlSession.selectList(localName + "unFormationKidsList");
 	}
+	
+
 }

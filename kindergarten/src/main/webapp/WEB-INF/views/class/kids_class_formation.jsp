@@ -44,7 +44,7 @@
 			<h1 class="page-header">영유아 반 편성</h1>
 	
 	<table id="example" class="display" cellspacing="0" width="100%">
-		<a href="${pageContext.request.contextPath}/unFormationKidsList" id="unformationkids" class="btn btn-danger" style="float:right;margin-bottom:5px;">미편성 유아 보기</a>
+		<button id="unformationkids" class="btn btn-danger" style="float:right;margin-bottom:5px;">미편성 유아 보기</button>
         <thead>
             <tr>
                 <th>반편성 코드</th>
@@ -80,24 +80,61 @@
 	$.getScript("https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js", function(){
        
             $('#example').DataTable( {
-                "paging":   true,
+               /*  "paging":   true,
                 "ordering": true,
-                "info":     false,
+                "info":     false, */
                 ajax : {
                 	url :"${pageContext.request.contextPath}/formationKidsList"
                 	,type : "POST"
                 	,dataType : "JSON"
                 },
+                
+                columnDefs : [{
+                	"targets" : -1
+                	,"data" : null
+                	,"render" : function (data,type,row,meta){
+                		return '<a href="'+data+'">상세정보</a>';
+                	}
+                	   
+                }],
+                
                 columns : [
 					{data: "kidsClassFormationCd"},
-					{data: "kidsCd"},
+					{data: "kidsParentPhone"},
 					{data: "kidsNm"},
-					{data: "kidsClassCd"},
-					{data: "classNm"}
-					
+					{data: "classNm"},
+					{data: "kidsParentPhone"},
+					{data: "kidsCd"}	
                 ]
-            
-            } );
+            });
+            // 미편성 유아 출력하기
+            $('#unformationkids').click(function(){
+            	$('#example').DataTable({
+            		ajax : {
+                		url : "${pageContext.request.contextPath}/unformationkids"
+                		,type : "POST"
+                		,dataType : "JSON"
+                	},
+                	
+                	columnDefs : [{
+                		"targets" : -1
+                		,"data" : null
+                		,"render" : function (data,type,row,meta){
+                			return '<a href="'+data+'">상세정보</a>';
+                		}
+                	}],
+                	
+                	columns : [
+                		{data: "kidsClassFormationCd"},
+    					{data: "kidsParentPhone"},
+    					{data: "kidsNm"},
+    					{data: "classNm"},
+    					{data: "kidsParentPhone"},
+    					{data: "kidsCd"}	
+                	]
+                })
+           })
+            	
 	});
 	</script>
 </body>
