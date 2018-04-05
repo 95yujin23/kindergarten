@@ -84,12 +84,18 @@ public class ProgramDao {
 		logger.debug("ProgramDao.java 1-3. insertProgramApplication() 메소드 실행");
 		return sqlSesionTamplate.insert(localName+"insertProgramApplication", programApplication);
 	}
-	// 2. 특별활동신청 전체조회+검색
+	// 2-1. 특별활동신청 전체조회+검색
 	public List<ProgramApplication> getProgramApplicationList(Map<String, Object> map) {
 		logger.debug("ProgramDao.java 2. getProgramApplicationList() 메소드 실행");
 		logger.debug("{} <- searchOption ProgramDao.java", map.get("searchOption"));
 		logger.debug("{} <- keyword ProgramDao.java", map.get("keyword"));
 		return sqlSesionTamplate.selectList(localName+"getProgramApplicationList", map);
+	}
+	// // 2-2. 전체 특별활동 수(페이징)
+	public int selectProgramApplicationCountByPage(Map<String, Object> map) {
+		logger.debug("selectProgramApplicationCountByPage ProgramDao.java");
+		logger.debug("{} : keyword selectProgramApplicationCountByPage ProgramDao.java", map.get("keyword"));
+		return sqlSesionTamplate.selectOne(localName+"selectProgramApplicationCountByPage", map);
 	}
 	// 3-1. 특별활동신청 업데이트 정보요청 개별조회
 	public ProgramApplication modifyGetProgramApplication(String programApplCd) {

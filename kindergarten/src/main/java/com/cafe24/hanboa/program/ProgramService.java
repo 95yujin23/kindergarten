@@ -56,7 +56,7 @@ public class ProgramService {
 		map.put("startPage", startPage);
 		map.put("pagePerRow", pagePerRow);
 		List<Program> list = programDao.getProgramList(map);
-		logger.debug("{} : <- list cityService.java", list);
+		logger.debug("{} : <- list ProgramService.java", list);
 		// 총 행의 수를 보여줄 행의 수로 나눈 뒤 나머지가 0일 경우는 넘어가고 아닐 경우 +1 한다.
 		int count = programDao.selectProgramCountByPage(map);
 		logger.debug("{} : <- count ProgramService.java", count);
@@ -107,16 +107,39 @@ public class ProgramService {
 		programDao.insertProgramApplication(programApplication);
 		logger.debug("{} <- insertProgramApplication ProgramService.java", programApplication);
 	}
-	// 2. 특별활동신청 전체조회+검색
-	public Map<String, Object> getProgramApplicationList(String searchOption, String keyword) {
+	// 2. 특별활동신청 전체조회+검색+페이징
+	public Map<String, Object> getProgramApplicationList(int currentPage, int pagePerRow, String searchOption, String keyword) {
+		logger.debug("{} <- currentPage getProgramApplicationList ProgramService.java", currentPage);
+		logger.debug("{} <- pagePerRow getProgramApplicationList ProgramService.java", pagePerRow);
+		logger.debug("{} <- searchOption getProgramApplicationList ProgramService.java", searchOption);
+		logger.debug("{} <- keyword getProgramApplicationList ProgramService.java", keyword);
+		int startPage = 0;
+		if(currentPage > 1) {
+			startPage = (currentPage-1)*pagePerRow;
+		}
+		// DAO에 시작 페이지와 행의 수 보내기
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("searchOption", searchOption);
 		map.put("keyword", keyword);
+		map.put("startPage", startPage);
+		map.put("pagePerRow", pagePerRow);
 		List<ProgramApplication> list = programDao.getProgramApplicationList(map);
-		logger.debug("{} <- searchOption getProgramApplicationList ProgramService.java", searchOption);
-		logger.debug("{} <- keyword getProgramApplicationList ProgramService.java", keyword);
-		map.put("list", list);
-		return map;
+		logger.debug("{} : <- list ProgramService.java", list);
+		// 총 행의 수를 보여줄 행의 수로 나눈 뒤 나머지가 0일 경우는 넘어가고 아닐 경우 +1 한다.
+		int count = programDao.selectProgramApplicationCountByPage(map);
+		logger.debug("{} : <- count ProgramService.java", count);
+		int countPage = count/pagePerRow;
+		if(count%pagePerRow != 0) {
+				countPage++;
+		}
+		logger.debug("{} : <- countPage cityService.java", countPage);
+		// list, 페이지 수 리턴
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		returnMap.put("searchOption", searchOption);
+		returnMap.put("keyword", keyword);
+		returnMap.put("list", list);
+		returnMap.put("countPage", countPage);
+		return returnMap;
 	}
 	// 3-1. 특별활동신청 업데이트 정보요청 개별조회
 	public ProgramApplication GetProgramApplication(String programApplCd) {

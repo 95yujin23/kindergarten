@@ -160,7 +160,7 @@
 			, #{licenseKindergarten}
 		)
 	</insert>
-	<!-- 2. 특별활동신청 전체조회+검색-->
+	<!-- 2-1. 특별활동신청 전체조회+검색+페이징 -->
 	<select id="getProgramApplicationList" parameterType="java.util.Map" resultType="com.cafe24.hanboa.program.ProgramApplication">
 		SELECT
 			KIDS_CD AS kidsCd
@@ -176,6 +176,11 @@
 		<if test="keyword != null">
 			WHERE ${searchOption} LIKE CONCAT('%',#{keyword},'%')
 		</if>
+		LIMIT #{startPage}, #{pagePerRow}
+	</select>
+	<!-- 2-2. 전체 프로그램 카테고리 수(페이징) -->
+	<select id="selectProgramApplicationCountByPage" resultType="int">
+		SELECT COUNT(*) FROM TB_PROGRAM_APPLICATION
 	</select>
 	<!-- 3-1. 특별활동신청 업데이트 정보요청 개별조회 -->
 	<select id="selectProgramApplicationOne" parameterType="String" resultType="com.cafe24.hanboa.program.ProgramApplication">

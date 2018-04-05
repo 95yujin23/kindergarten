@@ -60,9 +60,9 @@ public class ProgramController {
 							, @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
 							, @RequestParam(value = "pagePerRow", required = false, defaultValue = "10") int pagePerRow) {
 		logger.debug("2. ProgramController.java ProgramList()메소드 실행 ");
-		logger.debug("{} <- currentPage PlanController.java", currentPage);
-		logger.debug("{} <- pagePerRow PlanController.java", pagePerRow);
-		logger.debug("{} <- keyword PlanController.java", keyword);
+		logger.debug("{} <- currentPage ProgramController.java", currentPage);
+		logger.debug("{} <- pagePerRow ProgramController.java", pagePerRow);
+		logger.debug("{} <- keyword ProgramController.java", keyword);
 		Map<String, Object> map = programService.selectProgramList(currentPage, pagePerRow, searchOption, keyword);
 		List<Program> list = (List<Program>)(map.get("list"));
 		int countPage = (Integer)map.get("countPage");
@@ -143,20 +143,31 @@ public class ProgramController {
 		programService.insertProgramApplication(programApplication);
 		return "redirect:/ProgramApplicationList";
 	}
-	// 2. 특별활동신청 전체조회+검색
+	// 2. 특별활동신청 전체조회+검색+페이징
 	@RequestMapping(value="/ProgramApplicationList", method=RequestMethod.GET)
 	public String selectProgramApplicationList(Model model
 											, @RequestParam(value="searchOption", required = false) String searchOption
-											, @RequestParam(value="keyword", required = false) String keyword) {
+											, @RequestParam(value="keyword", required = false) String keyword
+											, @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
+											, @RequestParam(value = "pagePerRow", required = false, defaultValue = "10") int pagePerRow) {
+		logger.debug("2. ProgramController.java selectProgramApplicationList()메소드 실행 ");
+		logger.debug("{} <- currentPage ProgramController.java", currentPage);
+		logger.debug("{} <- pagePerRow ProgramController.java", pagePerRow);
+		logger.debug("{} <- keyword ProgramController.java", keyword);
 		logger.debug("2. ProgramController selectProgramApplicationList()메소드 실행 ");
-		Map<String, Object> map = programService.getProgramApplicationList(searchOption, keyword);
+		Map<String, Object> map = programService.getProgramApplicationList(currentPage, pagePerRow, searchOption, keyword);
 		List<ProgramApplication> list = (List<ProgramApplication>)(map.get("list"));
+		int countPage = (Integer)map.get("countPage");
 		String searchKeyword = (String)map.get("keyword");
 		String searchOptionWord = (String)map.get("searchOption");
+		model.addAttribute("list", list);
+		model.addAttribute("countPage", countPage);
+		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("keyword", searchKeyword);
 		model.addAttribute("searchOption", searchOptionWord);
-		model.addAttribute("list", list);
+		logger.debug("{} <- list ProgramController.java", list);
 		logger.debug("------------------------------------------------------------");
+		model.addAttribute("list", list);
 		return "/program/program_application_list";
 	}
 	// 3-1. 특별활동신청 업데이트 정보요청 개별조회
