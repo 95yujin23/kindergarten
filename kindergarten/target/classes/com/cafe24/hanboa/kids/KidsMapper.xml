@@ -19,7 +19,56 @@
 			, kids_graduation		AS kidsGraduation
 		FROM TB_KIDS
 	</select>
+	
+<!-- 영유아와 영유아 파일 전체 목록 조회 -->
+	<select id="getKidsAndKidsFileList"
+			resultMap="KidsAndKidsFile">
+		SELECT
+			K.kids_cd
+			,K.kids_nm
+			,K.kids_date_of_birth
+			,K.kids_address
+			,K.kids_parent_phone
+			,K.kids_spare_phone
+			,K.kids_gender
+			,K.kids_commuting_type
+			,K.kids_caution
+			,K.kids_admission
+			,K.license_kindergarten
+			,F.kids_file_cd
+			,F.kids_file_nm
+			,F.kids_file_ext
+			,F.kids_file_size
+		FROM TB_KIDS K
+		INNER JOIN TB_KIDS_FILE F
+		ON K.kids_cd = F.kids_cd
+	</select>
 
+<!-- 영유아와 영유아 파일 조회 -->
+	<select id="getKidsAndKidsFileOne"
+			resultMap="KidsAndKidsFile">
+		SELECT
+			K.kids_cd
+			,K.kids_nm
+			,K.kids_date_of_birth
+			,K.kids_address
+			,K.kids_parent_phone
+			,K.kids_spare_phone
+			,K.kids_gender
+			,K.kids_commuting_type
+			,K.kids_caution
+			,K.kids_admission
+			,K.license_kindergarten
+			,F.kids_file_cd
+			,F.kids_file_nm
+			,F.kids_file_ext
+			,F.kids_file_size
+		FROM TB_KIDS K
+		INNER JOIN TB_KIDS_FILE F
+		ON K.kids_cd = F.kids_cd
+		WHERE K.kids_cd = #{kidsCd}
+	</select>
+	
 <!-- 영유아 파일 조회 -->
 	<select id="getKidsFileList"
 			resultType="com.cafe24.hanboa.kids.KidsFile">
@@ -183,31 +232,6 @@
 			,#{kidsFileSize}
 		);
 	</insert>
-	
-<!-- 영유아와 영유아 파일 조회 -->
-	<select id="getKidsAndKidsFile"
-			resultMap="KidsAndKidsFile">
-		SELECT
-			K.kids_cd
-			,K.kids_nm
-			,K.kids_date_of_birth
-			,K.kids_address
-			,K.kids_parent_phone
-			,K.kids_spare_phone
-			,K.kids_gender
-			,K.kids_commuting_type
-			,K.kids_caution
-			,K.kids_admission
-			,K.license_kindergarten
-			,F.kids_file_cd
-			,F.kids_file_nm
-			,F.kids_file_ext
-			,F.kids_file_size
-		FROM TB_KIDS K
-		INNER JOIN TB_KIDS_FILE F
-		ON K.kids_cd = F.kids_cd
-		<!-- WHERE K.kids_cd = #{kidsCd} -->
-	</select>
 
 <!-- 영유아와 영유아파일을 모두 가지는 resultMap 설정 -->		
 	<resultMap type="com.cafe24.hanboa.kids.KidsAndKidsFile"
@@ -229,6 +253,7 @@
 		<result property="kidsFileExt" column="kids_file_ext"></result>
 		<result property="kidsFileSize" column="kids_file_size"></result>
 	</resultMap>
+
 		
 <!-- 영유아 수정 -->
 	<update id="updateKids"
@@ -244,7 +269,17 @@
 			,kids_caution			= #{kidsCaution}
 		WHERE kids_cd = #{kidsCd}
 	</update>
-
+	
+<!-- 영유아 파일 수정 -->
+	<update id="updateKidsFile"
+			parameterType="com.cafe24.hanboa.kids.KidsFile">
+		UPDATE hanboa.TB_KIDS_FILE
+		SET kids_file_nm			= #{kidsFileNm}
+			,kids_file_ext			= #{kidsFileExt}
+			,kids_file_size			= #{kidsFileSize}
+		WHERE kids_cd = #{kidsCd}
+	</update>
+	
 <!-- 영유아 졸업 일자 수정 -->
 	<update id="updateKidsGraduation"
 			parameterType="com.cafe24.hanboa.kids.Kids">

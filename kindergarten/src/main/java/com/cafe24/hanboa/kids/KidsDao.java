@@ -33,11 +33,17 @@ public class KidsDao {
 		// parameter로 map에 값을 담아서 넘겨준다. keyword의 value값
 		return sqlSession.selectList(localName + "getKidsListByClass", map);
 	}
-	// 1-3. 영유아 파일 조회
-	public List<KidsAndKidsFile> selectKidsAndKidsFile() {
+	// 1-3. 영유아 파일 전체 목록 조회
+	public List<KidsAndKidsFile> selectKidsAndKidsFileList() {
 		logger.debug("1-3. KidsDao --  KidsAndKidsFile selectKidsFile(String kidsCd) 매서드 실행");
 		// parameter로 map에 값을 담아서 넘겨준다. keyword의 value값
-		return sqlSession.selectList(localName + "getKidsAndKidsFile");
+		return sqlSession.selectList(localName + "getKidsAndKidsFileList");
+	}
+	// 1-4. 영유아 파일 개인 조회
+	public KidsAndKidsFile selectKidsAndKidsFileOne(String kidsCd) {
+		logger.debug("1-3. KidsDao --  KidsAndKidsFile selectKidsFile(String kidsCd) 매서드 실행");
+		// parameter로 map에 값을 담아서 넘겨준다. keyword의 value값
+		return sqlSession.selectOne(localName + "getKidsAndKidsFileOne",kidsCd);
 	}
 	// 2. 편성 반별 영유아 조회 : 선생님이 맡은 반
 	public List<Kids> selectKidsListByTeacher(Teacher teacher){
@@ -59,12 +65,17 @@ public class KidsDao {
 		logger.debug("4-2. KidsDao -- int insertKidsFile(KidsFile kidsFile) : {}",kidsFile);
 		return sqlSession.insert(localName + "insertKidsFile",kidsFile);
 	}
-	// 5. 영유아 수정
+	// 5-1. 영유아 수정
 	public int updateKids(Kids kids) {
 		logger.debug("5. KidsDao -- int updateKids(Kids kids) : {}",kids);
 		return sqlSession.update(localName + "updateKids",kids);
 	}
-	// 5-2. 영유아 수정 : 졸업 update
+	// 5-2. 영유아 파일 수정
+	public int updateKidsFile(KidsFile kidsFile) {
+		logger.debug("5. KidsDao -- int updateKidsFile(KidsFile kidsFile) : {}",kidsFile);
+		return sqlSession.update(localName + "updateKidsFile",kidsFile);
+	}
+	// 5-3. 영유아 수정 : 졸업 update
 	public int updateKidsGraduation(String kidsCd) {
 		logger.debug("5-2. KidsDao -- int updateKidsGraduation(String kidsCd) : {}",kidsCd);
 		return sqlSession.update(localName + "updateKidsGraduation",kidsCd);

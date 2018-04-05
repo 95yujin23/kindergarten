@@ -64,7 +64,8 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6">
-							<form id="modiForm" action="${pageContext.request.contextPath}/KidsModify?kidsCd=${kids.kidsCd}" method="POST">
+							<form id="modiForm" action="${pageContext.request.contextPath}/KidsModify?kidsCd=${kids.kidsCd}" method="POST"
+							enctype="multipart/form-data">
 								<div class="form-group">
 								    <label>이름</label>
 								    <input class="form-control" id="kidsNm" name="kidsNm" value="${kids.kidsNm}">
@@ -101,7 +102,7 @@
 								</div>
 								<div class="form-group">
 								    <label>사진</label>
-								    <input type="file" class="form-control" id="file" name="file" multiple="multiple">
+								    <input type="file" class="form-control" id="file" name="file" multiple="multiple" >
 								</div>
 								<button type="submit">등록</button>
 								<button type="reset">초기화</button>

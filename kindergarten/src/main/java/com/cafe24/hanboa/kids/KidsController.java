@@ -9,8 +9,10 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,7 +41,7 @@ public class KidsController {
 	// 1-1. 영유아 전체 조회
 		@RequestMapping(value="/KidsList")
 		public String kidsList(Model model) {
-			List<KidsAndKidsFile> list = kidsService.getKidsAndKidsFile();
+			List<KidsAndKidsFile> list = kidsService.getKidsAndKidsFileList();
 			logger.debug("List<KidsAndKidsFile> list : {}", list);
 			logger.debug("----------------------------------------");
 			model.addAttribute("list", list);
@@ -113,7 +115,6 @@ public class KidsController {
 		//resource 폴더 경로
 		//String path = "c:\\upload\\kids";
 		String path = session.getServletContext().getRealPath("/");
-		
 		// "/"의 실제경로를 받아오는 RealPath매서드 실행
 		logger.debug("path : {}",path);
 		path += "resources/upload/kids/"; //kids파일 경로 더해줌
@@ -133,24 +134,30 @@ public class KidsController {
 		}	
 	
 	// 5-1. 영유아 수정 화면
-	
 	@RequestMapping(value="/KidsModify", method = RequestMethod.GET)
 	public String kidsModify(Model model, String kidsCd, HttpSession session) {
 		logger.debug("5-1. KidsController -- KidsModifyForm : {}",kidsCd);
 		//kidsCd로 영유아 정보 가져와서 화면에 뿌려주기
-		Kids kids = kidsService.getKidsOne(kidsCd);
-		logger.debug("Kids kids : {}", kids);
-		model.addAttribute("kids",kids);
+		//Kids kids = kidsService.getKidsOne(kidsCd);
+		KidsAndKidsFile kidsAndKidsFile = kidsService.getKidsAndKidsFileOne(kidsCd);
+		logger.debug("Kids kids : {}", kidsCd);
+		model.addAttribute("kids",kidsAndKidsFile);
 		logger.debug("-----------------------------------------");
 		return "kids/kids_modify";
 		}
 	
 	// 5-2. 영유아 수정
-	@RequestMapping(value="/KidsModify", method = RequestMethod.POST)
-	public String kidsModify(Model model, Kids kids) {
-		logger.debug("5-2. KidsController -- KidsModify : {}",kids);
-		kidsService.modifyKids(kids);
-		
+	@RequestMapping(value="/KidsModify", method = RequestMethod.POST, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+	public String kidsModify(Model model, KidsCommand kidsCommand, HttpSession session) {
+		logger.debug("5-2. KidsController -- KidsModify : {}",kidsCommand);
+		//resource 폴더 경로
+		//String path = "c:\\upload\\kids";
+		String path = session.getServletContext().getRealPath("/");
+		// "/"의 실제경로를 받아오는 RealPath매서드 실행
+		logger.debug("path : {}",path);
+		path += "resources/upload/kids/"; //kids파일 경로 더해줌
+		//kidsService.modifyKids(kids);
+		kidsService.modifyKidsAndKidsFile(kidsCommand, path);
 		logger.debug("-----------------------------------------");
 		return "redirect:/";
 		}
