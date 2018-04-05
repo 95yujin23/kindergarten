@@ -1,23 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
+<!-- Bootstrap Social CSS -->
+<link href="resources/vendor/css/bootstrap-social.css" rel="stylesheet">
 	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse"
+		<!-- <button type="button" class="navbar-toggle" data-toggle="collapse"
 			data-target=".navbar-collapse">
 			<span class="sr-only">Toggle navigation</span> <span
 				class="icon-bar"></span> <span class="icon-bar"></span> <span
 				class="icon-bar"></span>
-		</button>
+		</button> -->
 		<a class="navbar-brand" href="${pageContext.request.contextPath}/">OHAYOU</a>
 	</div>
 	<ul class="nav navbar-top-links navbar-right">
 	<li class="dropdown">
-	<a href="${pageContext.request.contextPath}/SiteMap">사이트맵</a>
+	<a class="btn btn-success btn-social-icon btn-lg" href="${pageContext.request.contextPath}/SiteMap"><i class="fa fa-sitemap"></i></a>
 	</li>
 		<!-- 교직원 상태창 : 교직원만 보이게 하기 (원장x)-->
 		<li class="dropdown">
-			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-				<i class="fa fa-bell fa-fw"></i><i class="fa fa-caret-down"></i>
+			<a class="dropdown-toggle btn btn-warning btn-social btn-lg" data-toggle="dropdown" href="#">
+				<i class="fa fa-bell"></i><i class="fa fa-caret-down"></i>
 			</a>
 			<ul class="dropdown-menu dropdown-alerts">
 				<li><a href="${pageContext.request.contextPath}/KidsListByClass">
@@ -41,8 +43,8 @@
 		</li>
 		
 		<!-- 개인 관리 창 -->
-		<li class="dropdown"><a class="dropdown-toggle"
-			data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
+		<li class="dropdown"><a class="dropdown-toggle btn btn-primary btn-social btn-lg" 
+			data-toggle="dropdown" href="#"> <i class="fa fa-user"></i>
 				<i class="fa fa-caret-down"></i>
 		</a>
 			<ul class="dropdown-menu dropdown-user">
