@@ -17,6 +17,13 @@
 			,license_kindergarten as licenseKindergarten
 		FROM hanboa.TB_CONTRACT	
 	</select>
+	
+<!-- ++거래처코드 등록  -->
+	<select id="callClient" resultType="com.cafe24.hanboa.client.Client">
+		SELECT
+			client_cd as clientCd
+		FROM TB_CLIENT
+	</select>
 
 <!-- 계약 항목별 조회 -->
 	<select id = "getContractOne"

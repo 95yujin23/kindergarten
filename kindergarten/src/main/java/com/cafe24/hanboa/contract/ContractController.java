@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cafe24.hanboa.client.Client;
 import com.cafe24.hanboa.teacher.Teacher;
 
 @Controller
@@ -26,17 +27,19 @@ public class ContractController {
 	@RequestMapping(value="/ContractList")
 	public String contractList(Model model, HttpSession session) {
 		logger.info("1. ContractController -- ContractList : {}");
-		List<Contract> list = contractService.getContractList();
+		List<Contract> list = contractService.getContractList();	
 		logger.info("1. ContractController -- ContractList : {}", list);
 		logger.debug("-----------------------------------------");
 		model.addAttribute("list",list);
-		return "contract/contract_list";		
+		return "contract/contract_list";
 	}
 	
 	// 2. 수정정보요청
 	@RequestMapping(value="/contract/contract_modify", method=RequestMethod.GET)
 	public String contractModify(Model model, @RequestParam(value="contractCd", required=true)String contractCd) {
 		Contract contract = contractService.modifyGetContract(contractCd);
+		List<Client> client = contractService.callClient();
+		model.addAttribute("client",client);
 		logger.debug("{} <- ContractCd ContactController.java",contractCd);
 		logger.debug("{} <- Contract ContractController.java",contract);
 		model.addAttribute("contract", contract);
@@ -48,15 +51,16 @@ public class ContractController {
 	public String contractModify(Model model, Contract contract) {
 		contractService.modifyContract(contract);
 		logger.debug("{} < - contractModify 메서드실행 ContractController.java",contract);
-		return "redirect:/contract/contract_list";		
+		return "redirect:/ContractList";		
 	}
 	
 	// 4. 등록화면
 	@RequestMapping(value="/ContractAdd", method=RequestMethod.GET)
-	public String contractAdd() {
+	public String contractAdd(Model model) {
+		List<Client> client = contractService.callClient();
+		model.addAttribute("client",client);
 		logger.debug("{} < -- contractAdd ContractController.java contractInsertForm");
-		return "contract/contract_add";
-		
+		return "contract/contract_add";		
 	}
 	
 	// 5. 등록
@@ -72,7 +76,7 @@ public class ContractController {
 		contract.setLicenseKindergarten(loginTeacher.getLicenseKindergarten());
 		logger.debug("{} <-- contractAdd(입력처리) ContractController.java",contract);
 		contractService.insertContract(contract);
-		return "redirect:/";
+		return "redirect:/ContractList";
 	}
 	
 	//6. 삭제
@@ -80,7 +84,6 @@ public class ContractController {
 	public String contractDelete(Model model , @RequestParam(value="contractCd" , required=true)String contractCd) {
 		logger.debug("{} < -- contractDelete 메서드 실행 ContractController.java",contractCd);
 		contractService.contractDelete(contractCd);
-		return "redirect:/";
-		
+		return "redirect:/ContractList";		
 	}
 }

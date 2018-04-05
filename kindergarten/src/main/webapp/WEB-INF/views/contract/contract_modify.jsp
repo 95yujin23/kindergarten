@@ -39,31 +39,35 @@
 			<form id="contractModifyForm" action="${pageContext.request.contextPath}/contract/contract_modify" method="post">
 				<div class="form-group">
 								    <label>계약시작일자</label>
-								    <input class="form-control" type="date" id="contractStartDate" name="contractStartDate" placeholder="계약시작일자">
+								    <input class="form-control" type="date" id="contractStartDate" name="contractStartDate" value="${contract.contractStartDate}" placeholder="계약시작일자">
 								</div>
 								<div class="form-group">
 								    <label>계약종료일자</label>
-								    <input class="form-control" type="date" id="contractEndDate" name="contractEndDate" placeholder="계약종료일자">
+								    <input class="form-control" type="date" id="contractEndDate" name="contractEndDate" value="${contract.contractEndDate}" placeholder="계약종료일자">
 								</div>
 								<div class="form-group">
-								    <label>거래처코드</label>
-								    <input class="form-control" id="clientCd" name="clientCd" placeholder="거래처코드">
+		    						<label>거래처코드</label>
+								    <select name="clientCd" class="form-control">
+								    	<c:forEach var="client" items="${client}">
+								    		<option value="${client.clientCd}">${client.clientCd}</option>
+								    	</c:forEach>
+								    </select>
 								</div>
 								<div class="form-group">
 								    <label>금액</label>
-								    <input class="form-control" id="contractAmount" name="contractAmount" placeholder="금액">
+								    <input class="form-control" id="contractAmount" name="contractAmount" value="${contract.contractAmount}"  placeholder="금액">
 								</div>
 								<div class="form-group">
 								    <label>내용</label>
-								    <input class="form-control" id="contractContents" name="contractContents" placeholder="내용">
+								    <input class="form-control" id="contractContents" name="contractContents" value="${contract.contractAmount}" placeholder="내용">
 								</div>
 								<div class="form-group">
 								    <label>계약구분</label>
-								    <input class="form-control" id="contractType" name="contractType" placeholder="계약구분">
+								    <input class="form-control" id="contractType" name="contractType" value="${contract.contractType}" placeholder="계약구분">
 								</div>
 								<div class="form-group">
 								    <label>등록인</label>
-								    <input class="form-control" id="contractRegistrant" name="contractRegistrant" placeholder="등록인">
+								    <input class="form-control" id="contractRegistrant" name="contractRegistrant" value="${contract.contractRegistrant}" placeholder="등록인">
 								</div>
 											
 								<button type="submit">등록</button>

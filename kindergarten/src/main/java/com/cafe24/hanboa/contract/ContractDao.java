@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.cafe24.hanboa.client.Client;
+
 @Repository
 public class ContractDao {
 	@Autowired 
@@ -23,6 +25,12 @@ public class ContractDao {
 		//return sqlSession.selectList(localName+"getContractList222");
 		return sqlSession.selectList(localName+"getContractList");		
 	}
+	// 1-1 client불러오기
+	public List<Client> callClient(){
+		logger.debug("{} < -- callClient 메서드실행 ContractDao.java");
+		return sqlSession.selectList(localName+"callClient");
+	}
+	
 	
 	//2.수정정보요청
 	public Contract modifyGetContarct(String contractCd) {

@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cafe24.hanboa.client.Client;
+
 @Service
 @Transactional
 public class ContractService {
@@ -44,7 +46,16 @@ public class ContractService {
 		String inDate = new SimpleDateFormat("yyyyMMdd").format(new Date());
 		contract.setContractRegistrationDate(inDate);
 		contractDao.insertContract(contract);
-		logger.debug("{} < - insertContract 메서드 실행 ContractService.java",contract);
+		logger.debug("{} < - insertContract(contract) 메서드 실행 ContractService.java",contract);
+		logger.debug("{} < - insertContract(inDate) 메서드 실행 ContractService.java",inDate);
+		
+	}
+	// 4-1 client 불러오기
+	public List<Client> callClient(){
+		List<Client> call = contractDao.callClient();
+		logger.debug("{} < -- callClient메서드 실행 ContractService.java",call); 
+		return call;
+		
 	}
 	
 	// 5. 삭제처리

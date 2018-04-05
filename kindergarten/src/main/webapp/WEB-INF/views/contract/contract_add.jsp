@@ -57,7 +57,11 @@
 								</div>
 								<div class="form-group">
 								    <label>거래처코드</label>
-								    <input class="form-control" id="clientCd" name="clientCd" placeholder="거래처코드">
+								    <select name="clientCd" class="form-control">
+								    	<c:forEach var="client" items="${client}">
+								    		<option value="${client.clientCd}">${client.clientCd}</option>
+								    	</c:forEach>
+								    </select>								    
 								</div>
 								<div class="form-group">
 								    <label>금액</label>
