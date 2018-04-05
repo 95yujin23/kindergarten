@@ -3,13 +3,16 @@
 <html>
 <!-- Bootstrap Social CSS -->
 <link href="resources/vendor/css/bootstrap-social.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="resources/vendor/css/sb-admin-2.css" rel="stylesheet">
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 10px; margin-top: 10px;">
 	<div class="navbar-header">
-		<!-- <button type="button" class="navbar-toggle" data-toggle="collapse"
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
 			data-target=".navbar-collapse">
 			<span class="sr-only">Toggle navigation</span> <span
 				class="icon-bar"></span> <span class="icon-bar"></span> <span
 				class="icon-bar"></span>
-		</button> -->
+		</button>
 		<a class="navbar-brand" href="${pageContext.request.contextPath}/">OHAYOU</a>
 	</div>
 	<ul class="nav navbar-top-links navbar-right">
@@ -57,4 +60,5 @@
 			</ul>
 		</li>
 	</ul>
+</nav>
 </html>

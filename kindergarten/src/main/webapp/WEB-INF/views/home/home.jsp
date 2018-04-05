@@ -25,15 +25,13 @@
 <link href="resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 <link rel="shortcut icon" href="resources/vendor/image/favicon.ico" type="image/x-icon">
-​
 </head>
 <body>
 	<div id="wrapper">
 		<!-- TOP : Navigation -->
-		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+		
 		<c:import url="../inc/top.jsp"></c:import>
 		<!-- TOP -->
-		</nav>
 		<!-- LEFT : Navigation -->
 		<c:import url="../inc/left.jsp"></c:import>
 		<!-- LEFT -->
