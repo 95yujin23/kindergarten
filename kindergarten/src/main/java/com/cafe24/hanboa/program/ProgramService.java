@@ -39,10 +39,39 @@ public class ProgramService {
 		programDao.insertProgram(program);
 		logger.debug("{} <- insertProgram ProgramService.java", program);
 	}
-	// 2. 특별활동 전체조회
-	public List<Program> selectProgramList() {
-		logger.debug("{} <- selectProgramList ProgramService.java");
-		return programDao.getProgramList();
+	// 2. 특별활동 전체조회+검색+페이징
+	public Map<String, Object> selectProgramList(int currentPage, int pagePerRow, String searchOption, String keyword) {
+		logger.debug("{} : <- currentPage selectPlanList ProgramService.java", currentPage);
+		logger.debug("{} : <- pagePerRow selectPlanList ProgramService.java", pagePerRow);
+		logger.debug("{} <- searchOption selectPlanList ProgramService.java", searchOption);
+		logger.debug("{} <- keyword selectPlanList ProgramService.java", keyword);
+		int startPage = 0;
+		if(currentPage > 1) {
+			startPage = (currentPage-1)*pagePerRow;
+		}
+		// DAO에 시작 페이지와 행의 수 보내기
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("searchOption", searchOption);
+		map.put("keyword", keyword);
+		map.put("startPage", startPage);
+		map.put("pagePerRow", pagePerRow);
+		List<Program> list = programDao.getProgramList(map);
+		logger.debug("{} : <- list cityService.java", list);
+		// 총 행의 수를 보여줄 행의 수로 나눈 뒤 나머지가 0일 경우는 넘어가고 아닐 경우 +1 한다.
+		int count = programDao.selectProgramCountByPage(map);
+		logger.debug("{} : <- count ProgramService.java", count);
+		int countPage = count/pagePerRow;
+		if(count%pagePerRow != 0) {
+				countPage++;
+		}
+		logger.debug("{} : <- countPage cityService.java", countPage);
+		// list, 페이지 수 리턴
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		returnMap.put("searchOption", searchOption);
+		returnMap.put("keyword", keyword);
+		returnMap.put("list", list);
+		returnMap.put("countPage", countPage);
+		return returnMap;
 	}	
 	// 3-1. 특별활동 업데이트 정보요청
 	public Program getProgramOne(String programCd) {

@@ -21,6 +21,13 @@
 <link href="resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 <!-- jQuery -->
 <script src="resources/vendor/js/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#searchButton').click(function(){
+				$('#searchForm').submit();
+		})
+	})
+</script>
 </head>
 <body>
 	<div id="wrapper">
@@ -37,7 +44,22 @@
 		<div class="row">
 			<div class="col-lg-1"></div>
 			<div class="col-lg-11">
-			<h2>교직원용</h2>
+			<h2>특별활동 목록</h2>
+			<!-- 검색처리 시작 -->
+			<form action="${pageContext.request.contextPath}/ProgramList?searchOption=${searchOption}&keyword=${keyword}" method="get" id="searchForm" class="form-inline">
+				<select name="searchOption">
+					<option value="PROGRAM_NM">특별활동이름</option>
+					<option value="PROGRAM_CLOSING_DIVISION">마감유무</option>
+					<option value="PROGRAM_REGISTRANT">등록인</option>
+				</select>
+				<div class="input-group">
+					<input id="keyword" name="keyword" type="text" class="form-control" placeholder="Search">
+					<div class="input-group-btn">
+						<button id="searchButton" type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
+					</div>
+				</div>
+			</form>
+			<!-- 검색처리 끝 -->
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -70,6 +92,17 @@
 				</tbody>
 				</c:forEach>
 			</table>
+			<!-- 페이징 시작 -->
+			<nav aria-label="Page navigation example">
+				<ul class="pagination justify-content-center">
+					<c:forEach var="i" begin="1" end="${countPage}" step="1">
+						<li class="page-item">
+							<a class="page-link" href="${pageContext.request.contextPath}/ProgramList?currentPage=${i}">${i}</a>
+						</li>
+					</c:forEach>
+				</ul>
+			</nav>
+			<!-- 페이징 끝 -->
 			</div>
 		</div>
 	</div>	
