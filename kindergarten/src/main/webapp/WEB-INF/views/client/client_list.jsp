@@ -64,6 +64,17 @@
 					</tbody>	
 					</c:forEach>
 			</table>
+			<!-- 페이징 시작 -->
+			<nav aria-label="Page navigation example">
+				<ul class="pagination justify-content-center">
+					<c:forEach var="i" begin="1" end="${countPage}" step="1">
+						<li class="page-item">
+							<a class="page-link" href="${pageContext.request.contextPath}/ClientList?currentPage=${i}">${i}</a>
+						</li>
+					</c:forEach>
+				</ul>
+			</nav>
+			<!-- 페이징 끝 -->			
 			</div>
 		</div>
 	</div>

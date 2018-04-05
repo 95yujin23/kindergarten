@@ -1,6 +1,7 @@
 package com.cafe24.hanboa.client;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,10 +24,28 @@ public class ClientController {
 	private static final Logger logger = LoggerFactory.getLogger(Client.class);
 	
 	// 1.목록조회
-	@RequestMapping(value="/ClientList")
-	public String clientList(Model model, HttpSession session) {
-		List<Client> list = clientService.getClientList();
+	@RequestMapping(value="/ClientList", method = RequestMethod.GET)
+	public String clientList(Model model
+							, @RequestParam(value="searchOption", required=false)String searchOption
+							, @RequestParam(value="keyword", required=false)String keyword
+							, @RequestParam(value="currentPage", required=false, defaultValue="1")int currentPage
+							, @RequestParam(value="pagePerRow", required=false, defaultValue="10")int pagePerRow) {
+		logger.debug("{} < -- clientList메서드 실행 ClientController.java",keyword);
+		logger.debug("{} < -- clientList메서드 실행 ClientController.java",currentPage);
+		logger.debug("{} < -- clientList메서드 실행 ClientController.java",pagePerRow);
+		Map<String, Object> map = clientService.getClientList(currentPage, pagePerRow, searchOption, keyword);
+		List<Client> list = (List<Client>)(map.get("list"));
+		int countPage = (Integer)map.get("countPage");
+		String searchKeyword = (String) map.get("keyword");
+		String searchOptionWord = (String) map.get("searchOption");
 		logger.debug("{} <- list clientController.java",list);
+		model.addAttribute("list",list);
+		model.addAttribute("countPage",countPage);
+		model.addAttribute("currentPage",currentPage);
+		model.addAttribute("keyword",keyword);
+		model.addAttribute("searchOption",searchOption);
+		logger.debug("{} <- list clientController.java", list);
+		logger.debug("------------------------------------------------------------");
 		model.addAttribute("list",list);
 		return "client/client_list";		
 	}

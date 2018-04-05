@@ -1,6 +1,7 @@
 package com.cafe24.hanboa.client;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -17,14 +18,25 @@ public class ClientDao {
 	String localName = "com.cafe24.hanboa.client.ClientMapper.";
 	
 	// 1.목록조회
-	public List<Client> selectClientList() {
-		logger.debug("{} <- selectClientList ClientDao.java");		
-		return sqlSession.selectList(localName+"getClientList");
-	}	
+	public List<Client> selectClientList(Map<String, Object> map) {
+		logger.debug("{} <-- selectClientList메소드 실행 ClientDao.java");
+		logger.debug("{} <-- startPage ClientDao.java", map.get("startPage"));
+		logger.debug("{} < -- pagePerRow ClientDao.java", map.get("pagePerRow"));
+		logger.debug("{} <-- keyword ClientDao.java", map.get("keywored"));
+		logger.debug("{} <-- keywored ClientDao.java", map.get("keyword"));
+		return sqlSession.selectList(localName+"getClientList",map);
+	}
+	//1-1 전체 거래처 페이징
+	public int selectClientCountByPage(Map<String, Object> map) {
+		logger.debug("{} < -- selectClientCountByPage메서드 실행 ClientDao.java",map.get("keyword"));
+		logger.debug("{} < -- word selectClientCountByPage ClientDao.java",map);
+		return sqlSession.selectOne(localName+"selectClientCountByPage",map);		
+	}
+	
 	// 2.업데이트 정보요청
 	public Client modifyGetClient(String clientCd) {
 		logger.debug("{} <- modifyGetClient ClientDao.java",clientCd);
-		return sqlSession.selectOne(localName+"getClientOne", clientCd);		
+		return sqlSession.selectOne(localName+"getClientOne", clientCd);	
 	}	
 	// 3.업데이트
 	public int updateClient(Client client) {

@@ -2,7 +2,7 @@
 
 <mapper namespace="com.cafe24.hanboa.client.ClientMapper">
 
-<!-- 거래처 조회 -->
+<!-- 거래처 조회+검색+페이징 -->
 	<select id="getClientList"
 			resultType="com.cafe24.hanboa.client.Client">
 		SELECT
@@ -15,9 +15,16 @@
 			,client_registration_date as clientRegistrationDate
 			,client_registrant as clientRegistrant
 			,license_kindergarten as licenseKindergarten
-		FROM hanboa.TB_CLIENT	
+		FROM TB_CLIENT	
+		<if test="keyword !=null">
+			WHERE ${searchOption}LIKE CONCAT('%',#{keyword},'%')
+		</if>
+		LIMIT #{startPage},#{pagePerRow}
 	</select>
-	
+<!-- 전체 거래처 카테고리 수 (페이징)-->
+	<select id="selectClientCountByPage" resultType="int">
+		SELECT COUNT(*) FROM TB_CLIENT
+	</select>	
 <!-- 거래처항목별 조회 -->
 	<select id="getClientOne"
 			parameterType="String"
