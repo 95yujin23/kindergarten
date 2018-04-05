@@ -55,6 +55,8 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 			<h1 class="page-header">교직원 목록</h1>
+			 <input class="form-control" id="search" type="text" placeholder="Search..">
+			 <br>
 				<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
@@ -71,7 +73,7 @@
 						</tr>
 					</thead>
 					<c:forEach var="teacherList" items="${list}">
-						<tbody>
+						<tbody id="teacherTable" >
 							<tr>
 								<td>${teacherList.teacherNm}</td>
 								<td>${teacherList.teacherDateOfBirth}</td>
@@ -141,25 +143,36 @@
 		</div>
 	</div>
 </div>
+
 	<!-- FOOTER : Navigation -->
 	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->
 
-	<!-- jQuery -->
-	<script src="resources/vendor/js/jquery.min.js"></script>
+<!-- jQuery -->
+<script src="resources/vendor/js/jquery.min.js"></script>
 
-	<!-- Bootstrap Core JavaScript -->
-	<script src="resources/vendor/js/bootstrap.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="resources/vendor/js/bootstrap.min.js"></script>
 
-	<!-- Metis Menu Plugin JavaScript -->
-	<script src="resources/vendor/js/metisMenu.min.js"></script>
+<!-- Metis Menu Plugin JavaScript -->
+<script src="resources/vendor/js/metisMenu.min.js"></script>
 
-	<!-- Morris Charts JavaScript -->
-	<script src="resources/vendor/js/raphael.min.js"></script>
-	<script src="resources/vendor/js/morris.min.js"></script>
-	<script src="resources/vendor/js/morris-data.js"></script>
+<!-- Morris Charts JavaScript -->
+<script src="resources/vendor/js/raphael.min.js"></script>
+<script src="resources/vendor/js/morris.min.js"></script>
+<script src="resources/vendor/js/morris-data.js"></script>
 
-	<!-- Custom Theme JavaScript -->
-	<script src="resources/vendor/js/sb-admin-2.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="resources/vendor/js/sb-admin-2.js"></script>
+	<script>
+	$(document).ready(function(){
+	  $("#search").on("keyup", function() {
+	    var value = $(this).val().toLowerCase();
+	    $("#teacherTable tr").filter(function() {
+	      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	    });
+	  });
+	});
+	</script>
 </body>
 </html>
