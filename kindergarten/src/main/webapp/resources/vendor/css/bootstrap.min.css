@@ -245,6 +245,7 @@ td, th {
 	}
 	.table {
 		border-collapse: collapse !important
+		
 	}
 	.table td, .table th {
 		background-color: #fff !important

@@ -25,29 +25,16 @@
 
 <!-- Custom Fonts -->
 <link href="resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
-
 <body>
-
 <div id="wrapper">
-
 	<!-- TOP : Navigation -->
-	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 	<c:import url="../inc/top.jsp"></c:import>
 	<!-- TOP -->
 
 	<!-- LEFT : Navigation -->
 	<c:import url="../inc/left.jsp"></c:import>
 	<!-- LEFT -->
-	</nav>
 </div>
 <div id="page-wrapper">
 	<div class="row">
@@ -65,7 +52,7 @@
 					</select> 
 					<button class="btn btn-success" type="submit" value="검색">검색</button>
 				</form>
-				<table class="table table-striped table-bordered table-hover">
+				<table style="text-align: center;" class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
 							<th>이름</th>
@@ -87,7 +74,7 @@
 						<tbody>
 							<tr>
 								<td>${kidsList.kidsNm}</td>
-								<td><img src="${pageContext.request.contextPath}/resources/upload/kids/${kidsList.kidsFileNm}.jpg"></td>
+								<td><img src="${pageContext.request.contextPath}/resources/upload/kids/${kidsList.kidsFileNm}.${kidsList.kidsFileExt}"></td>
 								<!-- 영유아코드별로 사진받아오기 -->
 								<td>${kidsList.kidsDateOfBirth}</td>
 								<td>${kidsList.kidsAddress}</td>
