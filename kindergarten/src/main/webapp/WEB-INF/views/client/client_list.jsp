@@ -17,6 +17,15 @@
 <link href="resources/vendor/css/morris.css" rel="stylesheet">
 <!-- Custom Fonts -->
 <link href="resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!-- jQuery -->
+<script src="resources/vendor/js/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#searchButton').click(function(){
+				$('#searchForm').submit();
+		})
+	})
+</script>
 </head>
 <body>
 	<div id ="wrapper">
@@ -34,6 +43,21 @@
 			<div class="col-lg-1"></div>
 			<div class="col-lg-11">
 			<h2>거래처리스트</h2>
+			<!-- 검색처리 시작 -->
+				<form action="${pageContext.request.contextPath}/ClientList?searchOption=${searchOption}&keyword=${keyword}" method="get" id="searchForm" class="form-inline">
+					<select name="searchOption">
+						<option value="client_nm">거래처이름</option>
+						<option value="client_type">거래처구분</option>
+						<option value="client_registrant">등록인</option>
+					</select>
+					<div class="input-group">
+						<input id="keyword" name="keyword" type="text" class="form-control" placeholder="Search">
+						<div class="input-group-btn">
+							<button id="searchButton" type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
+						</div>
+					</div>
+				</form>
+			<!-- 검색처리 끝 -->
 			<table class="table table-hover">
 				<thead>
 					<tr>

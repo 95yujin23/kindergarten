@@ -37,14 +37,12 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>식단코드</th>
 						<th>식단일자</th>
 						<th>중식(열량/단백질)</th>
 						<th>오전간식</th>
 						<th>오후간식</th>
 						<th>원산지</th>
 						<th>담당자</th>
-						<th>유치원 라이센스</th>
 						<th>수정</th>
 						<th>삭제</th>						
 					</tr>
@@ -52,14 +50,12 @@
 				<c:forEach var="feme" items="${list}">
 					<tbody>
 						<tr>
-							<td>${feme.feedingMenuCd}</td>
 							<td>${feme.menuDate}</td>
 							<td>${feme.lunchCaloryProtein}</td>
 							<td>${feme.morningSnack}</td>
 							<td>${feme.afternoonSnack}</td>
 							<td>${feme.origin}</td>
 							<td>${feme.menuManager}</td>
-							<td>${feme.licenseKindergarten}</td>
 							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/feeding/feedingMenu_modify?feedingMenuCd=${feme.feedingMenuCd}"><i class="fa fa-pencil"></i></a></td>
 							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/FeedingMenuDelete?feedingMenuCd=${feme.feedingMenuCd}"><i class="fa fa-trash"></i></a></td>
 						</tr>

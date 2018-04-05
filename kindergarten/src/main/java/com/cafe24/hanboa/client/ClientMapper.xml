@@ -17,9 +17,9 @@
 			,license_kindergarten as licenseKindergarten
 		FROM TB_CLIENT	
 		<if test="keyword !=null">
-			WHERE ${searchOption}LIKE CONCAT('%',#{keyword},'%')
+			WHERE ${searchOption} LIKE CONCAT('%',#{keyword},'%')
 		</if>
-		LIMIT #{startPage},#{pagePerRow}
+		LIMIT #{startPage}, #{pagePerRow}
 	</select>
 <!-- 전체 거래처 카테고리 수 (페이징)-->
 	<select id="selectClientCountByPage" resultType="int">
