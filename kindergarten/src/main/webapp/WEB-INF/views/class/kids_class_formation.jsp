@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <style>
-	@import  url('https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css');
+	/* @import  url('https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css'); */
 </style>
 <title>Teacher Attendance List</title>
 
@@ -26,16 +26,16 @@
 <link href="resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css"></head>
 <!-- jQuery -->
 <script src="resources/vendor/js/jquery.min.js"></script>
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="resources/vendor/css/datatables.min.css"/>
 <body>
 	<div id="wrapper">
 		<!-- TOP : Navigation -->
-		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<c:import url="../inc/top.jsp"></c:import>
 		<!-- TOP -->
 		<!-- LEFT : Navigation -->
 		<c:import url="../inc/left.jsp"></c:import>
 		<!-- LEFT -->
-		</nav>
 		
 		</div>
 	<div id="page-wrapper">
@@ -47,7 +47,7 @@
 		<button class="btn btn-danger unformationkidsbtn" style="float:right;margin-bottom:5px;">미편성 유아 보기</button>
         <thead>
             <tr>
-                <th>반편성 코드</th>
+                <th style="width:150px">선택</th>
                 <th>구분</th>
                 <th>이름</th>
                 <th>반이름</th>
@@ -90,10 +90,12 @@
 	<script src="resources/vendor/js/morris-data.js"></script>
 	<!-- Custom Theme JavaScript -->
 	<script src="resources/vendor/js/sb-admin-2.js"></script>
+	<!-- dataTables -->
+	<script type="text/javascript" src="resources/vendor/js/datatables.min.js"></script>
 	<script>
     'use strict';
 	var $ = jQuery;
-	$.getScript("https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js", function(){
+/* 	/* $.getScript("https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js", function(){  */
 		$('.unformationkidsbtn').on('click', function(){
 			$('#formationkidsdiv').removeClass('show').addClass("hide")
 			$('#unformationkidsdiv').removeClass('hide').addClass("show");
@@ -112,12 +114,11 @@
                 },
                 
                 columnDefs : [{
-                	"targets" : -1
-                	,"data" : null
+                	"targets" : 0, "width" : "10%"
+                	,"data" : 'kidsCd'
                 	,"render" : function (data,type,row,meta){
-                		return '<a href="'+data+'">상세정보</a>';
+                		return '<input type="checkbox" vlaue="'+data+'">';
                 	}
-                	   
                 }],
                 
                 columns : [
@@ -126,7 +127,11 @@
 					{data: "kidsNm"},
 					{data: "classNm"},
 					{data: "kidsParentPhone"},
-					{data: "kidsCd"}	
+					{data: "kidsCd"
+					,render: function (data,type,row,meta){
+						return '<a href="${pageContext.request.contextPath}/kidsinfo?kidsCd='+data+'" class="btn btn-primary">상세정보</a>';
+					 }
+					}	
                 ]
             });
             // 미편성 유아 출력하기
@@ -138,10 +143,11 @@
                     	},
                     	
                     	columnDefs : [{
-                    		"targets" : -1
+                    		"targets" : 0
+                    		,"width" : "10%"
                     		,"data" : null
                     		,"render" : function (data,type,row,meta){
-                    			return '<a href="'+data+'">상세정보</a>';
+                    			return '<input type="checkbox" vlaue="'+data+'">';
                     		}
                     	}],
                     	
@@ -151,10 +157,14 @@
    					{data: "kidsNm"},
    					{data: "classNm"},
    					{data: "kidsParentPhone"},
-   					{data: "kidsCd"}	
-               	]
-              })
-       });
+   					{data: "kidsCd"
+   						,render: function (data,type,row,meta){
+   							return '<a href="${pageContext.request.contextPath}/kidsinfo?kidsCd='+data+'" class="btn btn-primary">상세정보</a>';
+   					}
+   				}
+             ]
+          })
+    
             
 	</script>
 </body>
