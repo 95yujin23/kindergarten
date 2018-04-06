@@ -70,7 +70,7 @@
 									    <td><input class="form-control" id="kindergartenNm" name="kindergartenNm" placeholder="라이센스 요청 유치원"></td>
 									</tr>
 									<tr>
-								    	<td><label>유치원 주소</label><button type="button" id="postcodify_search_button">검색</button></td>
+								    	<td><label>유치원 주소</label>&nbsp;<button class="btn btn-info btn-lg" type="button" id="postcodify_search_button"><i class="fa fa-search"></i></button></td>
 									 	<td><input class="postcodify_postcode5 form-control" type="text" id="kindergartenPostCd" name="kindergartenPostCd" placeholder="우편번호"></td>
 									</tr>
 									<tr>
@@ -107,7 +107,7 @@
 									<input type="text" class="form-control" id="kindergartenPhone" name="kindergartenPhone" placeholder="지역번호를 제외한 나머지 번호를 입력해주세요."/></td>
 								    </tr>
 								</table>
-								<button id="addButton" type="button">등록</button>
+								<center><button class="btn btn-lg btn-primary" id="addButton" type="button">등록</button>
 							</form>
 							<!-- 승인되지 않은 키라고 나옴 why ? 
 								<form name="form" id="form2" method="post">
