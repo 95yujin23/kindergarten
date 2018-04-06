@@ -59,7 +59,7 @@
 								    <label>거래처코드</label>
 								    <select name="clientCd" class="form-control">
 								    	<c:forEach var="client" items="${client}">
-								    		<option value="${client.clientCd}">${client.clientCd}</option>
+								    		<option value="${client.clientCd}">${client.clientCd}:${client.clientNm}</option>
 								    	</c:forEach>
 								    </select>								    
 								</div>

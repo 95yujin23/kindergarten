@@ -22,6 +22,7 @@
 	<select id="callClient" resultType="com.cafe24.hanboa.client.Client">
 		SELECT
 			client_cd as clientCd
+			,client_nm as clientNm
 		FROM TB_CLIENT
 	</select>
 
@@ -31,9 +32,9 @@
 			resultType="com.cafe24.hanboa.contract.Contract">
 		SELECT
 			contract_cd as contractCd
+			,client_cd as clientCd
 			,contract_start_date as contractStartDate
 			,contract_end_date as contractEndDate
-			,client_cd as clientCd
 			,contract_amount as contractAmount
 			,contract_contents as contractContents
 			,contract_type as contractType
@@ -76,7 +77,6 @@
 		SET			
 			contract_start_date = #{contractStartDate}
 			,contract_end_date = #{contractEndDate}
-			,cleint_cd = #{clientCd}
 			,contract_amount = #{contractAmount}
 			,contract_contents = #{contractContents}
 			,contract_type = #{contractType}

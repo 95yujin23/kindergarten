@@ -46,7 +46,7 @@ public class ContractDao {
 	
 	// 4. 입력처리
 	public int insertContract(Contract contract) {
-		logger.debug("{} < -- insertContract메서드 실행 ContractDao.java");
+		logger.debug("{} < -- insertContract메서드 실행 ContractDao.java",contract);
 		return sqlSession.insert(localName+"contractAdd",contract);
 	}
 	
