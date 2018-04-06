@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.cafe24.hanboa.kids.Kids;
+
 @Repository
 public class FeedingApplicationDao {
 	@Autowired
@@ -20,6 +22,18 @@ public class FeedingApplicationDao {
 	public List<FeedingApplication> selectFeedingApplicationList(){
 		logger.debug("{} <- selectFeedingApplicationList FeedingApplicationDao.java");
 		return sqlSession.selectList(localName+"getFeedingApplication");
+	}
+	
+	// 1-1 kids 불러오기
+	public List<Kids> callKids(){
+		logger.debug("{} < -- callKids FeedingApplicationDao.java");
+		return sqlSession.selectList(localName+"callKids");
+	}
+	
+	// 1-2 월별급식 불러오기
+	public List<FeedingMonthly> callFeedingMonthly(){
+		logger.debug("{} < -- callFeedingMonthly FeedingApplicationDao.java");
+		return sqlSession.selectList(localName+"callMonthly");		
 	}
 	
 	// 2. 업데이트 정보요청
@@ -37,7 +51,7 @@ public class FeedingApplicationDao {
 	//4.입력처리
 	public int feedingApplicationAdd(FeedingApplication feedingApplication) {
 		logger.debug("{} <-- feedingApplicationAdd FeedingApplicationDao.java",feedingApplication);
-		return sqlSession.insert(localName+"feapInsert",feedingApplication);		
+		return sqlSession.insert(localName+"feapInsert",feedingApplication);	
 	}
 	
 	//5. 삭제처리

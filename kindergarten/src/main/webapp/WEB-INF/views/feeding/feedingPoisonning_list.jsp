@@ -37,16 +37,14 @@
 			<table class="table table-hover">
 				<thead> 
 					<tr>
-						<th>식중독발생및처리코드</th>
+						<th>식중독종류</th>					
 						<th>월별급식코드</th>
 						<th>발생일자</th>
 						<th>전체아동수</th>
 						<th>발생아동수</th>
-						<th>식중독종류</th>
 						<th>처리결과</th>
 						<th>등록날짜</th>
 						<th>등록인</th>
-						<th>유치원라이센스</th>
 						<th>수정</th>
 						<th>삭제</th>						
 					</tr>
@@ -54,16 +52,14 @@
 				<c:forEach var="fepo" items="${list}">
 					<tbody>
 						<tr>
-							<td>${fepo.foodPoisonningGenerationCd}</td>
+							<td>${fepo.fopoFoodPoisonningKids}</td>
 							<td>${fepo.feedingMonthlyCd}</td>
 							<td>${fepo.fepoGenerationDate}</td>
 							<td>${fepo.fopoWholeKidsCount}</td>
 							<td>${fepo.fopoGeneratedKidsCount}</td>
-							<td>${fepo.fopoFoodPoisonningKids}</td>
 							<td>${fepo.fopoProcessingResult}</td>
 							<td>${fepo.fopoRegistrationDate}</td>
 							<td>${fepo.registrant}</td>
-							<td>${fepo.licenseKindergarten}</td>
 							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/feeding/feedingPoisonning_modify?foodPoisonningGenerationCd=${fepo.foodPoisonningGenerationCd}"><i class="fa fa-pencil"></i></a></td>
 							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/FeedingPoisonningDelete?foodPoisonningGenerationCd=${fepo.foodPoisonningGenerationCd}"><i class="fa fa-trash"></i></a></td>
 						</tr>

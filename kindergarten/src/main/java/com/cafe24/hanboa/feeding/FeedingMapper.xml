@@ -2,6 +2,25 @@
 
 <mapper namespace="com.cafe24.hanboa.feeding.FeedingMapper">
 
+<!-- ++영유아코드 등록 -->
+	<select id = "callKids"
+			resultType="com.cafe24.hanboa.kids.Kids">
+		SELECT
+			kids_cd as kidsCd
+			,kids_nm as kidsNm
+		FROM TB_KIDS
+	</select>
+	
+<!-- ++월별급식 등록 -->
+	<select id = "callMonthly"
+			resultType="com.cafe24.hanboa.feeding.FeedingMonthly">
+		SELECT
+			feeding_monthly_cd as feedingMonthlyCd
+			,femo_feeding_month as femoFeedingMonth
+			,femo_feeding_year as femoFeedingYear
+		FROM TB_FEEDING_MONTHLY
+	</select>
+
 <!-- 급식신청 전체조회 -->
 	<select id="getFeedingApplication"
 			resultType="com.cafe24.hanboa.feeding.FeedingApplication">
@@ -51,6 +70,9 @@
 <!-- 급식신청 등록 -->
 	<insert id="feapInsert" 
 			parameterType="com.cafe24.hanboa.feeding.FeedingApplication">
+	<selectKey resultType="String" keyProperty="feedingApplicationCd" order="BEFORE">
+			SELECT CONCAT('FEAP', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_FEEDING_APPLICATION))
+	</selectKey>
 	INSERT INTO TB_FEEDING_APPLICATION
 			(feeding_application_cd
 			,kids_cd

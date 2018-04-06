@@ -1,5 +1,7 @@
 package com.cafe24.hanboa.feeding;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -7,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.cafe24.hanboa.kids.Kids;
 
 @Service
 @Transactional
@@ -18,9 +22,24 @@ public class FeedingApplicationService {
 	//1.전체조회
 	public List<FeedingApplication> getFeedingApplicationList(){
 		List<FeedingApplication> list = feedingApplicationDao.selectFeedingApplicationList();
-		logger.debug("{} <- getFeedingApplicationList FeedingApplicationService", list);
+		logger.debug("{} <- getFeedingApplicationList FeedingApplicationService.java", list);
 		return list;		
 	}
+	
+	//1-1 영유아 불러오기
+	public List<Kids> callKids(){
+		List<Kids> kidsCall = feedingApplicationDao.callKids();
+		logger.debug("{} <-- callKids FeedingApplicationService.java",kidsCall);
+		return kidsCall;
+	}
+	
+	//1-2 월별급식 불러오기
+	public List<FeedingMonthly> callMonthly(){
+		List<FeedingMonthly> femoCall = feedingApplicationDao.callFeedingMonthly();
+		logger.debug("{} <-- callKids FeedingApplicationService.java",femoCall);
+		return femoCall;
+	}
+	
 	
 	//2. 수정 정보요청
 	public FeedingApplication modifyGetfeap(String feedingApplicationCd) {		
@@ -39,11 +58,12 @@ public class FeedingApplicationService {
 	}
 	
 	//4.입력처리
-	public int feapAdd(FeedingApplication feedingApplication) {
-		int feapinsert = feedingApplicationDao.feedingApplicationAdd(feedingApplication);
+	public void feapAdd(FeedingApplication feedingApplication) {
+		String inDate = new SimpleDateFormat("yyyyMMdd").format(new Date());
+		feedingApplication.setFeapRegistrant(inDate);
+		feedingApplicationDao.feedingApplicationAdd(feedingApplication);
 		logger.debug("{} < -- feedingApplicationAdd FeedingApplicationService.java",feedingApplication);
-		logger.debug("{} < -- feedingApplicationAdd FeedingApplicationService.java",feapinsert);
-		return feapinsert;
+		logger.debug("{} < -- feedingApplicationAdd FeedingApplicationService.java",inDate);
 	}
 	
 	//5.삭제처리

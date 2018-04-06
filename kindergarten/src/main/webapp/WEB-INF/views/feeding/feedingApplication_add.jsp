@@ -47,17 +47,22 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<form id="addForm" action="${pageContext.request.contextPath}/FeedingApplicationAdd" method="POST">
-								<div class="form-group">
-								    <label>급식신청코드</label>
-								    <input class="form-control" id="feedingApplicationCd" name="feedingApplicationCd" placeholder="급식신청코드">
-								</div>
+								<input class="form-control" type="hidden" id="feedingApplicationCd" name="feedingApplicationCd" placeholder="수입급식비">
 								<div class="form-group">
 								    <label>영유아코드</label>
-								    <input class="form-control" id="kidsCd" name="kidsCd" placeholder="영유아코드">
+								    <select name="kids" class="form-control">
+								    	<c:forEach var="kids" items="${kids}">
+								    		<option value="${kids.kidsCd}">${kids.kidsCd}:${kids.kidsNm}</option>
+								    	</c:forEach>
+								    </select> 
 								</div>
 								<div class="form-group">
 								    <label>월별급식코드</label>
-								    <input class="form-control" id="feedingMonthlyCd" name="feedingMonthlyCd" placeholder="월별급식코드">
+								    <select name="feedingMonthly" class="form-control">
+								    	<c:forEach var="feedingMonthly" items="${feedingMonthly}" >
+								    		<option value="${feedingMonthly.feedingMonthlyCd}">${feedingMonthly.femoFeedingYear}년${feedingMonthly.femoFeedingMonth}월</option>
+								    	</c:forEach>
+								    </select>								    
 								</div>
 								<div class="form-group">
 								    <label>수입급식비</label>
@@ -69,24 +74,22 @@
 								</div>
 								<div class="form-group">
 								    <label>마감유무</label>
-								    <input class="form-control" id="feapClosingOption" name="feapClosingOption" placeholder="마감유무">
+								    <select name="feapClosingOption" class="form-control">
+								    <option value="마감전">마감전</option>
+								    <option value="마감">마감</option>
+								    </select>								    
 								</div>
 								<div class="form-group">
 								    <label>급식구분자</label>
-								    <input class="form-control" id="feapDivision" name="feapDivision" placeholder="급식구분자">
-								</div>
-									<div class="form-group">
-								    <label>등록날짜</label>
-								    <input type="date" class="form-control" id="feapRegistrationDate" name="feapRegistrationDate" placeholder="등록날짜">
+								    <select name="feapDivision" class="form-control">
+								    <option value="미납">미납</option>
+								    <option value="완납">완납</option>
+								    </select>
 								</div>
 								<div class="form-group">
 								    <label>등록인</label>
 								    <input class="form-control" id="feapRegistrant" name="feapRegistrant" placeholder="등록인">
 								</div>	
-								<div class="form-group">
-								    <label>유치원 라이센스</label>
-								    <input class="form-control" id="licenseKindergarten" name="licenseKindergarten" placeholder="유치원라이센스">
-								</div>
 					
 								<button type="submit">등록</button>
 							</form>

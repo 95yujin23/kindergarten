@@ -37,7 +37,6 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>급식신청 코드</th>
 						<th>영유아 코드</th>
 						<th>월별급식 코드</th>
 						<th>수입급식비</th>
@@ -46,7 +45,6 @@
 						<th>급식구분자</th>
 						<th>등록날짜</th>
 						<th>등록인</th>
-						<th>유치원라이센스</th>
 						<th>수정</th>
 						<th>삭제</th>						
 					</tr>
@@ -54,7 +52,6 @@
 				<c:forEach var="feap" items="${list}">
 					<tbody>
 						<tr>
-							<td>${feap.feedingApplicationCd}</td>
 							<td>${feap.kidsCd}</td>
 							<td>${feap.feedingMonthlyCd}</td>
 							<td>${feap.feapEspenseMonth}</td>
@@ -63,7 +60,6 @@
 							<td>${feap.feapDivision}</td>
 							<td>${feap.feapRegistrationDate}</td>
 							<td>${feap.feapRegistrant}</td>
-							<td>${feap.licenseKindergarten}</td>
 							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/feeding/feedingApplication_modify?feedingApplicationCd=${feap.feedingApplicationCd}"><i class="fa fa-pencil"></i></a></td>
 							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/FeedingApplicationDelete?feedingApplicationCd=${feap.feedingApplicationCd}"><i class="fa fa-trash"></i></a></td>
 						</tr>

@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cafe24.hanboa.kids.Kids;
+import com.cafe24.hanboa.teacher.Teacher;
+
 @Controller
 public class FeedingApplicationController {
 	@Autowired
@@ -42,22 +45,35 @@ public class FeedingApplicationController {
 	@RequestMapping(value="/feeding/feedingApplication_modify", method = RequestMethod.POST)
 	public String feedingApplicationModify(FeedingApplication feedingApplication) {
 		feapService.modifyFeap(feedingApplication);
-		return "redirect:/feeding/feedingApplication_list";		
+		return "redirect:/FeedingApplicationList";		
 	}
 	
 	// 4. 입력화면
 	@RequestMapping(value="/FeedingApplicationAdd", method=RequestMethod.GET)
-	public String feedingApplicationAdd() {
-		logger.debug("{} <-- feedingApplicationAdd(addForm) FeedingApplicationController.java");
+	public String feedingApplicationAdd(Model model) {
+		List<Kids> kids = feapService.callKids();
+		List<FeedingMonthly> feedingMonthly = feapService.callMonthly();
+		logger.debug("{} <-- feedingApplicationAdd(addForm) FeedingApplicationController.java",kids);
+		logger.debug("{} <-- feedingApplicationAdd(addForm) FeedingApplicationController.java",feedingMonthly);
+		model.addAttribute("kids",kids);
+		model.addAttribute("feedingMonthly",feedingMonthly);
 		return "feeding/feedingApplication_add";		
 	}
 	
 	//5. 입력처리
 	@RequestMapping(value="/FeedingApplicationAdd", method=RequestMethod.POST)
-	public String feedingApplicationAdd(Model model, FeedingApplication feedingApplication) {
+	public String feedingApplicationAdd(Model model, HttpSession session, Teacher teacher, FeedingApplication feedingApplication) {
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
+		if(loginTeacher == null) {
+			// loginTeacher의 값이 null이라면 login화면으로
+			return "redirect:/Login";
+		}
+		// null이 아니라면 loginTeacher세션에서 교원번호와 라이센스를 받아서 teacher객체에 셋팅한다.
+		feedingApplication.setLicenseKindergarten(loginTeacher.getLicenseKindergarten());
 		feapService.feapAdd(feedingApplication);
 		logger.debug("{} <-- feedingApplicationAdd FeedingApplicationController.java",feedingApplication);
-		return "redirect:/feeding/feedingApplication_list";		
+		return "redirect:/FeedingApplicationList";		
 	}
 	
 	//6. 삭제처리
@@ -65,7 +81,7 @@ public class FeedingApplicationController {
 	public String feedingApplicationDelete(Model model, @RequestParam(value="feedingApplicationCd", required=true)String feedingApplicationCd) {
 		feapService.feedingApplicationDelete(feedingApplicationCd);
 		logger.debug("{} < -- feedingApplicationDelete메서드 실행  FeedingApplicationController.java",feedingApplicationCd);
-		return "redirect:/";
+		return "redirect:/FeedingApplicationList";
 		}
 	
 

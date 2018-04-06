@@ -37,11 +37,10 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>월별급식 코드</th>
-						<th>급식실시(월)</th>
 						<th>급식실시(년)</th>
+						<th>급식실시(월)</th>
+						<th>급식운영방식</th>						
 						<th>조리사(명)</th>
-						<th>급식운영방식</th>
 						<th>집단급식소신고여부</th>
 						<th>계약코드</th>
 						<th>지출급식비</th>
@@ -49,7 +48,6 @@
 						<th>마감유무</th>
 						<th>등록날짜</th>
 						<th>등록인</th>
-						<th>유치원라이센스</th>
 						<th>수정</th>
 						<th>삭제</th>						
 					</tr>
@@ -57,11 +55,10 @@
 				<c:forEach var="femo" items="${list}">
 					<tbody>
 						<tr>
-							<td>${femo.feedingMonthlyCd}</td>
+							<td>${femo.femoFeedingYear}</td>							
 							<td>${femo.femoFeedingMonth}</td>
-							<td>${femo.femoFeedingYear}</td>
-							<td>${femo.femoCook}</td>
 							<td>${femo.femoOperationMethod}</td>
+							<td>${femo.femoCook}</td>
 							<td>${femo.femoCafeteriaReportedCheck}</td>
 							<td>${femo.contractCd}</td>
 							<td>${femo.femoExpenditureCost}</td>
@@ -69,7 +66,6 @@
 							<td>${femo.femoClosingOption}</td>
 							<td>${femo.femoRegistrationDate}</td>
 							<td>${femo.femoRegistrant}</td>
-							<td>${femo.licenseKindergarten}</td>
 							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/feeding/feedingMonthly_modify?feedingMonthlyCd=${femo.feedingMonthlyCd}"><i class="fa fa-pencil"></i></a></td>
 							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/FeedingMonthlyDelete?feedingMonthlyCd=${femo.feedingMonthlyCd}"><i class="fa fa-trash"></i></a></td>
 						</tr>
