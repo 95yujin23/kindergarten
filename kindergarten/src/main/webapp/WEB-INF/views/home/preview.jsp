@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Daum 지도 시작하기</title>
+<title>유치원 요약 정보</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="resources/vendor/css/bootstrap.min.css" rel="stylesheet">
@@ -42,21 +42,49 @@
 			<div class="col-lg-12">
 				<h1 class="page-header">${kindergarten.kindergartenNm} 정보 요약</h1>
 			</div>
-			<div class="col-lg-12">
+		</div>
+		<div class="row">
+			<div class="col-lg-6">
 				<table class="table table-striped table-bordered table-hover">
+					<tr>
+						<td>대표자명</td>
+						<td>${kindergarten.kindergartenLeader}</td>
+					</tr>
+					<tr>
+						<td>설립유형</td>
+						<td>${kindergarten.kindergartenTypeOfFoundation}</td>
+					</tr>
+					<tr>
+						<td>설립(개원)일</td>
+						<td>${kindergarten.kindergartenDateOfFoundation}</td>
+					</tr>
+					<tr>
+						<td>홈페이지</td>
+						<td><a href="${kindergarten.kindergartenHomepage}">${kindergarten.kindergartenHomepage}</a></td>
+					</tr>
 					<tr>
 						<td>전화번호</td>
 						<td>${kindergarten.kindergartenPhone}</td>
+					</tr>
+					<tr>
+						<td>운영시간</td>
+						<td>${kindergarten.kindergartenOpenHour}</td>
 					</tr>
 					<tr>
 						<td>주소</td>
 						<td>${kindergarten.kindergartenAddress}</td>
 					</tr>
 					<tr>
-						<td>위치정보</td>
-						<td><div id="map" style="width:500px;height:400px;"></div></td>
+						<td>우편번호</td>
+						<td>${kindergarten.kindergartenPostCd}</td>
 					</tr>
 				</table>
+			</div>
+				<div class="col-lg-6">
+				<table class="table table-striped table-bordered table-hover">
+					<tr><td><div id="map" style="width:100%;height:400px;"></div></td></tr>
+				</table>
+				</div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=25d7e7832ecdbf853a349bb2f0f1b86f&libraries=services"></script>
 		<script>
 			var container = document.getElementById('map'); // 지도를 표시할 div
@@ -90,9 +118,7 @@
 				}
 			});
 		</script>
-			</div>
 		</div>
-
 	<!-- FOOTER : Navigation -->
 	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->
