@@ -42,9 +42,9 @@
 		<div class="row">
 			<div class="col-lg-12">
 			<h1 class="page-header">영유아 반 편성</h1>
-	
-	<table id="example" class="display" cellspacing="0" width="100%">
-		<button id="unformationkids" class="btn btn-danger" style="float:right;margin-bottom:5px;">미편성 유아 보기</button>
+	<div id="formationkidsdiv" class="show formationkidsdiv">
+	<table class="display formationkidsList" cellspacing="0" width="100%">
+		<button class="btn btn-danger unformationkidsbtn" style="float:right;margin-bottom:5px;">미편성 유아 보기</button>
         <thead>
             <tr>
                 <th>반편성 코드</th>
@@ -55,10 +55,26 @@
                 <th>상세정보</th>
             </tr>
         </thead>
-     	<td><button type="button" class="btn btn-primary">상세정보</button></td>
     </table>
+    </div>
    </div>
+   	<!-- 미편성 유아 -->
+   	<div id="unformationkidsdiv" class="unformationkidsdiv hide">
+   	<table class="display unformationkidsList" cellspacing="0" width="100%">
+		<button class="btn btn-success formationkidsbtn" style="float:right;margin-bottom:5px;">편성 유아 보기</button>
+        <thead>
+            <tr>
+                <th>반편성 코드</th>
+                <th>성별</th>
+                <th>이름</th>
+                <th>반이름</th>
+                <th>전화번호</th>
+                <th>상세정보</th>
+            </tr>
+        </thead>
+    </table>
   </div>
+ </div>
  </div>
     
 <!-- FOOTER : Navigation -->
@@ -78,11 +94,17 @@
     'use strict';
 	var $ = jQuery;
 	$.getScript("https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js", function(){
+		$('.unformationkidsbtn').on('click', function(){
+			$('#formationkidsdiv').removeClass('show').addClass("hide")
+			$('#unformationkidsdiv').removeClass('hide').addClass("show");
+		})
+		$('.formationkidsbtn').on('click', function(){
+			$('#formationkidsdiv').removeClass('hide').addClass("show")
+			$('#unformationkidsdiv').removeClass('show').addClass("hide");
+		}) 
+		
        
-            $('#example').DataTable( {
-               /*  "paging":   true,
-                "ordering": true,
-                "info":     false, */
+           $('.formationkidsList').DataTable( {
                 ajax : {
                 	url :"${pageContext.request.contextPath}/formationKidsList"
                 	,type : "POST"
@@ -99,8 +121,8 @@
                 }],
                 
                 columns : [
-					{data: "kidsClassFormationCd"},
-					{data: "kidsParentPhone"},
+					{data: "kidsCd"},
+					{data: "kidsGender"},
 					{data: "kidsNm"},
 					{data: "classNm"},
 					{data: "kidsParentPhone"},
@@ -108,34 +130,32 @@
                 ]
             });
             // 미편성 유아 출력하기
-            $('#unformationkids').click(function(){
-            	$('#example').DataTable({
-            		ajax : {
-                		url : "${pageContext.request.contextPath}/unformationkids"
-                		,type : "POST"
-                		,dataType : "JSON"
-                	},
-                	
-                	columnDefs : [{
-                		"targets" : -1
-                		,"data" : null
-                		,"render" : function (data,type,row,meta){
-                			return '<a href="'+data+'">상세정보</a>';
-                		}
-                	}],
-                	
-                	columns : [
-                		{data: "kidsClassFormationCd"},
-    					{data: "kidsParentPhone"},
-    					{data: "kidsNm"},
-    					{data: "classNm"},
-    					{data: "kidsParentPhone"},
-    					{data: "kidsCd"}	
-                	]
-                })
-           })
-            	
-	});
+            		$('.unformationkidsList').DataTable({
+                		ajax : {
+                    		url : "${pageContext.request.contextPath}/unformationkids"
+                    		,type : "POST"
+                    		,dataType : "JSON"
+                    	},
+                    	
+                    	columnDefs : [{
+                    		"targets" : -1
+                    		,"data" : null
+                    		,"render" : function (data,type,row,meta){
+                    			return '<a href="'+data+'">상세정보</a>';
+                    		}
+                    	}],
+                    	
+               	columns : [
+               		{data: "kidsCd"},
+   					{data: "kidsGender"},
+   					{data: "kidsNm"},
+   					{data: "classNm"},
+   					{data: "kidsParentPhone"},
+   					{data: "kidsCd"}	
+               	]
+              })
+       });
+            
 	</script>
 </body>
 </html>

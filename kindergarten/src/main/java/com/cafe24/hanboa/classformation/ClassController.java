@@ -69,8 +69,8 @@ public class ClassController {
 			
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("data", classService.unformationkids(kidsformation));
-			Object result = map;
-			return result;
+			Object unFormationKids = map;
+			return unFormationKids;
 		}
 		
 		
