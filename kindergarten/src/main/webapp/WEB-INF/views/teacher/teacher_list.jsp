@@ -40,14 +40,12 @@
 <div id="wrapper">
 
 	<!-- TOP : Navigation -->
-	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 	<c:import url="../inc/top.jsp"></c:import>
 	<!-- TOP -->
 
 	<!-- LEFT : Navigation -->
 	<c:import url="../inc/left.jsp"></c:import>
 	<!-- LEFT -->
-	</nav>
 </div>
 <div id="page-wrapper">
 	<div class="row">
@@ -142,12 +140,10 @@
 			</div>
 		</div>
 	</div>
-</div>
-
 	<!-- FOOTER : Navigation -->
 	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->
-
+</div>
 <!-- jQuery -->
 <script src="resources/vendor/js/jquery.min.js"></script>
 

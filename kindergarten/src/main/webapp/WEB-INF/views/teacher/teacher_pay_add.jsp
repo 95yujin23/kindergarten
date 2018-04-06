@@ -26,28 +26,18 @@
 <!-- Custom Fonts -->
 <link href="resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body>
 
 <div id="wrapper">
-
 	<!-- TOP : Navigation -->
-	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 	<c:import url="../inc/top.jsp"></c:import>
 	<!-- TOP -->
 
 	<!-- LEFT : Navigation -->
 	<c:import url="../inc/left.jsp"></c:import>
 	<!-- LEFT -->
-	</nav>
 </div>
 <div id="page-wrapper">
 	<div class="row">
@@ -65,7 +55,6 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<form id="addForm" action="${pageContext.request.contextPath}/TeacherPayAdd" method="POST">
-								
 								<div class="form-group">
 								    <label>Name</label>
 								    <select name="teacherCd" class="form-control">
@@ -94,11 +83,10 @@
 			</div>
 		</div>
 	</div>
-</div>
 	<!-- FOOTER : Navigation -->
 	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->
-
+</div>
 	<!-- jQuery -->
 	<script src="resources/vendor/js/jquery.min.js"></script>
 
