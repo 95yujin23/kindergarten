@@ -28,7 +28,7 @@
 			feeding_application_cd as feedingApplicationCd
 			,kids_cd as kidsCd
 			,feeding_monthly_cd as feedingMonthlyCd
-			,feap_expense_month as feapEspenseMonth
+			,feap_expense_month as feapExpenseMonth
 			,feap_closing_income as feapClosingIncome
 			,feap_closing_option as feapClosingOption
 			,feap_division as feapDivision
@@ -71,7 +71,7 @@
 	<insert id="feapInsert" 
 			parameterType="com.cafe24.hanboa.feeding.FeedingApplication">
 	<selectKey resultType="String" keyProperty="feedingApplicationCd" order="BEFORE">
-			SELECT CONCAT('FEAP', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_FEEDING_APPLICATION))
+			SELECT CONCAT('FE_AP', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_FEEDING_APPLICATION))
 	</selectKey>
 	INSERT INTO TB_FEEDING_APPLICATION
 			(feeding_application_cd
@@ -80,7 +80,7 @@
 			,feap_expense_month
 			,feap_closing_income
 			,feap_closing_option
-			,feap_division
+			,feap_division			
 			,feap_registration_date
 			,feap_registrant
 			,license_kindergarten)

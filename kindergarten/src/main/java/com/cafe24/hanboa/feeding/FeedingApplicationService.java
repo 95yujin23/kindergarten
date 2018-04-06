@@ -60,7 +60,7 @@ public class FeedingApplicationService {
 	//4.입력처리
 	public void feapAdd(FeedingApplication feedingApplication) {
 		String inDate = new SimpleDateFormat("yyyyMMdd").format(new Date());
-		feedingApplication.setFeapRegistrant(inDate);
+		feedingApplication.setFeapRegistrationDate(inDate);
 		feedingApplicationDao.feedingApplicationAdd(feedingApplication);
 		logger.debug("{} < -- feedingApplicationAdd FeedingApplicationService.java",feedingApplication);
 		logger.debug("{} < -- feedingApplicationAdd FeedingApplicationService.java",inDate);

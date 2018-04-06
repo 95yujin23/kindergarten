@@ -30,11 +30,11 @@ public class FeedingApplication {
 	public void setFeedingMonthlyCd(String feedingMonthlyCd) {
 		this.feedingMonthlyCd = feedingMonthlyCd;
 	}
-	public int getFeapEspenseMonth() {
+	public int getFeapExpenseMonth() {
 		return feapExpenseMonth;
 	}
-	public void setFeapEspenseMonth(int feapEspenseMonth) {
-		this.feapExpenseMonth = feapEspenseMonth;
+	public void setFeapExpenseMonth(int feapExpenseMonth) {
+		this.feapExpenseMonth = feapExpenseMonth;
 	}
 	public int getFeapClosingIncome() {
 		return feapClosingIncome;
@@ -75,7 +75,7 @@ public class FeedingApplication {
 	@Override
 	public String toString() {
 		return "FeedingApplication [feedingApplicationCd=" + feedingApplicationCd + ", kidsCd=" + kidsCd
-				+ ", feedingMonthlyCd=" + feedingMonthlyCd + ", feapEspenseMonth=" + feapExpenseMonth
+				+ ", feedingMonthlyCd=" + feedingMonthlyCd + ", feapExpenseMonth=" + feapExpenseMonth
 				+ ", feapClosingIncome=" + feapClosingIncome + ", feapClosingOption=" + feapClosingOption
 				+ ", feapDivision=" + feapDivision + ", feapRegistrationDate=" + feapRegistrationDate
 				+ ", feapRegistrant=" + feapRegistrant + ", licenseKindergarten=" + licenseKindergarten + "]";

@@ -54,7 +54,7 @@
 						<tr>
 							<td>${feap.kidsCd}</td>
 							<td>${feap.feedingMonthlyCd}</td>
-							<td>${feap.feapEspenseMonth}</td>
+							<td>${feap.feapExpenseMonth}</td>
 							<td>${feap.feapClosingIncome}</td>
 							<td>${feap.feapClosingOption}</td>
 							<td>${feap.feapDivision}</td>

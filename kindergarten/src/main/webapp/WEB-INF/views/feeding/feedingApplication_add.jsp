@@ -50,7 +50,7 @@
 								<input class="form-control" type="hidden" id="feedingApplicationCd" name="feedingApplicationCd" placeholder="수입급식비">
 								<div class="form-group">
 								    <label>영유아코드</label>
-								    <select name="kids" class="form-control">
+								    <select name="kidsCd" class="form-control">
 								    	<c:forEach var="kids" items="${kids}">
 								    		<option value="${kids.kidsCd}">${kids.kidsCd}:${kids.kidsNm}</option>
 								    	</c:forEach>
@@ -58,7 +58,7 @@
 								</div>
 								<div class="form-group">
 								    <label>월별급식코드</label>
-								    <select name="feedingMonthly" class="form-control">
+								    <select name="feedingMonthlyCd" class="form-control">
 								    	<c:forEach var="feedingMonthly" items="${feedingMonthly}" >
 								    		<option value="${feedingMonthly.feedingMonthlyCd}">${feedingMonthly.femoFeedingYear}년${feedingMonthly.femoFeedingMonth}월</option>
 								    	</c:forEach>
