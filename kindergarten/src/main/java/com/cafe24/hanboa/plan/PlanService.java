@@ -1,5 +1,7 @@
 package com.cafe24.hanboa.plan;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,12 +12,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cafe24.hanboa.classformation.KidsClass;
+import com.cafe24.hanboa.program.ProgramDao;
+
 @Service
 @Transactional
 public class PlanService {
 	@Autowired
 	private PlanDao planDao;
 	private static final Logger logger = LoggerFactory.getLogger(PlanService.class);
+	
+	// 계획안
+	// 1-1. 계획안 등록 : 계획안 카테고리 불러오기
+	public List<PlanCategory> callPlanCategory() {
+		return planDao.callPlanCategory();
+	}
+	// 1-2. 계획안 등록 : 영유아 반 불러오기
+	public List<KidsClass> callKidsClass() {
+		return planDao.callKidsClass();
+	}
+	// 1-3. 계획안 등록
+	public void insertPlan(Plan plan) {
+		String inDate = new SimpleDateFormat("yyyyMMdd").format(new Date());
+		plan.setPlanRegistrationDate(inDate);
+		planDao.insertPlan(plan);
+		logger.debug("{} <- insertPlan PlanService.java", plan);
+	}
 	
 	// 계획안 카테고리
 	// 1. 계획안 카테고리 등록

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cafe24.hanboa.classformation.KidsClass;
 import com.cafe24.hanboa.teacher.Teacher;
 
 @Controller
@@ -21,6 +22,38 @@ public class PlanController {
 	@Autowired
 	public PlanService planService;
 	private static final Logger logger = LoggerFactory.getLogger(PlanController.class);
+	
+	// 계획안
+	// 1-1. 계획안 등록을 위한 계획안 카테고리, 영유아 반 불러오기 및 입력 요청
+	@RequestMapping(value="/PlanAdd", method=RequestMethod.GET)
+	public String PlanInsert(Model model) {
+		List<PlanCategory> plancate = planService.callPlanCategory();
+		List<KidsClass> kidClass = planService.callKidsClass();
+		model.addAttribute("plancate", plancate);
+		model.addAttribute("kidClass", kidClass);
+		logger.debug("1. PlanController.java PlanInsert()메소드 실행 ");
+		logger.debug("------------------------------------------------------------");
+		return "plan/plan_add";
+	}
+	// 1-2. 계획안 등록 입력
+	@RequestMapping(value="/PlanAdd", method=RequestMethod.POST)
+	public String PlanInsert(HttpSession session, Teacher teacher, Plan plan) {
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
+		if(loginTeacher == null) {
+			// loginTeacher의 값이 null이라면 login화면으로
+			return "redirect:/Login";
+		}
+		plan.setLicenseKindergarten(loginTeacher.getLicenseKindergarten());
+		planService.insertPlan(plan);
+		logger.debug("{} <- PlanInsert PlanController.java", plan);
+		return "redirect:/PlanList";
+	}
+	// 2. 계획안 전체조회+검색+페이징
+	@RequestMapping(value="/PlanList", method=RequestMethod.GET)
+	public String PlanList() {
+		return "plan/plan_list";
+	}
 	
 	// 계획안 카테고리
 	// 1. 계획안 카테고리 등록 요청

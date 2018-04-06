@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.hanboa.PlanMapper">
+	<!-- 계획안 -->
+	<!-- 1-1. 계획안 등록 : 계획안 카테고리 불러오기 -->
+	<select id="callPlanCategory" resultType="com.cafe24.hanboa.plan.PlanCategory">
+		SELECT
+			PLAN_CATE_CD AS planCateCd
+			, CATE_NM AS cateNm
+		FROM TB_PLAN_CATEGORY
+	</select>
+	<!-- 1-2. 계획안 등록 : 영유아 반 불러오기 -->
+	<select id="callKidsClass" resultType="com.cafe24.hanboa.classformation.KidsClass">
+		SELECT
+			KIDS_CLASS_CD AS kidsClassCd
+			, CLASS_NM AS classNm
+			, CLASS_KIDS_AGE AS classKidsAge
+		FROM TB_KIDS_CLASS
+	</select>
+	<!-- 1-3. 계획안 등록 -->
+	<insert id="insertPlan" parameterType="com.cafe24.hanboa.plan.Plan">
+		<!-- selectKey설정 - #{planCd} : 문자열(PLAN_) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 --> 
+		<selectKey resultType="String" keyProperty="planCd" order="BEFORE">
+			SELECT CONCAT('PLAN', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_PLAN ))
+		</selectKey>
+		INSERT INTO TB_PLAN (
+			PLAN_CD
+			, PLAN_CATE_CD
+			, KIDS_CLASS_CD
+			, PLAN_NM
+			, PLAN_CONTENT
+			, PLAN_YMWD_SET
+			, PLAN_REGISTRATION_DATE
+			, PLAN_REGISTRANT
+			, LICENSE_KINDERGARTEN
+		) VALUES (
+			#{planCd}
+			, #{planCateCd}
+			, #{kidsClassCd}
+			, #{planNm}
+			, #{planContent}
+			, #{planYMWDSet}
+			, #{planRegistrationDate}
+			, #{planRegistrant}
+			, #{licenseKindergarten}
+		)
+	</insert>	
+	
+	
 	<!-- 계획안 카테고리  -->
 	<!-- 1. 계획안 카테고리 등록 -->
 	<insert id="insertPalnCategory" parameterType="com.cafe24.hanboa.plan.PlanCategory">
