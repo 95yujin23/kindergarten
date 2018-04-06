@@ -62,12 +62,10 @@
 					<thead>
 						<tr>
 							<th>계획안명</th>
-							<th>계획안 카테고리</th>
-							<th>영유아반</th>
-							<th>내용</th>
+							<th>계획안 카테고리 코드</th>
+							<th>영유아반 코드</th>
 							<th>등록날짜</th>
 							<th>등록인</th>
-							<th>자세히</th>
 							<th>수정</th>
 							<th>삭제</th>
 						</tr>
@@ -75,8 +73,13 @@
 					<c:forEach var="list" items="${list}">
 						<tbody>
 						<tr>
-							<td>${list.cateNm}</td>							
-							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/PlanCategoryDelete?planCateCd=${list.planCateCd}"><i class="fa fa-trash"></i></a></td>
+							<td><a href="${pageContext.request.contextPath}/PlanDetail?planCd=${list.planCd}&planCateCd=${list.planCateCd}&kidsClassCd=${list.kidsClassCd}">${list.planNm}</a></td>
+							<td>${list.planCateCd}</td>
+							<td>${list.kidsClassCd}</td>
+							<td>${list.planRegistrationDate}</td>
+							<td>${list.planRegistrant}</td>
+							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/PlanModify?planCd=${list.planCd}"><i class="fa fa-pencil"></i></a></td>							
+							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/PlanDelete?planCd=${list.planCd}"><i class="fa fa-trash"></i></a></td>
 						</tr>
 					</tbody>
 					</c:forEach>

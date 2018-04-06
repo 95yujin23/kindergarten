@@ -45,7 +45,69 @@
 			, #{licenseKindergarten}
 		)
 	</insert>	
-	
+	<!-- 2-1. 계획안 전체조회+검색+페이징 -->
+	<select id="getPlanList" parameterType="java.util.Map" resultType="com.cafe24.hanboa.plan.Plan">
+		SELECT
+			PLAN_CD AS planCd
+			, PLAN_CATE_CD AS planCateCd
+			, KIDS_CLASS_CD AS kidsClassCd
+			, PLAN_NM AS planNm
+			, PLAN_REGISTRATION_DATE AS planRegistrationDate
+			, PLAN_REGISTRANT AS planRegistrant
+		FROM TB_PLAN
+		<if test="keyword != null">
+			WHERE CATE_NM LIKE CONCAT('%',#{keyword},'%')
+		</if>
+		LIMIT #{startPage}, #{pagePerRow}
+	</select>
+	<!-- 2-2. 전체 계획안 수(페이징) -->
+	<select id="selectPlanCountByPage" resultType="int">
+		SELECT COUNT(*) FROM TB_PLAN
+	</select>
+	<!-- 3-1. 계획안 개별 조회 : 계획안 카테고리 이름 불러오기 -->
+	<select id="callPlanCategoryOne" resultType="com.cafe24.hanboa.plan.PlanCategory">
+		SELECT
+			PLAN_CATE_CD AS planCateCd
+			, CATE_NM AS cateNm
+		FROM TB_PLAN_CATEGORY
+		WHERE PLAN_CATE_CD = #{planCateCd}
+	</select>
+	<!-- 3-2. 계획안 개별 조회 : 영유아 반 이름 불러오기 -->
+	<select id="callKidsClassOne" resultType="com.cafe24.hanboa.classformation.KidsClass">
+		SELECT
+			KIDS_CLASS_CD AS kidsClassCd
+			, CLASS_NM AS classNm
+		FROM TB_KIDS_CLASS
+		WHERE KIDS_CLASS_CD = #{kidsClassCd}
+	</select>
+	<!-- 3-3. 계획안 개별 조회 -->
+	<resultMap id="planAllCall" type="com.cafe24.hanboa.plan.Plan">
+		<id column="PLAN_CD" property="planCd" />
+		<result column="PLAN_CATE_CD" property="planCateCd" />
+		<result column="KIDS_CLASS_CD" property="kidsClassCd" />
+		<result column="PLAN_NM" property="planNm" />
+		<result column="PLAN_CONTENT" property="planContent" />
+		<result column="PLAN_YMWD_SET" property="planYMWDSet" />
+		<result column="PLAN_REGISTRATION_DATE" property="planRegistrationDate" />
+		<result column="PLAN_REGISTRANT" property="planRegistrant" />
+		<collection property="cateNm" javaType="String" ofType="com.cafe24.hanboa.plan.PlanCategory" column="CATE_NM" select="callPlanCategoryOne"></collection>
+		<collection property="classNm" javaType="String" ofType="com.cafe24.hanboa.classformation.KidsClass" column="CLASS_NM" select="callKidsClassOne"></collection>
+	</resultMap>
+	<select id="getPlanOne" parameterType="String" resultMap="planAllCall">
+		SELECT
+			p.PLAN_CD
+			, p.PLAN_NM
+			, p.PLAN_CONTENT
+			, p.PLAN_YMWD_SET
+			, p.PLAN_REGISTRATION_DATE
+			, p.PLAN_REGISTRANT
+			, pc.CATE_NM
+			, kc.CLASS_NM
+		FROM TB_PLAN p
+		INNER JOIN TB_PLAN_CATEGORY pc ON p.PLAN_CATE_CD = pc.PLAN_CATE_CD
+		INNER JOIN TB_KIDS_CLASS kc ON p.KIDS_CLASS_CD = kc.KIDS_CLASS_CD
+		WHERE p.PLAN_CD = #{planCd}
+	</select>
 	
 	<!-- 계획안 카테고리  -->
 	<!-- 1. 계획안 카테고리 등록 -->

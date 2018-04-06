@@ -51,8 +51,41 @@ public class PlanController {
 	}
 	// 2. 계획안 전체조회+검색+페이징
 	@RequestMapping(value="/PlanList", method=RequestMethod.GET)
-	public String PlanList() {
+	public String PlanList(Model model
+						, @RequestParam(value="keyword", required = false) String keyword
+						, @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
+						, @RequestParam(value = "pagePerRow", required = false, defaultValue = "10") int pagePerRow) {
+		logger.debug("2. PlanController.java PlanList()메소드 실행 ");
+		logger.debug("{} <- currentPage PlanList PlanController.java", currentPage);
+		logger.debug("{} <- pagePerRow PlanList PlanController.java", pagePerRow);
+		logger.debug("{} <- keyword PlanList PlanController.java", keyword);
+		Map<String, Object> map = planService.selectPlanList(currentPage, pagePerRow, keyword);
+		List<Plan> list = (List<Plan>)(map.get("list"));
+		int countPage = (Integer)map.get("countPage");
+		String searchKeyword = (String)map.get("keyword");
+		model.addAttribute("list", list);
+		model.addAttribute("countPage", countPage);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("keyword", searchKeyword);
+		logger.debug("{} <- list PlanList PlanController.java", list);
+		logger.debug("------------------------------------------------------------");
 		return "plan/plan_list";
+	}
+	// 3. 계획안 개별 조회
+	@RequestMapping(value="/PlanDetail", method=RequestMethod.GET)
+	public String PlanListOne(Model model
+						, @RequestParam(value="planCd", required = true) String planCd
+						, @RequestParam(value="planCateCd", required = true) String planCateCd
+						, @RequestParam(value="kidsClassCd", required = true) String kidsClassCd) {
+		logger.debug("{} <- planCd PlanListOne PlanController.java", planCd);
+		Plan plan = planService.getPlanOne(planCd);
+		PlanCategory planCategory = planService.callPlanCategoryOne(planCateCd);
+		KidsClass kidsClass = planService.callKidsClassOne(kidsClassCd);
+		logger.debug("{} <- plan PlanListOne PlanController.java", plan);
+		model.addAttribute("plan", plan);
+		model.addAttribute("planCategory", planCategory);
+		model.addAttribute("kidsClass", kidsClass);
+		return "plan/plan_detail";
 	}
 	
 	// 계획안 카테고리
@@ -83,10 +116,10 @@ public class PlanController {
 								, @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
 								, @RequestParam(value = "pagePerRow", required = false, defaultValue = "10") int pagePerRow) {
 		logger.debug("2. PlanController.java PlanCategoryList()메소드 실행 ");
-		logger.debug("{} <- currentPage PlanController.java", currentPage);
-		logger.debug("{} <- pagePerRow PlanController.java", pagePerRow);
-		logger.debug("{} <- keyword PlanController.java", keyword);
-		Map<String, Object> map = planService.selectPlanList(currentPage, pagePerRow, keyword);
+		logger.debug("{} <- currentPage PlanCategoryList PlanController.java", currentPage);
+		logger.debug("{} <- pagePerRow PlanCategoryList PlanController.java", pagePerRow);
+		logger.debug("{} <- keyword PlanCategoryList PlanController.java", keyword);
+		Map<String, Object> map = planService.selectPlanCategoryList(currentPage, pagePerRow, keyword);
 		List<PlanCategory> list = (List<PlanCategory>)(map.get("list"));
 		int countPage = (Integer)map.get("countPage");
 		String searchKeyword = (String)map.get("keyword");
@@ -94,7 +127,7 @@ public class PlanController {
 		model.addAttribute("countPage", countPage);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("keyword", searchKeyword);
-		logger.debug("{} <- list PlanController.java", list);
+		logger.debug("{} <- list PlanCategoryList PlanController.java", list);
 		logger.debug("------------------------------------------------------------");
 		return "plan/plan_category_list";
 	}

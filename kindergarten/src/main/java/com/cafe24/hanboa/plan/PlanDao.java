@@ -35,6 +35,31 @@ public class PlanDao {
 		logger.debug("PlanDao.java 1-3. insertPlan() 메소드 실행");
 		return sqlSesionTamplate.insert(localName+"insertPlan", plan);
 	}
+	// 2-1. 계획안 전체조회+검색+페이징
+	public List<Plan> getPlanList(Map<String, Object> map) {
+		logger.debug("PlanDao.java 2-1. getPlanList() 메소드 실행");
+		return sqlSesionTamplate.selectList(localName+"getPlanList", map);
+	}
+	// 2-2. 전체 계획안 수(페이징)
+	public int selectPlanCountByPage(Map<String, Object> map) {
+		return sqlSesionTamplate.selectOne(localName+"selectPlanCountByPage", map);
+	}
+	// 3-1. 계획안 개별 조회 : 계획안 카테고리 이름 불러오기
+	public PlanCategory callPlanCategoryOne(String planCateCd) {
+		logger.debug("PlanDao.java 3-1. callPlanCategoryOne() 메소드 실행");
+		return sqlSesionTamplate.selectOne(localName+"callPlanCategoryOne", planCateCd);
+	}
+	// 3-2. 계획안 개별 조회 : 영유아 반 이름 불러오기
+	public KidsClass callKidsClassOne(String kidsClassCd) {
+		logger.debug("PlanDao.java 3-2. callKidsClassOne() 메소드 실행");
+		return sqlSesionTamplate.selectOne(localName+"callKidsClassOne", kidsClassCd);
+	}
+	// 3-3. 계획안 개별 조회
+	public Plan getPlanOne(String planCd) {
+		logger.debug("PlanDao.java 3-3. getPlanListOne() 메소드 실행");
+		logger.debug("{} <- planCd getPlanOne PlanDao.java", planCd);
+		return sqlSesionTamplate.selectOne(localName+"getPlanOne", planCd);
+	}
 	
 	// 계획안 카테고리
 	// 1. 계획안 카테고리 등록
@@ -43,8 +68,8 @@ public class PlanDao {
 		return sqlSesionTamplate.insert(localName+"insertPalnCategory", planCategory);
 	}
 	// 2-1. 계획안 카테고리 전체조회+검색+페이징
-	public List<PlanCategory> getPlanList(Map<String, Object> map) {
-		logger.debug("PlanDao.java 2. getPlanList() 메소드 실행");
+	public List<PlanCategory> getPlanCategoryList(Map<String, Object> map) {
+		logger.debug("PlanDao.java 2. getPlanCategoryList() 메소드 실행");
 		logger.debug("{} : <- startPage PlanDao.java", map.get("startPage"));
 		logger.debug("{} : <- pagePerRow PlanDao.java", map.get("pagePerRow"));
 		logger.debug("{} <- keyword PlanDao.java", map.get("keyword"));
