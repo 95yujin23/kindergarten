@@ -47,7 +47,7 @@
 				<h2>계획안 카테고리 목록</h2>
 				<!-- 검색처리 시작 -->
 				<form action="${pageContext.request.contextPath}/PlanCategoryList?keyword=${keyword}" method="get" id="searchForm" class="form-inline">
-					<div class="input-group">
+					<div class="input-group" style="float: left;">
 						<input id="keyword" name="keyword" type="text" class="form-control" placeholder="Search">
 						<div class="input-group-btn">
 							<button id="searchButton" type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
@@ -55,15 +55,15 @@
 					</div>
 				</form>
 				<!-- 검색처리 끝 -->
-				<div>
+				<!-- 계획안 추가 이동 버튼 -->
+				<div style="float: right;">
 					<a class="btn btn-info" href="${pageContext.request.contextPath}/PlanAdd"><i class="fa fa-plus-circle"></i></a>
 				</div>
+				<!-- 계획안 추가 이동 버튼 -->
 				<table class="table table-hover">
 					<thead>
 						<tr>
 							<th>계획안명</th>
-							<th>계획안 카테고리 코드</th>
-							<th>영유아반 코드</th>
 							<th>등록날짜</th>
 							<th>등록인</th>
 							<th>수정</th>
@@ -74,11 +74,9 @@
 						<tbody>
 						<tr>
 							<td><a href="${pageContext.request.contextPath}/PlanDetail?planCd=${list.planCd}&planCateCd=${list.planCateCd}&kidsClassCd=${list.kidsClassCd}">${list.planNm}</a></td>
-							<td>${list.planCateCd}</td>
-							<td>${list.kidsClassCd}</td>
 							<td>${list.planRegistrationDate}</td>
 							<td>${list.planRegistrant}</td>
-							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/PlanModify?planCd=${list.planCd}"><i class="fa fa-pencil"></i></a></td>							
+							<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/PlanModify?planCd=${list.planCd}&planCateCd=${list.planCateCd}&kidsClassCd=${list.kidsClassCd}"><i class="fa fa-pencil"></i></a></td>							
 							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/PlanDelete?planCd=${list.planCd}"><i class="fa fa-trash"></i></a></td>
 						</tr>
 					</tbody>

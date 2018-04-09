@@ -60,12 +60,18 @@ public class PlanDao {
 		logger.debug("{} <- planCd getPlanOne PlanDao.java", planCd);
 		return sqlSesionTamplate.selectOne(localName+"getPlanOne", planCd);
 	}
+	// 4. 계획안 업데이트 수정
+	public int planModify(Plan plan) {
+		logger.debug("PlanDao.java 3-3. planModify() 메소드 실행");
+		logger.debug("{} <- plan planModify PlanDao.java", plan);
+		return sqlSesionTamplate.update(localName+"modifyPlan", plan);
+	}
 	
 	// 계획안 카테고리
 	// 1. 계획안 카테고리 등록
 	public int insertPlanCategory(PlanCategory planCategory) {
 		logger.debug("PlanDao.java 1. insertPlanCategory() 메소드 실행");
-		return sqlSesionTamplate.insert(localName+"insertPalnCategory", planCategory);
+		return sqlSesionTamplate.insert(localName+"insertPlanCategory", planCategory);
 	}
 	// 2-1. 계획안 카테고리 전체조회+검색+페이징
 	public List<PlanCategory> getPlanCategoryList(Map<String, Object> map) {

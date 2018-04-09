@@ -87,6 +87,28 @@ public class PlanController {
 		model.addAttribute("kidsClass", kidsClass);
 		return "plan/plan_detail";
 	}
+	// 4-1. 게획안 업데이트 정보요청
+	@RequestMapping(value="/PlanModify", method=RequestMethod.GET)
+	public String planModify(Model model
+			, @RequestParam(value="planCd", required = true) String planCd
+			, @RequestParam(value="planCateCd", required = true) String planCateCd
+			, @RequestParam(value="kidsClassCd", required = true) String kidsClassCd) {
+		Plan plan = planService.getPlanOne(planCd);
+		PlanCategory planCategory = planService.callPlanCategoryOne(planCateCd);
+		KidsClass kidsClass = planService.callKidsClassOne(kidsClassCd);
+		logger.debug("{} <- plan planModify PlanController.java", plan);
+		model.addAttribute("plan", plan);
+		model.addAttribute("planCategory", planCategory);
+		model.addAttribute("kidsClass", kidsClass);
+		return "plan/plan_modify";
+	}
+	// 4-2. 계획안 업데이트
+	@RequestMapping(value="/PlanModify", method=RequestMethod.POST)
+	public String PlanModify(Plan plan) {
+		planService.planModify(plan);
+		logger.debug("{} <- plan planModify PlanController.java", plan);
+		return "redirect:/PlanList";
+	}
 	
 	// 계획안 카테고리
 	// 1. 계획안 카테고리 등록 요청

@@ -85,6 +85,12 @@ public class PlanService {
 		logger.debug("{} <- plan getPlanOne PlanService.java", plan);
 		return plan;
 	}
+	// 4. 계획안 업데이트
+	public int planModify(Plan plan) {
+		int planOne = planDao.planModify(plan);
+		logger.debug("{} <- plan planModify PlanService.java", plan);
+		return planOne;
+	}
 	
 	// 계획안 카테고리
 	// 1. 계획안 카테고리 등록

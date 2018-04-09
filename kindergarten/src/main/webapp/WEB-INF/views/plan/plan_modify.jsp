@@ -20,6 +20,13 @@
 <link href="resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 <!-- jQuery -->
 <script src="resources/vendor/js/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#PlanModifyButton').click(function() {
+			$('#PlanModifyForm').submit();
+		})
+	})
+</script>
 </head>
 <body>
 	<div id="wrapper">
@@ -35,44 +42,51 @@
 	<div id="page-wrapper">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">계획안 상세</h1>
+				<h1 class="page-header">계획안 수정</h1>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-					   계획안 상세
+					   계획안 수정
 					</div>
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-6">
-								<div class="form-group">
-									<label>계획안명</label>
-									<span class="form-control">${plan.planNm}</span>
-								</div>
-								<div class="form-group">
-									<label>계획안 카테고리</label>
-									<span class="form-control">${planCategory.cateNm}</span>						    
-								</div>
-								<div class="form-group">
-									<label>영유아반</label>
-									<span class="form-control">${kidsClass.classNm}</span>
-								</div>
-								<div class="form-group">
-								    <label>연,월,주,일</label>
-									<span class="form-control">${plan.planYMWDSet}</span>
-								</div>
-								<div class="form-group">
-								    <label>내용</label>
-								    <div>${plan.planContent}</div>
-								</div>
-								<div class="form-group">
-								    <label>등록인</label>
-								    <span class="form-control">${plan.planRegistrant}</span>
-								</div>
-								<a class="btn btn-primary" href="${pageContext.request.contextPath}/PlanModify?planCd=${plan.planCd}&planCateCd=${plan.planCateCd}&kidsClassCd=${plan.kidsClassCd}"><i class="fa fa-pencil"></i></a>
-								<a class="btn btn-default" href="${pageContext.request.contextPath}/PlanDelete?planCd=${plan.planCd}"><i class="fa fa-trash"></i></a>
+								<form id="PlanModifyForm" action="${pageContext.request.contextPath}/PlanModify" method="post">
+									<input type="hidden" name="planCd" value="${plan.planCd}">
+									<div class="form-group">
+										<label>계획안명</label>
+										<input class="form-control" name="planNm" value="${plan.planNm}">
+									</div>
+									<div class="form-group">
+										<label>계획안 카테고리</label>
+										<span class="form-control">${planCategory.cateNm}</span>						    
+									</div>
+									<div class="form-group">
+										<label>영유아반</label>
+										<span class="form-control">${kidsClass.classNm}</span>
+									</div>
+									<div class="form-group">
+										<label>연,월,주,일 설정</label>
+										<select class="form-control" name="planYMWDSet">
+											<option value="연간">연간</option>
+											<option value="월간">월간</option>
+											<option value="주간">주간</option>
+											<option value="일간">일간</option>
+										</select>
+									</div>
+									<div class="form-group">
+									    <label>내용</label>
+									    <textarea name="planContent" rows="10" cols="82" style="resize:vertical">${plan.planContent}</textarea>
+									</div>
+									<div class="form-group">
+									    <label>등록인</label>
+									    <input class="form-control" name="planRegistrant" value="${plan.planRegistrant}">
+									</div>
+									<button class="btn btn-default" id="PlanModifyButton" type="button">수정</button>
+								</form>
 							</div>
 						</div>
 					</div>

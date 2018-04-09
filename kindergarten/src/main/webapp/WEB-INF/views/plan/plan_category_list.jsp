@@ -47,7 +47,7 @@
 				<h2>계획안 카테고리 목록</h2>
 				<!-- 검색처리 시작 -->
 				<form action="${pageContext.request.contextPath}/PlanCategoryList?keyword=${keyword}" method="get" id="searchForm" class="form-inline">
-					<div class="input-group">
+					<div class="input-group" style="float: left;">
 						<input id="keyword" name="keyword" type="text" class="form-control" placeholder="Search">
 						<div class="input-group-btn">
 							<button id="searchButton" type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
@@ -55,6 +55,11 @@
 					</div>
 				</form>
 				<!-- 검색처리 끝 -->
+				<!-- 계획안 목록 추가 이동 버튼 -->
+				<div style="float: right;">
+					<a class="btn btn-info" href="${pageContext.request.contextPath}/PlanCategoryAdd"><i class="fa fa-plus-circle"></i></a>
+				</div>
+				<!-- 계획안 목록 추가 이동 버튼 -->
 				<table class="table table-hover">
 					<thead>
 						<tr>
