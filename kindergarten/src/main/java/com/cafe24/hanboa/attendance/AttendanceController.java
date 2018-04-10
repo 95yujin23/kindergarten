@@ -1,6 +1,7 @@
 package com.cafe24.hanboa.attendance;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cafe24.hanboa.teacher.Teacher;
 
@@ -45,7 +47,7 @@ public class AttendanceController {
 		logger.debug("{} <- teacherAttendance AttendanceController.java", teacherAttendance);
 		return "redirect:/TeacherAttendanceList";
 	}
-	// 2-1. 교직원 출퇴근 전체 조회(원장용)
+	// 2. 교직원 출퇴근 전체 조회(원장용)
 	@RequestMapping(value="/teacher_all_attendance_list", method = RequestMethod.GET)
 	public String teacherAttendanceList(Model model) {
 		List<TeacherAttendance> list = attendanceService.selectTeacherAttendance();
@@ -53,9 +55,16 @@ public class AttendanceController {
 		model.addAttribute("list", list);
 		return "attendance/teacher_all_attendance_list";
 	}
-	// 2-2. 교직원 출퇴근 전체 조회(선생님용)
+	// 3. 교직원 출퇴근 전체 조회(선생님용)
 	@RequestMapping(value="/TeacherAttendanceList", method = RequestMethod.GET)
-	public String teacherAttendanceListOne(HttpSession session, Model model, String teacherCd) {
+	public String teacherAttendanceListOne(HttpSession session, Model model, String teacherCd
+										, @RequestParam(value="keyword", required = false) String keyword
+										, @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
+										, @RequestParam(value = "pagePerRow", required = false, defaultValue = "10") int pagePerRow) {
+		logger.debug("2. AttendanceController.java teacherAttendanceListOne()메소드 실행 ");
+		logger.debug("{} <- currentPage teacherAttendanceListOne AttendanceController.java", currentPage);
+		logger.debug("{} <- pagePerRow teacherAttendanceListOne AttendanceController.java", pagePerRow);
+		logger.debug("{} <- keyword teacherAttendanceListOne AttendanceController.java", keyword);
 		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
 		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
 		if(loginTeacher == null) {
@@ -63,11 +72,21 @@ public class AttendanceController {
 			return "redirect:/Login";
 		}
 		teacherCd = loginTeacher.getTeacherCd();
-		List<TeacherAttendance> list = attendanceService.selectTeacherAttendanceOne(teacherCd);
+		Teacher teacherCall = attendanceService.callTeacher(teacherCd);
+		Map<String, Object> map = attendanceService.selectTeacherAttendanceOne(currentPage, pagePerRow, keyword, teacherCd);
+		List<TeacherAttendance> list = (List<TeacherAttendance>)(map.get("list"));
+		int countPage = (Integer)map.get("countPage");
+		String searchKeyword = (String)map.get("keyword");
+		model.addAttribute("teacherCall", teacherCall);
 		model.addAttribute("list", list);
+		model.addAttribute("countPage", countPage);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("keyword", searchKeyword);
+		logger.debug("{} <- list teacherAttendanceListOne AttendanceController.java", list);
+		logger.debug("------------------------------------------------------------");
 		return "attendance/teacher_attendance_list";
 	}
-	// 3. 교직원 퇴근 입력(업데이트)
+	// 4. 교직원 퇴근 입력(업데이트)
 	@RequestMapping(value="/teacher_attendance_update", method = RequestMethod.POST)
 	public String teacherAttendanceUpdate(HttpSession session, String teacherCd) {
 		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");

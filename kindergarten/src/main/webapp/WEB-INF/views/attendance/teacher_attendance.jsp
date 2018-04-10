@@ -67,11 +67,10 @@
 				</div>
 			</div>
 		</div>
+		<!-- FOOTER : Navigation -->
+		<c:import url="../inc/footer.jsp"></c:import>
+		<!-- FOOTER -->
 	</div>
-
-	<!-- FOOTER : Navigation -->
-	<c:import url="../inc/footer.jsp"></c:import>
-	<!-- FOOTER -->
 	<!-- Bootstrap Core JavaScript -->
 	<script src="resources/vendor/js/bootstrap.min.js"></script>
 	<!-- Metis Menu Plugin JavaScript -->

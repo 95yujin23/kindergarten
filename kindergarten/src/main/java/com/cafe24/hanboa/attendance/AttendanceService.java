@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cafe24.hanboa.teacher.Teacher;
+
 @Service
 @Transactional
 public class AttendanceService {
@@ -37,27 +39,53 @@ public class AttendanceService {
 		logger.debug("{} <- insertTeacherAttendance AttendanceService.java", teacherAttendance);
 		logger.debug("-------------------------------------------------------------");	
 	}
-	// 2-1. 교직원 출퇴근 전체 조회(원장용)
+	// 2. 교직원 출퇴근 전체 조회(원장용)
 	public List<TeacherAttendance> selectTeacherAttendance() {
 		logger.debug("selectTeacherAttendance AttendanceService.java");
 		logger.debug("-------------------------------------------------------------");	
 		return attendanceDao.selectTeacherAttendance();
 	}
-	// 2-1-1. 교직원 출퇴근 조회(원장용) 페이징 & 검색
-//	public List<TeacherAttendance> selectTeacherAttendanceByPage() {
-//		logger.debug("selectTeacherAttendance selectTeacherAttendanceByPage.java");
-//		logger.debug("-------------------------------------------------------------");	
-//		List<TeacherAttendance> list = attendanceDao.selectTeacherAttendanceListByPage();
-//		logger.debug("{} <- list AttendanceService.java", list);
-//		return list;
-//	}
-	// 2-2. 교직원 출퇴근 전체 조회(선생님용)
-	public List<TeacherAttendance> selectTeacherAttendanceOne(String teacherCd) {
-		logger.debug("selectTeacherAttendanceOne AttendanceService.java");
-		logger.debug("-------------------------------------------------------------");
-		return attendanceDao.selectTeacherAttendanceOne(teacherCd);
+	// 3-1. 교직원 출퇴근 개별 조회(선생님용) : 선생님 이름 불러오기
+	public Teacher callTeacher(String teacherCd) {
+		return attendanceDao.callTeacher(teacherCd);
 	}
-	// 3. 교직원 퇴근 입력(업데이트)
+	// 3-2. 교직원 출퇴근 개별 조회+검색+페이징(선생님용)
+	public Map<String, Object> selectTeacherAttendanceOne(int currentPage, int pagePerRow, String keyword, String teacherCd) {
+		logger.debug("selectTeacherAttendanceOne AttendanceService.java");
+		logger.debug("{} : <- currentPage selectTeacherAttendanceOne AttendanceService.java", currentPage);
+		logger.debug("{} : <- pagePerRow selectTeacherAttendanceOne AttendanceService.java", pagePerRow);
+		logger.debug("{} <- keyword selectTeacherAttendanceOne AttendanceService.java", keyword);
+		logger.debug("{} <- teacherCd selectTeacherAttendanceOne AttendanceService.java", teacherCd);
+		logger.debug("-------------------------------------------------------------");
+		int startPage = 0;
+		if(currentPage > 1) {
+			startPage = (currentPage-1)*pagePerRow;
+		}
+		// DAO에 시작 페이지와 행의 수 보내기
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyword", keyword);
+		map.put("startPage", startPage);
+		map.put("pagePerRow", pagePerRow);
+		map.put("teacherCd", teacherCd);
+		List<TeacherAttendance> list = attendanceDao.selectTeacherAttendanceOne(map);
+		logger.debug("{} : <- list selectTeacherAttendanceOne AttendanceService.java", list);
+		// 총 행의 수를 보여줄 행의 수로 나눈 뒤 나머지가 0일 경우는 넘어가고 아닐 경우 +1 한다.
+		int count = attendanceDao.selectTeacherAttCountByPage(map);
+		logger.debug("{} : <- count selectTeacherAttendanceOne AttendanceService.java", count);
+		int countPage = count/pagePerRow;
+		if(count%pagePerRow != 0) {
+				countPage++;
+		}
+		logger.debug("{} : <- countPage selectTeacherAttendanceOne AttendanceService.java", countPage);
+		// list, 페이지 수 리턴
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		returnMap.put("keyword", keyword);
+		returnMap.put("list", list);
+		returnMap.put("countPage", countPage);
+		returnMap.put("teacherCd", teacherCd);
+		return returnMap;
+	}
+	// 4. 교직원 퇴근 입력(업데이트)
 	public void updateTeacherAttendance(String teacherCd) {
 		String sampleTime = "180000";
 		String inDate = new SimpleDateFormat("yyyyMMdd").format(new Date());

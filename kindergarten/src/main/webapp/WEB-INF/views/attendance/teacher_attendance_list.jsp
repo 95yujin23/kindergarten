@@ -32,31 +32,29 @@
 <body>
 	<div id="wrapper">
 		<!-- TOP : Navigation -->
-		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<c:import url="../inc/top.jsp"></c:import>
 		<!-- TOP -->
 		<!-- LEFT : Navigation -->
 		<c:import url="../inc/left.jsp"></c:import>
 		<!-- LEFT -->
-		</nav>
 	</div>
 	<div id="page-wrapper">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">교직원 출퇴근 목록</h1>
+				<h1 class="page-header">${teacherCall.teacherNm}선생님 출퇴근 목록</h1>
 			</div>
 		</div>
 		<div class="row">
-		<!-- 검색처리 시작 
-			<form action="${pageContext.request.contextPath}/attendance/teacher_all_attendance_list?keyword=${keyword}" method="get" id="searchAttendanceForm" class="col-lg-3 col-sm-3 form-inline">
-				<div class="input-group">
-					<input id="searchNm" name="keyword" type="text" class="form-control" placeholder="Search">
-					<div class="input-group-btn">
-						<button id="searchButton" type="button" class="btn btn-primary">Search</button>
+		<!-- 검색처리 시작 -->
+				<form action="${pageContext.request.contextPath}/TeacherAttendanceList?keyword=${keyword}" method="get" id="searchForm" class="form-inline">
+					<div class="input-group" style="float: left;">
+						<input id="keyword" name="keyword" type="text" class="form-control" placeholder="Search">
+						<div class="input-group-btn">
+							<button id="searchButton" type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
+						</div>
 					</div>
-				</div>
-			</form>
-			 검색처리 끝 -->
+				</form>
+				<!-- 검색처리 끝 -->
 			<div class="col-lg-12">
 				<table class="table table-hover">
 					<thead>
@@ -78,12 +76,23 @@
 						</tbody>
 					</c:forEach>
 				</table>
+				<!-- 페이징 시작 -->
+				<nav aria-label="Page navigation example">
+					<ul class="pagination justify-content-center">
+						<c:forEach var="i" begin="1" end="${countPage}" step="1">
+							<li class="page-item">
+								<a class="page-link" href="${pageContext.request.contextPath}/TeacherAttendanceList?currentPage=${i}">${i}</a>
+							</li>
+						</c:forEach>
+					</ul>
+				</nav>
+				<!-- 페이징 끝 -->
 			</div>
 		</div>
+		<!-- FOOTER : Navigation -->
+		<c:import url="../inc/footer.jsp"></c:import>
+		<!-- FOOTER -->
 	</div>
-	<!-- FOOTER : Navigation -->
-	<c:import url="../inc/footer.jsp"></c:import>
-	<!-- FOOTER -->
 	<!-- Bootstrap Core JavaScript -->
 	<script src="resources/vendor/js/bootstrap.min.js"></script>
 	<!-- Metis Menu Plugin JavaScript -->

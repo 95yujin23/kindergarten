@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.cafe24.hanboa.teacher.Teacher;
+
 @Repository
 public class AttendanceDao {
 	//출석 처리 DAO
@@ -24,29 +26,29 @@ public class AttendanceDao {
 		logger.debug("AttendanceDao.java 1. insertTeacherAttendance() 메소드 실행"); 
 		return sqlSessionTemlate.insert(localName + "insertTeacherAttendance", teacherAttendance);
 	}
-	// 2-1. 교직원 출퇴근 전체 조회(원장용)
+	// 2. 교직원 출퇴근 전체 조회(원장용)
 	public List<TeacherAttendance> selectTeacherAttendance() {
-		logger.debug("AttendanceDao.java 2-1. selectTheacherAttendance() 메소드 실행"); 
+		logger.debug("AttendanceDao.java 2. selectTheacherAttendance() 메소드 실행"); 
 		return sqlSessionTemlate.selectList(localName+"selectTeacherAttendance");
 	}
-	// 2-1-1. 교직원 출퇴근 조회(원장용) 페이징 & 검색
-//	public List<TeacherAttendance> selectTeacherAttendanceListByPage() {
-//		logger.debug("AttendanceDao.java 2-1-1. selectTeacherAttendanceListByPage() 메소드 실행");
-//		return sqlSessionTemlate.selectList(localName+"selectTeacherAttendanceListByPage");
-//	}
-	// 2-1-2. 전체 교직원 출퇴근 수(페이징)
-//	public int selectTeacherAttendanceByPage(Map<String, Object> map) {
-//		logger.debug("AttendanceDao.java 2-1-2. selectTeacherAttendanceByPage() 메소드 실행");
-//		return sqlSessionTemlate.selectOne(localName+"selectTeacherAttendanceByPage", map);
-//	}
-	// 2-2. 교직원 출퇴근 전체 조회(선생님용)
-	public List<TeacherAttendance> selectTeacherAttendanceOne(String teacherCd) {
-		logger.debug("AttendanceDao.java 2-2. selectTeacherAttendanceOne() 메소드 실행");
-		return sqlSessionTemlate.selectList(localName+"selectTeacherAttendanceOne", teacherCd);
+	// 3-1. 교직원 출퇴근 개별 조회(선생님용) : 선생님 이름 불러오기
+	public Teacher callTeacher(String teacherCd) {
+		logger.debug("AttendanceDao.java 3-1. callTeacher() 메소드 실행");
+		return sqlSessionTemlate.selectOne(localName+"callTeacher", teacherCd);
 	}
-	// 3. 교직원 퇴근 입력(업데이트)
+	// 3-2. 교직원 출퇴근 개별 조회+검색+페이징(선생님용)
+	public List<TeacherAttendance> selectTeacherAttendanceOne(Map<String, Object> map) {
+		logger.debug("AttendanceDao.java 3-2. selectTeacherAttendanceOne() 메소드 실행");
+		return sqlSessionTemlate.selectList(localName+"selectTeacherAttendanceOne", map);
+	}
+	// 3-3. 개별 교직원 출퇴근 수(페이징)
+	public int selectTeacherAttCountByPage(Map<String, Object> map) {
+		logger.debug("AttendanceDao.java 3-2. selectTeacherAttCountByPage() 메소드 실행");
+		return sqlSessionTemlate.selectOne(localName+"selectTeacherAttCountByPage", map);
+	}
+	// 4. 교직원 퇴근 입력(업데이트)
 	public int updateTheacherAttendance(Map<String, Object> map) {
-		logger.debug("AttendanceDao.java 3. updateTheacherAttendance() 메소드 실행");
+		logger.debug("AttendanceDao.java 4. updateTheacherAttendance() 메소드 실행");
 		return sqlSessionTemlate.update(localName+"updateTeacherAttendance", map);
 	}
 	

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.cafe24.hanboa.attendance.AttendanceMapper">
 	<!-- 교직원 start -->
 	<!-- 1. 교직원 출근 입력 -->
@@ -25,7 +24,7 @@
 			, #{licenseKindergarten}
 		)
 	</insert>
-	<!-- 교직원 출퇴근 조회(원장용) -->
+	<!-- 2. 교직원 출퇴근 조회(원장용) -->
 	<select id="selectTeacherAttendance" parameterType="String" resultType="com.cafe24.hanboa.attendance.TeacherAttendance">
 		SELECT
 			ATTENDANCE_CD AS attendanceCd
@@ -37,21 +36,15 @@
 			, LICENSE_KINDERGARTEN AS licenseKindergarten
 		FROM TB_TEACHER_ATTENDANCE
 	</select>
-	<!-- 
-	교직원 출퇴근 조회(원장용) 페이징 & 검색 
-	<select id="selectTeacherAttendanceListByPage" parameterType="teacherAttendanceVo" resultType="teacherAttendanceVo">
-		SELECT
-			t.TEACHER_NM
-			, a.TEACHER_ATTENDANCE_DAY
-			, a.TEACHER_ATTENDANCE
-			, a.TEACHER_GET_OFF
-			, a.TEACHER_REST_LATE_TYPE
-		FROM TB_TEACHER_ATTENDANCE a LEFT JOIN TB_TEACHERS t
-		ON a.TEACHER_CD = t.TEACHER_CD 
+	<!-- 3-1. 교직원 출퇴근 개별 조회(선생님용) : 선생님 이름 불러오기 -->
+	<select id="callTeacher" parameterType="String" resultType="com.cafe24.hanboa.teacher.Teacher">
+		SELECT 
+			TEACHER_NM as teacherNm 
+		FROM TB_TEACHERS
+		WHERE TEACHER_CD = #{teacherCd}
 	</select>
-	-->
-	<!-- 교직원 출퇴근 개별 조회(선생님용) -->
-	<select id="selectTeacherAttendanceOne" parameterType="String" resultType="com.cafe24.hanboa.attendance.TeacherAttendance">
+	<!-- 3-2. 교직원 출퇴근 개별 조회+검색+페이징(선생님용) -->
+	<select id="selectTeacherAttendanceOne" parameterType="java.util.Map" resultType="com.cafe24.hanboa.attendance.TeacherAttendance">
 		SELECT
 			ATTENDANCE_CD AS attendanceCd
 			, TEACHER_CD AS teacherCd
@@ -62,8 +55,17 @@
 			, LICENSE_KINDERGARTEN AS licenseKindergarten
 		FROM TB_TEACHER_ATTENDANCE
 		WHERE TEACHER_CD = #{teacherCd}
+		<if test="keyword != null">
+			AND TEACHER_REST_LATE_TYPE LIKE CONCAT('%',#{keyword},'%')
+		</if>
+		LIMIT #{startPage}, #{pagePerRow}
 	</select>
-	<!-- 교직원 퇴근 업데이트 -->
+	<!-- 3-3. 개별 교직원 출퇴근 수(페이징) -->
+	<select id="selectTeacherAttCountByPage" resultType="int">
+		SELECT COUNT(*) FROM TB_TEACHER_ATTENDANCE
+		WHERE TEACHER_CD = #{teacherCd}
+	</select>
+	<!-- 4. 교직원 퇴근 업데이트 -->
 	<update id="updateTeacherAttendance" parameterType="java.util.Map">
 		UPDATE TB_TEACHER_ATTENDANCE
 		SET
@@ -72,12 +74,6 @@
 		WHERE TEACHER_CD = #{teacherCd}
 		AND TEACHER_ATTENDANCE_DAY = #{teacherAttendanceDay}
 	</update>
-	<!-- 교직원 이름 조회 -->
-	<select id="selectTeacherName" resultType="com.cafe24.hanboa.teacher.Teacher">
-		SELECT 
-			TEACHER_NM as teacherNm 
-		FROM TB_TEACHERS
-	</select>
 	<!-- 교직원 end -->
 	
 	
