@@ -43,12 +43,10 @@
 	SELECT 
 		cl.client_nm
 		,co.contract_cd
-		,fe.contract_cd
+		
 	FROM TB_CLIENT cl
 	JOIN TB_CONTRACT co 
-	ON cl.CLIENT_CD=co.CLIENT_CD 
-	JOIN TB_FEEDING_MONTHLY fe
-	ON co.CONTRACT_CD = fe.CONTRACT_CD		
+	ON cl.CLIENT_CD=co.CLIENT_CD 	
 	</select>
 			
 <!-- 급식신청 전체조회 -->
