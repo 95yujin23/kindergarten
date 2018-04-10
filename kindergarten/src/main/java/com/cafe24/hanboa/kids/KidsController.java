@@ -86,19 +86,15 @@ public class KidsController {
 	}
 	
 	// 3. 영유아 개인 조회
-	/*// Book 파일리스트
-	@RequestMapping(value="/book/bookFileList")
-	public String BookFile(@RequestParam(value="bookId", required=true) int bookId,HttpSession session, Model model) {
-		// 세션에 로그인 값을 확인하고 로그인 정보가 없으면 리다이렉트
-		if(session.getAttribute("loginMember")==null) {
-			return "redirect:/member/login";
-		}
-		logger.debug("BookFile 메서드 bookId is {}",bookId);
-		BookAndBookFile bookAndBookFile =  bookService.getBookFileList(bookId);
-		logger.debug("BookFile 메서드 bookAndBookFile is {}",bookAndBookFile);
-		model.addAttribute("bookAndBookFile", bookAndBookFile);
-		return "/book/bookFileList";
-	}*/
+	@RequestMapping(value="/kidsinfo")
+	public String kidsAndKidsFileOne(@RequestParam(value="kidsCd", required=true) String kidsCd,HttpSession session, Model model) {
+		KidsAndKidsFile kidsAndKidsFile = kidsService.getKidsAndKidsFileOne(kidsCd);
+		logger.debug("2. KidsController -- kidsAndKidsFileOne(String kidsCd) : {}", kidsCd);
+		logger.debug("2. KidsAndKidsFile : {}", kidsAndKidsFile);
+		logger.debug("----------------------------------------");
+		model.addAttribute("kidsAndKidsFile",kidsAndKidsFile);
+		return "/kids/kids_select";
+	}
 	
 	// 4-1. 영유아 등록 화면
 	@RequestMapping(value="/KidsAdd", method = RequestMethod.GET)

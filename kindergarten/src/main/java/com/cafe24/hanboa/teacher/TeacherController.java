@@ -207,7 +207,7 @@ public class TeacherController {
 	
 	// 10-1. 교직원 인건비 지급 등록 화면
 		@RequestMapping(value="/TeacherPayAdd", method = RequestMethod.GET)
-		public String teacherPayAdd(Model model, int currentPage, int pagePerRow) {
+		public String teacherPayAdd(Model model) {
 			logger.debug("10-1. TeacherController -- TeacherPayModifyForm");
 			//교직원 목록 가져오기 ( 교직원코드 & 교직원이름)
 			List<Teacher> list = teacherService.getTeacherNm();

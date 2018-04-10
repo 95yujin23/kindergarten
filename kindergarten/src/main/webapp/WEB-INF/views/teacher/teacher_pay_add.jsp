@@ -56,7 +56,7 @@
 						<div class="col-lg-6">
 							<form id="addForm" action="${pageContext.request.contextPath}/TeacherPayAdd" method="POST">
 								<div class="form-group">
-								    <label>Name</label>
+								    <label>교직원 이름</label>
 								    <select name="teacherCd" class="form-control">
 									<option value="" <c:out value=""/>>이름</option>
 									<c:forEach var="teacher" items="${list}">
@@ -68,11 +68,11 @@
 									</select>
 								</div>
 								<div class="form-group">
-								    <label>Payment</label>
+								    <label>지급할 금액</label>
 								    <input class="form-control" id="payPayment" name="payPayment" placeholder="지급금액(단위:원)">
 								</div>
 								<div class="form-group">
-								    <label>payRegistrant</label>
+								    <label>등록인</label>
 								    <input class="form-control" id="payRegistrant" name="payRegistrant" placeholder="등록인">
 								</div>
 								<button type="submit">등록</button>
