@@ -52,7 +52,7 @@
 		</a>
 			<ul class="dropdown-menu dropdown-user">
 				<li><a href="${pageContext.request.contextPath}/TeacherSelect"><i class="fa fa-user fa-fw"></i>내 정보</a></li>
-				<li><a href="${pageContext.request.contextPath}/TeacherAttendanceAdd"><i class="fa fa-gear fa-fw"></i>출근</a>
+				<li><a href="${pageContext.request.contextPath}/TeacherAttendance"><i class="fa fa-gear fa-fw"></i>출근</a>
 				</li>
 				<li class="divider"></li>
 				<li><a href="${pageContext.request.contextPath}/Logout"><i class="fa fa-sign-out fa-fw"></i>
