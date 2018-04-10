@@ -172,4 +172,15 @@
 		FROM hanboa.TB_REPORT_RESOURCE
 		WHERE report_resource_cd = #{reportResourceCd}
 	</delete>
+	<!-- 반 불러오기 -->
+	<select id="selectKidsClassListForSelectBox"
+			resultType="com.cafe24.hanboa.classformation.KidsClass">
+		SELECT
+			kids_class_cd as kidsClassCd
+			,class_nm as classNm
+			,create_date as createDate
+			,class_kids_age as classKidsAge
+			,license_kindergarten as licenseKindergarten
+		FROM hanboa.TB_KIDS_CLASS
+	</select>
 </mapper>

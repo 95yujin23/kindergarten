@@ -21,7 +21,21 @@ public class ClassService {
 		logger.debug("ClassService --> selectKidsClassList()메소드 실행");
 		List<KidsClass> list = classDao.selectKidsClassList();
 		return list;
-		
+	}
+	// 반 추가
+	public void addKidsClass(KidsClass kidsClass) {
+		logger.debug("ClassService --> removeKidsClass()메소드 실행");
+		classDao.addKidsClass(kidsClass);
+	}
+	// 반 수정
+	public void modifyKidsClass(KidsClass kidsClass) {
+		logger.debug("ClassService --> modifyKidsClass()메소드 실행");
+		classDao.modifyKidsClass(kidsClass);
+	}
+	// 반 삭제
+	public void removeKidsClass(KidsClass kidsClass) {
+		logger.debug("ClassService --> removeKidsClass()메소드 실행");
+		classDao.removeKidsClass(kidsClass);
 	}
 	// 반편성 미분류 인원 추가하기
 	public void addUnClassification(ClassFormation classFormation){

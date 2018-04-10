@@ -29,7 +29,7 @@ public class ReportDao {
 		return sqlSession.selectList(localName + "selectAllReport");
 	}*/
 	
-	public List<Report> selectReportList() {
+	public List<Report> selectReportList(ReportList reportList) {
 		logger.debug("selectReportList() 실행");
 		List<Report> list = sqlSession.selectList(localName + "selectReportList");
 		logger.debug("selectReportList() 메소드 list is {}",list);
@@ -98,7 +98,10 @@ public class ReportDao {
 	public int removeReportResource(ReportResource reportResource) {
 		return sqlSession.delete(localName + "removeReportResource", reportResource);
 	}
-	
+	// 반 출력
+	public List<KidsClass> selectKidsClassListForSelectBox(){
+		return sqlSession.selectList(localName + "selectKidsClassListForSelectBox");
+	}
 	
 
 	

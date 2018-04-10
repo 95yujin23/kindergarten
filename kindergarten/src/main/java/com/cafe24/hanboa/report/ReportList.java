@@ -1,12 +1,12 @@
 package com.cafe24.hanboa.report;
 
 public class ReportList {
-	private String kidsReportCd;
-	private String reportNm; //tb_report_resource
-	private String kidsNm; //tb_kids
-	private String classNm;
-	private String registrant;
-	private String registrationDate;
+	private String kidsReportCd; //리포트 코드
+	private String reportNm; //리포트 이름
+	private String kidsNm; //유아이름
+	private String classNm; // 반이름
+	private String registrant; //등록자
+	private String registrationDate; //등록시기
 	
 	
 	

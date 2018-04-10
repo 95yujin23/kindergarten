@@ -2,7 +2,7 @@
 
 <mapper namespace="com.cafe24.hanboa.classformation.ClassMapper">
 	
-	
+	<!-- 반리스트 출력 -->
 	<select id="selectKidsClassList"
 			resultType="com.cafe24.hanboa.classformation.KidsClass">
 		SELECT
@@ -13,6 +13,40 @@
 			,license_kindergarten as licenseKindergarten
 		FROM hanboa.TB_KIDS_CLASS
 	</select>
+	
+	<!-- 반 추가 -->
+	<insert id="addKidsClass" 
+			parameterType="com.cafe24.hanboa.classformation.KidsClass">
+		<selectKey resultType="String" keyProperty="kidsClassCd" order="BEFORE">
+			SELECT CONCAT('KI_CL', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_KIDS_CLASS ))
+		</selectKey>
+		INSERT INTO hanboa.TB_KIDS_CLASS
+		VALUES (
+			#{kidsClassCd}
+			,#{classNm}
+			,#{createDate}
+			,#{classKidsAge}
+			,#{licenseKindergarten}
+			)
+	</insert>
+	<!-- 반 수정 -->
+	<update id="modifyKidsClass"
+			parameterType="com.cafe24.hanboa.classformation.KidsClass">
+			UPDATE
+			TB_KIDS_CLASS
+		SET 
+			class_nm = #{classNm}
+			,create_date = #{createDate}
+			,class_kids_age = #{classKidsAge}
+		WHERE kids_class_cd = #{kidsClassCd}
+	</update>	
+	<!-- 반 삭제 -->
+	<delete id="removeKidsClass"
+			parameterType="com.cafe24.hanboa.classformation.KidsClass">
+			DELETE 
+			FROM hanboa.TB_KIDS_CLASS
+			WHERE kids_class_cd = #{kidsClassCd}
+	</delete>
 	
 	<insert id="addUnClassification"
 			parameterType="com.cafe24.hanboa.classformation.ClassFormation">

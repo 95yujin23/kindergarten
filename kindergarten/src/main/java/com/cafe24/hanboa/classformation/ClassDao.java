@@ -19,9 +19,24 @@ public class ClassDao {
 	String localName = "com.cafe24.hanboa.classformation.ClassMapper.";
 	
 	// tb_kids_class lsit
-		public List<KidsClass> selectKidsClassList(){
+	public List<KidsClass> selectKidsClassList(){
 		logger.debug("ReportService selectReportList()메소드 실행");
 		return sqlSession.selectList(localName + "selectKidsClassList");
+		}
+	// 반 추가
+	public int addKidsClass(KidsClass kidsClass) {
+		logger.debug("ReportService selectReportList()메소드 실행");
+		return sqlSession.insert(localName + "addKidsClass",kidsClass);
+		}
+	// 반 수정
+	public int modifyKidsClass(KidsClass kidsClass) {
+		logger.debug("ReportService modifyKidsClass()메소드 실행");
+		return sqlSession.update(localName + "modifyKidsClass", kidsClass);
+	}
+	// 반 삭제
+	public int removeKidsClass(KidsClass kidsClass) {
+		logger.debug("ReportService removeKidsClass()메소드 실행");
+		return sqlSession.delete(localName + "removeKidsClass", kidsClass);
 		}
 	
 	

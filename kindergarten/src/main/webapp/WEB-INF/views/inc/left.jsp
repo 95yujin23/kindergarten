@@ -99,7 +99,7 @@
 					　　영유아 일지 관리<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/KidsReportList">일지목록</a></li>
+						<li><a href="${pageContext.request.contextPath}/KidsReport">일지목록</a></li>
 						<li><a href="#">일지관리<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
 								<li><a href="${pageContext.request.contextPath}/ReportSetting">일지설정</a></li>

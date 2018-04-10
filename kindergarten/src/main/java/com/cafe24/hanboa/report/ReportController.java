@@ -1,10 +1,12 @@
 package com.cafe24.hanboa.report;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -12,12 +14,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cafe24.hanboa.classformation.ClassService;
 import com.cafe24.hanboa.classformation.KidsClass;
 import com.cafe24.hanboa.teacher.Teacher;
+import com.cafe24.hanboa.teacher.TeacherService;
 
 @Controller
 public class ReportController {
@@ -25,31 +31,42 @@ public class ReportController {
 	
 	@Autowired
 	private ReportService reportService;
+	private TeacherService teacherService;
+	private ClassService classService;
+	
+	
 	
 	private static final Logger logger = LoggerFactory.getLogger(ReportController.class);
 	
-	// 1. 영유아일지 전체 조회
-	@RequestMapping(value="/KidsReportList")
+	// 1. 영유아일지 페이지
+	@RequestMapping(value="/KidsReport")
 	public String kidsReport(Model model) {
-	
-			/*	List<Report> list = reportService.selectAllReport();*/
 		logger.debug("ReportController kidsReport() 메소드 실행");
-
+		List<ReportDivision> reportDivisionList = reportService.selectReportDivisionListForSearch();
 		
-		List<Report> list = reportService.selectReportList();
-		List<KidsClass> kidsClass = reportService.selectClassListForSearch();
-		List<Teacher> teacher = reportService.selectTeacherListForSearch();
-		List<ReportDivision> division = reportService.selectReportDivisionListForSearch();
+		logger.debug("ReportController reportDivisionList is {}",reportDivisionList);
 		
-		logger.debug("ReportController kidsReport()메소드 실행 list is  : {}",list);
-		logger.debug("----------------------------------------------------------------------");
+		logger.debug("ReportController kidsClassList is 받아올 준비중 ........");
 		
-		model.addAttribute("list",list);
-		model.addAttribute("kidsClass", kidsClass);
-		model.addAttribute("teacher", teacher);
-		model.addAttribute("division", division);
+		List<KidsClass> kidsClassList = reportService.selectKidsClassListForSelectBox();
+		
+		logger.debug("ReportController selectKidsClassList is {}",kidsClassList);
+		
+		model.addAttribute("reportDivisionList",reportDivisionList);
+		
+		model.addAttribute("kidsClassList", kidsClassList);
 		
 		return "report/kids_report_list";
+	}
+	// 영유아 일지 전체 리스트 
+	@RequestMapping(value="/kidsReportList")
+	public @ResponseBody Object getRecordList(HttpServletRequest request,
+											HttpServletResponse response,
+											@ModelAttribute("ReportList") ReportList reportList) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("data", reportService.selectReportList(reportList));
+		Object result = map;
+		return result;
 	}
 	//선택 검색화면
 	@RequestMapping(value="/reportSearch", method=RequestMethod.POST)

@@ -35,9 +35,9 @@ public class ReportService {
 		
 	}*/
 	
-	public List<Report> selectReportList() {
+	public List<Report> selectReportList(ReportList reportList) {
 		logger.debug("ReportService selectReportList()메소드 실행");
-		List<Report> list = reportDao.selectReportList();
+		List<Report> list = reportDao.selectReportList(reportList);
 		return list;
 	}
 	//kids_report_list.jsp 선택옵션 반 리스트 보여주기
@@ -106,5 +106,10 @@ public class ReportService {
 	public void removeReportResource(ReportResource reportResource) {
 		logger.debug("ReportService removeReportResource() 메소드 실행 ");
 		reportDao.removeReportResource(reportResource);
+	}
+	// 반 리스트 출력
+	public List<KidsClass> selectKidsClassListForSelectBox(){
+		List<KidsClass> list = reportDao.selectKidsClassListForSelectBox();
+		return list;
 	}
 }
