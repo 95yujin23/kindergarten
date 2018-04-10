@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.cafe24.hanboa.teacher.Teacher;
 
 @Repository
 public class LicenseDao {
@@ -19,11 +18,11 @@ public class LicenseDao {
 	
 	String localName = "com.cafe24.hanboa.license.LicenseMapper.";
 
-	// 1-1. 교직원 목록 조회
-		public List<Teacher> selectTeacherList() {
-			logger.debug("1. TeacherDao -- List<Teacher> selectTeacherList() 매서드 실행");
-			return sqlSession.selectList(localName+"getTeacherList");
-		}
+	// 1-1. 라이센스 목록 조회
+	public List<License> selectLicenseList(){
+		logger.debug("1-2. LicenseDao -- List<License> selectLicenseList() 매서드 실행");
+		return sqlSession.selectList(localName+"getLicenseList");
+	}
 		
 	// 1-2. 라이센스 조회
 	public License selectLicenseOne(License license) {

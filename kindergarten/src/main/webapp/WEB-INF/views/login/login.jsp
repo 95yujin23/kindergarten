@@ -30,14 +30,12 @@
 <body>
 <div id="wrapper">
 	<!-- TOP : Navigation -->
-	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 	<c:import url="../inc/top.jsp"></c:import>
 	<!-- TOP -->
 
 	<!-- LEFT : Navigation -->
 	<c:import url="../inc/left.jsp"></c:import>
 	<!-- LEFT -->
-	</nav>
 </div>
 <div id="page-wrapper">
 	<div class="row">
@@ -49,7 +47,56 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-				    이메일과 비밀번호를 입력하세요.
+				    관리자 권한으로 로그인
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-6">
+							<form id="loginForm" action="${pageContext.request.contextPath}/AdminLogin" method="POST">
+								<div class="form-group">
+								    <label>ID</label>
+								    <input class="form-control" id="adminId" name="adminId" placeholder="아이디" value="admin">
+								</div>
+								<div class="form-group">
+								    <label>PassWord</label>
+								    <input class="form-control" id="adminPw" name="adminPw" placeholder="비밀번호" value="pw1234">
+								</div>
+								<button type="submit">LOGIN</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+				    원장 권한으로 로그인
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-6">
+							<form id="loginForm" action="${pageContext.request.contextPath}/Login" method="POST">
+								<div class="form-group">
+								    <label>Email</label>
+								    <input class="form-control" id="teacherEmail" name="teacherEmail" placeholder="이메일" value="sun@kinder.com">
+									중복여부 : <email />
+								</div>
+								<div class="form-group">
+								    <label>PassWord</label>
+								    <input class="form-control" id="teacherPw" name="teacherPw" placeholder="비밀번호" value="pw1234">
+								</div>
+								<button type="submit">LOGIN</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+				    교사 권한으로 로그인
 				</div>
 				<div class="panel-body">
 					<div class="row">

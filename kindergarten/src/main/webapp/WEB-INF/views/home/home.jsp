@@ -43,7 +43,7 @@
 				<div class="panel panel-default">
 				<!-- 프로젝트 소개 목록 시작 -->
 					<div class="panel-heading">
-					<h1 class="page-header">프로젝트 소개</h1>
+					<h1 class="page-header">프로젝트 소개</h1> <a href="${pageContext.request.contextPath}/str">달력테스트</a>
 					</div>
 					 <!-- /.panel-heading -->
 					<div class="panel-body">

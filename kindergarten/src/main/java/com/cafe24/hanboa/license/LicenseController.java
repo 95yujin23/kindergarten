@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +27,17 @@ public class LicenseController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(LicenseController.class);
 
-	// 1. 모든 유치원 라이센스 목록 조회 (유치원명으로 검색)
+	// 1. 모든 유치원 라이센스 목록 조회 (유치원명으로 검색) -관리자
+	@RequestMapping(value="/LicenseList", method = RequestMethod.GET)
+	public String licenseList(Model model) {
+	logger.debug("1. LicenseController -- LicenseList");
+	List<License> list = licenseService.getLicenseList();
+	logger.debug("List<License> : {}",list);
+	model.addAttribute("list", list);
+	logger.debug("----------------------------------------");
+		return "license/license_list";
+	}
+	
 	// 2. 유치원 개별 조회 (유치원 마다)
 	// 3-1. 유치원 라이센스 등록 화면
 	@RequestMapping(value="/LicenseAdd", method = RequestMethod.GET)

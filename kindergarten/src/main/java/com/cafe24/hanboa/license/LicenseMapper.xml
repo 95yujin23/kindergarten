@@ -2,6 +2,25 @@
 
 <mapper namespace="com.cafe24.hanboa.license.LicenseMapper">
 
+<!-- 유치원 라이센스 전체 조회 -->
+	<select id="getLicenseList"
+			resultType="com.cafe24.hanboa.license.License">
+		SELECT
+			license_kindergarten				AS	licenseKindergarten
+			,kindergarten_nm					AS	kindergartenNm
+			,license_grant_day					AS	licenseGrantDay
+			,license_expiration_day				AS	licenseExpirationDay	
+			,kindergarten_address				AS	kindergartenAddress
+			,kindergarten_post_cd				AS	kindergartenPostCd
+			,kindergarten_phone					AS	kindergartenPhone
+			,kindergarten_homepage				AS	kindergartenHomepage
+			,kindergarten_open_hour				AS	kindergartenOpenHour
+			,kindergarten_date_of_foundation	AS	kindergartenDateOfFoundation
+			,kindergarten_type_of_foundation	AS	kindergartenTypeOfFoundation
+			,kindergarten_leader				AS	kindergartenLeader
+		FROM hanboa.TB_LICENSE		
+	</select>
+
 <!-- 유치원 라이센스 조회 -->
 	<select id="getLicenseOne"
 			resultType="com.cafe24.hanboa.license.License"
