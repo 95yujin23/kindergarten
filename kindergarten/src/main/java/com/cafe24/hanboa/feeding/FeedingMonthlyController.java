@@ -34,10 +34,12 @@ public class FeedingMonthlyController {
 	}
 	
 	//2. 수정정보요청
-	@RequestMapping(value="feeding/feedingMonthly_modify" , method=RequestMethod.GET)
+	@RequestMapping(value="/feeding/feedingMonthly_modify" , method=RequestMethod.GET)
 	public String feedingMonthlyModify(Model model, @RequestParam(value="feedingMonthlyCd", required=true) String feedingMonthlyCd) {
 		FeedingMonthly feedingMonthly = femoService.modifyGetFeedingMonthly(feedingMonthlyCd);
+		List<FeedingMonthlyAndClientAndContract> clientAndContract = femoService.callClientAndContract();
 		model.addAttribute("feedingMonthly",feedingMonthly);
+		model.addAttribute("clientAndContract",clientAndContract);	
 		logger.debug("< -- feedingMonthlyModify FeedingMonthlyController.java",feedingMonthly);
 		logger.debug("< -- feedingMonthlyModify FeedingMonthlyController.java",feedingMonthlyCd);
 		return "feeding/feedingMonthly_modify";		
@@ -48,7 +50,7 @@ public class FeedingMonthlyController {
 	public String feedingMonthlyModify(Model model, FeedingMonthly feedingMonthly) {
 		femoService.feedingMonthlyModify(feedingMonthly);
 		logger.debug("< -- feedingMonthlyModify FeedingMonthlyController.java",feedingMonthly);
-		return "redirect:/FeedingMonthlyList";		
+		return "redirect:/FeedingMonthlyList";
 	}
 	
 	//4. 입력화면

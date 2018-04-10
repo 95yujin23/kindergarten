@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>FeedingApplication Modify</title>
+<title>Program Application Modify</title>
 <!-- Bootstrap Core CSS -->
 <link href="../resources/vendor/css/bootstrap.min.css" rel="stylesheet">
 <!-- MetisMenu CSS -->
@@ -19,6 +18,15 @@
 <link href="../resources/vendor/css/morris.css" rel="stylesheet">
 <!-- Custom Fonts -->
 <link href="../resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!-- jQuery -->
+<script src="../resources/vendor/js/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#ProgramApplicationModifyButton').click(function() {
+			$('#ProgramApplicationModifyForm').submit();
+		})
+	})
+</script>
 </head>
 <body>
 	<div id="wrapper">
@@ -31,45 +39,87 @@
 		<!-- LEFT -->
 		</nav>
 	</div>
-	<div class="container">
+	<div id="page-wrapper">
 		<div class="row">
-			
-			<div class="col-lg-1"></div>
-			<div class="col-lg-11">
-			<h2>수정화면</h2>
-			<form id="feedingApplicationModifyForm" action="${pageContext.request.contextPath}/feeding/feedingApplication_modify" method="post">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>급식신청 코드</th>							
-							<th>영유아 코드</th>
-							<th>월별급식 코드</th>
-							<th>수입급식비</th>
-							<th>마감회계(수입급식비)</th>
-							<th>마감유무</th>
-							<th>급식구분</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><input type="text" value="${feedingApplication.feedingApplicationCd}" name="feedingApplicationCd"></td>
-							<td><input type="text" value="${feedingApplication.kidsCd}" name="kidsCd"></td>										
-							<td><input type="text" value="${feedingApplication.feedingMonthlyCd}" name="feedingMonthlyCd"></td>
-							<td><input type="text" value="${feedingApplication.feapExpenseMonth}" name="feapExpenseMonth"></td>
-							<td><input type="text" value="${feedingApplication.feapClosingIncome}" name="feapClosingIncome"></td>
-							<td><input type="text" value="${feedingApplication.feapClosingOption}" name="feapClosingOption"></td> 
-							<td><input type="text" value="${feedingApplication.feapDivision}" name="feapDivision"></td> 
-						</tr>
-					</tbody>
-				</table>
-				<button id="modifyButton" class="btn" type="button">수정</button>
-				<button class="btn" type="reset">초기화</button>
-			</form>
+			<div class="col-lg-12">
+				<h1 class="page-header">급식신청 수정</h1>
 			</div>
 		</div>
-	</div>	
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+					    급식신청 수정
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-6">
+							<form id="addForm" action="${pageContext.request.contextPath}/FeedingApplicationAdd" method="POST">
+								<input class="form-control" type="hidden" id="feedingApplicationCd" name="feedingApplicationCd" placeholder="수입급식비">
+								<div class="form-group">
+								    <label>영유아코드</label>
+								    <select name="kidsCd" class="form-control">
+								    	<c:forEach var="kids" items="${kids}">
+								    		<option value="${kids.kidsCd}">${kids.kidsCd}:${kids.kidsNm}</option>
+								    	</c:forEach>
+								    </select> 
+								</div>
+								<div class="form-group">
+								    <label>월별급식코드</label>
+								    <select name="feedingMonthlyCd" class="form-control">
+								    	<c:forEach var="feedingMonthly" items="${feedingMonthly}" >
+								    		<option value="${feedingMonthly.feedingMonthlyCd}">${feedingMonthly.femoFeedingYearMonth}</option>
+								    	</c:forEach>
+								    </select>								    
+								</div>
+								<div class="form-group">
+								    <label>수입급식비</label>
+								    <input class="form-control" id="feapExpenseMonth" name="feapExpenseMonth" placeholder="수입급식비">
+								</div>
+								<div class="form-group">
+								    <label>마감회계_수입급식비</label>
+								    <input class="form-control" id="feapClosingIncome" name="feapClosingIncome" placeholder="마감회계_수입급식비">
+								</div>
+								<div class="form-group">
+								    <label>마감유무</label>
+								    <select name="feapClosingOption" class="form-control">
+								    <option value="마감전">마감전</option>
+								    <option value="마감">마감</option>
+								    </select>								    
+								</div>
+								<div class="form-group">
+								    <label>급식구분자</label>
+								    <select name="feapDivision" class="form-control">
+								    <option value="미납">미납</option>
+								    <option value="완납">완납</option>
+								    </select>
+								</div>
+								<div class="form-group">
+								    <label>등록인</label>
+								    <input class="form-control" id="feapRegistrant" name="feapRegistrant" placeholder="등록인">
+								</div>	
+					
+								<button type="submit">등록</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- FOOTER : Navigation -->
-	<c:import url="./inc/footer.jsp"></c:import>
+	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->
+	<!-- Bootstrap Core JavaScript -->
+	<script src="../resources/vendor/js/bootstrap.min.js"></script>
+	<!-- Metis Menu Plugin JavaScript -->
+	<script src="../resources/vendor/js/metisMenu.min.js"></script>
+	<!-- Morris Charts JavaScript -->
+	<script src="../resources/vendor/js/raphael.min.js"></script>
+	<script src="../resources/vendor/js/morris.min.js"></script>
+	<script src="../resources/vendor/js/morris-data.js"></script>
+	<!-- Custom Theme JavaScript -->
+	<script src="../resources/vendor/js/sb-admin-2.js"></script>
 </body>
 </html>

@@ -22,14 +22,12 @@
 <div id="wrapper">
 
 	<!-- TOP : Navigation -->
-	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 	<c:import url="../inc/top.jsp"></c:import>
 	<!-- TOP -->
 
 	<!-- LEFT : Navigation -->
 	<c:import url="../inc/left.jsp"></c:import>
 	<!-- LEFT -->
-	</nav>
 </div>
 <div id="page-wrapper">
 	<div class="row">
@@ -48,13 +46,9 @@
 						<div class="col-lg-6">
 							<form id="addForm" action="${pageContext.request.contextPath}/FeedingMonthlyAdd" method="POST">
 								<div class="form-group">
-								    <label>급식실시(월)</label>
-								    <input class="form-control" id="femoFeedingMonth" name="femoFeedingMonth" placeholder="급식실시(월)">
-								</div>
-								<div class="form-group">
-								    <label>급식실시(년)</label>
-								    <input class="form-control" id="femoFeedingYear" name="femoFeedingYear" placeholder="급식실시(년)">
-								</div>
+								    <label>급식실시(년,월)</label>
+								    <input type="month" class="form-control" id="femoFeedingYearMonth" name="femoFeedingYearMonth" placeholder="급식실시(년,월)">
+								</div>							
 								<div class="form-group">
 								    <label>조리사(명)</label>
 								    <input class="form-control" id="femoCook" name="femoCook" placeholder="조리사(명)">
@@ -62,6 +56,7 @@
 								<div class="form-group">
 								    <label>급식운영방식</label>
 								    <select class="form-control" id="femoOperationMethod" name="femoOperationMethod" >
+								    	<option value="------">-------</option>
 								    	<option value="자체급식">자체급식</option>
 								    	<option value="위탁급식">위탁급식</option>
 								    </select>								    
@@ -69,6 +64,7 @@
 								<div class="form-group">
 								    <label>집단급식소신고여부</label>
 								    <select class="form-control" id="femoCafeteriaReportedCheck" name="femoCafeteriaReportedCheck" >
+									   	<option value="------">-------</option>
 									   	<option value="신고">신고</option>
 									   	<option value="미신고">미신고</option>
 									   	<option value="해당사항없음">해당사항없음</option>
@@ -76,10 +72,12 @@
 								</div>
 								<div class="form-group">
 								    <label>계약코드</label>
-								    <select name="clientCd" class="form-control">
+								    <select name="contractCd" class="form-control">
+								    		<option value="------">-------</option>
 								    	<c:forEach var="clientAndContract" items="${clientAndContract}" >
 								    		<option value="${clientAndContract.contractCd}">${clientAndContract.contractCd}:${clientAndContract.clientNm}</option>
 								    	</c:forEach>
+								    	<option value="해당사항없음">해당사항없음</option>
 								    </select>
 								</div>
 								<div class="form-group">
@@ -93,6 +91,7 @@
 								<div class="form-group">
 								    <label>마감유무</label>
 								    <select class="form-control" id="femoClosingOption" name="femoClosingOption" >
+									    	<option value="------">-------</option>
 									    	<option value="마감완료">마감완료</option>
 									    	<option value="마감전">마감전</option>									    	
 								    </select>								   
@@ -132,4 +131,4 @@
 	<!-- Custom Theme JavaScript -->
 	<script src="resources/vendor/js/sb-admin-2.js"></script>
 </body>
-</html></html>
+</html>

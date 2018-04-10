@@ -2,8 +2,7 @@ package com.cafe24.hanboa.feeding;
 
 public class FeedingMonthly {
 	private String feedingMonthlyCd;
-	private String femoFeedingMonth;
-	private String femoFeedingYear;
+	private String femoFeedingYearMonth;
 	private int femoCook;
 	private String femoOperationMethod;
 	private String femoCafeteriaReportedCheck;
@@ -14,24 +13,17 @@ public class FeedingMonthly {
 	private String femoRegistrationDate;
 	private String femoRegistrant;
 	private String licenseKindergarten;
-	
 	public String getFeedingMonthlyCd() {
 		return feedingMonthlyCd;
 	}
 	public void setFeedingMonthlyCd(String feedingMonthlyCd) {
 		this.feedingMonthlyCd = feedingMonthlyCd;
 	}
-	public String getFemoFeedingMonth() {
-		return femoFeedingMonth;
+	public String getFemoFeedingYearMonth() {
+		return femoFeedingYearMonth;
 	}
-	public void setFemoFeedingMonth(String femoFeedingMonth) {
-		this.femoFeedingMonth = femoFeedingMonth;
-	}
-	public String getFemoFeedingYear() {
-		return femoFeedingYear;
-	}
-	public void setFemoFeedingYear(String femoFeedingYear) {
-		this.femoFeedingYear = femoFeedingYear;
+	public void setFemoFeedingYearMonth(String femoFeedingYearMonth) {
+		this.femoFeedingYearMonth = femoFeedingYearMonth;
 	}
 	public int getFemoCook() {
 		return femoCook;
@@ -95,16 +87,13 @@ public class FeedingMonthly {
 	}
 	@Override
 	public String toString() {
-		return "FeedingMonthly [feedingMonthlyCd=" + feedingMonthlyCd + ", femoFeedingMonth=" + femoFeedingMonth
-				+ ", femoFeedingYear=" + femoFeedingYear + ", femoCook=" + femoCook + ", femoOperationMethod="
-				+ femoOperationMethod + ", femoCafeteriaReportedCheck=" + femoCafeteriaReportedCheck + ", contractCd="
-				+ contractCd + ", femoExpenditureCost=" + femoExpenditureCost + ", femoClosingCost=" + femoClosingCost
+		return "FeedingMonthly [feedingMonthlyCd=" + feedingMonthlyCd + ", femoFeedingYearMonth=" + femoFeedingYearMonth
+				+ ", femoCook=" + femoCook + ", femoOperationMethod=" + femoOperationMethod
+				+ ", femoCafeteriaReportedCheck=" + femoCafeteriaReportedCheck + ", contractCd=" + contractCd
+				+ ", femoExpenditureCost=" + femoExpenditureCost + ", femoClosingCost=" + femoClosingCost
 				+ ", femoClosingOption=" + femoClosingOption + ", femoRegistrationDate=" + femoRegistrationDate
 				+ ", femoRegistrant=" + femoRegistrant + ", licenseKindergarten=" + licenseKindergarten + "]";
 	}
-	
-	
-	
 	
 
 }

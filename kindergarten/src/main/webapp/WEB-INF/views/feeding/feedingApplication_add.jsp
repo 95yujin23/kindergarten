@@ -60,7 +60,7 @@
 								    <label>월별급식코드</label>
 								    <select name="feedingMonthlyCd" class="form-control">
 								    	<c:forEach var="feedingMonthly" items="${feedingMonthly}" >
-								    		<option value="${feedingMonthly.feedingMonthlyCd}">${feedingMonthly.femoFeedingYear}년${feedingMonthly.femoFeedingMonth}월</option>
+								    		<option value="${feedingMonthly.feedingMonthlyCd}">${feedingMonthly.femoFeedingYearMonth}</option>
 								    	</c:forEach>
 								    </select>								    
 								</div>

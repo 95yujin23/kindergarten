@@ -35,8 +35,7 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>급식실시(년)</th>
-						<th>급식실시(월)</th>
+						<th>급식실시(년,월)</th>
 						<th>급식운영방식</th>						
 						<th>조리사(명)</th>
 						<th>집단급식소신고여부</th>
@@ -53,8 +52,7 @@
 				<c:forEach var="femo" items="${list}">
 					<tbody>
 						<tr>
-							<td>${femo.femoFeedingYear}</td>							
-							<td>${femo.femoFeedingMonth}</td>
+							<td>${femo.femoFeedingYearMonth}</td>							
 							<td>${femo.femoOperationMethod}</td>
 							<td>${femo.femoCook}</td>
 							<td>${femo.femoCafeteriaReportedCheck}</td>

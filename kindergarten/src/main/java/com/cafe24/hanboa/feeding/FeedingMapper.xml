@@ -16,8 +16,7 @@
 			resultType="com.cafe24.hanboa.feeding.FeedingMonthly">
 		SELECT
 			feeding_monthly_cd as feedingMonthlyCd
-			,femo_feeding_month as femoFeedingMonth
-			,femo_feeding_year as femoFeedingYear
+			,femo_feeding_year_month as femoFeedingYearMonth
 		FROM TB_FEEDING_MONTHLY
 	</select>
 	
@@ -54,6 +53,7 @@
 			resultType="com.cafe24.hanboa.feeding.FeedingApplication">
 		SELECT
 			feeding_application_cd as feedingApplicationCd
+			,feeding_monthly_cd as feedingMonthlyCd
 			,kids_cd as kidsCd
 			,feeding_monthly_cd as feedingMonthlyCd
 			,feap_expense_month as feapExpenseMonth
@@ -224,8 +224,7 @@
 			resultType="com.cafe24.hanboa.feeding.FeedingMonthly">			
 	SELECT
 			feeding_monthly_cd as feedingMonthlyCd
-			,femo_feeding_month as femoFeedingMonth
-			,femo_feeding_year as femoFeedingYear
+			,femo_feeding_year_month as femoFeedingYearMonth
 			,femo_cook as femoCook
 			,femo_operation_method as femoOperationMethod
 			,femo_cafeteria_reported_check as femoCafeteriaReportedCheck
@@ -244,8 +243,7 @@
 			resultType="com.cafe24.hanboa.feeding.FeedingMonthly">
 	SELECT
 			feeding_monthly_cd as feedingMonthlyCd
-			,femo_feeding_month as femoFeedingMonth
-			,femo_feeding_year as femoFeedingYear
+			,femo_feeding_year_month as femoFeedingYearMonth
 			,femo_cook as femoCook
 			,femo_operation_method as femoOperationMethod
 			,femo_cafeteria_reported_check as femoCafeteriaReportedCheck
@@ -253,6 +251,7 @@
 			,femo_expenditure_cost as femoExpenditureCost
 			,femo_closing_cost as femoClosingCost
 			,femo_closing_option as femoClosingOption
+			,femo_Registrant as femoRegistrant
 	FROM TB_FEEDING_MONTHLY
 	WHERE feeding_monthly_cd = #{feedingMonthlyCd}	 		
 	</select>
@@ -263,8 +262,7 @@
 	UPDATE	TB_FEEDING_MONTHLY
 	SET
 			feeding_monthly_cd = #{feedingMonthlyCd}
-			,femo_feeding_month = #{femoFeedingMonth}
-			,femo_feeding_year = #{femoFeedingYear}
+			,femo_feeding_year_month = #{femoFeedingYearMonth}
 			,femo_cook = #{femoCook}
 			,femo_operation_method = #{femoOperationMethod}
 			,femo_cafeteria_reported_check = #{femoCafeteriaReportedCheck}
@@ -283,8 +281,7 @@
 	</selectKey>		
 	INSERT INTO TB_FEEDING_MONTHLY(
 			feeding_monthly_cd
-			,femo_feeding_month
-			,femo_feeding_year
+			,femo_feeding_year_month
 			,femo_cook
 			,femo_operation_method
 			,femo_cafeteria_reported_check
@@ -297,8 +294,7 @@
 			,license_kindergarten)
 	VALUES(
 			#{feedingMonthlyCd}
-			,#{femoFeedingMonth}
-			,#{femoFeedingYear}
+			,#{femoFeedingYearMonth}
 			,#{femoCook}
 			,#{femoOperationMethod}
 			,#{femoCafeteriaReportedCheck}

@@ -1,5 +1,7 @@
 package com.cafe24.hanboa.feeding;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -42,11 +44,12 @@ public class FeedingMonthlyService {
 	}
 	
 	//4. 입력처리
-	public int feedingMonthlyAdd(FeedingMonthly feedingMonthly) {
-		int femoAdd = femoDao.feedingMonthlyAdd(feedingMonthly);
+	public void feedingMonthlyAdd(FeedingMonthly feedingMonthly) {
+		String inDate = new SimpleDateFormat("yyyyMMdd").format(new Date());
+		feedingMonthly.setFemoRegistrationDate(inDate);
+		femoDao.feedingMonthlyAdd(feedingMonthly);
 		logger.debug("{} <-- feedingMonthlyAdd메서드실행 FeedingMonthlyService.java",feedingMonthly);
-		logger.debug("{} <-- feedingMonthlyAdd메서드실행 FeedingMonthlyService.java",femoAdd);
-		return femoAdd;		
+		logger.debug("{} <-- feedingMonthlyAdd메서드실행 FeedingMonthlyService.java",inDate);
 	}
 	
 	//4-1 client,contract join 불러오기

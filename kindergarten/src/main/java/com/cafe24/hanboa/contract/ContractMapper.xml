@@ -22,6 +22,7 @@
 	<select id="callClient" resultType="com.cafe24.hanboa.client.Client">
 		SELECT
 			client_cd as clientCd
+			,client_Nm as clientNm
 		FROM TB_CLIENT
 	</select>
 
