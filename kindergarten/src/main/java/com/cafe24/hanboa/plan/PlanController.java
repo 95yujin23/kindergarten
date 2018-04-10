@@ -77,7 +77,9 @@ public class PlanController {
 						, @RequestParam(value="planCd", required = true) String planCd
 						, @RequestParam(value="planCateCd", required = true) String planCateCd
 						, @RequestParam(value="kidsClassCd", required = true) String kidsClassCd) {
+		logger.debug("3. PlanController.java PlanListOne()메소드 실행 ");
 		logger.debug("{} <- planCd PlanListOne PlanController.java", planCd);
+		logger.debug("------------------------------------------------------------");
 		Plan plan = planService.getPlanOne(planCd);
 		PlanCategory planCategory = planService.callPlanCategoryOne(planCateCd);
 		KidsClass kidsClass = planService.callKidsClassOne(kidsClassCd);
@@ -93,6 +95,8 @@ public class PlanController {
 			, @RequestParam(value="planCd", required = true) String planCd
 			, @RequestParam(value="planCateCd", required = true) String planCateCd
 			, @RequestParam(value="kidsClassCd", required = true) String kidsClassCd) {
+		logger.debug("4. PlanController.java planModify()메소드 실행 ");
+		logger.debug("------------------------------------------------------------");
 		Plan plan = planService.getPlanOne(planCd);
 		PlanCategory planCategory = planService.callPlanCategoryOne(planCateCd);
 		KidsClass kidsClass = planService.callKidsClassOne(kidsClassCd);
@@ -107,6 +111,14 @@ public class PlanController {
 	public String PlanModify(Plan plan) {
 		planService.planModify(plan);
 		logger.debug("{} <- plan planModify PlanController.java", plan);
+		return "redirect:/PlanList";
+	}
+	// 5. 계획안 삭제
+	@RequestMapping(value="/PlanDelete", method=RequestMethod.GET)
+	public String PlanDelete(@RequestParam(value="planCd", required = true) String planCd) {
+		logger.debug("5. PlanController.java PlanDelete()메소드 실행 ");
+		logger.debug("------------------------------------------------------------");
+		planService.planDelete(planCd);		
 		return "redirect:/PlanList";
 	}
 	

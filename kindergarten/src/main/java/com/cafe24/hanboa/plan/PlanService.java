@@ -91,6 +91,12 @@ public class PlanService {
 		logger.debug("{} <- plan planModify PlanService.java", plan);
 		return planOne;
 	}
+	// 5. 계획안 삭제
+	public int planDelete(String planCd) {
+		int planOne = planDao.deletePlan(planCd);
+		logger.debug("{} <- plan planDelete PlanService.java", planCd);
+		return planOne;
+	}
 	
 	// 계획안 카테고리
 	// 1. 계획안 카테고리 등록
@@ -131,7 +137,7 @@ public class PlanService {
 	}
 	// 3. 계획안 카테고리 삭제
 	public int planCategoryDelete(String planCateCd) {
-		int planOne = planDao.deletePlanCategory(planCateCd);
-		return planOne;
+		int planCateOne = planDao.deletePlanCategory(planCateCd);
+		return planCateOne;
 	}
 }

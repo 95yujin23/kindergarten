@@ -60,11 +60,16 @@ public class PlanDao {
 		logger.debug("{} <- planCd getPlanOne PlanDao.java", planCd);
 		return sqlSesionTamplate.selectOne(localName+"getPlanOne", planCd);
 	}
-	// 4. 계획안 업데이트 수정
+	// 4. 계획안 업데이트
 	public int planModify(Plan plan) {
 		logger.debug("PlanDao.java 3-3. planModify() 메소드 실행");
 		logger.debug("{} <- plan planModify PlanDao.java", plan);
 		return sqlSesionTamplate.update(localName+"modifyPlan", plan);
+	}
+	// 5. 계획안 삭제
+	public int deletePlan(String planCd) {
+		logger.debug("{} <- planCd deletePlan PlanDao.java", planCd);
+		return sqlSesionTamplate.delete(localName+"deletePlan", planCd);
 	}
 	
 	// 계획안 카테고리

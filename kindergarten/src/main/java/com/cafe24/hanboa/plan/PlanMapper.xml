@@ -120,6 +120,12 @@
 			, PLAN_REGISTRANT = #{planRegistrant}
 		WHERE PLAN_CD = #{planCd}
 	</update>
+	<!-- 5. 계획안 삭제 -->
+	<delete id="deletePlan" parameterType="com.cafe24.hanboa.plan.Plan">
+		DELETE
+		FROM TB_PLAN
+		WHERE PLAN_CD = #{planCd}
+	</delete>
 	
 	<!-- 계획안 카테고리  -->
 	<!-- 1. 계획안 카테고리 등록 -->
