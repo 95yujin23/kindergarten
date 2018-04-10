@@ -54,8 +54,7 @@ public class ContractService {
 	public List<Client> callClient(){
 		List<Client> call = contractDao.callClient();
 		logger.debug("{} < -- callClient메서드 실행 ContractService.java",call); 
-		return call;
-		
+		return call;		
 	}
 	
 	// 5. 삭제처리

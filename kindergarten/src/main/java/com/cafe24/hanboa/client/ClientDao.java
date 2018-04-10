@@ -22,8 +22,8 @@ public class ClientDao {
 		logger.debug("{} <-- selectClientList메소드 실행 ClientDao.java");
 		logger.debug("{} <-- startPage ClientDao.java", map.get("startPage"));
 		logger.debug("{} < -- pagePerRow ClientDao.java", map.get("pagePerRow"));
-		logger.debug("{} <-- keyword ClientDao.java", map.get("keywored"));
-		logger.debug("{} <-- keywored ClientDao.java", map.get("keyword"));
+		logger.debug("{} <-- searchOption ClientDao.java", map.get("searchOption"));
+		logger.debug("{} <-- keyword ClientDao.java", map.get("keyword"));
 		return sqlSession.selectList(localName+"getClientList",map);
 	}
 	//1-1 전체 거래처 페이징

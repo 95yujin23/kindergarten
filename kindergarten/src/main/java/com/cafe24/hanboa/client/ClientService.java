@@ -22,10 +22,10 @@ public class ClientService {
 	
 	//1.목록조회 +검색+페이징
 	public Map<String, Object> getClientList(int currentPage, int pagePerRow, String searchOption, String keyword){
-		logger.debug("{} <-- getClientList메서드 실행(currentPage) clientDao.java",currentPage);
-		logger.debug("{} <-- getClientList메서드 실행(pagePerRow) clientDao.java",pagePerRow);
-		logger.debug("{} <-- getClientList메서드 실행(searchOption) clientDao.java",searchOption);
-		logger.debug("{} <-- getClientList메서드 실행(keyword) clientDao.java",keyword);
+		logger.debug("{} <-- getClientList메서드 실행(currentPage) ClientService.java",currentPage);
+		logger.debug("{} <-- getClientList메서드 실행(pagePerRow) ClientService.java",pagePerRow);
+		logger.debug("{} <-- getClientList메서드 실행(searchOption) ClientService.java",searchOption);
+		logger.debug("{} <-- getClientList메서드 실행(keyword) ClientService.java",keyword);
 		int startPage = 0;
 		if(currentPage > 1) {
 			startPage = (currentPage-1)*pagePerRow;

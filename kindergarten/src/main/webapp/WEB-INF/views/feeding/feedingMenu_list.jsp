@@ -17,6 +17,15 @@
 <link href="resources/vendor/css/morris.css" rel="stylesheet">
 <!-- Custom Fonts -->
 <link href="resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!-- jQuery -->
+<script src="resources/vendor/js/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#searchButton').click(function(){
+				$('#searchForm').submit();
+		})
+	})
+</script>
 </head>
 <body>
 	<div id ="wrapper">
@@ -34,6 +43,20 @@
 			<div class="col-lg-1"></div>
 			<div class="col-lg-11">
 			<h2>급식메뉴 리스트</h2>
+			<!-- 검색처리 시작 -->
+				<form action="${pageContext.request.contextPath}/FeedingMenuList?searchOption=${searchOption}&keyword=${keyword}" method="get" id="searchForm" class="form-inline">
+					<select name="searchOption">
+						<option value="feme_date">식단일자</option>
+						<option value="feme_manager">담당자</option>
+					</select>
+					<div class="input-group">
+						<input id="keyword" name="keyword" type="text" class="form-control" placeholder="Search">
+						<div class="input-group-btn">
+							<button id="searchButton" type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
+						</div>
+					</div>
+				</form>
+			<!-- 검색처리 끝 -->
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -62,6 +85,17 @@
 					</tbody>	
 					</c:forEach>
 			</table>
+			<!-- 페이징 시작 -->
+			<nav aria-label="Page navigation example">
+				<ul class="pagination justify-content-center">
+					<c:forEach var="i" begin="1" end="${countPage}" step="1">
+						<li class="page-item">
+							<a class="page-link" href="${pageContext.request.contextPath}/FeedingMenuList?currentPage=${i}">${i}</a>
+						</li>
+					</c:forEach>
+				</ul>
+			</nav>
+			<!-- 페이징 끝 -->
 			</div>
 		</div>
 	</div>

@@ -48,10 +48,6 @@
 						<div class="col-lg-6">
 							<form id="addForm" action="${pageContext.request.contextPath}/FeedingMonthlyAdd" method="POST">
 								<div class="form-group">
-								    <label>월별급식코드</label>
-								    <input class="form-control" id="feedingMonthlyCd" name="feedingMonthlyCd" placeholder="월별급식코드">
-								</div>
-								<div class="form-group">
 								    <label>급식실시(월)</label>
 								    <input class="form-control" id="femoFeedingMonth" name="femoFeedingMonth" placeholder="급식실시(월)">
 								</div>
@@ -65,15 +61,26 @@
 								</div>
 								<div class="form-group">
 								    <label>급식운영방식</label>
-								    <input class="form-control" id="femoOperationMethod" name="femoOperationMethod" placeholder="급식운영방식">
+								    <select class="form-control" id="femoOperationMethod" name="femoOperationMethod" >
+								    	<option value="자체급식">자체급식</option>
+								    	<option value="위탁급식">위탁급식</option>
+								    </select>								    
 								</div>
 								<div class="form-group">
 								    <label>집단급식소신고여부</label>
-								    <input class="form-control" id="femoCafeteriaReportedCheck" name="femoCafeteriaReportedCheck" placeholder="집단급식소신고여부">
+								    <select class="form-control" id="femoCafeteriaReportedCheck" name="femoCafeteriaReportedCheck" >
+									   	<option value="신고">신고</option>
+									   	<option value="미신고">미신고</option>
+									   	<option value="해당사항없음">해당사항없음</option>
+								    </select>								 
 								</div>
 								<div class="form-group">
 								    <label>계약코드</label>
-								    <input class="form-control" id="contractCd" name="contractCd" placeholder="담당자">
+								    <select name="clientCd" class="form-control">
+								    	<c:forEach var="clientAndContract" items="${clientAndContract}" >
+								    		<option value="${clientAndContract.contractCd}">${clientAndContract.contractCd}:${clientAndContract.clientNm}</option>
+								    	</c:forEach>
+								    </select>
 								</div>
 								<div class="form-group">
 								    <label>지출급식비</label>
@@ -85,21 +92,16 @@
 								</div>
 								<div class="form-group">
 								    <label>마감유무</label>
-								    <input class="form-control" id="femoClosingOption" name="femoClosingOption" placeholder="마감유무">
-								</div>
-								<div class="form-group">
-								    <label>등록날짜</label>
-								    <input class="form-control" type="date" id="femoRegistrationDate" name="femoRegistrationDate" placeholder="등록날짜">
-								</div>
+								    <select class="form-control" id="femoClosingOption" name="femoClosingOption" >
+									    	<option value="마감완료">마감완료</option>
+									    	<option value="마감전">마감전</option>									    	
+								    </select>								   
+								</div>							
 								<div class="form-group">
 								    <label>등록인</label>
 								    <input class="form-control" id="femoRegistrant" name="femoRegistrant" placeholder="등록인">
 								</div>	
-								<div class="form-group">
-								    <label>유치원 라이센스</label>
-								    <input class="form-control" id="licenseKindergarten" name="licenseKindergarten" placeholder="유치원라이센스">
-								</div>
-					
+
 								<button type="submit">등록</button>
 							</form>
 						</div>

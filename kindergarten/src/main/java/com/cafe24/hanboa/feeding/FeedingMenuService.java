@@ -1,6 +1,10 @@
 package com.cafe24.hanboa.feeding;
 
+
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,10 +21,37 @@ public class FeedingMenuService {
 	private static final Logger logger = LoggerFactory.getLogger(FeedingMenuService.class);
 	
 	// 1.전체조회
-	public List<FeedingMenu> getFeedingMenuList() {
-		List<FeedingMenu> list = femeDao.selectFeedingMenu();
+	public Map<String, Object> getFeedingMenuList(int currentPage, int pagePerRow, String searchOption, String keyword){
+		logger.debug("{} <-- getFeedingMenuList메서드 실행(currentPage) FeedingMenuService.java",currentPage);
+		logger.debug("{} <-- getFeedingMenuList메서드 실행(pagePerRow) FeedingMenuService.java",pagePerRow);
+		logger.debug("{} <-- getFeedingMenuList메서드 실행(searchOption) FeedingMenuService.java",searchOption);
+		logger.debug("{} <-- getFeedingMenuList메서드 실행(keyword) FeedingMenuService.java",keyword);
+		int startPage = 0;
+		if(currentPage > 1) {
+			startPage = (currentPage-1)*pagePerRow;
+		}
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("searchOption", searchOption);
+		map.put("keyword", keyword);
+		map.put("startPage", startPage);
+		map.put("pagePerRow", pagePerRow);
+		List<FeedingMenu> list = femeDao.selectFeedingMenu(map);
 		logger.debug("{} <- getFeedingMenuList FeedingMenuService.java", list);
-		return list;
+		// 총 행의 수를 보여줄 행의 수로 나눈 뒤 나머지가 0일 경우는 넘어가고 아닐 경우 +1 한다.
+		int count = femeDao.selectFeedingMenuCountByPage(map);
+		logger.debug("{} : < - count FeedingMenuService.java",count);
+		int countPage = count/pagePerRow;
+		if(count%pagePerRow !=0) {
+			countPage++;
+		}
+		logger.debug("{} : < - countPage FeedingMenuService.java", countPage);
+		// list 페이지 수 리턴
+		Map<String, Object> returnMap = new HashMap<String,Object>();
+		returnMap.put("searchOption", searchOption);
+		returnMap.put("keyword", keyword);
+		returnMap.put("list", list);
+		returnMap.put("countPage", countPage);
+		return returnMap;
 	}
 	
 	// 2. 수정정보요청
@@ -40,11 +71,9 @@ public class FeedingMenuService {
 	}
 	
 	// 4.입력처리
-	public int insertFeedingMenu(FeedingMenu feedingMenu) {
-		int insertFeme = femeDao.insertFeedingMenu(feedingMenu);
+	public void insertFeedingMenu(FeedingMenu feedingMenu) {
+		femeDao.insertFeedingMenu(feedingMenu);
 		logger.debug("{} < -- insertFeedingMenu FeedingMenuService.java",feedingMenu);
-		logger.debug("{} < -- insertFeedingMenu FeedingMenuService.java",insertFeme);
-		return insertFeme;		
 	}
 	
 	//5. 삭제처리

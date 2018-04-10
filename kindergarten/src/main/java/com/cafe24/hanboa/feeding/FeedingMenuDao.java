@@ -1,6 +1,7 @@
 package com.cafe24.hanboa.feeding;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -17,9 +18,21 @@ public class FeedingMenuDao {
 	String localName = "com.cafe24.hanboa.feeding.FeedingMapper.";
 	
 	// 1.전체조회
-	public List<FeedingMenu> selectFeedingMenu(){
+	public List<FeedingMenu> selectFeedingMenu(Map<String, Object> map){
 		logger.debug("{} <-- selectFeedingMenu FeedingMenuDao.java");
-		return sessionTemplate.selectList(localName+"getFeedingMenuList");
+		logger.debug("{} <-- startPage FeedingMenuDao.java",map.get("startPage"));
+		logger.debug("{} <-- pagePerRow FeedingMenuDao.java",map.get("pagePerRow"));
+		logger.debug("{} <-- keyword FeedingMenuDao.java",map.get("keyword"));
+		logger.debug("{} <-- searchOption FeedingMenuDao.java",map.get("searchOption"));
+		logger.debug("{} <-- selectFeedingMenu FeedingMenuDao.java");
+		return sessionTemplate.selectList(localName+"getFeedingMenuList",map);
+	}
+	
+	//1-1 전체 식단메뉴 페이징
+	public int selectFeedingMenuCountByPage(Map<String,Object> map) {
+		logger.debug("{} <-- selectFeedingMenuCountByPage메서드 실행 FeedingMenuDao.java",map.get("keyword"));
+		logger.debug("{} < -- word selectFeedingMenuCountByPage ClientDao.java",map);
+		return sessionTemplate.selectOne(localName+"selectMenuCountByPage",map);		
 	}
 	
 	// 2. 수정정보요청

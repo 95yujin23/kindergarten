@@ -21,15 +21,13 @@
 <body>
 	<div id ="wrapper">
 		<!-- TOP : Navigation -->
-		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<c:import url="../inc/top.jsp"></c:import>
 		<!-- TOP -->
 		<!-- LEFT : Navigation -->
 		<c:import url="../inc/left.jsp"></c:import>
 		<!-- LEFT -->
-		</nav>
 	</div>
-	<div class="container">
+	<div  id="page-wrapper">
 		<div class="row">
 			<div class="col-lg-1"></div>
 			<div class="col-lg-11">
@@ -74,9 +72,26 @@
 			</table>
 			</div>
 		</div>
-	</div>
+	
 	<!-- FOOTER : Navigation -->
 	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->
+</div>
+<!-- jQuery -->
+<script src="resources/vendor/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="resources/vendor/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="resources/vendor/js/metisMenu.min.js"></script>
+
+<!-- Morris Charts JavaScript -->
+<script src="resources/vendor/js/raphael.min.js"></script>
+<script src="resources/vendor/js/morris.min.js"></script>
+<script src="resources/vendor/js/morris-data.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="resources/vendor/js/sb-admin-2.js"></script>
 </body>
 </html>

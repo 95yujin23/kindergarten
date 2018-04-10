@@ -48,10 +48,6 @@
 						<div class="col-lg-6">
 							<form id="addForm" action="${pageContext.request.contextPath}/FeedingMenuAdd" method="POST">
 								<div class="form-group">
-								    <label>식단코드</label>
-								    <input class="form-control" id="feedingMenuCd" name="feedingMenuCd" placeholder="식단코드">
-								</div>
-								<div class="form-group">
 								    <label>식단일자</label>
 								    <input class="form-control" type="date" id="menuDate" name="menuDate" placeholder="식단일자">
 								</div>
@@ -75,11 +71,7 @@
 								    <label>담당자</label>
 								    <input class="form-control" id="menuManager" name="menuManager" placeholder="담당자">
 								</div>	
-								<div class="form-group">
-								    <label>유치원 라이센스</label>
-								    <input class="form-control" id="licenseKindergarten" name="licenseKindergarten" placeholder="유치원라이센스">
-								</div>
-					
+												
 								<button type="submit">등록</button>
 							</form>
 						</div>

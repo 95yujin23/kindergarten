@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
+
 @Service
 @Transactional
 public class FeedingMonthlyService {
@@ -45,6 +47,13 @@ public class FeedingMonthlyService {
 		logger.debug("{} <-- feedingMonthlyAdd메서드실행 FeedingMonthlyService.java",feedingMonthly);
 		logger.debug("{} <-- feedingMonthlyAdd메서드실행 FeedingMonthlyService.java",femoAdd);
 		return femoAdd;		
+	}
+	
+	//4-1 client,contract join 불러오기
+	public List<FeedingMonthlyAndClientAndContract> callClientAndContract(){
+		List<FeedingMonthlyAndClientAndContract> call = femoDao.callClientAndContract();
+		logger.debug("{} < -- callClientAndContract메서드 실행 FeedingMonthlyService.java");
+		return call;		
 	}
 	
 	//5.삭제처리

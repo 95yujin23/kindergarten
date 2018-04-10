@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
+
 @Repository
 public class FeedingMonthlyDao {
 	
@@ -40,6 +42,13 @@ public class FeedingMonthlyDao {
 		logger.debug("<-- feedingMonthlyAdd 메서드 실행 FeedingMonthlyDao.java");
 		return sessionTemplate.insert(localName+"AddFemo",feedingMonthly);
 	}
+	
+	//4-1 client,contract join 불러오기
+	public List<FeedingMonthlyAndClientAndContract> callClientAndContract(){
+		logger.debug("<-- callClientAndContract 메서드 실행 FeedingMonthlyDao.java");
+		return sessionTemplate.selectList(localName+"callClientContract");		
+	}
+	
 	
 	//5.삭제처리
 	public int feedingMonthlyDelete(String feedingMonthlyCd) {

@@ -20,7 +20,37 @@
 			,femo_feeding_year as femoFeedingYear
 		FROM TB_FEEDING_MONTHLY
 	</select>
-
+	
+<!-- ++계약코드 -->
+	<select id = "callContract"   
+			resultType="com.cafe24.hanboa.contract.Contract">
+	SELECT
+		contract_cd as contractCd
+	FROM TB_CONTRACT	
+	</select>
+	
+<!-- ++거래처이름 -->
+	<select id ="callClient"
+			resultType="com.cafe24.hanboa.client.Client">
+	SELECT
+		client_cd as clientCd
+		,client_nm as clientNm
+	FROM TB_CLIENT
+	</select>
+<!-- ++계약코드,거래처이름 -->
+	<select id="callClientContract"
+			resultMap="clientAndContract">
+	SELECT 
+		cl.client_nm
+		,co.contract_cd
+		,fe.contract_cd
+	FROM TB_CLIENT cl
+	JOIN TB_CONTRACT co 
+	ON cl.CLIENT_CD=co.CLIENT_CD 
+	JOIN TB_FEEDING_MONTHLY fe
+	ON co.CONTRACT_CD = fe.CONTRACT_CD		
+	</select>
+			
 <!-- 급식신청 전체조회 -->
 	<select id="getFeedingApplication"
 			resultType="com.cafe24.hanboa.feeding.FeedingApplication">
@@ -105,7 +135,7 @@
 	WHERE feeding_application_cd = #{feedingApplicationCd}
 	</delete>
 	
-<!-- 식단메뉴조회 -->
+<!-- 식단메뉴조회+검색+페이징 -->
 	<select id="getFeedingMenuList"
 			resultType="com.cafe24.hanboa.feeding.FeedingMenu">
 	SELECT
@@ -117,7 +147,15 @@
 			,feme_origin as origin 
 			,feme_manager as menuManager
 			,license_kindergarten as licenseKindergarten
-	FROM TB_FEEDING_MENU		
+	FROM TB_FEEDING_MENU
+		<if test="keyword !=null">
+			WHERE ${searchOption} LIKE CONCAT('%', #{keyword} ,'%')
+		</if>
+		LIMIT #{startPage}, #{pagePerRow}
+	</select>
+<!-- 전체 식단메뉴 카테고리 수(페이징) -->
+	<select id="selectMenuCountByPage" resultType="int">
+		SELECT COUNT(*) FROM TB_FEEDING_MENU
 	</select>
 	
 <!-- 식단메뉴 항목벽조회 -->
@@ -140,8 +178,7 @@
 			parameterType = "com.cafe24.hanboa.feeding.FeedingMenu">
 	UPDATE TB_FEEDING_MENU
 		SET
-			feeding_menu_cd = #{feedingMenuCd}
-			,feme_date = #{menuDate}
+			feme_date = #{menuDate}
 			,feme_lunch_calory_protein = #{lunchCaloryProtein}
 			,feme_morning_snack = #{morningSnack}
 			,feme_afternoon_snack = #{afternoonSnack}
@@ -153,6 +190,9 @@
 <!-- 식단메뉴등록 -->
 	<insert id = "insertFeme"
 			parameterType = "com.cafe24.hanboa.feeding.FeedingMenu">
+	<selectKey resultType="String" keyProperty="feedingMenuCd" order="BEFORE">
+			SELECT CONCAT('FE_ME', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_FEEDING_MENU))
+	</selectKey>
 	INSERT INTO TB_FEEDING_MENU(
 		feeding_menu_cd
 		,feme_date
@@ -161,7 +201,7 @@
 		,feme_afternoon_snack
 		,feme_origin
 		,feme_manager
-		,license_kindergarten)		
+		,license_kindergarten)
 	VALUES(
 		#{feedingMenuCd}
 		,#{menuDate}
@@ -172,6 +212,7 @@
 		,#{menuManager}
 		,#{licenseKindergarten})
 	</insert>
+	
 <!-- 식단메뉴 삭제 -->
 	<delete id = "femeDelete"
 			parameterType="com.cafe24.hanboa.feeding.FeedingMenu">
@@ -182,7 +223,7 @@
 			
 <!-- 월별급식 조회 -->
 	<select id="getfemoList"
-			resultType="com.cafe24.hanboa.feeding.FeedingMonthly">
+			resultType="com.cafe24.hanboa.feeding.FeedingMonthly">			
 	SELECT
 			feeding_monthly_cd as feedingMonthlyCd
 			,femo_feeding_month as femoFeedingMonth
@@ -239,6 +280,9 @@
 <!-- 월별급식 등록 -->
 	<insert id="AddFemo"
 			parameterType="com.cafe24.hanboa.feeding.FeedingMonthly">
+	<selectKey resultType="String" keyProperty="feedingMonthlyCd" order="BEFORE">
+			SELECT CONCAT('FE_MO', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_FEEDING_MONTHLY))
+	</selectKey>		
 	INSERT INTO TB_FEEDING_MONTHLY(
 			feeding_monthly_cd
 			,femo_feeding_month
@@ -266,7 +310,7 @@
 			,#{femoClosingOption}
 			,#{femoRegistrationDate}
 			,#{femoRegistrant}
-			,#{licenseKindergarten})			
+			,#{licenseKindergarten})
 	</insert>
 
 <!-- 월별급식 삭제 -->
@@ -360,5 +404,10 @@
 	</delete>	
 
 
-
+<!-- client,contract,feedingMonthly resultMap설정 -->
+	<resultMap type="com.cafe24.hanboa.feeding.FeedingMonthlyAndClientAndContract" 
+				id="clientAndContract">
+		<result property="contractCd" column="contract_Cd"></result>
+		<result property="clientNm" column="client_Nm"></result>
+	</resultMap>
 </mapper>
