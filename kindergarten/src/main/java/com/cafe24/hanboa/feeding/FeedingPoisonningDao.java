@@ -1,5 +1,6 @@
 package com.cafe24.hanboa.feeding;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -19,8 +20,15 @@ public class FeedingPoisonningDao {
 	String localName = "com.cafe24.hanboa.feeding.FeedingMapper.";
 	
 	//1. 전체조회
-	public List<FeedingPoisonning> selectFeedingPoisonningList(){
-		return sqlSession.selectList(localName+"getFepoList");		
+	public List<FeedingPoisonning> selectFeedingPoisonningList(HashMap<String, Object> map){
+		logger.debug("{} <- selectFeedingPoisonningList FeedingApplicationDao.java",map);
+		return sqlSession.selectList(localName+"getFepoList",map);		
+	}
+	
+	//1-2 식중독현황 총 목록 조회
+	public int selectFepoTotalCount() {
+		logger.debug("{} <- selectFepoTotalCount FeedingApplicationDao.java");
+		return sqlSession.selectOne(localName+"getFepoTotalCount");
 	}
 	
 	//2. 수정정보요청

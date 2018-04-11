@@ -1,5 +1,6 @@
 package com.cafe24.hanboa.feeding;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -17,10 +18,36 @@ public class FeedingPoisonningService {
 	private static final Logger logger = LoggerFactory.getLogger(FeedingPoisonningService.class);
 
 	//1. 전체조회
-	public List<FeedingPoisonning> getFeedingPoisonningList(){
-		List<FeedingPoisonning> list = fepoDao.selectFeedingPoisonningList();
-		logger.debug("{} <- getFeedingPoisonningList FeedingPoisonningService.java",list);
-		return list;
+	public HashMap<String, Object> getFeedingPoisonningList(int currentPage, int pagePerRow){
+		logger.debug("FeedingPoisonningService -- HashMap<String, Object> getFeedingPoisonningList(int currentPage, int pagePerRow)");
+		logger.debug("int currentPage : {}",currentPage);
+		logger.debug("int pagePerRow : {}",pagePerRow);
+		// 페이징 작업
+		int startPage = 0;
+		if(currentPage!=1) { //현재 페이지가 1이 아닌 조건
+			startPage = (currentPage-1)*pagePerRow;
+			//시작페이지 = (현재페이지-1) * 5(보여줄목록수) 
+		}
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("startPage", startPage);
+		map.put("pagePerRow", pagePerRow);
+		List<FeedingPoisonning> list = fepoDao.selectFeedingPoisonningList(map);
+		logger.debug("List<Teacher> : FeedingPoisonningDao.selectFeedingPoisonningList(map) : {}", map);
+		int TotalCount = fepoDao.selectFepoTotalCount();
+		logger.debug("int TotalCount : FeedingPoisonningDao.selectFepoTotalCount() : {}", TotalCount);
+		int countPage = TotalCount/pagePerRow;
+						//페이지 수 = 총 목록수/보여줄목록수
+		if(TotalCount%pagePerRow!=0) { //총 목록 수를 보여줄 목록수로 나눴을 때 나머지가 0이 아닌 조건
+			countPage++; //countPage에 1씩 더한다.
+		}
+		logger.debug("TotalCount/pagePerRow = int countPage : {}", countPage);
+		//return
+		HashMap<String, Object> returnMap = new HashMap<String, Object>();
+		returnMap.put("list", list);
+		returnMap.put("countPage",countPage);
+		logger.debug("HashMap<String, Object> returnMap : {}", returnMap);
+		logger.debug("-----------------------------------------");
+		return returnMap;				
 	}
 	
 	//2. 수정정보요청

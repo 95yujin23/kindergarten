@@ -1,5 +1,6 @@
 package com.cafe24.hanboa.feeding;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -21,11 +22,25 @@ public class FeedingPoisonningController {
 	
 	// 1. 전체조회
 	@RequestMapping(value="/FeedingPoisonningList")
-	public String feedingPoisonningList(Model model, HttpSession session) {
-		List<FeedingPoisonning> list = fepoService.getFeedingPoisonningList();
-		logger.debug("{} < - feedingPoisonningList FeedingPoisonningController.java",list);
-		model.addAttribute("list",list);
-		return "/feeding/feedingPoisonning_list";
+	public String feedingPoisonningList(Model model, HttpSession session
+										,@RequestParam(value="currentPage", defaultValue="1")int currentPage
+										,@RequestParam(value="pagePerRow", defaultValue="5")int pagePerRow) {
+		logger.debug("FeedingPoisonningController -- feedingPoisonningList");
+		if(session.getAttribute("loginTeacher")==null) {
+			return "redirect:/Login";
+		}else if(session.getAttribute("loginTeacher")!=null) {
+			HashMap<String, Object> map = fepoService.getFeedingPoisonningList(currentPage, pagePerRow);
+			logger.debug("HashMap<String, Object> map : {}",map);
+			List<FeedingPoisonning> list = (List<FeedingPoisonning>) map.get("list");
+			logger.debug("List<FeedingApplication> list : {}",list);
+			int countPage = (Integer) map.get("countPage");
+			logger.debug("int countPage : {}",countPage);
+			model.addAttribute("list", list);
+			model.addAttribute("countPage", countPage);
+			return "feeding/feedingPoisonning_list";
+		}
+		logger.debug("-----------------------------------------");
+		return "feeding/feedingPoisonning_list";
 	}
 	
 	// 2. 수정정보요청
