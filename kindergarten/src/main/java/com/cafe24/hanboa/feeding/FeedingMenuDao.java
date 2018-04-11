@@ -22,17 +22,14 @@ public class FeedingMenuDao {
 		logger.debug("{} <-- selectFeedingMenu FeedingMenuDao.java");
 		logger.debug("{} <-- startPage FeedingMenuDao.java",map.get("startPage"));
 		logger.debug("{} <-- pagePerRow FeedingMenuDao.java",map.get("pagePerRow"));
-		logger.debug("{} <-- keyword FeedingMenuDao.java",map.get("keyword"));
-		logger.debug("{} <-- searchOption FeedingMenuDao.java",map.get("searchOption"));
 		logger.debug("{} <-- selectFeedingMenu FeedingMenuDao.java");
 		return sessionTemplate.selectList(localName+"getFeedingMenuList",map);
 	}
 	
 	//1-1 전체 식단메뉴 페이징
-	public int selectFeedingMenuCountByPage(Map<String,Object> map) {
-		logger.debug("{} <-- selectFeedingMenuCountByPage메서드 실행 FeedingMenuDao.java",map.get("keyword"));
-		logger.debug("{} < -- word selectFeedingMenuCountByPage ClientDao.java",map);
-		return sessionTemplate.selectOne(localName+"selectMenuCountByPage",map);		
+	public int selectFeedingMenuCountByPage() {
+		logger.debug("{} < -- word selectFeedingMenuCountByPage ClientDao.java");
+		return sessionTemplate.selectOne(localName+"getFemeTotalCount");		
 	}
 	
 	// 2. 수정정보요청

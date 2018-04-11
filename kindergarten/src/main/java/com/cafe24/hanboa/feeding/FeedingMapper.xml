@@ -173,14 +173,13 @@
 			,feme_manager as menuManager
 			,license_kindergarten as licenseKindergarten
 	FROM TB_FEEDING_MENU
-		<if test="keyword !=null">
-			WHERE ${searchOption} LIKE CONCAT('%', #{keyword} ,'%')
-		</if>
-		LIMIT #{startPage}, #{pagePerRow}
+		LIMIT #{startPage}, #{pagePerRow}			
 	</select>
-<!-- 전체 식단메뉴 카테고리 수(페이징) -->
-	<select id="selectMenuCountByPage" resultType="int">
-		SELECT COUNT(*) FROM TB_FEEDING_MENU
+<!-- 급식신청 총 목록 -->
+	<select id="getFemeTotalCount" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM TB_FEEDING_MENU
 	</select>
 	
 <!-- 식단메뉴 항목벽조회 -->
@@ -263,7 +262,14 @@
 			,femo_registrant as femoRegistrant
 			,license_kindergarten as licenseKindergarten
 	FROM TB_FEEDING_MONTHLY
+			LIMIT #{startPage}, #{pagePerRow}			
 	</select>
+<!-- 급식신청 총 목록 -->
+	<select id="getFemoTotalCount" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM TB_FEEDING_MONTHLY
+	</select>	
 	
 <!-- 월별급식 항목별 조회 -->
 	<select id="getfemoOne"
@@ -356,8 +362,16 @@
 			,fopo_registration_date as fopoRegistrationDate
 			,fopo_registrant as registrant
 			,license_kindergarten as licenseKindergarten
-		FROM TB_FOOD_POISONNING_PROCESSING			
+		FROM TB_FOOD_POISONNING_PROCESSING
+		LIMIT #{startPage}, #{pagePerRow}			
 	</select>
+<!-- 급식신청 총 목록 -->
+	<select id="getFepoTotalCount" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM TB_FOOD_POISONNING_PROCESSING
+	</select>		
+
 	
 <!-- 식중독처리현황 항목별조회 -->
 	<select id ="getFepoOne"

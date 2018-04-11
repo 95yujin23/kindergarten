@@ -21,7 +21,7 @@ public class FeedingApplicationDao {
 	
 	// 1. 목록조회
 	public List<FeedingApplication> selectFeedingApplicationList(HashMap<String, Object> map){
-		logger.debug("{} <- selectFeedingApplicationList FeedingApplicationDao.java");
+		logger.debug("{} <- selectFeedingApplicationList FeedingApplicationDao.java",map);
 		return sqlSession.selectList(localName+"getFeedingApplication",map);
 	}
 	// 1-2 급식신청 총 목록 조회

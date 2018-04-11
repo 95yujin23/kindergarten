@@ -1,5 +1,6 @@
 package com.cafe24.hanboa.feeding;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,28 +25,26 @@ public class FeedingMenuController {
 	
 	//1. 목록조회
 	@RequestMapping(value="/FeedingMenuList", method = RequestMethod.GET)
-	public String feedingMenuList(Model model
-								, @RequestParam(value="searchOpthion", required=false)String searchOption
-								, @RequestParam(value="keyword", required=false)String keyword
+	public String feedingMenuList(Model model, HttpSession session
 								, @RequestParam(value="currentPage", required=false,defaultValue="1")int currentPage
 								, @RequestParam(value="pagePerRow", required=false, defaultValue="10")int pagePerRow) {
-		logger.debug("{} <-- feedingMenuList메서드 실행 feedingMenuController.java",keyword);
 		logger.debug("{} <-- feedingMenuList메서드 실행 feedingMenuController.java",currentPage);
 		logger.debug("{} <-- feedingMenuList메서드 실행 feedingMenuController.java",pagePerRow);
-		Map<String, Object> map = femeService.getFeedingMenuList(currentPage, pagePerRow, searchOption, keyword);
-		List<FeedingMenu> list = (List<FeedingMenu>)(map.get("list"));
+		if(session.getAttribute("loginTeacher")==null) {
+			return "redirect:/Login";
+		}else if(session.getAttribute("loginTeacher")!=null) {
+		HashMap<String, Object> map = femeService.getFeedingMenuList(currentPage, pagePerRow);
+		List<FeedingMenu> list = (List<FeedingMenu>) map.get("list");
 		int countPage = (Integer) map.get("countPage");
-		String searchKeyword = (String) map.get("keyword");
-		String searchOptionWord = (String) map.get("searchOption");
 		logger.debug("{} <- feedingMenuList FeedingMenuController.java",list);
 		model.addAttribute("list",list);
 		model.addAttribute("countPage",countPage);
-		model.addAttribute("currentPage",currentPage);
-		model.addAttribute("keyword",keyword);
-		model.addAttribute("searchOption",searchOption);
 		logger.debug("{} < - list FeedingMenuController.java",list);
 		logger.debug("------------------------------------------------------------");		
 		return "feeding/feedingMenu_list";		
+	}
+		logger.debug("-----------------------------------------");
+		return "feeding/feedingApplication_list";
 	}
 	
 	//2. 수정정보요청

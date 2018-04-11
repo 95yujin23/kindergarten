@@ -36,9 +36,9 @@ public class FeedingApplicationService {
 		map.put("startPage", startPage);
 		map.put("pagePerRow", pagePerRow);
 		List<FeedingApplication> list = feedingApplicationDao.selectFeedingApplicationList(map);
-		logger.debug("List<Teacher> : feedingApplicationDao.selectTeacherList(map) : {}", map);
+		logger.debug("List<Teacher> : feedingApplicationDao.selectFeedingApplicationList(map) : {}", map);
 		int TotalCount = feedingApplicationDao.selectFeapTotalCount();
-		logger.debug("int TotalCount : teacherDao.selectTeacherTotalCount() : {}", TotalCount);
+		logger.debug("int TotalCount : feedingApplicationDao.selectFeapTotalCount() : {}", TotalCount);
 		int countPage = TotalCount/pagePerRow;
 						//페이지 수 = 총 목록수/보여줄목록수
 		if(TotalCount%pagePerRow!=0) { //총 목록 수를 보여줄 목록수로 나눴을 때 나머지가 0이 아닌 조건

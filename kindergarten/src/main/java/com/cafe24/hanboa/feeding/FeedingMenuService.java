@@ -21,24 +21,22 @@ public class FeedingMenuService {
 	private static final Logger logger = LoggerFactory.getLogger(FeedingMenuService.class);
 	
 	// 1.전체조회
-	public Map<String, Object> getFeedingMenuList(int currentPage, int pagePerRow, String searchOption, String keyword){
+	public HashMap<String, Object> getFeedingMenuList(int currentPage, int pagePerRow){
 		logger.debug("{} <-- getFeedingMenuList메서드 실행(currentPage) FeedingMenuService.java",currentPage);
 		logger.debug("{} <-- getFeedingMenuList메서드 실행(pagePerRow) FeedingMenuService.java",pagePerRow);
-		logger.debug("{} <-- getFeedingMenuList메서드 실행(searchOption) FeedingMenuService.java",searchOption);
-		logger.debug("{} <-- getFeedingMenuList메서드 실행(keyword) FeedingMenuService.java",keyword);
+		//페이징 작업
 		int startPage = 0;
-		if(currentPage > 1) {
+		if(currentPage > 1) { //현재 페이지가 1이 아닌 조건
 			startPage = (currentPage-1)*pagePerRow;
+			//시작페이지 = (현재페이지-1) * 5(보여줄목록수) 
 		}
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("searchOption", searchOption);
-		map.put("keyword", keyword);
 		map.put("startPage", startPage);
 		map.put("pagePerRow", pagePerRow);
 		List<FeedingMenu> list = femeDao.selectFeedingMenu(map);
 		logger.debug("{} <- getFeedingMenuList FeedingMenuService.java", list);
 		// 총 행의 수를 보여줄 행의 수로 나눈 뒤 나머지가 0일 경우는 넘어가고 아닐 경우 +1 한다.
-		int count = femeDao.selectFeedingMenuCountByPage(map);
+		int count = femeDao.selectFeedingMenuCountByPage();
 		logger.debug("{} : < - count FeedingMenuService.java",count);
 		int countPage = count/pagePerRow;
 		if(count%pagePerRow !=0) {
@@ -46,9 +44,7 @@ public class FeedingMenuService {
 		}
 		logger.debug("{} : < - countPage FeedingMenuService.java", countPage);
 		// list 페이지 수 리턴
-		Map<String, Object> returnMap = new HashMap<String,Object>();
-		returnMap.put("searchOption", searchOption);
-		returnMap.put("keyword", keyword);
+		HashMap<String, Object> returnMap = new HashMap<String,Object>();
 		returnMap.put("list", list);
 		returnMap.put("countPage", countPage);
 		return returnMap;
