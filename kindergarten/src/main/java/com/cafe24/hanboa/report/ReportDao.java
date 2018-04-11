@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.cafe24.hanboa.classformation.*;
+import com.cafe24.hanboa.kids.KidsFile;
 import com.cafe24.hanboa.teacher.Teacher;
 
 @Repository
@@ -35,6 +36,14 @@ public class ReportDao {
 		logger.debug("selectReportList() 메소드 list is {}",list);
 		return list;
 	}
+	/*
+	 * description : 일지등록 부분 테이블에 리스트를 불러오기 위한 메소드
+	 * */
+	public List<KidsReportSelect> selectKidsListForUpload(KidsReportSelect kidsReportSelect){
+		return sqlSession.selectList(localName + "selectKidsListForUpload");
+	}
+	
+	
 	// kids_report_list.jsp 선택옵션 반 리스트 보여주기
 	public List<KidsClass> selectClassListForSearch() {
 		logger.debug("ReportDao ---> selectClassListForSearch() 메소드 실행 ");
@@ -102,7 +111,16 @@ public class ReportDao {
 	public List<KidsClass> selectKidsClassListForSelectBox(){
 		return sqlSession.selectList(localName + "selectKidsClassListForSelectBox");
 	}
-	
+	// 일지등록
+	public int addKidsReport(Report report) {
+		logger.debug("ReportDao ---> addKidsReport() 메소드 실행");
+		return sqlSession.insert(localName + "addReport");
+	}
+	// 일지파일등록
+	public int addKidsReportFile(KidsFile kidsFile) {
+		logger.debug("ReportDao ---> addKidsReportFile() 메소드 실행");
+		return sqlSession.insert(localName + "addReportFile");
+	}
 
 	
 	

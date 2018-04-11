@@ -1,6 +1,7 @@
 package com.cafe24.hanboa.report;
 
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -196,11 +197,43 @@ public class ReportController {
 	}
 	
 	//일지추가화면
-	@RequestMapping(value="/reportAdd")
+	@RequestMapping(value="/ReportAdd")
 	public String reportAdd() {
 		
 		return "report/report_add";
 	}
+	/*일지 업로드화면에서 보여줄  영유아 관련리스트*/
+	@RequestMapping(value="/KidsReportSelect")
+	public @ResponseBody Object getKidsReportListForUpload(HttpServletRequest request,
+														HttpServletResponse response,
+														@ModelAttribute("KidsReportSelect") KidsReportSelect kidsReportSelect) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("data", reportService.selectKidsListForUpload(kidsReportSelect));
+		Object result = map;
+		return result;
+	}
+	/*일지 추가 (업로드)*/
+	@RequestMapping(value="/ReportAdd", method=RequestMethod.POST)
+		public String addKidsReport(ReportCommand reportCommand, HttpSession session) throws IOException {
+			String path = session.getServletContext().getRealPath("/");
+			logger.debug("path : {}",path);
+			//report파일 경로 더해줌
+			path += "resources/upload/report/";
+			// loginTeacher session에 담긴 loginTeacher의 값을 담는다.
+			Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+			logger.debug("loginTeacher : {}", loginTeacher);
+			if(loginTeacher == null) {
+				//loginTeacher의 값이 null이면 login화면으로 페이지 전환
+				return "redirect:/Login";
+			}
+			
+			// loginTeacher가 null이 아니라면 아래 작업을 수행
+			reportCommand.setLicenseKindergarten(loginTeacher.getLicenseKindergarten());
+			logger.debug("kidsCommand : {}", reportCommand);
+			reportService.addReport(reportCommand,path);
+			logger.debug("모든 작업 수행");
+			return "redirect:ReportAdd";
+		}
 }
 	
 

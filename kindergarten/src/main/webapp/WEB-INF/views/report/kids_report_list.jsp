@@ -68,42 +68,6 @@
    </div>
    </div>
    </div>
-   <!-- small modal start -->
-		<div class="modal fade" id="myModal">
-		  <div class="modal-dialog">
-		  <!-- modal content -->
-		    <div class="modal-content">
-		    <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title" id="myModalLabel">일지 업로드</h4>
-		      </div>
-		      <!-- Modal body -->
-		       <div class="modal-body">
-		      <form action="${pageContext.request.contextPath}/modifyKidsClass" name="modifyKidsClassForm" id="modifyKidsClassForm" class="form-inline" method="POST">
-		    	<select id="reportName" name="reportName"><!-- 일지명 -->
-					<option>----선택----</option>	
-					<c:forEach var="ReportList" items="${reportDivisionList}">
-						<option value="${ReportList.reportCd}">${ReportList.reportNm}</option>
-					</c:forEach>	    	
-		    	</select>
-		    	<select id="className" name="className" onchange="getKidsName(this.value);"><!-- 반선택 -->
-					<option>----선택----</option>
-					<c:forEach var="ClassList" items="${kidsClassList}">	
-						<option value="${ClassList.kidsClassCd}">${ClassList.classNm}</option>
-					</c:forEach>	    	
-		    	</select>
-		    	<select id="kidsName" name="kidsName"><!-- 유아선택 -->
-					<option>----선택----</option>	
-					<option value=""></option>	    	
-		    	</select>
-		    	
-		        <button type="submit" class="btn btn-primary" onclick="return modifyKidsClassBtn()">완료</button>
-		       </form>
-		    </div>
-		  </div>
-		</div>
-	</div>
-	<!-- /small modal -->
 			<!-- FOOTER : Navigation -->
 			<c:import url="../inc/footer.jsp"></c:import>
 			<!-- FOOTER -->

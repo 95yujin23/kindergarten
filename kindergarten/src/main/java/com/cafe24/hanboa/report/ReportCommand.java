@@ -1,15 +1,17 @@
 package com.cafe24.hanboa.report;
 
-public class Report {
-	
-	// 영유아일지 tb_report
-	
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
+public class ReportCommand {
 	private String kidsReportCd;
 	private String reportCd;
 	private String kidsCd;
 	private String licenseKindergarten;
 	private String registrant;
 	private String registrationDate;
+	List<MultipartFile> file;
 	
 	public String getKidsReportCd() {
 		return kidsReportCd;
@@ -47,10 +49,12 @@ public class Report {
 	public void setRegistrationDate(String registrationDate) {
 		this.registrationDate = registrationDate;
 	}
-	
-	
-	
-	
+	public List<MultipartFile> getFile() {
+		return file;
+	}
+	public void setFile(List<MultipartFile> file) {
+		this.file = file;
+	}
 	
 	
 	

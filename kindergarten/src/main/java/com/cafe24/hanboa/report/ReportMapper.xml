@@ -26,6 +26,23 @@
 		FROM hanboa.TB_REPORT
 	</select>
 	
+	<!-- description : 일지업로드 화면에 영유아관련 리스트를 보여주기 위한 쿼리
+					   ResultMap사용 미숙으로 Class를 하나 생성했음. --> 
+	<select id="selectKidsListForUpload"
+			resultType="com.cafe24.hanboa.report.KidsReportSelect">
+		SELECT
+			formation.kids_class_cd as kidsClassCd
+			,kidsClass.class_nm as classNm
+			,kids.kids_cd as kidsCd
+			,kids.kids_nm as kidsNm
+			,kids.kids_gender as kidsGender
+			,kids.kids_spare_phone as kidsSparePhone
+			,kids.kids_parent_phone as kidsParentPhone
+		FROM TB_KIDS_CLASS_FORMATION formation JOIN TB_KIDS_CLASS kidsClass
+		ON formation.kids_class_cd = kidsClass.kids_class_cd
+		JOIN TB_KIDS kids ON formation.kids_cd = kids.kids_cd
+	</select>
+	
 	<select id="selectReportList"
 			resultType="com.cafe24.hanboa.report.ReportList">
 			
@@ -183,4 +200,46 @@
 			,license_kindergarten as licenseKindergarten
 		FROM hanboa.TB_KIDS_CLASS
 	</select>
+	<!-- 일지 추가 -->
+	<insert id="addReport"
+			parameterType="com.cafe24.hanboa.report.Report">
+	<selectKey resultType="String" keyProperty="kidsReportCd" order="BEFORE">
+			SELECT CONCAT('KI_RE', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_REPORT ORDER BY kids_report_cd))
+		</selectKey>
+		INSERT INTO TB_REPORT (
+			kids_report_cd
+			,report_cd
+			,kids_cd
+			,license_kindergarten
+			,registrant
+		)
+		VALUE(
+			#{kidsReportCd}
+			,#{reportCd}
+			,#{kidsCd}
+			,#{licenseKindergarten}
+			,#{registrant}
+		)
+	</insert>
+	<!-- 일지 파일 추가 -->
+	<insert id="addReportFile"
+			parameterType="com.cafe24.hanboa.kids.KidsFile">
+	<selectKey resultType="String" keyProperty="kidsFileCd" order="BEFORE">
+			SELECT CONCAT('RE_FI', '_', (SELECT LPAD(COUNT(*)+1,4,'0') FROM TB_KIDS_FILE ORDER BY kids_file_cd))
+		</selectKey>
+		INSERT INTO hanboa.TB_KIDS_FILE(
+			kids_cd
+			,kids_file_cd
+			,kids_file_nm
+			,kids_file_ext
+			,kids_file_size
+		)
+		VALUES(
+			#{kidsCd}
+			,#{kidsFileCd}
+			,#{kidsFileNm}
+			,#{kidsFileExt}
+			,#{kidsFileSize}
+		);
+	</insert>	
 </mapper>
