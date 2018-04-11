@@ -40,9 +40,11 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">
+			<div class="panel-heading">
 			<h1 class="page-header">편성반이 없는 모든 영유아 목록</h1>
-			<form action="${pageContext.request.contextPath}/KidsList" method="post">
+			</div>
+			<div class="panel-body">
+			<form id="searchForm" action="${pageContext.request.contextPath}/KidsList" method="post" class="form-inline">
 					<select name="keyword" class="form-control">
 					<!-- 검색 조건을 검색 처리후 결과화면에 보여주기 위해 c:out 출력태그 사용 (삼항연산자) -->
 					<option value="">전체보기</option>
@@ -50,8 +52,8 @@
 					<option value="사랑반">사랑반</option>
 					<option value="소망반">소망반</option>
 					</select> 
-					<button class="btn btn-success" type="submit" value="검색">검색</button>
-				</form>
+					<button id="searchButton" class="btn btn-info" type="button" ><i class="fa fa-search"></i></button>
+			</form>
 				<table style="text-align: center;" class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
@@ -95,11 +97,10 @@
 			</div>
 		</div>
 	</div>
-</div>
 	<!-- FOOTER : Navigation -->
 	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->
-
+</div>
 	<!-- jQuery -->
 	<script src="resources/vendor/js/jquery.min.js"></script>
 
@@ -116,5 +117,12 @@
 
 	<!-- Custom Theme JavaScript -->
 	<script src="resources/vendor/js/sb-admin-2.js"></script>
+		<script>
+	$(document).ready(function(){
+		$('#searchButton').click(function(){
+				$('#searchForm').submit();
+		})
+	})
+	</script>
 </body>
 </html>

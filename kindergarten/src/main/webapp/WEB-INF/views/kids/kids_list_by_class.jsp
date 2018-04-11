@@ -26,36 +26,28 @@
 <!-- Custom Fonts -->
 <link href="resources/vendor/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body>
 
 <div id="wrapper">
-
 	<!-- TOP : Navigation -->
-	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 	<c:import url="../inc/top.jsp"></c:import>
 	<!-- TOP -->
 
 	<!-- LEFT : Navigation -->
 	<c:import url="../inc/left.jsp"></c:import>
 	<!-- LEFT -->
-	</nav>
 </div>
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">
+			<div class="panel-heading">
 			<h1 class="page-header">영유아 목록</h1>
-			<form action="${pageContext.request.contextPath}/KidsListByClass" method="post">
+			</div>
+			<div class="panel-body">
+			<form id="searchForm" action="${pageContext.request.contextPath}/KidsListByClass" method="post" class="form-inline">
 					<select name="keyword" class="form-control">
 					<!-- 검색 조건을 검색 처리후 결과화면에 보여주기 위해 c:out 출력태그 사용 (삼항연산자) -->
 					<option value="">전체보기</option>
@@ -63,7 +55,7 @@
 					<option value="사랑반">사랑반</option>
 					<option value="소망반">소망반</option>
 					</select> 
-					<button class="btn btn-success" type="submit" value="검색">검색</button>
+					<button id="searchButton" class="btn btn-info" type="submit"><i class="fa fa-search"></i></button>
 				</form>
 				<table class="table table-striped table-bordered table-hover">
 					<thead>
@@ -107,11 +99,10 @@
 			</div>
 		</div>
 	</div>
-</div>
 	<!-- FOOTER : Navigation -->
 	<c:import url="../inc/footer.jsp"></c:import>
 	<!-- FOOTER -->
-
+</div>
 	<!-- jQuery -->
 	<script src="resources/vendor/js/jquery.min.js"></script>
 
