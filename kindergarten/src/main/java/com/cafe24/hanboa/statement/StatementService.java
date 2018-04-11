@@ -19,9 +19,9 @@ public class StatementService {
 	private static final Logger logger = LoggerFactory.getLogger(StatementService.class);
 	
 	//회계전표분류 리스트
-	public List<StatementCategory> selectStatementCategory(){
+	public List<StatementCategory> selectStatementCategory(StatementCategory statementCategory){
 		logger.debug("StatementService selectStatementCategory()메소드 실행");
-		List<StatementCategory> list = statementDao.selectStatementCategory();
+		List<StatementCategory> list = statementDao.selectStatementCategory(statementCategory);
 		return list;
 	}
 	

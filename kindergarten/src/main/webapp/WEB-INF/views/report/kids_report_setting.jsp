@@ -233,11 +233,11 @@
 			var modal = $("#myModal");
 			
 			var vm = $(this).parent()
-			
+				console.log(vm);
 			$(".mod").on("click", function (e) { 
 				
 				var vm = $(this).parent().parent().children();
-				
+				console.log(vm);
 				var reportDivisionCd = $(vm[0]).text();
 				var reportDivisionNm = $(vm[1]).text();
 				$("#reportDivisionCd").val(reportDivisionCd)

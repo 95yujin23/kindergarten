@@ -21,7 +21,7 @@ public class StatementDao {
 	String localName = "com.cafe24.hanboa.statement.StatementMapper.";
 	
 	//회계전표분류 리스트
-	public List<StatementCategory> selectStatementCategory(){
+	public List<StatementCategory> selectStatementCategory(StatementCategory statementCategory){
 		logger.debug("StatementDao selectStatementCategory() 메소드 실행");
 		return sqlSession.selectList(localName + "selectStatementCategory");
 	}

@@ -3,20 +3,22 @@ package com.cafe24.hanboa.statement;
 public class StatementCategory {
 	//회계전표분류 DTO TB_STATEMENT_CATEGORY
 	
-	private String statementCafeCd;
-	private String statementCafeNm;
-	public String getStatementCafeCd() {
-		return statementCafeCd;
+	private String statementCateCd;
+	private String statementCateNm;
+	
+	public String getStatementCateCd() {
+		return statementCateCd;
 	}
-	public void setStatementCafeCd(String statementCafeCd) {
-		this.statementCafeCd = statementCafeCd;
+	public void setStatementCateCd(String statementCateCd) {
+		this.statementCateCd = statementCateCd;
 	}
-	public String getStatementCafeNm() {
-		return statementCafeNm;
+	public String getStatementCateNm() {
+		return statementCateNm;
 	}
-	public void setStatementCafeNm(String statementCafeNm) {
-		this.statementCafeNm = statementCafeNm;
+	public void setStatementCateNm(String statementCateNm) {
+		this.statementCateNm = statementCateNm;
 	}
+
 	
 	
 }

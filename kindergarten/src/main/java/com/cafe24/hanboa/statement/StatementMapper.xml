@@ -5,8 +5,8 @@
 <select id="selectStatementCategory"
 		resultType="com.cafe24.hanboa.statement.StatementCategory">
 	SELECT
-		statement_cate_cd as statementCafeCd
-		statement_cate_nm as statementCafeNm
+		statement_cate_cd as statementCateCd
+		,statement_cate_nm as statementCateNm
 	FROM hanboa.TB_STATEMENT_CATEGORY
 </select>
 
