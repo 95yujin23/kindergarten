@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>교직원 등록 화면</title>
+<title>교직원 인건비 등록</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="resources/vendor/css/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +54,7 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6">
-							<form id="addForm" action="${pageContext.request.contextPath}/TeacherPayAdd" method="POST">
+							<form id="addForm" name=form action="${pageContext.request.contextPath}/TeacherPayAdd" method="POST">
 								<div class="form-group">
 								    <label>교직원 이름</label>
 								    <select name="teacherCd" class="form-control">
@@ -69,7 +69,10 @@
 								</div>
 								<div class="form-group">
 								    <label>지급할 금액</label>
-								    <input class="form-control" id="payPayment" name="payPayment" placeholder="지급금액(단위:원)">
+								    <input class="form-control" id="payPayment" name="payPayment"  type="text" name="A_EMONEY" placeholder="지급금액(단위:원)" 
+								    		onkeypress="NUM_HAN(this.value, 3, document.form.EMONEY_HAN)" 
+								   			onkeyup="this.value=numchk(this.value);NUM_HAN(this.value, 3, document.form.EMONEY_HAN)">
+								   			&nbsp; <input type="text" name="EMONEY_HAN" readonly style="border:0;" size="50">
 								</div>
 								<div class="form-group">
 								    <label>등록인</label>
@@ -103,5 +106,9 @@
 
 	<!-- Custom Theme JavaScript -->
 	<script src="resources/vendor/js/sb-admin-2.js"></script>
+
+	<!-- Money JavaScript -->
+	<script src="resources/vendor/js/money.js"></script>
+	
 </body>
 </html>

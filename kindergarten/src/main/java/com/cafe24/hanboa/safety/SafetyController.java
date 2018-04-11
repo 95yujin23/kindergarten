@@ -53,9 +53,10 @@ public class SafetyController {
 	public String safetyAdd(Model model) {
 	logger.debug("2-1. SafetyController -- SafetyAddForm");
 	TotalResourceService totalResourceService = new TotalResourceService();
-	//List<TotalResource> list = totalResourceService.
+	List<TotalResource> list = totalResourceService.getTotalResourceList();
 	//totalResource에서 통합자원코드, 통합자원코드그룹명, 코드명 가져오기
 	logger.debug("----------------------------------------");
+	model.addAttribute("list",list);
 		return "safety/safety_add";
 	}
 	

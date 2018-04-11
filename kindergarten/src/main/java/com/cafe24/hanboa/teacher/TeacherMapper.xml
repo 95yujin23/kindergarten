@@ -166,7 +166,7 @@
 			,teacher_cd				AS teacherCd
 			,pay_payment			AS payPayment
 			,pay_closing_cd			AS payClosingCd
-			,pay_closing_option		AS payClosingOption
+			,pay_closing_division	AS payClosingDivision
 			,pay_registration_date	AS payRegistrationDate
 			,pay_registrant			AS payRegistrant
 			,license_kindergarten	AS licenseKindergarten		
@@ -186,7 +186,7 @@
 			,teacher_cd
 			,pay_payment
 			,pay_closing_cd
-			,pay_closing_option
+			,pay_closing_division
 			,pay_registration_date
 			,pay_registrant
 			,license_kindergarten)

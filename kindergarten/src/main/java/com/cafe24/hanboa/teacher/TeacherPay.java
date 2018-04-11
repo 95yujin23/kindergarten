@@ -5,7 +5,7 @@ public class TeacherPay {
 	String teacherCd;
 	int payPayment;
 	String payClosingCd;
-	String payClosingOption;
+	String payClosingDivision;
 	String payRegistrationDate;
 	String payRegistrant;
 	String licenseKindergarten;
@@ -34,11 +34,11 @@ public class TeacherPay {
 	public void setPayClosingCd(String payClosingCd) {
 		this.payClosingCd = payClosingCd;
 	}
-	public String getPayClosingOption() {
-		return payClosingOption;
+	public String getPayClosingDivision() {
+		return payClosingDivision;
 	}
-	public void setPayClosingOption(String payClosingOption) {
-		this.payClosingOption = payClosingOption;
+	public void setPayClosingOption(String payClosingDivision) {
+		this.payClosingDivision = payClosingDivision;
 	}
 	public String getPayRegistrationDate() {
 		return payRegistrationDate;
@@ -62,7 +62,7 @@ public class TeacherPay {
 	@Override
 	public String toString() {
 		return "TeacherPay [payCd=" + payCd + ", teacherCd=" + teacherCd + ", payPayment=" + payPayment
-				+ ", payClosingCd=" + payClosingCd + ", payClosingOption=" + payClosingOption + ", payRegistrationDate="
+				+ ", payClosingCd=" + payClosingCd + ", payClosingDivision=" + payClosingDivision + ", payRegistrationDate="
 				+ payRegistrationDate + ", payRegistrant=" + payRegistrant + ", licenseKindergarten="
 				+ licenseKindergarten + "]";
 	}	

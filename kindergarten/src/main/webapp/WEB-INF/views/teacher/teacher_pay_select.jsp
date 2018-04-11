@@ -40,35 +40,24 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">
-			<h1 class="page-header">교직원 인건비 목록</h1>
-			<h1>교직원 목록</h1>
-				<table>
+			<div class="panel-heading">
+			<h1 class="page-header">내 인건비 지급 목록</h1>
+			</div>
+			<div class="panel-body">
+				<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
-							<th>인건비코드</th>
-							<th>선생님코드</th>
 							<th>지급금</th>
-							<th>마감코드</th>
-							<th>마감유무</th>
-							<th>등록날짜</th>
-							<th>등록자</th>
-							<th>수정</th>
-							<th>삭제</th>
+							<th>지급일</th>
+							<th>등록인</th>
 						</tr>
 					</thead>
 					<c:forEach var="teacherPayList" items="${list}">
 						<tbody>
 							<tr>
-								<td>${teacherPayList.payCd}</td>
-								<td>${teacherPayList.teacherCd}</td>
-								<td>${teacherPayList.payPayment}</td>
-								<td>${teacherPayList.payClosingCd}</td>
-								<td>${teacherPayList.payClosingOption}</td>
+								<td>${teacherPayList.payPayment}원</td>
 								<td>${teacherPayList.payRegistrationDate}</td>
 								<td>${teacherPayList.payRegistrant}</td>
-								<td><a href="${pageContext.request.contextPath}/TeacherPayModify">수정</a></td> <!-- 수정화면 -->
-								<td><a href="${pageContext.request.contextPath}/TeacherPayRemove">삭제</a></td>
 							</tr>
 						</tbody>
 					</c:forEach>
