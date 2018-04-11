@@ -43,7 +43,7 @@
 				<div class="panel panel-default">
 				<!-- 프로젝트 소개 목록 시작 -->
 					<div class="panel-heading">
-					<h1 class="page-header">프로젝트 소개</h1> <a href="${pageContext.request.contextPath}/str">달력테스트</a>
+					<h1 class="page-header">프로젝트 소개</h1>
 					</div>
 					 <!-- /.panel-heading -->
 					<div class="panel-body">
@@ -111,7 +111,7 @@
 										</tr>
 										<tr>
 											<td><strong>WAS</strong></td>
-											<td>apache-tomcat 8.0</td>
+											<td>apache-tomcat 8.5</td>
 										</tr>
 										<tr>
 											<td><strong>DB</strong></td>
@@ -123,25 +123,22 @@
 										</tr>
 										<tr>
 											<td><strong>Development Tool</strong></td>
-											<td>Spring Tool Suite 3.9.0</td>
+											<td>Spring Tool Suite 3.9.2</td>
 										</tr>
-										<tr>
-											<td><strong>Plan Management Tool</strong></td>
-											<td>Trello</td>
-										</tr>
+
 										<tr>
 											<td><strong>Language</strong></td>
-											<td>Java 1.8, Javascript, JSP, HTML 5</td>
+											<td>Java 1.8, Javascript, jquery3.1, JSP, HTML 5</td>
 										</tr>
 										<tr>
 											<td><strong>Framework</strong></td>
 											<td>jQuery 2.2.4, Json, Ajax, Mybatis 3.4.5, bootStrap
-												3.3.6, Spring 4.3.12, Maven 2.5.1, tiles 3.0.5</td>
+												3.3.7, Spring 4.3.12, Maven 2.5.1, tiles 3.0.5</td>
 										</tr>
 										<tr>
 											<td><strong>API</strong></td>
-											<td>JSTL 1.2, EL, Gson 2.8.0, Log4j 1.2.15, Mybatis-Spring
-												1.3.1, Datatables, chart.js 2.7.1, Kakao 우편번호</td>
+											<td>JSTL 1.2, EL, Gson 2.8.2, Log4j 1.2.17, Mybatis-Spring
+												1.3.1, Datatables, Daum 지도 , postcodify 도로명주소 </td>
 										</tr>
 									</tbody>
 								</table>
@@ -171,8 +168,8 @@
 									</tr>
 									<tr>
 										<td><strong>ERD</strong></td>
-										<td><a class="btn btn-default" href="/resources/img/ERD_logical.png">논리ERD</a><b></b>
-										<a class="btn btn-default" href="/resources/img/ERD_physical.png">물리ERD</a></td>
+										<td><a class="btn btn-default" href="/resources/vendor/files/ERD_logical.png">논리ERD</a><b></b>
+										<a class="btn btn-default" href="/resources/vendor/files/ERD_physical.png">물리ERD</a></td>
 									</tr>
 									<tr>
 										<td><strong>DOCUMENT</strong></td>
@@ -185,11 +182,10 @@
 				</div>
 			</div>
 		</div>
-	</div>
 <!-- FOOTER : Navigation -->
 <c:import url="../inc/footer.jsp"></c:import>
 <!-- FOOTER -->
-
+	</div>
 <!-- jQuery -->
 <script src="resources/vendor/js/jquery.min.js"></script>
 
@@ -212,7 +208,7 @@
 				var answer = confirm("다운로드 하시겠습니까 ?")
 				if (answer) {
 					 e.preventDefault();
-			         window.open("/resources/files/CafeSystem.docx", "_blank");
+			         window.open("/resources/vendor/files/KindergartenManagement.docx", "_blank");
 				}
 			});
 		});
