@@ -1,5 +1,6 @@
 package com.cafe24.hanboa.feeding;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -19,12 +20,17 @@ public class FeedingApplicationDao {
 	String localName = "com.cafe24.hanboa.feeding.FeedingMapper.";
 	
 	// 1. 목록조회
-	public List<FeedingApplication> selectFeedingApplicationList(){
+	public List<FeedingApplication> selectFeedingApplicationList(HashMap<String, Object> map){
 		logger.debug("{} <- selectFeedingApplicationList FeedingApplicationDao.java");
-		return sqlSession.selectList(localName+"getFeedingApplication");
+		return sqlSession.selectList(localName+"getFeedingApplication",map);
+	}
+	// 1-2 급식신청 총 목록 조회
+	public int selectFeapTotalCount() {
+		logger.debug("{} <- selectFeapTotalCount FeedingApplicationDao.java");
+		return sqlSession.selectOne(localName+"getFeapTotalCount");		
 	}
 	
-	// 1-1 kids 불러오기
+	// 1-3 kids 불러오기
 	public List<Kids> callKids(){
 		logger.debug("{} < -- callKids FeedingApplicationDao.java");
 		return sqlSession.selectList(localName+"callKids");
@@ -58,6 +64,11 @@ public class FeedingApplicationDao {
 	public int feedingApplicationDelete(String feedingApplicationCd) {
 		logger.debug("{} < -- feedingApplicationDelete메서드 실행 FeedingApplicationDao.java",feedingApplicationCd);
 		return sqlSession.delete(localName+"feapDelete",feedingApplicationCd);		
+	}
+	//6.급식신청 마감회계_수입급식비 수정
+	public int modifyFeapClosingIncome(FeedingApplication feedingApplication) {
+		logger.debug("{} <-- modifyFeapClosingIncome메서드실행 FeedingApplicationDao.java",feedingApplication);
+		return sqlSession.insert(localName+"updateFeapClosingIncome",feedingApplication);		
 	}
 	
 }

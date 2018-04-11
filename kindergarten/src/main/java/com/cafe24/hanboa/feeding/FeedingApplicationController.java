@@ -1,5 +1,6 @@
 package com.cafe24.hanboa.feeding;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -24,10 +25,24 @@ public class FeedingApplicationController {
 	
 	//1. 목록조회
 	@RequestMapping(value="/FeedingApplicationList")
-	public String feedingApplicationList(Model model, HttpSession session) {
-		List<FeedingApplication> list = feapService.getFeedingApplicationList();
-		logger.debug("{} <- list FeedingApplicationController.java",list);
-		model.addAttribute("list",list);		
+	public String feedingApplicationList(Model model, HttpSession session
+										,@RequestParam(value="currentPage", defaultValue="1")int currentPage
+										,@RequestParam(value="pagePerRow", defaultValue="5")int pagePerRow) {
+		logger.debug("FeedingApplicationController -- feedingApplicationList");
+		if(session.getAttribute("loginTeacher")==null) {
+			return "redirect:/Login";
+		}else if(session.getAttribute("loginTeacher")!=null) {
+			HashMap<String, Object> map = feapService.getFeedingApplicationList(currentPage, pagePerRow);
+			logger.debug("HashMap<String, Object> map : {}",map);
+			List<FeedingApplication> list = (List<FeedingApplication>) map.get("list");
+			logger.debug("List<FeedingApplication> list : {}",list);
+			int countPage = (Integer) map.get("countPage");
+			logger.debug("int countPage : {}",countPage);
+			model.addAttribute("list", list);
+			model.addAttribute("countPage", countPage);
+			return "feeding/feedingApplication_list";
+		}
+		logger.debug("-----------------------------------------");
 		return "feeding/feedingApplication_list";
 	}
 	
@@ -63,6 +78,7 @@ public class FeedingApplicationController {
 	//5. 입력처리
 	@RequestMapping(value="/FeedingApplicationAdd", method=RequestMethod.POST)
 	public String feedingApplicationAdd(Model model, HttpSession session, Teacher teacher, FeedingApplication feedingApplication) {
+		logger.debug("{} <-- feedingApplicationAdd FeedingApplicationController.java",feedingApplication);
 		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
 		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
 		if(loginTeacher == null) {
@@ -72,7 +88,6 @@ public class FeedingApplicationController {
 		// null이 아니라면 loginTeacher세션에서 교원번호와 라이센스를 받아서 teacher객체에 셋팅한다.
 		feedingApplication.setLicenseKindergarten(loginTeacher.getLicenseKindergarten());
 		feapService.feapAdd(feedingApplication);
-		logger.debug("{} <-- feedingApplicationAdd FeedingApplicationController.java",feedingApplication);
 		return "redirect:/FeedingApplicationList";		
 	}
 	

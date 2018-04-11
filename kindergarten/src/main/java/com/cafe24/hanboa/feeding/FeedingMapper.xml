@@ -63,8 +63,16 @@
 			,feap_registration_date as feapRegistrationDate
 			,feap_registrant as feapRegistrant
 			,license_kindergarten as licenseKindergarten
-		FROM hanboa.TB_FEEDING_APPLICATION				
+		FROM hanboa.TB_FEEDING_APPLICATION	
+		LIMIT #{startPage}, #{pagePerRow}			
 	</select>
+<!-- 급식신청 총 목록 -->
+	<select id="getFeapTotalCount" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM TB_FEEDING_APPLICATION
+	</select>
+	
 <!-- 급식신청 항목별조회 -->
 	<select id = "selectFeapONE"
 			resultType="com.cafe24.hanboa.feeding.FeedingApplication"
@@ -89,7 +97,6 @@
 			,kids_cd = #{kidsCd}
 			,feeding_monthly_cd = #{feedingMonthlyCd}
 			,feap_expense_month = #{feapExpenseMonth}
-			,feap_closing_income = #{feapClosingIncome}
 			,feap_closing_option = #{feapClosingOption}
 			,feap_division = #{feapDivision}
 		WHERE feeding_application_cd = #{feedingApplicationCd}
@@ -117,13 +124,33 @@
 			,#{kidsCd}
 			,#{feedingMonthlyCd}
 			,#{feapExpenseMonth}
-			,#{feapClosingIncome}
+			,0
 			,#{feapClosingOption}
 			,#{feapDivision}
-			,#{feapRegistrationDate}
+			,CURDATE()
 			,#{feapRegistrant}
 			,#{licenseKindergarten})			
-	</insert>	
+	</insert>
+	
+<!-- ↑급식신청 등록 후 
+		- 급식신청 마감회계_수입급식비 최초 0으로 등록
+	 ↓급식신청 마감회계_수입급식비 수정
+	 	- 급식신청 등록과 동시에 마감회계_수입급식비 수정
+	 	- 등록날짜에서 연 '2018' + 월 '3'을 더한 문자('20183')를 구함
+	 	- 0으로 등록되있던 마감회계_수입급식비를 수정	-->
+	 	
+<!--급식신청 마감회계_수입급식비 -->
+	<update id="updateFeapClosingIncome"
+			parameterType="com.cafe24.hanboa.feeding.FeedingApplication">
+			<!-- selectKey설정 - #{feedingApplicationCd} : feap_registration_date에서 연도:ex)2018 + 월:ex)03 = '20183' -->
+			<selectKey resultType="String" keyProperty="feapClosingIncome" order="BEFORE">
+				SELECT CONCAT(year(feap_registration_date),month(feap_registration_date)) FROM TB_FEEDING_APPLICATION
+					WHERE feeding_application_cd = #{feedingApplicationCd}
+			</selectKey>
+		UPDATE TB_FEEDING_APPLICATION
+		SET feap_closing_income = #{feapClosingIncome}
+		WHERE feeding_application_cd = #{feedingApplicationCd}
+	</update>
 	
 <!-- 급식신청 삭제 -->
 	<delete id = "feapDelete"

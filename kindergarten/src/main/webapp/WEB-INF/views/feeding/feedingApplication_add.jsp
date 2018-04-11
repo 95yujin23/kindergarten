@@ -69,10 +69,6 @@
 								    <input class="form-control" id="feapExpenseMonth" name="feapExpenseMonth" placeholder="수입급식비">
 								</div>
 								<div class="form-group">
-								    <label>마감회계_수입급식비</label>
-								    <input class="form-control" id="feapClosingIncome" name="feapClosingIncome" placeholder="마감회계_수입급식비">
-								</div>
-								<div class="form-group">
 								    <label>마감유무</label>
 								    <select name="feapClosingOption" class="form-control">
 								    <option value="마감전">마감전</option>
