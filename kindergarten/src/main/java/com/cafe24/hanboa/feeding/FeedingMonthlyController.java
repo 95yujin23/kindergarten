@@ -1,5 +1,6 @@
 package com.cafe24.hanboa.feeding;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -26,11 +27,25 @@ public class FeedingMonthlyController {
 	
 	//1. 전체조회
 	@RequestMapping(value="FeedingMonthlyList")
-	public String feedingMonthlyList(Model model, HttpSession session) {
-		List<FeedingMonthly> list = femoService.selectFeedingMontlhyList();
-		logger.debug("{} <- feedingMonthlyList FeedingMonthlyController.java",list);
-		model.addAttribute("list",list);
-		return "/feeding/feedingMonthly_list";
+	public String feedingMonthlyList(Model model, HttpSession session
+									,@RequestParam(value="currentPage", defaultValue="1")int currentPage
+									,@RequestParam(value="pagePerRow", defaultValue="5")int pagePerRow) {
+		logger.debug("FeedingMonthlyController -- feedingMonthlyList");
+		if(session.getAttribute("loginTeacher")==null) {
+			return "redirect:/Login";
+		}else if(session.getAttribute("loginTeacher")!=null) {
+			HashMap<String, Object> map = femoService.selectFeedingMontlhyList(currentPage, pagePerRow);
+			logger.debug("HashMap<String, Object> map : {}",map);
+			List<FeedingMonthly> list = (List<FeedingMonthly>) map.get("list");
+			logger.debug("List<FeedingMonthly> list : {}",list);
+			int countPage = (Integer) map.get("countPage");
+			logger.debug("int countPage : {}",countPage);
+			model.addAttribute("list", list);
+			model.addAttribute("countPage", countPage);
+			return "feeding/feedingMonthly_list";
+		}
+		logger.debug("-----------------------------------------");
+		return "feeding/feedingMonthly_list";
 	}
 	
 	//2. 수정정보요청

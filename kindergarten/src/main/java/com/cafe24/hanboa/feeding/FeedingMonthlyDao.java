@@ -1,5 +1,6 @@
 package com.cafe24.hanboa.feeding;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -20,9 +21,15 @@ public class FeedingMonthlyDao {
 	String localName = "com.cafe24.hanboa.feeding.FeedingMapper.";
 	
 	//1. 전제조회
-	public List<FeedingMonthly> getFeedingMonthlyList(){
-		logger.debug("< -- getFeedingMonthlyList FeedingMonthlyDao.java");
-		return sessionTemplate.selectList(localName+"getfemoList");
+	public List<FeedingMonthly> getFeedingMonthlyList(HashMap<String, Object> map){
+		logger.debug("{}< -- getFeedingMonthlyList FeedingMonthlyDao.java",map);
+		return sessionTemplate.selectList(localName+"getfemoList",map);
+	}
+	
+	//1-2 월별급식 총 목록 조회
+	public int selectFemoTotalCount() {
+		logger.debug("{}< -- selectFemoTotalCount FeedingMonthlyDao.java");
+		return sessionTemplate.selectOne(localName+"getFemoTotalCount");
 	}
 	
 	//2. 수정정보요청
