@@ -53,55 +53,7 @@
 	</div>
 	<div id="page-wrapper">
 		<div class="row">
-				<div class="col-lg-12"><br>
-			 		<div class="panel panel-default">
-	 					<div class="panel-heading">
-							<h1 class="page-header">교육 과정</h1>
-						</div>
-						<!-- /.panel-heading -->
-	                    <div class="panel-body">
-							<!-- Nav tabs -->
-							<ul class="nav nav-tabs">
-	                            <li class="active"><a href="#home" data-toggle="tab">교육 기관</a>
-	                            </li>
-	                            <li><a href="#profile" data-toggle="tab">교육명</a>
-	                            </li>
-	                            <li><a href="#messages" data-toggle="tab">교육 내용</a>
-	                            </li>
-	                            <li><a href="#settings" data-toggle="tab">교육 기간</a>
-	                            </li>
-	                       	</ul>
-	                        <!-- Tab panes -->
-	                        <div class="tab-content">
-		                        <div class="tab-pane fade in active" id="home">
-								<h3>교육 기관</h3>
-									<p><a class="btn btn-default" href="http://ksmart.or.kr/">한국스마트정보교육원</a>
-									</p>
-								</div>
-								<div class="tab-pane fade" id="profile">
-		                        <h3>교육명</h3>
-		                        	<p>국가 기간/전략 산업 직종 훈련 (NCS) - 웹/어플 제품 SW개발자양성 (응용SW 및 DB엔지니어링 융합)
-		                        	</p>
-		                        </div>
-		                       	<div class="tab-pane fade" id="messages">
-		                        <h3>교육 내용</h3>
-		                        	<p>1. 웹/모바일웹 화면 개발언어 : HTML5, JavaScript, JQuery, JQuery Mobile, Json 등 <br/>
-										2. 웹/모바일웹 서버측 개발언어 : Java, JSP, Servlet 등 <br/>
-										3. Framework : Spring, Mybatis 등 <br/>
-										4. Model : Model1, Model2, MVC <br/>
-										5. 팀프로젝트 실무
-									</p>
-								</div>
-								<div class="tab-pane fade" id="settings">
-		                        <h3>교육 기간</h3>
-		                        	<p>2017.10.16 ~ 2018.04.20
-									</p>
-								</div>
-	                        </div>
-						</div>
-					</div>
-				</div>
-	            <div class="col-lg-12">
+		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h1 class="page-header">팀원 소개</h1>
@@ -176,18 +128,6 @@
 			                                        </div>
 			                                    </div>
 			                           	</div>
-			                      		<div class="panel panel-red">
-			                            	<div class="panel-heading">
-			                                	<h4 class="panel-title">
-			                                    	<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">보고서</a>
-			                               		</h4>
-			                               	</div>
-			                                    <div id="collapseThree" class="panel-collapse collapse">
-			                                        <div class="panel-body">
-			                                       	 @@
-			                                        </div>
-			                                    </div>
-			                                </div>
 										</div>
 									</div>
 			                    </div>
@@ -222,7 +162,7 @@
 			                        <div class="panel-footer">
 			  							<center>
 				                        <a class="btn btn-social btn-google-plus btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-bold"></i>Blog</a>
-				                      	<a class="btn btn-social btn-github btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-github"></i>Git</a>
+				                      	<a class="btn btn-social btn-github btn-sm" href="https://github.com/duemiran" class="btn btn-danger btn-block"><i class="fa fa-github"></i>Git</a>
 				                        <a class="btn btn-social btn-bitbucket btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-h-square"></i>Host</a>
 			                        </div>
 			                    </div>
@@ -236,10 +176,10 @@
 			                                <div class="panel panel-yellow">
 			                                    <div class="panel-heading">
 			                                        <h4 class="panel-title">
-			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">구현한 기능</a>
+			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne2">구현한 기능</a>
 			                                        </h4>
 			                                    </div>
-			                                    <div id="collapseOne" class="panel-collapse collapse in">
+			                                    <div id="collapseOne2" class="panel-collapse collapse in">
 			                                        <div class="panel-body">
 			                                       		@@
 			                                        </div>
@@ -248,24 +188,12 @@
 			                                <div class="panel panel-yellow">
 			                                    <div class="panel-heading">
 			                                        <h4 class="panel-title">
-			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">미완성된 기능</a>
+			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo2">미완성된 기능</a>
 			                                        </h4>
 			                                    </div>
-			                                    <div id="collapseTwo" class="panel-collapse collapse">
+			                                    <div id="collapseTwo2" class="panel-collapse collapse">
 			                                        <div class="panel-body">
 			                                       		@@
-			                                        </div>
-			                                    </div>
-			                                </div>
-			                                <div class="panel panel-yellow">
-			                                    <div class="panel-heading">
-			                                        <h4 class="panel-title">
-			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">보고서</a>
-			                                        </h4>
-			                                    </div>
-			                                    <div id="collapseThree" class="panel-collapse collapse">
-			                                        <div class="panel-body">
-														@@
 			                                        </div>
 			                                    </div>
 			                                </div>
@@ -303,8 +231,8 @@
 			                         
 			                        <div class="panel-footer">
 			   						<center>
-			                          <a class="btn btn-social btn-google-plus btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-bold"></i>Blog</a>
-			                      	 <a class="btn btn-social btn-github btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-github"></i>Git</a>
+			                          <a class="btn btn-social btn-google-plus btn-sm" href="https://blog.naver.com/dmsghk6049" class="btn btn-danger btn-block"><i class="fa fa-bold"></i>Blog</a>
+			                      	 <a class="btn btn-social btn-github btn-sm" href="https://github.com/behyun" class="btn btn-danger btn-block"><i class="fa fa-github"></i>Git</a>
 			                         <a class="btn btn-social btn-bitbucket btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-h-square"></i>Host</a>
 			                        </div>
 			                     
@@ -319,10 +247,10 @@
 			                                <div class="panel panel-green">
 			                                    <div class="panel-heading">
 			                                        <h4 class="panel-title">
-			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">구현한 기능</a>
+			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne3">구현한 기능</a>
 			                                        </h4>
 			                                    </div>
-			                                    <div id="collapseOne" class="panel-collapse collapse in">
+			                                    <div id="collapseOne3" class="panel-collapse collapse in">
 			                                        <div class="panel-body">
 			                                        @@
 			                                        </div>
@@ -331,24 +259,12 @@
 			                                <div class="panel panel-green">
 			                                    <div class="panel-heading">
 			                                        <h4 class="panel-title">
-			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">미완성된 기능</a>
+			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo3">미완성된 기능</a>
 			                                        </h4>
 			                                    </div>
-			                                    <div id="collapseTwo" class="panel-collapse collapse">
+			                                    <div id="collapseTwo3" class="panel-collapse collapse">
 			                                        <div class="panel-body">
 			                                       	@@
-			                                        </div>
-			                                    </div>
-			                                </div>
-			                                <div class="panel panel-green">
-			                                    <div class="panel-heading">
-			                                        <h4 class="panel-title">
-			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">보고서</a>
-			                                        </h4>
-			                                    </div>
-			                                    <div id="collapseThree" class="panel-collapse collapse">
-			                                        <div class="panel-body">
-			                                        @@
 			                                        </div>
 			                                    </div>
 			                                </div>
@@ -385,8 +301,8 @@
 			                        </div>
 			                        <div class="panel-footer">
 			 							<center>
-				                        <a class="btn btn-social btn-google-plus btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-bold"></i>Blog</a>
-				                      	<a class="btn btn-social btn-github btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-github"></i>Git</a>
+				                        <a class="btn btn-social btn-google-plus btn-sm" href="http://universecoding.tistory.com/" class="btn btn-danger btn-block"><i class="fa fa-bold"></i>Blog</a>
+				                      	<a class="btn btn-social btn-github btn-sm" href="https://github.com/kyuwonism" class="btn btn-danger btn-block"><i class="fa fa-github"></i>Git</a>
 				                        <a class="btn btn-social btn-bitbucket btn-sm" href="#" class="btn btn-danger btn-block"><i class="fa fa-h-square"></i>Host</a>
 			                    	</div>
 			                     </div>
@@ -399,10 +315,10 @@
 			                                <div class="panel panel-primary">
 			                                    <div class="panel-heading">
 			                                        <h4 class="panel-title">
-			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">구현한 기능</a>
+			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne4">구현한 기능</a>
 			                                        </h4>
 			                                    </div>
-			                                    <div id="collapseOne" class="panel-collapse collapse in">
+			                                    <div id="collapseOne4" class="panel-collapse collapse in">
 			                                        <div class="panel-body">
 			                                        @@
 			                                        </div>
@@ -411,27 +327,15 @@
 			                                <div class="panel panel-primary">
 			                                    <div class="panel-heading">
 			                                        <h4 class="panel-title">
-			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">미완성된 기능</a>
+			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo4">미완성된 기능</a>
 			                                        </h4>
 			                                    </div>
-			                                    <div id="collapseTwo" class="panel-collapse collapse">
+			                                    <div id="collapseTwo4" class="panel-collapse collapse">
 			                                        <div class="panel-body">
 			                                        @@
 			                                        </div>
 			                                    </div>
 			                                </div>
-			                                <div class="panel panel-primary">
-			                                    <div class="panel-heading">
-			                                        <h4 class="panel-title">
-			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">보고서</a>
-			                                        </h4>
-			                                    </div>
-			                                    <div id="collapseThree" class="panel-collapse collapse">
-			                                        <div class="panel-body">
-			                                        @@
-			                                        </div>
-		                                   	 	</div>
-		                                	</div>
 			                            </div>
 			                   		</div>
 			                 	</div>
@@ -441,8 +345,77 @@
 					</div>    
 				</div>
 			</div>
+				<div class="col-lg-12"><br>
+			 		<div class="panel panel-default">
+	 					<div class="panel-heading">
+							<h1 class="page-header">교육 과정</h1>
+						</div>
+						<!-- /.panel-heading -->
+	                    <div class="panel-body">
+	                     	<div class="panel-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                           	교육 기관
+                                        </h4>
+                                    </div>
+                                    <div class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                      		 한국스마트정보교육원
+                                        </div>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="panel-group" id="accordion">
+                               <div class="panel panel-default">
+                                   <div class="panel-heading">
+                                       <h4 class="panel-title">
+                                       		교육명
+                                       </h4>
+                                   </div>
+                                   <div class="panel-collapse collapse in">
+                                       <div class="panel-body">
+                                      	 국가 기간/전략 산업 직종 훈련 (NCS) - 웹/어플 제품 SW개발자양성 (응용SW 및 DB엔지니어링 융합)
+                                       </div>
+                                   </div>
+                               </div>    
+							</div>
+							<div class="panel-group" id="accordion">
+                               <div class="panel panel-default">
+                                   <div class="panel-heading">
+                                       <h4 class="panel-title">
+                                       		교육 내용
+                                       </h4>
+                                   </div>
+                                   <div class="panel-collapse collapse in">
+                                       <div class="panel-body">
+                                      	1. 웹/모바일웹 화면 개발언어 : HTML5, JavaScript, JQuery, JQuery Mobile, Json 등 <br/>
+										2. 웹/모바일웹 서버측 개발언어 : Java, JSP, Servlet 등 <br/>
+										3. Framework : Spring, Mybatis 등 <br/>
+										4. Model : Model1, Model2, MVC <br/>
+										5. 팀프로젝트 실무
+                                       </div>
+                                   </div>
+                               </div>    
+							</div>
+							<div class="panel-group" id="accordion">
+                               <div class="panel panel-default">
+                                   <div class="panel-heading">
+                                       <h4 class="panel-title">
+                                       		교육 기간
+                                       </h4>
+                                   </div>
+                                   <div class="panel-collapse collapse in">
+                                       <div class="panel-body">
+                                      	2017.10.16 ~ 2018.04.20
+                                       </div>
+                                   </div>
+                               </div>    
+							</div>
+						</div>
+					</div>
+				</div>
 		</div>
-
 <!-- FOOTER : Navigation -->
 <c:import url="../inc/footer.jsp"></c:import>
 <!-- FOOTER -->

@@ -38,119 +38,130 @@
 	</div>
 	<div id="page-wrapper">	
 		<div class="row">
-		<br>
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-				<!-- 프로젝트 소개 목록 시작 -->
-					<div class="panel-heading">
-					<h1 class="page-header">프로젝트 소개</h1>
+		<div class="col-lg-12"><br>
+			 		<div class="panel panel-default">
+	 					<div class="panel-heading">
+							<h1 class="page-header">프로젝트 소개</h1>
+						</div>
+						<!-- /.panel-heading -->
+	                    <div class="panel-body">
+	                     	<div class="panel-group">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                           	주제
+                                        </h4>
+                                    </div>
+                                    <div class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                      		영유아 교육기관 통합 관리 시스템 (Kindergarten Total Management System) &nbsp;
+											<a href="${pageContext.request.contextPath}/Login" class="btn btn-app"><i class="fa fa-play"></i>프로젝트 시작</a>
+                                        </div>
+                                    </div>
+                                </div>
+                           </div>
+                           <div class="panel-group" id="accordion">
+                               <div class="panel panel-default">
+                                   <div class="panel-heading">
+                                       <h4 class="panel-title">
+                                       		목표
+                                       </h4>
+                                   </div>
+                                   <div class="panel-collapse collapse in">
+                                       <div class="panel-body">
+                                      	 영유아 교육기관의 업무 부담 감소로 인한 교육의 질적 향상 도모
+                                       </div>
+                                   </div>
+                               </div>    
+							</div>
+							<div class="panel-group" id="accordion">
+                               <div class="panel panel-default">
+                                   <div class="panel-heading">
+                                       <h4 class="panel-title">
+                                       		기대효과
+                                       </h4>
+                                   </div>
+                                   <div class="panel-collapse collapse in">
+                                       <div class="panel-body">
+                                      	<table class="table">
+											<tbody>
+												<tr>
+													<td>1</td>
+													<td>지면서류로 이루어지는 여러 작업을 하나의 시스템으로 통합 해 업무 시간을 단축한다.</td>
+												</tr>
+												<tr>
+													<td>2</td>
+													<td>유치원 현황 정보를 시스템 내에서 즉각 확인함으로써 편리함과 동시에 원할한 관리가 가능해진다.</td>
+												</tr>
+												<tr>
+													<td>3</td>
+													<td>교육부 지정 유아 교육기관 평가 인증 대비에 도움을 준다.</td>
+												</tr>
+											</tbody>
+										</table>
+                                       </div>
+                                   </div>
+                               </div>    
+							</div>
+							<div class="panel-group" id="accordion">
+                               <div class="panel panel-default">
+                                   <div class="panel-heading">
+                                       <h4 class="panel-title">
+                                       		개발환경
+                                       </h4>
+                                   </div>
+                                   <div class="panel-collapse collapse in">
+                                       <div class="panel-body">
+                                      	<table class="table table-striped">
+											<tbody>
+												<tr>
+													<td><strong>OS</strong></td>
+													<td>Windows 10</td>
+												</tr>
+												<tr>
+													<td><strong>Web Browser</strong></td>
+													<td>Chrome</td>
+												</tr>
+												<tr>
+													<td><strong>WAS</strong></td>
+													<td>apache-tomcat 8.5</td>
+												</tr>
+												<tr>
+													<td><strong>DB</strong></td>
+													<td>MySQL 5.5.17</td>
+												</tr>
+												<tr>
+													<td><strong>DB Tool</strong></td>
+													<td>HeidiSQL 9.5.0</td>
+												</tr>
+												<tr>
+													<td><strong>Development Tool</strong></td>
+													<td>Spring Tool Suite 3.9.2</td>
+												</tr>
+		
+												<tr>
+													<td><strong>Language</strong></td>
+													<td>Java 1.8, Javascript, jquery3.1, JSP, HTML 5</td>
+												</tr>
+												<tr>
+													<td><strong>Framework</strong></td>
+													<td>jQuery 2.2.4, Json, Ajax, Mybatis 3.4.5, bootStrap
+														3.3.7, Spring 4.3.12, Maven 2.5.1, tiles 3.0.5</td>
+												</tr>
+												<tr>
+													<td><strong>API</strong></td>
+													<td>JSTL 1.2, EL, Gson 2.8.2, Log4j 1.2.17, Mybatis-Spring
+														1.3.1, Datatables, Daum 지도 , postcodify 도로명주소 </td>
+												</tr>
+											</tbody>
+										</table>
+                                       </div>
+                                   </div>
+                               </div>    
+							</div>
+						</div>
 					</div>
-					 <!-- /.panel-heading -->
-					<div class="panel-body">
-						<!-- Nav tabs -->
-						<ul class="nav nav-tabs">
-						    <li class="active"><a href="#home" data-toggle="tab">주제</a>
-						    </li>
-						    <li><a href="#profile" data-toggle="tab">목표</a>
-						    </li>
-						    <li><a href="#messages" data-toggle="tab">기대효과</a>
-						    </li>
-						    <li><a href="#settings" data-toggle="tab">개발환경</a>
-						    </li>
-		       			</ul>
-		       	<!-- 프로젝트 소개 목록 끝-->
-		       	
-	       		<!-- 프로젝트 소개 시작 -->
-					<div class="tab-content">
-					<!-- 프로젝트 소개 1. 주제 -->
-						<div class="tab-pane fade in active" id="home">
-						<h3>주제</h3>
-							<p><h3>영유아 교육기관 통합 관리 시스템 (Kindergarten Total Management System) &nbsp;
-							<a href="${pageContext.request.contextPath}/Login" class="btn btn-app"><i class="fa fa-play"></i>프로젝트 시작</a>
-							</h3>
-							</p>
-						</div>
-					<!-- 프로젝트 소개 2. 목표 -->
-						<div class="tab-pane fade" id="profile">
-		                <h3>목표</h3>
-		                	<p>영유아 교육기관의 업무 부담 감소로 인한 교육의 질적 향상 도모</p>
-            			</div>
-            		<!-- 프로젝트 소개 3. 기대효과 -->
-						<div class="tab-pane fade" id="messages">
-			 			<h3>기대효과</h3>
-							<p><table class="table">
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>지면서류로 이루어지는 여러 작업을 하나의 시스템으로 통합 해 업무 시간을 단축한다.</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>유치원 현황 정보를 시스템 내에서 즉각 확인함으로써 편리함과 동시에 원할한 관리가 가능해진다.</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>교육부 지정 유아 교육기관 평가 인증 대비에 도움을 준다.</td>
-										</tr>
-									</tbody>
-								</table>
-							</p>
-						</div>
-					<!-- 프로젝트 소개 4. 개발환경 -->
-						<div class="tab-pane fade" id="settings">
-						<h3>개발환경</h3>
-							<p><table class="table table-striped">
-									<tbody>
-										<tr>
-											<td><strong>OS</strong></td>
-											<td>Windows 10</td>
-										</tr>
-										<tr>
-											<td><strong>Web Browser</strong></td>
-											<td>Chrome</td>
-										</tr>
-										<tr>
-											<td><strong>WAS</strong></td>
-											<td>apache-tomcat 8.5</td>
-										</tr>
-										<tr>
-											<td><strong>DB</strong></td>
-											<td>MySQL 5.5.17</td>
-										</tr>
-										<tr>
-											<td><strong>DB Tool</strong></td>
-											<td>HeidiSQL 9.5.0</td>
-										</tr>
-										<tr>
-											<td><strong>Development Tool</strong></td>
-											<td>Spring Tool Suite 3.9.2</td>
-										</tr>
-
-										<tr>
-											<td><strong>Language</strong></td>
-											<td>Java 1.8, Javascript, jquery3.1, JSP, HTML 5</td>
-										</tr>
-										<tr>
-											<td><strong>Framework</strong></td>
-											<td>jQuery 2.2.4, Json, Ajax, Mybatis 3.4.5, bootStrap
-												3.3.7, Spring 4.3.12, Maven 2.5.1, tiles 3.0.5</td>
-										</tr>
-										<tr>
-											<td><strong>API</strong></td>
-											<td>JSTL 1.2, EL, Gson 2.8.2, Log4j 1.2.17, Mybatis-Spring
-												1.3.1, Datatables, Daum 지도 , postcodify 도로명주소 </td>
-										</tr>
-									</tbody>
-								</table>
-							</p>
-						</div>
-					</div>
-				<!-- 프로젝트 소개 끝 -->
-				</div>
-			</div>
-		</div>
-	</div>
-		<div class="row">
+				</div>	
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
