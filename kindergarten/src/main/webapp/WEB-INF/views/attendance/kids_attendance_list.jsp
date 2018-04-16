@@ -46,7 +46,7 @@
 					<table class="table table-striped table-bordered table-hover">
 						<thead>
 							<tr>
-								<th>학생코드</th>
+								<th>학생이름</th>
 								<th>등원일</th>
 								<th>등원시간</th>
 								<th>하원시간</th>
@@ -54,10 +54,10 @@
 								<th>지각조퇴구분</th>
 							</tr>
 						</thead>
-						<c:forEach var="attendanceList" items="${list}">
+						<c:forEach var="attendanceList" items="${attendanceAndKidsNm}">
 							<tbody id="KidsAttendanceTable">
 								<tr>
-									<td>${attendanceList.kidsCd}</td>
+									<td>${attendanceList.kidsNm}</td>
 									<td>${attendanceList.kidsAttendanceDay}</td>
 									<td>${attendanceList.kidsAttendance}</td>
 									<td>${attendanceList.kidsComeHome}</td>

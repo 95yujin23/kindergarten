@@ -105,11 +105,6 @@ public class AttendanceService {
 	}
 	
 	
-/*	// 영유아 등원 입력 : 영유아 이름 가져오기
-	public String callKidCd(String kidsNm) {
-		return attendanceDao.callKidCd(kidsNm);
-	}*/
-	
 	// 영유아
 	// 1. 영유아 등원 입력
 	public void insertKidsAttendance(KidsAttendance kidsAttendance) {
@@ -127,11 +122,17 @@ public class AttendanceService {
 		logger.debug("{} <- insertKidsAttendance AttendanceService.java", kidsAttendance);
 		logger.debug("-------------------------------------------------------------");	
 	}
-	// 2-1. 영유아 등하원 전체 조회(교직원용)
+	// 2-1-1. 영유아 등하원 전체 조회(교직원용)
 	public List<KidsAttendance> selectKidsAttendance() {
 		logger.debug("selectKidsAttendance AttendanceService.java");
 		logger.debug("-------------------------------------------------------------");
 		return attendanceDao.selectKidsAttendance();
+	}
+	// 2-1-2. 영유아 등하원 전체 조회(교직원용) : JOIN
+	public List<AttendanceAndKids> attendanceAndKidsNm() {
+		List<AttendanceAndKids> call = attendanceDao.attendanceAndKidsNm();
+		logger.debug("{} <- callKidCd AttendanceService.java", call);
+		return call;
 	}
 	// 2-2. 영유아 등하원 개인 조회(영유아용)
 	public List<KidsAttendance> selectKidsAttendanceOne(String kids) {

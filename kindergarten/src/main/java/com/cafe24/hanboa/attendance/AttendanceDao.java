@@ -54,22 +54,22 @@ public class AttendanceDao {
 	}
 	
 	
-/*	// 영유아 등원 입력 : 영유아 이름 가져오기
-	public String callKidCd(String kidsNm) {
-		return sqlSessionTemlate.selectOne(localName+"callKidsCd", kidsNm);
-	}*/
-	
 	// 영유아
 	// 1. 영유아 등원 입력
 	public int insertKidsAttendance(KidsAttendance kidsAttendance) {
 		logger.debug("AttendanceDao.java 1. insertKidsAttendance() 메소드 실행");
 		return sqlSessionTemlate.insert(localName+"insertKidsAttendance", kidsAttendance);
 	}
-	// 2-1. 영유아 등하원 전체 조회(교직원용)
+	// 2-1-1. 영유아 등하원 전체 조회(교직원용)
 	public List<KidsAttendance> selectKidsAttendance() {
-		logger.debug("AttendanceDao.java 2-1. selectKidsAttendance() 메소드 실행");
+		logger.debug("AttendanceDao.java 2-1-1. selectKidsAttendance() 메소드 실행");
 		return sqlSessionTemlate.selectList(localName+"selectKidsAttendance");
 	}
+	// 2-1-2. 영유아 등하원 전체 조회(교직원용) :JOIN
+		public List<AttendanceAndKids> attendanceAndKidsNm() {
+			logger.debug("AttendanceDao.java 2-1-2. attendanceAndKidsNm() 메소드 실행");
+			return sqlSessionTemlate.selectList(localName+"attendanceAndKidsNm");
+		}
 	// 2-2. 영유아 등하원 개인 조회(영유아용)
 	public List<KidsAttendance> selectKidsAttendanceOne(String kids) {
 		logger.debug("AttendanceDao.java 2-2. selectKidsAttendanceOne() 메소드 실행");
