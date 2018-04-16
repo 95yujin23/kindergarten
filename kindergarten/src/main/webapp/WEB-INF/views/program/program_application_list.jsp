@@ -23,86 +23,80 @@
 <script src="resources/vendor/js/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
-		$('#searchButton').click(function(){
-				$('#searchForm').submit();
-		})
-	})
+		$("#search").on("keyup", function() {
+			var value = $(this).val().toLowerCase();
+			$("#programApplicationTable tr").filter(function() {
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		});
+	});
 </script>
 </head>
 <body>
 	<div id="wrapper">
 		<!-- TOP : Navigation -->
-		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<c:import url="../inc/top.jsp"></c:import>
 		<!-- TOP -->
 		<!-- LEFT : Navigation -->
 		<c:import url="../inc/left.jsp"></c:import>
 		<!-- LEFT -->
-		</nav>
 	</div>
-	<div class="container">
+	<div id="page-wrapper">
 		<div class="row">
-			<div class="col-lg-1"></div>
-			<div class="col-lg-11">
-			<h2>특별활동신청 확인목록</h2>
-			<!-- 검색처리 시작 -->
-				<form action="${pageContext.request.contextPath}/ProgramApplicationList?searchOption=${searchOption}&keyword=${keyword}" method="get" id="searchForm" class="form-inline">
-					<select name="searchOption">
-						<option value="KIDS_CD">영유아코드</option>
-						<option value="PROGRAM_CD">특별활동프로그램코드</option>
-						<option value="PRAP_DIVISION">입금여부</option>
-						<option value="PRAP_CLOSING_DIVISION">마감유무</option>
-						<option value="PRAP_REGISTRANT">등록인</option>
-					</select>
-					<div class="input-group">
-						<input id="keyword" name="keyword" type="text" class="form-control" placeholder="Search">
-						<div class="input-group-btn">
-							<button id="searchButton" type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
-						</div>
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h1 class="page-header">특별활동신청 확인목록</h1>
 					</div>
-				</form>
-			<!-- 검색처리 끝 -->
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>영유아코드</th>
-						<th>특별활동프로그램코드</th>
-						<th>입금여부</th>
-						<th>마감회계_수입특별활동비</th>
-						<th>마감유무</th>
-						<th>등록날짜</th>
-						<th>등록인</th>
-						<th>수정</th>
-						<th>삭제</th>
-					</tr>
-				</thead>
-				<c:forEach var="list" items="${list}">
-					<tbody>
-					<tr>
-						<td>${list.kidsCd}</td>							
-						<td>${list.programCd}</td>
-						<td>${list.PRAPDivision}</td>
-						<td>${list.PRAPClosingCd}</td>
-						<td>${list.PRAPClosingDivision}</td>
-						<td>${list.PRAPRegistrationDate}</td>
-						<td>${list.PRAPRegistrant}</td>
-						<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/ProgramApplicationModify?programApplCd=${list.programApplCd}"><i class="fa fa-pencil"></i></a></td>
-						<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/ProgramApplicationDelete?programApplCd=${list.programApplCd}"><i class="fa fa-trash"></i></a></td>
-					</tr>
-				</tbody>
-				</c:forEach>
-			</table>
-			<!-- 페이징 시작 -->
-			<nav aria-label="Page navigation example">
-				<ul class="pagination justify-content-center">
-					<c:forEach var="i" begin="1" end="${countPage}" step="1">
-						<li class="page-item">
-							<a class="page-link" href="${pageContext.request.contextPath}/ProgramApplicationList?currentPage=${i}">${i}</a>
-						</li>
-					</c:forEach>
-				</ul>
-			</nav>
-			<!-- 페이징 끝 -->
+				</div>
+				<div class="panel-body">
+					<!-- 검색처리 시작 -->
+					<form class="form-inline" style="float: left;">
+						<input class="form-control" id="search" type="text" placeholder="Search..">
+					</form>
+					<!-- 검색처리 끝 -->
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>영유아코드</th>
+								<th>특별활동프로그램코드</th>
+								<th>입금여부</th>
+								<th>마감회계_수입특별활동비</th>
+								<th>마감유무</th>
+								<th>등록날짜</th>
+								<th>등록인</th>
+								<th>수정</th>
+								<th>삭제</th>
+							</tr>
+						</thead>
+						<c:forEach var="list" items="${list}">
+							<tbody id="programApplicationTable">
+								<tr>
+									<td>${list.kidsCd}</td>							
+									<td>${list.programCd}</td>
+									<td>${list.PRAPDivision}</td>
+									<td>${list.PRAPClosingCd}</td>
+									<td>${list.PRAPClosingDivision}</td>
+									<td>${list.PRAPRegistrationDate}</td>
+									<td>${list.PRAPRegistrant}</td>
+									<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/ProgramApplicationModify?programApplCd=${list.programApplCd}"><i class="fa fa-pencil"></i></a></td>
+									<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/ProgramApplicationDelete?programApplCd=${list.programApplCd}"><i class="fa fa-trash"></i></a></td>
+								</tr>
+							</tbody>
+						</c:forEach>
+					</table>
+					<!-- 페이징 시작 -->
+					<nav aria-label="Page navigation example">
+						<ul class="pagination justify-content-center">
+							<c:forEach var="i" begin="1" end="${countPage}" step="1">
+								<li class="page-item">
+									<a class="page-link" href="${pageContext.request.contextPath}/ProgramApplicationList?currentPage=${i}">${i}</a>
+								</li>
+							</c:forEach>
+						</ul>
+					</nav>
+					<!-- 페이징 끝 -->
+				</div>
 			</div>
 		</div>
 	</div>

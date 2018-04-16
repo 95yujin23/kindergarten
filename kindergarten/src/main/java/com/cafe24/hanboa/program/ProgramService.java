@@ -40,19 +40,15 @@ public class ProgramService {
 		logger.debug("{} <- insertProgram ProgramService.java", program);
 	}
 	// 2. 특별활동 전체조회+검색+페이징
-	public Map<String, Object> selectProgramList(int currentPage, int pagePerRow, String searchOption, String keyword) {
+	public Map<String, Object> selectProgramList(int currentPage, int pagePerRow) {
 		logger.debug("{} : <- currentPage selectPlanList ProgramService.java", currentPage);
 		logger.debug("{} : <- pagePerRow selectPlanList ProgramService.java", pagePerRow);
-		logger.debug("{} <- searchOption selectPlanList ProgramService.java", searchOption);
-		logger.debug("{} <- keyword selectPlanList ProgramService.java", keyword);
 		int startPage = 0;
 		if(currentPage > 1) {
 			startPage = (currentPage-1)*pagePerRow;
 		}
 		// DAO에 시작 페이지와 행의 수 보내기
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("searchOption", searchOption);
-		map.put("keyword", keyword);
 		map.put("startPage", startPage);
 		map.put("pagePerRow", pagePerRow);
 		List<Program> list = programDao.getProgramList(map);
@@ -67,8 +63,6 @@ public class ProgramService {
 		logger.debug("{} : <- countPage cityService.java", countPage);
 		// list, 페이지 수 리턴
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		returnMap.put("searchOption", searchOption);
-		returnMap.put("keyword", keyword);
 		returnMap.put("list", list);
 		returnMap.put("countPage", countPage);
 		return returnMap;
@@ -108,19 +102,15 @@ public class ProgramService {
 		logger.debug("{} <- insertProgramApplication ProgramService.java", programApplication);
 	}
 	// 2. 특별활동신청 전체조회+검색+페이징
-	public Map<String, Object> getProgramApplicationList(int currentPage, int pagePerRow, String searchOption, String keyword) {
+	public Map<String, Object> getProgramApplicationList(int currentPage, int pagePerRow) {
 		logger.debug("{} <- currentPage getProgramApplicationList ProgramService.java", currentPage);
 		logger.debug("{} <- pagePerRow getProgramApplicationList ProgramService.java", pagePerRow);
-		logger.debug("{} <- searchOption getProgramApplicationList ProgramService.java", searchOption);
-		logger.debug("{} <- keyword getProgramApplicationList ProgramService.java", keyword);
 		int startPage = 0;
 		if(currentPage > 1) {
 			startPage = (currentPage-1)*pagePerRow;
 		}
 		// DAO에 시작 페이지와 행의 수 보내기
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("searchOption", searchOption);
-		map.put("keyword", keyword);
 		map.put("startPage", startPage);
 		map.put("pagePerRow", pagePerRow);
 		List<ProgramApplication> list = programDao.getProgramApplicationList(map);
@@ -135,8 +125,6 @@ public class ProgramService {
 		logger.debug("{} : <- countPage cityService.java", countPage);
 		// list, 페이지 수 리턴
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		returnMap.put("searchOption", searchOption);
-		returnMap.put("keyword", keyword);
 		returnMap.put("list", list);
 		returnMap.put("countPage", countPage);
 		return returnMap;

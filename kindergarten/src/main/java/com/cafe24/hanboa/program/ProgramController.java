@@ -55,24 +55,17 @@ public class ProgramController {
 	// 2. 특별활동 전체조회+검색+페이징
 	@RequestMapping(value = "/ProgramList", method = RequestMethod.GET)
 	public String ProgramList(Model model
-							, @RequestParam(value="searchOption", required = false) String searchOption
-							, @RequestParam(value="keyword", required = false) String keyword
 							, @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
 							, @RequestParam(value = "pagePerRow", required = false, defaultValue = "10") int pagePerRow) {
 		logger.debug("2. ProgramController.java ProgramList()메소드 실행 ");
 		logger.debug("{} <- currentPage ProgramController.java", currentPage);
 		logger.debug("{} <- pagePerRow ProgramController.java", pagePerRow);
-		logger.debug("{} <- keyword ProgramController.java", keyword);
-		Map<String, Object> map = programService.selectProgramList(currentPage, pagePerRow, searchOption, keyword);
+		Map<String, Object> map = programService.selectProgramList(currentPage, pagePerRow);
 		List<Program> list = (List<Program>)(map.get("list"));
 		int countPage = (Integer)map.get("countPage");
-		String searchKeyword = (String)map.get("keyword");
-		String searchOptionWord = (String)map.get("searchOption");
 		model.addAttribute("list", list);
 		model.addAttribute("countPage", countPage);
 		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("keyword", searchKeyword);
-		model.addAttribute("searchOption", searchOptionWord);
 		logger.debug("{} <- list ProgramController.java", list);
 		logger.debug("------------------------------------------------------------");
 		model.addAttribute("list", list);
@@ -146,25 +139,18 @@ public class ProgramController {
 	// 2. 특별활동신청 전체조회+검색+페이징
 	@RequestMapping(value="/ProgramApplicationList", method=RequestMethod.GET)
 	public String selectProgramApplicationList(Model model
-											, @RequestParam(value="searchOption", required = false) String searchOption
-											, @RequestParam(value="keyword", required = false) String keyword
 											, @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
 											, @RequestParam(value = "pagePerRow", required = false, defaultValue = "10") int pagePerRow) {
 		logger.debug("2. ProgramController.java selectProgramApplicationList()메소드 실행 ");
 		logger.debug("{} <- currentPage ProgramController.java", currentPage);
 		logger.debug("{} <- pagePerRow ProgramController.java", pagePerRow);
-		logger.debug("{} <- keyword ProgramController.java", keyword);
 		logger.debug("2. ProgramController selectProgramApplicationList()메소드 실행 ");
-		Map<String, Object> map = programService.getProgramApplicationList(currentPage, pagePerRow, searchOption, keyword);
+		Map<String, Object> map = programService.getProgramApplicationList(currentPage, pagePerRow);
 		List<ProgramApplication> list = (List<ProgramApplication>)(map.get("list"));
 		int countPage = (Integer)map.get("countPage");
-		String searchKeyword = (String)map.get("keyword");
-		String searchOptionWord = (String)map.get("searchOption");
 		model.addAttribute("list", list);
 		model.addAttribute("countPage", countPage);
 		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("keyword", searchKeyword);
-		model.addAttribute("searchOption", searchOptionWord);
 		logger.debug("{} <- list ProgramController.java", list);
 		logger.debug("------------------------------------------------------------");
 		model.addAttribute("list", list);

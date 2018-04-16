@@ -69,9 +69,6 @@
 			, PROGRAM_REGISTRANT AS programRegistrant
 			, LICENSE_KINDERGARTEN AS licenseKindergarten
 		FROM TB_PROGRAM
-		<if test="keyword != null">
-			WHERE ${searchOption} LIKE CONCAT('%',#{keyword},'%')
-		</if>
 		LIMIT #{startPage}, #{pagePerRow}
 	</select>
 	<!-- 2-2. 전체 프로그램 카테고리 수(페이징) -->
@@ -173,9 +170,6 @@
 			, PRAP_REGISTRATION_DATE AS PRAPRegistrationDate
 			, PRAP_REGISTRANT AS PRAPRegistrant
 		FROM TB_PROGRAM_APPLICATION
-		<if test="keyword != null">
-			WHERE ${searchOption} LIKE CONCAT('%',#{keyword},'%')
-		</if>
 		LIMIT #{startPage}, #{pagePerRow}
 	</select>
 	<!-- 2-2. 전체 프로그램 카테고리 수(페이징) -->

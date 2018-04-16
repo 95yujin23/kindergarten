@@ -23,86 +23,82 @@
 <script src="resources/vendor/js/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
-		$('#searchButton').click(function(){
-				$('#searchForm').submit();
-		})
-	})
+		$("#search").on("keyup", function() {
+			var value = $(this).val().toLowerCase();
+			$("#programTable tr").filter(function() {
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		});
+	});
 </script>
 </head>
 <body>
 	<div id="wrapper">
 		<!-- TOP : Navigation -->
-		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<c:import url="../inc/top.jsp"></c:import>
 		<!-- TOP -->
 		<!-- LEFT : Navigation -->
 		<c:import url="../inc/left.jsp"></c:import>
 		<!-- LEFT -->
-		</nav>
 	</div>
-	<div class="container">
+	<div id="page-wrapper">
 		<div class="row">
-			<div class="col-lg-1"></div>
-			<div class="col-lg-11">
-			<h2>특별활동 목록</h2>
-			<!-- 검색처리 시작 -->
-			<form action="${pageContext.request.contextPath}/ProgramList?searchOption=${searchOption}&keyword=${keyword}" method="get" id="searchForm" class="form-inline">
-				<select name="searchOption">
-					<option value="PROGRAM_NM">특별활동이름</option>
-					<option value="PROGRAM_CLOSING_DIVISION">마감유무</option>
-					<option value="PROGRAM_REGISTRANT">등록인</option>
-				</select>
-				<div class="input-group">
-					<input id="keyword" name="keyword" type="text" class="form-control" placeholder="Search">
-					<div class="input-group-btn">
-						<button id="searchButton" type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h1 class="page-header">특별활동 목록</h1>
 					</div>
 				</div>
-			</form>
-			<!-- 검색처리 끝 -->
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>특별활동프로그램명</th>
-						<th>주당운영횟수(회)</th>
-						<th>1회운영시간(분)</th>
-						<th>외주금액</th>
-						<th>마감유무</th>
-						<th>계약코드</th>
-						<th>등록날짜</th>
-						<th>등록인</th>
-						<th>수정</th>
-						<th>삭제</th>
-					</tr>
-				</thead>
-				<c:forEach var="program" items="${list}">
-					<tbody>
-					<tr>
-						<td>${program.programNm}</td>							
-						<td>${program.programNumberWeek}</td>
-						<td>${program.programOperationTime}</td>
-						<td>${program.programClosingCd}</td>
-						<td>${program.programClosingDivision}</td>
-						<td>${program.contractCd}</td>
-						<td>${program.programRegistrationDate}</td>
-						<td>${program.programRegistrant}</td>
-						<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/ProgramModify?programCd=${program.programCd}"><i class="fa fa-pencil"></i></a></td>
-						<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/ProgramDelete?programCd=${program.programCd}"><i class="fa fa-trash"></i></a></td>
-					</tr>
-				</tbody>
-				</c:forEach>
-			</table>
-			<!-- 페이징 시작 -->
-			<nav aria-label="Page navigation example">
-				<ul class="pagination justify-content-center">
-					<c:forEach var="i" begin="1" end="${countPage}" step="1">
-						<li class="page-item">
-							<a class="page-link" href="${pageContext.request.contextPath}/ProgramList?currentPage=${i}">${i}</a>
-						</li>
-					</c:forEach>
-				</ul>
-			</nav>
-			<!-- 페이징 끝 -->
+				<div class="panel-body">
+					<!-- 검색처리 시작 -->
+					<form class="form-inline" style="float: left;">
+						<input class="form-control" id="search" type="text" placeholder="Search..">
+					</form>
+					<!-- 검색처리 끝 -->
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>특별활동프로그램명</th>
+								<th>주당운영횟수(회)</th>
+								<th>1회운영시간(분)</th>
+								<th>외주금액</th>
+								<th>마감유무</th>
+								<th>계약코드</th>
+								<th>등록날짜</th>
+								<th>등록인</th>
+								<th>수정</th>
+								<th>삭제</th>
+							</tr>
+						</thead>
+						<c:forEach var="program" items="${list}">
+							<tbody id="programTable">
+							<tr>
+								<td>${program.programNm}</td>							
+								<td>${program.programNumberWeek}</td>
+								<td>${program.programOperationTime}</td>
+								<td>${program.programClosingCd}</td>
+								<td>${program.programClosingDivision}</td>
+								<td>${program.contractCd}</td>
+								<td>${program.programRegistrationDate}</td>
+								<td>${program.programRegistrant}</td>
+								<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/ProgramModify?programCd=${program.programCd}"><i class="fa fa-pencil"></i></a></td>
+								<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/ProgramDelete?programCd=${program.programCd}"><i class="fa fa-trash"></i></a></td>
+							</tr>
+						</tbody>
+						</c:forEach>
+					</table>
+					<!-- 페이징 시작 -->
+					<nav aria-label="Page navigation example">
+						<ul class="pagination justify-content-center">
+							<c:forEach var="i" begin="1" end="${countPage}" step="1">
+								<li class="page-item">
+									<a class="page-link" href="${pageContext.request.contextPath}/ProgramList?currentPage=${i}">${i}</a>
+								</li>
+							</c:forEach>
+						</ul>
+					</nav>
+					<!-- 페이징 끝 -->
+				</div>
 			</div>
 		</div>
 	</div>	
