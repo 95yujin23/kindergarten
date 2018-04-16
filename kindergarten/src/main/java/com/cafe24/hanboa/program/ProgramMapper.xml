@@ -53,6 +53,46 @@
 			, #{licenseKindergarten}
 		)
 	</insert>
+	<!-- 2-1. 특별활동 전체조회 : JOIN -->
+	<resultMap type="com.cafe24.hanboa.program.AllCallProgram" id="allCallProgram">
+		<result property="programCd" column="PROGRAM_CD" />
+		<result property="totalResourceCd" column="TOTAL_RESOURCE_CD" />
+		<result property="programNm" column="PROGRAM_NM" />
+		<result property="programNumberWeek" column="PROGRAM_NUMBER_WEEK" />
+		<result property="programOperationTime" column="PROGRAM_OPERATION_TIME" />
+		<result property="programOutsourcingCost" column="PROGRAM_OUTSOURCING_COST" />
+		<result property="programClosingCd" column="PROGRAM_CLOSING_CD" />
+		<result property="programClosingDivision" column="PROGRAM_CLOSING_DIVISION" />
+		<result property="contractCd" column="CONTRACT_CD" />
+		<result property="programRegistrationDate" column="PROGRAM_REGISTRATION_DATE" />
+		<result property="programRegistrant" column="PROGRAM_REGISTRANT" />
+		<result property="licenseKindergarten" column="LICENSE_KINDERGARTEN" />
+		<result property="resourceNm" column="RESOURCE_NM" />
+		<result property="contractContents" column="CONTRACT_CONTENTS" />
+	</resultMap>
+	<select id="ProgramResourceContract" parameterType="java.util.Map" resultMap="allCallProgram">
+		SELECT
+			p.PROGRAM_CD
+			, p.TOTAL_RESOURCE_CD
+			, p.PROGRAM_NM
+			, p.PROGRAM_NUMBER_WEEK
+			, p.PROGRAM_OPERATION_TIME
+			, p.PROGRAM_OUTSOURCING_COST
+			, p.PROGRAM_CLOSING_CD
+			, p.PROGRAM_CLOSING_DIVISION
+			, p.CONTRACT_CD
+			, p.PROGRAM_REGISTRATION_DATE
+			, p.PROGRAM_REGISTRANT
+			, p.LICENSE_KINDERGARTEN
+			, tr.RESOURCE_NM
+			, c.CONTRACT_CONTENTS
+		FROM TB_PROGRAM p 
+		JOIN TB_TOTAL_RESOURCE tr 
+		ON p.TOTAL_RESOURCE_CD = tr.TOTAL_RESOURCE_CD
+		JOIN TB_CONTRACT c 
+		ON p.CONTRACT_CD = c.CONTRACT_CD
+		LIMIT #{startPage}, #{pagePerRow}
+	</select>
 	<!-- 2-1. 특별활동 전체조회+검색+페이징 -->
 	<select id="getProgramList" parameterType="java.util.Map" resultType="com.cafe24.hanboa.program.Program">
 		SELECT  

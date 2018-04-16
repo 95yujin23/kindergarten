@@ -58,12 +58,13 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
+								<th>통합자원코드</th>
 								<th>특별활동프로그램명</th>
 								<th>주당운영횟수(회)</th>
 								<th>1회운영시간(분)</th>
 								<th>외주금액</th>
 								<th>마감유무</th>
-								<th>계약코드</th>
+								<th>계약내용</th>
 								<th>등록날짜</th>
 								<th>등록인</th>
 								<th>수정</th>
@@ -73,12 +74,13 @@
 						<c:forEach var="program" items="${list}">
 							<tbody id="programTable">
 							<tr>
+								<td>${program.resourceNm}</td>
 								<td>${program.programNm}</td>							
 								<td>${program.programNumberWeek}</td>
 								<td>${program.programOperationTime}</td>
 								<td>${program.programClosingCd}</td>
 								<td>${program.programClosingDivision}</td>
-								<td>${program.contractCd}</td>
+								<td>${program.contractContents}</td>
 								<td>${program.programRegistrationDate}</td>
 								<td>${program.programRegistrant}</td>
 								<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/ProgramModify?programCd=${program.programCd}"><i class="fa fa-pencil"></i></a></td>

@@ -39,7 +39,7 @@ public class ProgramService {
 		programDao.insertProgram(program);
 		logger.debug("{} <- insertProgram ProgramService.java", program);
 	}
-	// 2. 특별활동 전체조회+검색+페이징
+	// 2. 특별활동 전체조회+페이징
 	public Map<String, Object> selectProgramList(int currentPage, int pagePerRow) {
 		logger.debug("{} : <- currentPage selectPlanList ProgramService.java", currentPage);
 		logger.debug("{} : <- pagePerRow selectPlanList ProgramService.java", pagePerRow);
@@ -51,7 +51,7 @@ public class ProgramService {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("startPage", startPage);
 		map.put("pagePerRow", pagePerRow);
-		List<Program> list = programDao.getProgramList(map);
+		List<AllCallProgram> list = programDao.ProgramResourceContract(map);
 		logger.debug("{} : <- list ProgramService.java", list);
 		// 총 행의 수를 보여줄 행의 수로 나눈 뒤 나머지가 0일 경우는 넘어가고 아닐 경우 +1 한다.
 		int count = programDao.selectProgramCountByPage(map);
@@ -101,7 +101,7 @@ public class ProgramService {
 		programDao.insertProgramApplication(programApplication);
 		logger.debug("{} <- insertProgramApplication ProgramService.java", programApplication);
 	}
-	// 2. 특별활동신청 전체조회+검색+페이징
+	// 2-1-2. 특별활동신청 전체조회+페이징 : JOIN
 	public Map<String, Object> getProgramApplicationList(int currentPage, int pagePerRow) {
 		logger.debug("{} <- currentPage getProgramApplicationList ProgramService.java", currentPage);
 		logger.debug("{} <- pagePerRow getProgramApplicationList ProgramService.java", pagePerRow);

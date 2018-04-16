@@ -52,7 +52,7 @@ public class ProgramController {
 		logger.debug("{} <- ProgramInsert ProgramController.java", program);
 		return "redirect:/ProgramList";
 	}
-	// 2. 특별활동 전체조회+검색+페이징
+	// 2. 특별활동 전체조회+페이징
 	@RequestMapping(value = "/ProgramList", method = RequestMethod.GET)
 	public String ProgramList(Model model
 							, @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
@@ -61,7 +61,7 @@ public class ProgramController {
 		logger.debug("{} <- currentPage ProgramController.java", currentPage);
 		logger.debug("{} <- pagePerRow ProgramController.java", pagePerRow);
 		Map<String, Object> map = programService.selectProgramList(currentPage, pagePerRow);
-		List<Program> list = (List<Program>)(map.get("list"));
+		List<AllCallProgram> list = (List<AllCallProgram>)(map.get("list"));
 		int countPage = (Integer)map.get("countPage");
 		model.addAttribute("list", list);
 		model.addAttribute("countPage", countPage);
