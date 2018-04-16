@@ -23,46 +23,52 @@
 <script src="resources/vendor/js/jquery.min.js"></script>
 <body>
  <div id="wrapper">
-		<!-- TOP : Navigation -->
-		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-		<c:import url="../inc/top.jsp"></c:import>
-		<!-- TOP -->
-		<!-- LEFT : Navigation -->
-		<c:import url="../inc/left.jsp"></c:import>
-		<!-- LEFT -->
-		</nav>
+	<!-- TOP : Navigation -->
+	<c:import url="../inc/top.jsp"></c:import>
+	<!-- TOP -->
+	<!-- LEFT : Navigation -->
+	<c:import url="../inc/left.jsp"></c:import>
+	<!-- LEFT -->
 	</div>
 	<div id="page-wrapper">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">영유아 등하원 목록</h1>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h1 class="page-header">영유아 등하원 목록</h1>
+					</div>
+				</div>
+				<div class="panel-body">
+					<form class="form-inline">
+						<input class="form-control" id="search" type="text" placeholder="Search..">
+					</form>
+			 		<br>
+					<table class="table table-striped table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>학생코드</th>
+								<th>등원일</th>
+								<th>등원시간</th>
+								<th>하원시간</th>
+								<th>특이사항</th>
+								<th>지각조퇴구분</th>
+							</tr>
+						</thead>
+						<c:forEach var="attendanceList" items="${list}">
+							<tbody id="KidsAttendanceTable">
+								<tr>
+									<td>${attendanceList.kidsCd}</td>
+									<td>${attendanceList.kidsAttendanceDay}</td>
+									<td>${attendanceList.kidsAttendance}</td>
+									<td>${attendanceList.kidsComeHome}</td>
+									<td>${attendanceList.kidsReason}</td>
+									<td>${attendanceList.kidsRestLateType}</td>
+								</tr>
+							</tbody>
+						</c:forEach>
+					</table>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>학생코드</th>
-						<th>등원일</th>
-						<th>등원시간</th>
-						<th>하원시간</th>
-						<th>특이사항</th>
-						<th>지각조퇴구분</th>
-					</tr>
-				</thead>
-				<c:forEach var="attendanceList" items="${list}">
-					<tbody>
-						<tr>
-							<td>${attendanceList.kidsCd}</td>
-							<td>${attendanceList.kidsAttendanceDay}</td>
-							<td>${attendanceList.kidsAttendance}</td>
-							<td>${attendanceList.kidsComeHome}</td>
-							<td>${attendanceList.kidsReason}</td>
-							<td>${attendanceList.kidsRestLateType}</td>
-						</tr>
-					</tbody>
-				</c:forEach>
-			</table>
 		</div>
 		<!-- FOOTER : Navigation -->
 		<c:import url="../inc/footer.jsp"></c:import>
@@ -78,5 +84,15 @@
 	<script src="resources/vendor/js/morris-data.js"></script>
 	<!-- Custom Theme JavaScript -->
 	<script src="resources/vendor/js/sb-admin-2.js"></script>
+	<script>
+	$(document).ready(function(){
+	  $("#search").on("keyup", function() {
+	    var value = $(this).val().toLowerCase();
+	    $("#KidsAttendanceTable tr").filter(function() {
+	      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	    });
+	  });
+	});
+	</script>
 </body>
 </html>

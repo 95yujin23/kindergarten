@@ -51,11 +51,10 @@ public class AttendanceService {
 		return attendanceDao.callTeacher(teacherCd);
 	}
 	// 3-2. 교직원 출퇴근 개별 조회+검색+페이징(선생님용)
-	public Map<String, Object> selectTeacherAttendanceOne(int currentPage, int pagePerRow, String keyword, String teacherCd) {
+	public Map<String, Object> selectTeacherAttendanceOne(int currentPage, int pagePerRow, String teacherCd) {
 		logger.debug("selectTeacherAttendanceOne AttendanceService.java");
 		logger.debug("{} : <- currentPage selectTeacherAttendanceOne AttendanceService.java", currentPage);
 		logger.debug("{} : <- pagePerRow selectTeacherAttendanceOne AttendanceService.java", pagePerRow);
-		logger.debug("{} <- keyword selectTeacherAttendanceOne AttendanceService.java", keyword);
 		logger.debug("{} <- teacherCd selectTeacherAttendanceOne AttendanceService.java", teacherCd);
 		logger.debug("-------------------------------------------------------------");
 		int startPage = 0;
@@ -64,7 +63,6 @@ public class AttendanceService {
 		}
 		// DAO에 시작 페이지와 행의 수 보내기
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("keyword", keyword);
 		map.put("startPage", startPage);
 		map.put("pagePerRow", pagePerRow);
 		map.put("teacherCd", teacherCd);
@@ -80,7 +78,6 @@ public class AttendanceService {
 		logger.debug("{} : <- countPage selectTeacherAttendanceOne AttendanceService.java", countPage);
 		// list, 페이지 수 리턴
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		returnMap.put("keyword", keyword);
 		returnMap.put("list", list);
 		returnMap.put("countPage", countPage);
 		returnMap.put("teacherCd", teacherCd);

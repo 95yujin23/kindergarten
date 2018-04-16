@@ -69,13 +69,11 @@ public class AttendanceController {
 	// 3. 교직원 출퇴근 전체 조회(선생님용)
 	@RequestMapping(value="/TeacherAttendanceList", method = RequestMethod.GET)
 	public String teacherAttendanceListOne(HttpSession session, Model model, String teacherCd
-										, @RequestParam(value="keyword", required = false) String keyword
 										, @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
 										, @RequestParam(value = "pagePerRow", required = false, defaultValue = "10") int pagePerRow) {
 		logger.debug("2. AttendanceController.java teacherAttendanceListOne()메소드 실행 ");
 		logger.debug("{} <- currentPage teacherAttendanceListOne AttendanceController.java", currentPage);
 		logger.debug("{} <- pagePerRow teacherAttendanceListOne AttendanceController.java", pagePerRow);
-		logger.debug("{} <- keyword teacherAttendanceListOne AttendanceController.java", keyword);
 		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
 		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
 		if(loginTeacher == null) {
@@ -84,7 +82,7 @@ public class AttendanceController {
 		}
 		teacherCd = loginTeacher.getTeacherCd();
 		Teacher teacherCall = attendanceService.callTeacher(teacherCd);
-		Map<String, Object> map = attendanceService.selectTeacherAttendanceOne(currentPage, pagePerRow, keyword, teacherCd);
+		Map<String, Object> map = attendanceService.selectTeacherAttendanceOne(currentPage, pagePerRow, teacherCd);
 		List<TeacherAttendance> list = (List<TeacherAttendance>)(map.get("list"));
 		int countPage = (Integer)map.get("countPage");
 		String searchKeyword = (String)map.get("keyword");
@@ -92,7 +90,6 @@ public class AttendanceController {
 		model.addAttribute("list", list);
 		model.addAttribute("countPage", countPage);
 		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("keyword", searchKeyword);
 		logger.debug("{} <- list teacherAttendanceListOne AttendanceController.java", list);
 		logger.debug("------------------------------------------------------------");
 		return "attendance/teacher_attendance_list";

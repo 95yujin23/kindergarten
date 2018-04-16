@@ -55,9 +55,6 @@
 			, LICENSE_KINDERGARTEN AS licenseKindergarten
 		FROM TB_TEACHER_ATTENDANCE
 		WHERE TEACHER_CD = #{teacherCd}
-		<if test="keyword != null">
-			AND TEACHER_REST_LATE_TYPE LIKE CONCAT('%',#{keyword},'%')
-		</if>
 		LIMIT #{startPage}, #{pagePerRow}
 	</select>
 	<!-- 3-3. 개별 교직원 출퇴근 수(페이징) -->

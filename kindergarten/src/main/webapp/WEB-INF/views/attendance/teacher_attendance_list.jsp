@@ -41,22 +41,16 @@
 	<div id="page-wrapper">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">${teacherCall.teacherNm}선생님 출퇴근 목록</h1>
+				<div class="panel-heading">
+					<h1 class="page-header">${teacherCall.teacherNm}선생님 출퇴근 목록</h1>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-		<!-- 검색처리 시작 -->
-				<form action="${pageContext.request.contextPath}/TeacherAttendanceList?keyword=${keyword}" method="get" id="searchForm" class="form-inline">
-					<div class="input-group" style="float: left;">
-						<input id="keyword" name="keyword" type="text" class="form-control" placeholder="Search">
-						<div class="input-group-btn">
-							<button id="searchButton" type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
-						</div>
-					</div>
+			<div class="panel-body">
+				<form class="form-inline">
+					<input class="form-control" id="search" type="text" placeholder="Search..">
 				</form>
-				<!-- 검색처리 끝 -->
-			<div class="col-lg-12">
-				<table class="table table-hover">
+			 	<br>
+				<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
 							<th>출근일</th>
@@ -66,7 +60,7 @@
 						</tr>
 					</thead>
 					<c:forEach var="attendanceList" items="${list}">
-						<tbody>
+						<tbody id="teacherAttendanceTable">
 							<tr>
 								<td>${attendanceList.teacherAttendanceDay}</td>
 								<td>${attendanceList.teacherAttendance}</td>
@@ -103,5 +97,15 @@
 	<script src="resources/vendor/js/morris-data.js"></script>
 	<!-- Custom Theme JavaScript -->
 	<script src="resources/vendor/js/sb-admin-2.js"></script>
+	<script>
+	$(document).ready(function(){
+	  $("#search").on("keyup", function() {
+	    var value = $(this).val().toLowerCase();
+	    $("#teacherAttendanceTable tr").filter(function() {
+	      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	    });
+	  });
+	});
+	</script>
 </body>
 </html>
