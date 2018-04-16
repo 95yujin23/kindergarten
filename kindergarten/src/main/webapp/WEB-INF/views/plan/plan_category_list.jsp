@@ -32,13 +32,11 @@
 <body>
 	<div id="wrapper">
 		<!-- TOP : Navigation -->
-		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<c:import url="../inc/top.jsp"></c:import>
 		<!-- TOP -->
 		<!-- LEFT : Navigation -->
 		<c:import url="../inc/left.jsp"></c:import>
 		<!-- LEFT -->
-		</nav>
 	</div>
 	<div class="container">
 		<div class="row">
