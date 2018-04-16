@@ -1,6 +1,8 @@
 package com.cafe24.hanboa.feeding;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -87,8 +89,9 @@ public class FeedingApplicationService {
 	
 	//4.입력처리
 	public int feapAdd(FeedingApplication feedingApplication) {
-		//String inDate = new SimpleDateFormat("yyyyMMdd").format(new Date());
-		//feedingApplication.setFeapRegistrationDate(inDate);
+		String inDate = new SimpleDateFormat("yyyyMMdd").format(new Date());
+		feedingApplication.setFeapRegistrationDate(inDate);
+		
 		int addFeapClosingIncome = 0;
 		try {
 			addFeapClosingIncome = feedingApplicationDao.feedingApplicationAdd(feedingApplication);
@@ -101,7 +104,7 @@ public class FeedingApplicationService {
 		}
 		int cd = feedingApplication.getFeapClosingIncome();
 		logger.debug("{} < -- feedingApplicationAdd FeedingApplicationService.java",feedingApplication);
-		//logger.debug("{} < -- feedingApplicationAdd FeedingApplicationService.java",inDate);
+		logger.debug("{} < -- feedingApplicationAdd FeedingApplicationService.java",inDate);
 		logger.debug("{} < -- feedingApplicationAdd FeedingApplicationService.java int cd",cd);
 		return addFeapClosingIncome;
 	}

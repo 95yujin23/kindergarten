@@ -50,6 +50,12 @@ public class FeedingApplicationController {
 	@RequestMapping(value="/feeding/feedingApplication_modify",method=RequestMethod.GET)
 	public String feedingApplicationModify(Model model, @RequestParam(value="feedingApplicationCd", required=true) String feedingApplicationCd) {
 		FeedingApplication feedingApplication = feapService.modifyGetfeap(feedingApplicationCd);
+		List<Kids> kids = feapService.callKids();
+		List<FeedingMonthly> feedingMonthly = feapService.callMonthly();
+		logger.debug("{} <-- feedingApplicationAdd(addForm) FeedingApplicationController.java",kids);
+		logger.debug("{} <-- feedingApplicationAdd(addForm) FeedingApplicationController.java",feedingMonthly);
+		model.addAttribute("kids",kids);
+		model.addAttribute("feedingMonthly",feedingMonthly);
 		model.addAttribute("feedingApplication", feedingApplication);
 		logger.debug("{} <- feedingApplication FeedingApplicationController.java",feedingApplicationCd);
 		logger.debug("{} <- feedingApplication FeedingApplicationController.java",feedingApplication);
