@@ -123,7 +123,6 @@
 						</li>
 						<li><a href="#">특별활동 신청<span class="fa arrow"></span></a>
 							<ul class="nav nav-third-level">
-								<li><a href="${pageContext.request.contextPath}/ProgramDetail">내특별활동</a></li>
 								<li><a href="${pageContext.request.contextPath}/ProgramApplication">특별활동신청</a></li>
 								<li><a href="${pageContext.request.contextPath}/ProgramApplicationList">특별활동신청전체조회</a></li>
 							</ul>
