@@ -13,7 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cafe24.hanboa.kids.Kids;
 import com.cafe24.hanboa.teacher.Teacher;
 
 @Controller
@@ -26,8 +28,17 @@ public class AttendanceController {
 	// 교직원
 	// 1-1. 교직원 출근 입력 요청
 	@RequestMapping(value="/TeacherAttendance", method = RequestMethod.GET)
-	public String teacherAttendance() {
+	public String teacherAttendance(HttpSession session, Model model, String teacherCd) {
 		logger.debug("1. AttendanceController teacherAttendance()메소드 실행 ");
+		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
+		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
+		if(loginTeacher == null) {
+			// loginTeacher의 값이 null이라면 login화면으로
+			return "redirect:/Login";
+		}
+		teacherCd = loginTeacher.getTeacherCd();
+		Teacher teacherCall = attendanceService.callTeacher(teacherCd);
+		model.addAttribute("teacherCall", teacherCall);
 		logger.debug("------------------------------------------------------------");
 		return "attendance/teacher_attendance";
 	}
@@ -101,6 +112,20 @@ public class AttendanceController {
 	}
 	
 	
+/*	
+	// 영유아 등원 입력 : 영유아 이름 조회
+	@RequestMapping(value="/callKidsCd", method = RequestMethod.POST)
+	public @ResponseBody String callKidsCd(Model model, @RequestParam("kidsNm")String kidsNm) {
+		logger.debug("{} <- kidsNm callKidsCd AttendanceController.java", kidsNm);
+		String callKids = attendanceService.callKidCd(kidsNm);
+		logger.debug("{} <- callKids callKidsCd AttendanceController.java", callKids);
+		logger.debug("callKids : {}", callKids);
+		logger.debug("-----------------------------------------");
+		model.addAttribute("callKids", callKids);
+		return callKids;
+	}
+	*/
+	
 	// 영유아
 	// 1-1. 영유아 등원 입력 요청
 	@RequestMapping(value="/KidsAttendance", method = RequestMethod.GET)
@@ -111,7 +136,7 @@ public class AttendanceController {
 	}
 	// 1-2. 영유아 등원 입력
 	@RequestMapping(value="/KidsAttendance", method = RequestMethod.POST)
-	public String kidsAttendance(Model model, HttpSession session, KidsAttendance kidsAttendance) {
+	public String kidsAttendance(Model model, HttpSession session, KidsAttendance kidsAttendance) {		
 		Teacher loginTeacher = (Teacher) session.getAttribute("loginTeacher");
 		// loginTeacher객체에 session에 담긴 loginTeacher의 값을 담는다.
 		if(loginTeacher == null) {

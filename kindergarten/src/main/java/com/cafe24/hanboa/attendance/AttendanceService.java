@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cafe24.hanboa.kids.Kids;
 import com.cafe24.hanboa.teacher.Teacher;
 
 @Service
@@ -106,7 +107,12 @@ public class AttendanceService {
 		logger.debug("-------------------------------------------------------------");	
 	}
 	
-
+	
+/*	// 영유아 등원 입력 : 영유아 이름 가져오기
+	public String callKidCd(String kidsNm) {
+		return attendanceDao.callKidCd(kidsNm);
+	}*/
+	
 	// 영유아
 	// 1. 영유아 등원 입력
 	public void insertKidsAttendance(KidsAttendance kidsAttendance) {

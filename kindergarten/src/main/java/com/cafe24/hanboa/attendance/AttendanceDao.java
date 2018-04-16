@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.cafe24.hanboa.kids.Kids;
 import com.cafe24.hanboa.teacher.Teacher;
 
 @Repository
@@ -52,6 +53,11 @@ public class AttendanceDao {
 		return sqlSessionTemlate.update(localName+"updateTeacherAttendance", map);
 	}
 	
+	
+/*	// 영유아 등원 입력 : 영유아 이름 가져오기
+	public String callKidCd(String kidsNm) {
+		return sqlSessionTemlate.selectOne(localName+"callKidsCd", kidsNm);
+	}*/
 	
 	// 영유아
 	// 1. 영유아 등원 입력

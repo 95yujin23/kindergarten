@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.google.gson.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,10 +55,12 @@
 				<div class="alert alert-success">
 					<h2>영유아 등원 폼</h2>
 					<form id="kidsAttendanceInForm" action="${pageContext.request.contextPath}/KidsAttendance" method="post">
-						<span>영유아번호를 입력해주세요.</span>
-						<input type="text" id="kidsCd" name="kidsCd"><br>
-						<span>특이사항이 있으면 입력해주세요.</span>
-						<input type="text" id="kidsReason" name="kidsReason">
+						<div>
+							<span>영유아번호을 입력해주세요.</span>
+							<input type="text" id="kidsCd" name="kidsCd" value="KIDS_0011">
+							<span>특이사항이 있으면 입력해주세요.</span>
+							<input type="text" id="kidsReason" name="kidsReason">
+						</div>
 						<button class="btn btn-default" id="attendanceInButton" type="button">등원</button>
 					</form>
 				</div>
@@ -67,7 +70,7 @@
 					<h2>영유아 하원 폼</h2>
 					<form id="kidsAttendanceOutForm" action="${pageContext.request.contextPath}/kids_attendance_update" method="post">
 						<br>
-						<span>영유아번호를 입력해주세요.</span>
+						<span>영유아이름 입력해주세요.</span>
 						<input type="text" id="kidsCd" name="kidsCd">
 						<button class="btn btn-default" id="attendanceOutButton" type="button">하원</button>
 					</form>
@@ -88,5 +91,29 @@
 	<script src="resources/vendor/js/morris-data.js"></script>
 	<!-- Custom Theme JavaScript -->
 	<script src="resources/vendor/js/sb-admin-2.js"></script>
+<!-- 	<script>
+	$(document).ready(function(){
+		$("#kidsNm").keyup(function(){
+			$.ajax({
+				type		: "post"
+				,url		: '${pageContext.request.contextPath}/callKidsCd'
+				,data		: {kidsNm : $("#kidsNm").val()}
+				,cashe      : false
+				,dataType   : "json"
+				,success	: function(data) {
+					alert(data+'<-- data 03 조건 ');
+					if(data == null) {
+						alert('01 조건 ');
+						$("message").html("해당되는 이름이 없습니다.")
+					}else {
+						alert('02 조건 ');
+						$("#kidsCd").val(data.callKids); 
+						$("message").html("이름이 확인되었습니다.")						
+					}
+				}
+			})
+		});
+	});
+	</script> -->
 </body>
 </html>

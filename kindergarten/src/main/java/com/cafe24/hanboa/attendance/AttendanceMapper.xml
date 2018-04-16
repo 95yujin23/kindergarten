@@ -78,6 +78,13 @@
 	
 	
 	<!-- 영유아 start -->
+	<!-- 1-1. 영유아 등원 입력 : 영유아 이름 가져오기 -->
+	<select id="callKidsCd" resultType="String">
+		SELECT 
+			KIDS_CD AS kidsCd
+		FROM TB_KIDS 
+		WHERE KIDS_NM = #{kidsNm}
+	</select>
 	<!-- 1. 영유아 등원 입력 -->
 	<insert id="insertKidsAttendance" parameterType="com.cafe24.hanboa.attendance.KidsAttendance">
 		<!-- selectKey설정 - #{attendanceCd} : 문자열(ATTE) + 마지막으로 입력된 코드 값에 1을 더한 결과 값 가져오기 --> 
@@ -102,7 +109,7 @@
 			, #{licenseKindergarten}
 		)
 	</insert>
-	<!-- 교직원 등하원 전체 조회(교직원용) -->
+	<!-- 2. 교직원 등하원 전체 조회(교직원용) -->
 	<select id="selectKidsAttendance" parameterType="String" resultType="com.cafe24.hanboa.attendance.KidsAttendance">
 		SELECT
 			ATTENDANCE_CD AS attendanceCd
@@ -115,7 +122,7 @@
 			, LICENSE_KINDERGARTEN AS licenseKindergarten
 		FROM TB_KIDS_ATTENDANCE
 	</select>
-	<!-- 교직원 등하원 개인 조회(영유아용) -->
+	<!-- 3. 교직원 등하원 개인 조회(영유아용) -->
 	<select id="selectKidsAttendanceOne" parameterType="String" resultType="com.cafe24.hanboa.attendance.KidsAttendance">
 		SELECT
 			ATTENDANCE_CD AS attendanceCd
@@ -129,7 +136,7 @@
 		FROM TB_KIDS_ATTENDANCE
 		WHERE KIDS_CD = #{kidsCd}
 	</select>
-	<!-- 영유아 하원 입력(업데이트) -->
+	<!-- 4. 영유아 하원 입력(업데이트) -->
 	<update id="updateKidsAttendance" parameterType="java.util.Map">
 		UPDATE TB_KIDS_ATTENDANCE
 		SET

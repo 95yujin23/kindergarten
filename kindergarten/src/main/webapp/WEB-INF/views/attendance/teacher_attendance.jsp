@@ -46,7 +46,7 @@
 	<div id="page-wrapper">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">교직원 출퇴근 폼</h1>
+				<h1 class="page-header">${teacherCall.teacherNm}선생님 출퇴근 폼</h1>
 			</div>
 		</div>
 		<div class="row">
