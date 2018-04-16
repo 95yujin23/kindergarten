@@ -23,9 +23,6 @@
 <script src="resources/vendor/js/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
-		$('#searchButton').click(function(){
-				$('#searchForm').submit();
-		});
 		$("#search").on("keyup", function() {
 			var value = $(this).val().toLowerCase();
 			$("#planTable tr").filter(function() {

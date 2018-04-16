@@ -23,9 +23,6 @@
 <script src="resources/vendor/js/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
-		$('#searchButton').click(function(){
-				$('#searchForm').submit();
-		});
 		$("#search").on("keyup", function() {
 			var value = $(this).val().toLowerCase();
 			$("#planCategoryTable tr").filter(function() {
@@ -53,9 +50,11 @@
 					</div>
 				</div>
 				<div class="panel-body">
+					<!-- 검색처리 시작 -->
 					<form class="form-inline" style="float: left;">
 						<input class="form-control" id="search" type="text" placeholder="Search..">
 					</form>
+					<!-- 검색처리 끝 -->
 					<!-- 계획안 목록 추가 이동 버튼 -->
 					<div style="float: right;">
 						<a class="btn-lg btn btn-info" href="${pageContext.request.contextPath}/PlanCategoryAdd">추가하기</a>
