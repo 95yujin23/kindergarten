@@ -71,7 +71,7 @@
 					<form id="kidsAttendanceOutForm" action="${pageContext.request.contextPath}/kids_attendance_update" method="post">
 						<br>
 						<span>영유아이름 입력해주세요.</span>
-						<input type="text" id="kidsCd" name="kidsCd">
+						<input type="text" id="kidsCd" name="kidsCd" value="KIDS_0011">
 						<button class="btn btn-default" id="attendanceOutButton" type="button">하원</button>
 					</form>
 				</div>
