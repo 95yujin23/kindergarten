@@ -52,21 +52,18 @@ public class PlanController {
 	// 2. 계획안 전체조회+검색+페이징
 	@RequestMapping(value="/PlanList", method=RequestMethod.GET)
 	public String PlanList(Model model
-						, @RequestParam(value="keyword", required = false) String keyword
 						, @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
 						, @RequestParam(value = "pagePerRow", required = false, defaultValue = "10") int pagePerRow) {
 		logger.debug("2. PlanController.java PlanList()메소드 실행 ");
 		logger.debug("{} <- currentPage PlanList PlanController.java", currentPage);
 		logger.debug("{} <- pagePerRow PlanList PlanController.java", pagePerRow);
-		logger.debug("{} <- keyword PlanList PlanController.java", keyword);
-		Map<String, Object> map = planService.selectPlanList(currentPage, pagePerRow, keyword);
+		Map<String, Object> map = planService.selectPlanList(currentPage, pagePerRow);
 		List<Plan> list = (List<Plan>)(map.get("list"));
 		int countPage = (Integer)map.get("countPage");
 		String searchKeyword = (String)map.get("keyword");
 		model.addAttribute("list", list);
 		model.addAttribute("countPage", countPage);
 		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("keyword", searchKeyword);
 		logger.debug("{} <- list PlanList PlanController.java", list);
 		logger.debug("------------------------------------------------------------");
 		return "plan/plan_list";
@@ -146,21 +143,17 @@ public class PlanController {
 	// 2. 계획안 카테고리 전체조회+검색+페이징
 	@RequestMapping(value="/PlanCategoryList", method=RequestMethod.GET)
 	public String PlanCategoryList(Model model
-								, @RequestParam(value="keyword", required = false) String keyword
 								, @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
 								, @RequestParam(value = "pagePerRow", required = false, defaultValue = "10") int pagePerRow) {
 		logger.debug("2. PlanController.java PlanCategoryList()메소드 실행 ");
 		logger.debug("{} <- currentPage PlanCategoryList PlanController.java", currentPage);
 		logger.debug("{} <- pagePerRow PlanCategoryList PlanController.java", pagePerRow);
-		logger.debug("{} <- keyword PlanCategoryList PlanController.java", keyword);
-		Map<String, Object> map = planService.selectPlanCategoryList(currentPage, pagePerRow, keyword);
+		Map<String, Object> map = planService.selectPlanCategoryList(currentPage, pagePerRow);
 		List<PlanCategory> list = (List<PlanCategory>)(map.get("list"));
 		int countPage = (Integer)map.get("countPage");
-		String searchKeyword = (String)map.get("keyword");
 		model.addAttribute("list", list);
 		model.addAttribute("countPage", countPage);
 		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("keyword", searchKeyword);
 		logger.debug("{} <- list PlanCategoryList PlanController.java", list);
 		logger.debug("------------------------------------------------------------");
 		return "plan/plan_category_list";

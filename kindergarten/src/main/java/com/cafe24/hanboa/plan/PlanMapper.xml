@@ -55,9 +55,6 @@
 			, PLAN_REGISTRATION_DATE AS planRegistrationDate
 			, PLAN_REGISTRANT AS planRegistrant
 		FROM TB_PLAN
-		<if test="keyword != null">
-			WHERE CATE_NM LIKE CONCAT('%',#{keyword},'%')
-		</if>
 		LIMIT #{startPage}, #{pagePerRow}
 	</select>
 	<!-- 2-2. 전체 계획안 수(페이징) -->
@@ -148,9 +145,6 @@
 			PLAN_CATE_CD AS planCateCd
 			, CATE_NM AS cateNm
 		FROM TB_PLAN_CATEGORY
-		<if test="keyword != null">
-			WHERE CATE_NM LIKE CONCAT('%',#{keyword},'%')
-		</if>
 		LIMIT #{startPage}, #{pagePerRow}
 	</select>
 	<!-- 2-2. 전체 계획안 카테고리 수(페이징) -->

@@ -38,17 +38,15 @@ public class PlanService {
 		logger.debug("{} <- insertPlan PlanService.java", plan);
 	}
 	// 2. 계획안 전체조회+검색+페이징
-	public Map<String, Object> selectPlanList(int currentPage, int pagePerRow, String keyword) {
+	public Map<String, Object> selectPlanList(int currentPage, int pagePerRow) {
 		logger.debug("{} : <- currentPage selectPlanList PlanService.java", currentPage);
 		logger.debug("{} : <- pagePerRow selectPlanList PlanService.java", pagePerRow);
-		logger.debug("{} <- keyword selectPlanList PlanService.java", keyword);
 		int startPage = 0;
 		if(currentPage > 1) {
 			startPage = (currentPage-1)*pagePerRow;
 		}
 		// DAO에 시작 페이지와 행의 수 보내기
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("keyword", keyword);
 		map.put("startPage", startPage);
 		map.put("pagePerRow", pagePerRow);
 		List<Plan> list = planDao.getPlanList(map);
@@ -63,7 +61,6 @@ public class PlanService {
 		logger.debug("{} : <- countPage selectPlanList PlanService.java", countPage);
 		// list, 페이지 수 리턴
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		returnMap.put("keyword", keyword);
 		returnMap.put("list", list);
 		returnMap.put("countPage", countPage);
 		return returnMap;
@@ -105,17 +102,15 @@ public class PlanService {
 		logger.debug("{} <- insertPlanCategory PlanService.java", planCategory);
 	}
 	// 2. 계획안 카테고리 전체조회+검색+페이징
-	public Map<String, Object> selectPlanCategoryList(int currentPage, int pagePerRow, String keyword) {
+	public Map<String, Object> selectPlanCategoryList(int currentPage, int pagePerRow) {
 		logger.debug("{} : <- currentPage selectPlanCategoryList PlanService.java", currentPage);
 		logger.debug("{} : <- pagePerRow selectPlanCategoryList PlanService.java", pagePerRow);
-		logger.debug("{} <- keyword selectPlanCategoryList PlanService.java", keyword);
 		int startPage = 0;
 		if(currentPage > 1) {
 			startPage = (currentPage-1)*pagePerRow;
 		}
 		// DAO에 시작 페이지와 행의 수 보내기
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("keyword", keyword);
 		map.put("startPage", startPage);
 		map.put("pagePerRow", pagePerRow);
 		List<PlanCategory> list = planDao.getPlanCategoryList(map);
@@ -130,7 +125,6 @@ public class PlanService {
 		logger.debug("{} : <- countPage selectPlanCategoryList PlanService.java", countPage);
 		// list, 페이지 수 리턴
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		returnMap.put("keyword", keyword);
 		returnMap.put("list", list);
 		returnMap.put("countPage", countPage);
 		return returnMap;

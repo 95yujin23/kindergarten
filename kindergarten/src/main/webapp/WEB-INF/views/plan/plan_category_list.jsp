@@ -25,8 +25,14 @@
 	$(document).ready(function(){
 		$('#searchButton').click(function(){
 				$('#searchForm').submit();
-		})
-	})
+		});
+		$("#search").on("keyup", function() {
+			var value = $(this).val().toLowerCase();
+			$("#planCategoryTable tr").filter(function() {
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		});
+	});
 </script>
 </head>
 <body>
@@ -38,53 +44,51 @@
 		<c:import url="../inc/left.jsp"></c:import>
 		<!-- LEFT -->
 	</div>
-	<div class="container">
+	<div id="page-wrapper">
 		<div class="row">
-			<div class="col-lg-1"></div>
-			<div class="col-lg-11">
-				<h2>계획안 카테고리 목록</h2>
-				<!-- 검색처리 시작 -->
-				<form action="${pageContext.request.contextPath}/PlanCategoryList?keyword=${keyword}" method="get" id="searchForm" class="form-inline">
-					<div class="input-group" style="float: left;">
-						<input id="keyword" name="keyword" type="text" class="form-control" placeholder="Search">
-						<div class="input-group-btn">
-							<button id="searchButton" type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
-						</div>
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h1 class="page-header">계획안 카테고리 목록</h1>
 					</div>
-				</form>
-				<!-- 검색처리 끝 -->
-				<!-- 계획안 목록 추가 이동 버튼 -->
-				<div style="float: right;">
-					<a class="btn btn-info" href="${pageContext.request.contextPath}/PlanCategoryAdd"><i class="fa fa-plus-circle"></i></a>
 				</div>
-				<!-- 계획안 목록 추가 이동 버튼 -->
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>카테고리명</th>
-							<th>삭제</th>
-						</tr>
-					</thead>
-					<c:forEach var="list" items="${list}">
-						<tbody>
-						<tr>
-							<td>${list.cateNm}</td>							
-							<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/PlanCategoryDelete?planCateCd=${list.planCateCd}"><i class="fa fa-trash"></i></a></td>
-						</tr>
-					</tbody>
-					</c:forEach>
-				</table>
-				<!-- 페이징 시작 -->
-				<nav aria-label="Page navigation example">
-					<ul class="pagination justify-content-center">
-						<c:forEach var="i" begin="1" end="${countPage}" step="1">
-							<li class="page-item">
-								<a class="page-link" href="${pageContext.request.contextPath}/PlanCategoryList?currentPage=${i}">${i}</a>
-							</li>
+				<div class="panel-body">
+					<form class="form-inline" style="float: left;">
+						<input class="form-control" id="search" type="text" placeholder="Search..">
+					</form>
+					<!-- 계획안 목록 추가 이동 버튼 -->
+					<div style="float: right;">
+						<a class="btn-lg btn btn-info" href="${pageContext.request.contextPath}/PlanCategoryAdd">추가하기</a>
+					</div>
+					<!-- 계획안 목록 추가 이동 버튼 끝 -->
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>카테고리명</th>
+								<th>삭제</th>
+							</tr>
+						</thead>
+						<c:forEach var="list" items="${list}">
+							<tbody id="planCategoryTable">
+							<tr>
+								<td>${list.cateNm}</td>							
+								<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/PlanCategoryDelete?planCateCd=${list.planCateCd}"><i class="fa fa-trash"></i></a></td>
+							</tr>
+						</tbody>
 						</c:forEach>
-					</ul>
-				</nav>
-				<!-- 페이징 끝 -->
+					</table>
+					<!-- 페이징 시작 -->
+					<nav aria-label="Page navigation example">
+						<ul class="pagination justify-content-center">
+							<c:forEach var="i" begin="1" end="${countPage}" step="1">
+								<li class="page-item">
+									<a class="page-link" href="${pageContext.request.contextPath}/PlanCategoryList?currentPage=${i}">${i}</a>
+								</li>
+							</c:forEach>
+						</ul>
+					</nav>
+					<!-- 페이징 끝 -->
+				</div>
 			</div>
 		</div>
 	</div>	
