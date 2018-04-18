@@ -61,7 +61,7 @@ public class ProgramController {
 		logger.debug("{} <- currentPage ProgramController.java", currentPage);
 		logger.debug("{} <- pagePerRow ProgramController.java", pagePerRow);
 		Map<String, Object> map = programService.selectProgramList(currentPage, pagePerRow);
-		List<AllCallProgram> list = (List<AllCallProgram>)(map.get("list"));
+		List<ProgramApplication> list = (List<ProgramApplication>)(map.get("list"));
 		int countPage = (Integer)map.get("countPage");
 		model.addAttribute("list", list);
 		model.addAttribute("countPage", countPage);

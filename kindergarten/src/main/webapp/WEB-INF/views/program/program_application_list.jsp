@@ -58,10 +58,10 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
-								<th>영유아코드</th>
-								<th>특별활동프로그램코드</th>
+								<th>영유아이름</th>
+								<th>특별활동프로그램명</th>
+								<th>금액</th>
 								<th>입금여부</th>
-								<th>마감회계_수입특별활동비</th>
 								<th>마감유무</th>
 								<th>등록날짜</th>
 								<th>등록인</th>
@@ -72,10 +72,10 @@
 						<c:forEach var="list" items="${list}">
 							<tbody id="programApplicationTable">
 								<tr>
-									<td>${list.kidsCd}</td>							
-									<td>${list.programCd}</td>
-									<td>${list.PRAPDivision}</td>
-									<td>${list.PRAPClosingCd}</td>
+									<td>${list.kidsNm}</td>							
+									<td>${list.programNm}</td>
+									<td>${list.programNm}</td>
+									<td>${list.PRAPCost}</td>
 									<td>${list.PRAPClosingDivision}</td>
 									<td>${list.PRAPRegistrationDate}</td>
 									<td>${list.PRAPRegistrant}</td>

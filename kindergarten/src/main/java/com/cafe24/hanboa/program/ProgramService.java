@@ -113,7 +113,7 @@ public class ProgramService {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("startPage", startPage);
 		map.put("pagePerRow", pagePerRow);
-		List<ProgramApplication> list = programDao.getProgramApplicationList(map);
+		List<AllCallProgramApplication> list = programDao.kidsAndProgramAndPPAP(map);
 		logger.debug("{} : <- list ProgramService.java", list);
 		// 총 행의 수를 보여줄 행의 수로 나눈 뒤 나머지가 0일 경우는 넘어가고 아닐 경우 +1 한다.
 		int count = programDao.selectProgramApplicationCountByPage(map);

@@ -53,6 +53,24 @@
 			, #{licenseKindergarten}
 		)
 	</insert>
+	<!-- 2-1. 특별활동 전체조회+페이징 -->
+	<select id="getProgramList" parameterType="java.util.Map" resultType="com.cafe24.hanboa.program.Program">
+		SELECT  
+			PROGRAM_CD AS programCd
+			, TOTAL_RESOURCE_CD AS totalResourceCd
+			, PROGRAM_NM AS programNm
+			, PROGRAM_NUMBER_WEEK AS programNumberWeek
+			, PROGRAM_OPERATION_TIME AS programOperationTime
+			, PROGRAM_OUTSOURCING_COST AS programOutsourcingCost
+			, PROGRAM_CLOSING_CD AS programClosingCd
+			, PROGRAM_CLOSING_DIVISION AS programClosingDivision
+			, CONTRACT_CD AS contractCd
+			, PROGRAM_REGISTRATION_DATE AS programRegistrationDate
+			, PROGRAM_REGISTRANT AS programRegistrant
+			, LICENSE_KINDERGARTEN AS licenseKindergarten
+		FROM TB_PROGRAM
+		LIMIT #{startPage}, #{pagePerRow}
+	</select>
 	<!-- 2-1. 특별활동 전체조회 : JOIN -->
 	<resultMap type="com.cafe24.hanboa.program.AllCallProgram" id="allCallProgram">
 		<result property="programCd" column="PROGRAM_CD" />
@@ -91,24 +109,6 @@
 		ON p.TOTAL_RESOURCE_CD = tr.TOTAL_RESOURCE_CD
 		JOIN TB_CONTRACT c 
 		ON p.CONTRACT_CD = c.CONTRACT_CD
-		LIMIT #{startPage}, #{pagePerRow}
-	</select>
-	<!-- 2-1. 특별활동 전체조회+검색+페이징 -->
-	<select id="getProgramList" parameterType="java.util.Map" resultType="com.cafe24.hanboa.program.Program">
-		SELECT  
-			PROGRAM_CD AS programCd
-			, TOTAL_RESOURCE_CD AS totalResourceCd
-			, PROGRAM_NM AS programNm
-			, PROGRAM_NUMBER_WEEK AS programNumberWeek
-			, PROGRAM_OPERATION_TIME AS programOperationTime
-			, PROGRAM_OUTSOURCING_COST AS programOutsourcingCost
-			, PROGRAM_CLOSING_CD AS programClosingCd
-			, PROGRAM_CLOSING_DIVISION AS programClosingDivision
-			, CONTRACT_CD AS contractCd
-			, PROGRAM_REGISTRATION_DATE AS programRegistrationDate
-			, PROGRAM_REGISTRANT AS programRegistrant
-			, LICENSE_KINDERGARTEN AS licenseKindergarten
-		FROM TB_PROGRAM
 		LIMIT #{startPage}, #{pagePerRow}
 	</select>
 	<!-- 2-2. 전체 프로그램 카테고리 수(페이징) -->
@@ -197,7 +197,7 @@
 			, #{licenseKindergarten}
 		)
 	</insert>
-	<!-- 2-1. 특별활동신청 전체조회+검색+페이징 -->
+	<!-- 2-1. 특별활동신청 전체조회+페이징 -->
 	<select id="getProgramApplicationList" parameterType="java.util.Map" resultType="com.cafe24.hanboa.program.ProgramApplication">
 		SELECT
 			KIDS_CD AS kidsCd
@@ -210,6 +210,38 @@
 			, PRAP_REGISTRATION_DATE AS PRAPRegistrationDate
 			, PRAP_REGISTRANT AS PRAPRegistrant
 		FROM TB_PROGRAM_APPLICATION
+		LIMIT #{startPage}, #{pagePerRow}
+	</select>
+	<!-- 2-1. 특별활동신청 전체조회+페이징 : JOIN -->
+	<resultMap type="com.cafe24.hanboa.program.AllCallProgramApplication" id="AllCallProgramApplication">
+		<result property="programApplCd" column="PROGRAM_APPL_CD" />
+		<result property="kidsCd" column="KIDS_CD" />
+		<result property="programCd" column="PROGRAM_CD" />
+		<result property="PRAPDivision" column="PRAP_DIVISION" />
+		<result property="PRAPCost" column="PRAP_COST" />
+		<result property="PRAPClosingCd" column="PRAP_CLOSING_CD" />
+		<result property="PRAPClosingDivision" column="PRAP_CLOSING_DIVISION" />
+		<result property="PRAPRegistrationDate" column="PRAP_REGISTRATION_DATE" />
+		<result property="PRAPRegistrant" column="PRAP_REGISTRANT" />
+		<result property="licenseKindergarten" column="LICENSE_KINDERGARTEN" />
+		<result property="kidsNm" column="KIDS_NM" />
+		<result property="programNm" column="PROGRAM_NM" />
+	</resultMap>
+	<select id="kidsAndProgramAndPPAP" parameterType="java.util.Map" resultMap="AllCallProgramApplication">
+		SELECT
+			pa.PROGRAM_APPL_CD
+			, pa.PRAP_DIVISION
+			, pa.PRAP_COST
+			, pa.PRAP_CLOSING_DIVISION
+			, pa.PRAP_REGISTRATION_DATE
+			, pa.PRAP_REGISTRANT
+			, k.KIDS_NM
+			, p.PROGRAM_NM
+		FROM TB_PROGRAM_APPLICATION pa
+		JOIN TB_KIDS k
+		ON pa.KIDS_CD = k.KIDS_CD
+		JOIN TB_PROGRAM p
+		ON pa.PROGRAM_CD = p.PROGRAM_CD
 		LIMIT #{startPage}, #{pagePerRow}
 	</select>
 	<!-- 2-2. 전체 프로그램 카테고리 수(페이징) -->
