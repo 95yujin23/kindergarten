@@ -5,7 +5,7 @@ public class FeedingApplication {
 	private String kidsCd;
 	private String feedingMonthlyCd;
 	private int feapExpenseMonth;
-	private int feapClosingIncome;
+	private String feapClosingIncome;
 	private String feapClosingOption;
 	private String feapDivision;
 	private String feapRegistrationDate;
@@ -36,10 +36,10 @@ public class FeedingApplication {
 	public void setFeapExpenseMonth(int feapExpenseMonth) {
 		this.feapExpenseMonth = feapExpenseMonth;
 	}
-	public int getFeapClosingIncome() {
+	public String getFeapClosingIncome() {
 		return feapClosingIncome;
 	}
-	public void setFeapClosingIncome(int feapClosingIncome) {
+	public void setFeapClosingIncome(String feapClosingIncome) {
 		this.feapClosingIncome = feapClosingIncome;
 	}
 	public String getFeapClosingOption() {

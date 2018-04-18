@@ -47,6 +47,21 @@
 	JOIN TB_CONTRACT co 
 	ON cl.CLIENT_CD=co.CLIENT_CD 	
 	</select>
+	
+<!-- ++영유아코드,영유아이름,월별급식(년,월)  -->
+<select id="callKidsFeedingMonthly"
+		resultMap="kidsAndfeedingMonthly">
+	SELECT
+		ki.kids_Cd
+		,ki.kids_Nm
+		,fm.femo_feeding_year_month
+	FROM TB_KIDS ki
+	JOIN TB_FEEDING_APPLICATION fa
+	ON ki.kids_Cd = fa.kids_Cd
+	JOIN TB_FEEDING_MONTHLY fm
+	ON fm.feeding_monthly_cd = fa.feeding_monthly_cd
+	WHERE fa.feeding_application_cd = #{feedingApplicationCd}	
+</select>
 			
 <!-- 급식신청 전체조회 -->
 	<select id="getFeedingApplication"
@@ -65,6 +80,30 @@
 			,license_kindergarten as licenseKindergarten
 		FROM hanboa.TB_FEEDING_APPLICATION	
 		LIMIT #{startPage}, #{pagePerRow}			
+	</select>
+<!-- 급식신청 전체조회2 -->
+	<select id="getFeedingApplication2"
+			resultMap="kidsAndfeedingMonthly">
+		SELECT
+				fa.feeding_application_cd 
+				,fm.feeding_monthly_cd 
+				,ki.kids_cd 
+				,ki.kids_Nm 
+				,fm.femo_feeding_year_month 
+				,fm.feeding_monthly_cd 
+				,fa.feap_expense_month
+				,fa.feap_closing_income 
+				,fa.feap_closing_option
+				,fa.feap_division 
+				,fa.feap_registration_date 
+				,fa.feap_registrant
+				,fa.license_kindergarten
+			FROM TB_KIDS ki
+			JOIN TB_FEEDING_APPLICATION fa
+			ON ki.kids_Cd = fa.kids_Cd
+			JOIN TB_FEEDING_MONTHLY fm
+			ON fm.feeding_monthly_cd = fa.feeding_monthly_cd	
+			LIMIT #{startPage}, #{pagePerRow}	
 	</select>
 <!-- 급식신청 총 목록 -->
 	<select id="getFeapTotalCount" resultType="Integer">
@@ -85,6 +124,7 @@
 			,feap_closing_income as feapClosingIncome
 			,feap_closing_option as feapClosingOption
 			,feap_division as feapDivision
+			,feap_registrant as feapRegistrant
 		FROM hanboa.TB_FEEDING_APPLICATION
 		WHERE feeding_application_cd = #{feedingApplicationCd}
 	</select>
@@ -99,6 +139,7 @@
 			,feap_expense_month = #{feapExpenseMonth}
 			,feap_closing_option = #{feapClosingOption}
 			,feap_division = #{feapDivision}
+			,feap_registrant = #{feapRegistrant}
 		WHERE feeding_application_cd = #{feedingApplicationCd}
 	</update>
 	
@@ -182,7 +223,7 @@
 		FROM TB_FEEDING_MENU
 	</select>
 	
-<!-- 식단메뉴 항목벽조회 -->
+<!-- 식단메뉴 항목별조회 -->
 	<select id = "getFemeOne"
 			resultType="com.cafe24.hanboa.feeding.FeedingMenu">
 	SELECT
@@ -439,10 +480,27 @@
 	</delete>	
 
 
-<!-- client,contract,feedingMonthly resultMap설정 -->
+<!-- feedingMonthly,client,contract  resultMap설정 -->
 	<resultMap type="com.cafe24.hanboa.feeding.FeedingMonthlyAndClientAndContract" 
 				id="clientAndContract">
 		<result property="contractCd" column="contract_Cd"></result>
 		<result property="clientNm" column="client_Nm"></result>
+	</resultMap>
+	
+<!-- feedingApplication,kids,feedingMothly resultMap설정 -->
+	<resultMap type="com.cafe24.hanboa.feeding.FeedingApplicationAndKidsAndMonthly"
+				id="kidsAndfeedingMonthly">
+		<result property="kidsCd" column="kids_Cd"></result>
+		<result property="kidsNm" column="kids_Nm"></result>
+		<result property="femoFeedingYearMonth" column="femo_feeding_year_month"></result>
+		<result property="feedingApplicationCd" column="feeding_application_cd"></result>
+		<result property="feedingMonthlyCd" column="feeding_monthly_cd"></result>
+		<result property="feapExpenseMonth" column="feap_expense_month"></result>
+		<result property="feapClosingIncome" column="feap_closing_income"></result>
+		<result property="feapClosingOption" column="feap_closing_option"></result>
+		<result property="feapDivision" column="feap_division"></result>
+		<result property="feapRegistrationDate" column="feap_registration_date"></result>
+		<result property="feapRegistrant" column="feap_registrant"></result>
+		<result property="licenseKindergarten" column="license_kindergarten"></result>
 	</resultMap>
 </mapper>

@@ -37,7 +37,7 @@ public class FeedingApplicationService {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("startPage", startPage);
 		map.put("pagePerRow", pagePerRow);
-		List<FeedingApplication> list = feedingApplicationDao.selectFeedingApplicationList(map);
+		List<FeedingApplicationAndKidsAndMonthly> list = feedingApplicationDao.selectFeedingApplicationList(map);
 		logger.debug("List<Teacher> : feedingApplicationDao.selectFeedingApplicationList(map) : {}", map);
 		int TotalCount = feedingApplicationDao.selectFeapTotalCount();
 		logger.debug("int TotalCount : feedingApplicationDao.selectFeapTotalCount() : {}", TotalCount);
@@ -70,6 +70,12 @@ public class FeedingApplicationService {
 		return femoCall;
 	}
 	
+	//1-3 kids+월별급식 불러오기
+	public FeedingApplicationAndKidsAndMonthly callkidsFemo(String feedingApplicationCd){
+		FeedingApplicationAndKidsAndMonthly KidsFemoCall = feedingApplicationDao.callkidsFemo(feedingApplicationCd);
+		logger.debug("{} <-- callkidsFemo FeedingApplicationService.java",KidsFemoCall);
+		return KidsFemoCall;		
+	}	
 	
 	//2. 수정 정보요청
 	public FeedingApplication modifyGetfeap(String feedingApplicationCd) {		
@@ -102,7 +108,7 @@ public class FeedingApplicationService {
 			e.printStackTrace();
 		}finally {
 		}
-		int cd = feedingApplication.getFeapClosingIncome();
+		String cd = feedingApplication.getFeapClosingIncome();
 		logger.debug("{} < -- feedingApplicationAdd FeedingApplicationService.java",feedingApplication);
 		logger.debug("{} < -- feedingApplicationAdd FeedingApplicationService.java",inDate);
 		logger.debug("{} < -- feedingApplicationAdd FeedingApplicationService.java int cd",cd);

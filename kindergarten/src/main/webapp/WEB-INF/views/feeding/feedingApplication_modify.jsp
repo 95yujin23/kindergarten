@@ -54,31 +54,24 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-lg-6">
-							<form id="addForm" action="${pageContext.request.contextPath}/FeedingApplicationAdd" method="POST">
-								<input class="form-control" type="hidden" id="feedingApplicationCd" name="feedingApplicationCd" placeholder="수입급식비">
+							<form id="addForm" action="${pageContext.request.contextPath}/feeding/feedingApplication_modify" method="POST">
+								<input class="form-control" type="hidden" value="${feedingApplication.feedingApplicationCd}" name="feedingApplicationCd" placeholder="수입급식비">
 								<div class="form-group">
-								    <label>영유아코드</label>
-								    <select name="kidsCd" class="form-control">
-								    	<c:forEach var="kids" items="${kids}">
-								    		<option value="${kids.kidsCd}">${kids.kidsCd}:${kids.kidsNm}</option>
-								    	</c:forEach>
-								    </select> 
+								    <label>영유아이름</label>								   
+								    <input name="kidsCd" type="hidden" class="form-control" value="${kidsFemo.kidsCd}" placeholder="영유아코드">	
+								    <input name="kidsNm" class="form-control" value="${kidsFemo.kidsNm}" readonly placeholder="영유아네임">								
 								</div>
 								<div class="form-group">
-								    <label>월별급식코드</label>
-								    <select name="feedingMonthlyCd" class="form-control">
-								    	<c:forEach var="feedingMonthly" items="${feedingMonthly}" >
-								    		<option value="${feedingMonthly.feedingMonthlyCd}">${feedingMonthly.femoFeedingYearMonth}</option>
-								    	</c:forEach>
-								    </select>								    
+								    <label>신청급식(년/월)</label>
+								    <input name="femoFeedingYearMonth" class="form-control" value="${kidsFemo.femoFeedingYearMonth}" value="${kidsFemo.femoFeedingYearMonth}" readonly placeholder="신청급식(년/월)">	
 								</div>
 								<div class="form-group">
 								    <label>수입급식비</label>
-								    <input class="form-control" id="feapExpenseMonth" name="feapExpenseMonth" placeholder="수입급식비">
+								    <input class="form-control" id="feapExpenseMonth" name="feapExpenseMonth" value="${feedingApplication.feapExpenseMonth}" placeholder="수입급식비">
 								</div>
 								<div class="form-group">
 								    <label>마감회계_수입급식비</label>
-								    <input class="form-control" id="feapClosingIncome" name="feapClosingIncome" placeholder="마감회계_수입급식비">
+								    <input class="form-control" id="feapClosingIncome" name="feapClosingIncome" value="${feedingApplication.feapClosingIncome}" placeholder="마감회계_수입급식비">
 								</div>
 								<div class="form-group">
 								    <label>마감유무</label>
@@ -96,7 +89,7 @@
 								</div>
 								<div class="form-group">
 								    <label>등록인</label>
-								    <input class="form-control" id="feapRegistrant" name="feapRegistrant" placeholder="등록인">
+								    <input class="form-control" id="feapRegistrant" value="${feedingApplication.feapRegistrant}" name="feapRegistrant" placeholder="등록인">
 								</div>	
 					
 								<button type="submit">등록</button>

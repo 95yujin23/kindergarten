@@ -62,8 +62,8 @@
 				<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
-							<th>영유아 코드</th>
-							<th>월별급식 코드</th>
+							<th>영유아 이름</th>
+							<th>급식신청(년/월)</th>
 							<th>수입급식비</th>
 							<th>마감회계-수입급식비</th>
 							<th>마감유무</th>
@@ -77,8 +77,8 @@
 					<c:forEach var="feap" items="${list}">
 						<tbody id="feedingApplicationTable" >
 							<tr>
-							<td>${feap.kidsCd}</td>
-							<td>${feap.feedingMonthlyCd}</td>
+							<td>${feap.kidsNm}</td>
+							<td>${feap.femoFeedingYearMonth}</td>
 							<td>${feap.feapExpenseMonth}</td>
 							<td>${feap.feapClosingIncome}</td>
 							<td>${feap.feapClosingOption}</td>

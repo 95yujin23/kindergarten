@@ -34,8 +34,8 @@ public class FeedingApplicationController {
 		}else if(session.getAttribute("loginTeacher")!=null) {
 			HashMap<String, Object> map = feapService.getFeedingApplicationList(currentPage, pagePerRow);
 			logger.debug("HashMap<String, Object> map : {}",map);
-			List<FeedingApplication> list = (List<FeedingApplication>) map.get("list");
-			logger.debug("List<FeedingApplication> list : {}",list);
+			List<FeedingApplicationAndKidsAndMonthly> list = (List<FeedingApplicationAndKidsAndMonthly>) map.get("list");
+			logger.debug("List<FeedingApplicationAndKidsAndMonthly> list : {}",list);
 			int countPage = (Integer) map.get("countPage");
 			logger.debug("int countPage : {}",countPage);
 			model.addAttribute("list", list);
@@ -49,16 +49,16 @@ public class FeedingApplicationController {
 	//2.수정 정보요청
 	@RequestMapping(value="/feeding/feedingApplication_modify",method=RequestMethod.GET)
 	public String feedingApplicationModify(Model model, @RequestParam(value="feedingApplicationCd", required=true) String feedingApplicationCd) {
-		FeedingApplication feedingApplication = feapService.modifyGetfeap(feedingApplicationCd);
-		List<Kids> kids = feapService.callKids();
+		logger.debug("{} : feedingApplicationCd feedingApplicationModify()", feedingApplicationCd);
 		List<FeedingMonthly> feedingMonthly = feapService.callMonthly();
-		logger.debug("{} <-- feedingApplicationAdd(addForm) FeedingApplicationController.java",kids);
-		logger.debug("{} <-- feedingApplicationAdd(addForm) FeedingApplicationController.java",feedingMonthly);
-		model.addAttribute("kids",kids);
-		model.addAttribute("feedingMonthly",feedingMonthly);
+		FeedingApplication feedingApplication = feapService.modifyGetfeap(feedingApplicationCd);
+		FeedingApplicationAndKidsAndMonthly kidsFemo = feapService.callkidsFemo(feedingApplicationCd);
+		logger.debug("{} <-- feedingApplicationModify(addForm) FeedingApplicationController.java",kidsFemo);
 		model.addAttribute("feedingApplication", feedingApplication);
-		logger.debug("{} <- feedingApplication FeedingApplicationController.java",feedingApplicationCd);
-		logger.debug("{} <- feedingApplication FeedingApplicationController.java",feedingApplication);
+		model.addAttribute("kidsFemo",kidsFemo);
+		model.addAttribute("feedingMonthly",feedingMonthly);
+		logger.debug("{} <- feedingApplicationModify FeedingApplicationController.java",feedingApplicationCd);
+		logger.debug("{} <- feedingApplicationModify FeedingApplicationController.java",feedingApplication);
 		return "feeding/feedingApplication_modify";
 	}
 	

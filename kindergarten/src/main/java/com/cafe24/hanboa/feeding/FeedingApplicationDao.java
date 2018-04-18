@@ -20,9 +20,9 @@ public class FeedingApplicationDao {
 	String localName = "com.cafe24.hanboa.feeding.FeedingMapper.";
 	
 	// 1. 목록조회
-	public List<FeedingApplication> selectFeedingApplicationList(HashMap<String, Object> map){
+	public List<FeedingApplicationAndKidsAndMonthly> selectFeedingApplicationList(HashMap<String, Object> map){
 		logger.debug("{} <- selectFeedingApplicationList FeedingApplicationDao.java",map);
-		return sqlSession.selectList(localName+"getFeedingApplication",map);
+		return sqlSession.selectList(localName+"getFeedingApplication2",map);
 	}
 	// 1-2 급식신청 총 목록 조회
 	public int selectFeapTotalCount() {
@@ -36,10 +36,16 @@ public class FeedingApplicationDao {
 		return sqlSession.selectList(localName+"callKids");
 	}
 	
-	// 1-2 월별급식 불러오기
+	// 1-4 월별급식 불러오기
 	public List<FeedingMonthly> callFeedingMonthly(){
 		logger.debug("{} < -- callFeedingMonthly FeedingApplicationDao.java");
 		return sqlSession.selectList(localName+"callMonthly");		
+	}
+	
+	//1-5 kids+월별급식 불러오기
+	public FeedingApplicationAndKidsAndMonthly callkidsFemo(String feedingApplicationCd){
+		logger.debug("{} < -- callkidsFemo FeedingApplicationDao.java");
+		return sqlSession.selectOne(localName+"callKidsFeedingMonthly",feedingApplicationCd);		
 	}
 	
 	// 2. 업데이트 정보요청
