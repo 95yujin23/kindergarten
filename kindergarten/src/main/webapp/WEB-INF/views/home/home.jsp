@@ -179,8 +179,8 @@
 									</tr>
 									<tr>
 										<td><strong>ERD</strong></td>
-										<td><a class="btn btn-default" href="/resources/vendor/files/ERD_logical.png">논리ERD</a><b></b>
-										<a class="btn btn-default" href="/resources/vendor/files/ERD_physical.png">물리ERD</a></td>
+										<td><a class="btn btn-default" href="${pageContext.request.contextPath}/resources/vendor/files/ERD_logical.png">논리ERD</a><b></b>
+										<a class="btn btn-default" href="${pageContext.request.contextPath}/resources/vendor/files/ERD_physical.png">물리ERD</a></td>
 									</tr>
 									<tr>
 										<td><strong>DOCUMENT</strong></td>
@@ -219,7 +219,7 @@
 				var answer = confirm("다운로드 하시겠습니까 ?")
 				if (answer) {
 					 e.preventDefault();
-			         window.open("/resources/vendor/files/KindergartenManagement.docx", "_blank");
+			         window.open("${pageContext.request.contextPath}/resources/vendor/files/kindergartenManagementSystem.pptx", "_blank");
 				}
 			});
 		});

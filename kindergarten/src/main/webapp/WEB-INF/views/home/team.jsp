@@ -100,36 +100,36 @@
 							</div>
 							<div class="panel panel-danger">
 								<div class="panel-heading">
-									<center><strong>한보아 자기기술서</strong></center>
+									<center><strong>구현한 기능</strong></center>
 								</div>
 			                    <div class="panel-body">
-			                    	<div class="panel-group" id="accordion">
-			                        	<div class="panel panel-red">
-			                            	<div class="panel-heading">
-				                              	<h4 class="panel-title">
-				                                  	<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">구현한 기능</a>
-				                                </h4>
-			                           		</div>
-					                            <div id="collapseOne" class="panel-collapse collapse in">
-						                            <div class="panel-body">
-						                            	@@
-						                            </div>
-					                            </div>
-			                        	</div>
-			                            <div class="panel panel-red">
-			                            	<div class="panel-heading">
-			                                	<h4 class="panel-title">
-			                                   		<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">미완성된 기능</a>
-			                                    </h4>
-			                           		</div>
-			                                    <div id="collapseTwo" class="panel-collapse collapse">
-			                                        <div class="panel-body">
-			                                        	@@
-			                                        </div>
-			                                    </div>
-			                           	</div>
-										</div>
-									</div>
+			                    <ul class="list-unstyled">
+			                   		<li>
+										<strong>교직원, 교직원 인건비 및 영유아 기능</strong>
+									</li>
+									<li>
+										/ 등록, 조회, 수정, 삭제, 상세보기
+									</li>
+									<li>
+										<strong>로그인 기능</strong>
+									</li>
+									<li>
+										/ 로그인, 로그아웃, 아이디 확인
+									</li>
+									<li>
+										<strong>안전교육 및 점검 기능, 통합자원 기능</strong>
+									</li>
+									<li>
+										/ 등록, 조회, 수정, 삭제
+									</li>
+									<li>
+										<strong>유치원 라이센스 기능</strong>
+									</li>
+									<li>
+										/ 등록, 조회, 수정, 삭제, 상세보기
+									</li>
+			                    </ul>
+								</div>
 			                    </div>
 			                </div>
 			                <!-- 한보아 소개 끝 -->
@@ -167,38 +167,34 @@
 			                        </div>
 			                    </div>
 			                    <div class="panel panel-warning">
-			                    	<div class="panel-heading">
-			                        	<center><strong>박미란 자기기술서</strong></center>
-			                        </div>
-			                        <!-- .panel-heading -->
-			                        <div class="panel-body">
-			                            <div class="panel-group" id="accordion">
-			                                <div class="panel panel-yellow">
-			                                    <div class="panel-heading">
-			                                        <h4 class="panel-title">
-			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne2">구현한 기능</a>
-			                                        </h4>
-			                                    </div>
-			                                    <div id="collapseOne2" class="panel-collapse collapse in">
-			                                        <div class="panel-body">
-			                                       		@@
-			                                        </div>
-			                                    </div>
-			                                </div>
-			                                <div class="panel panel-yellow">
-			                                    <div class="panel-heading">
-			                                        <h4 class="panel-title">
-			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo2">미완성된 기능</a>
-			                                        </h4>
-			                                    </div>
-			                                    <div id="collapseTwo2" class="panel-collapse collapse">
-			                                        <div class="panel-body">
-			                                       		@@
-			                                        </div>
-			                                    </div>
-			                                </div>
-			                            </div>
-			                        </div>
+		                    	<div class="panel-heading">
+									<center><strong>구현한 기능</strong></center>
+								</div>
+			                    <div class="panel-body">
+			                    <ul class="list-unstyled">
+			                   		<li>
+										<strong>급식 관련 기능</strong>
+									</li>
+									<li>
+										 / 월 별 급식 비, 급식신청, 식단, 식중독 발생 및 처리
+									</li>
+									<li>
+										/ 등록, 조회, 수정, 삭제
+									</li>
+									<li>
+										<strong>거래처 기능</strong>
+									</li>
+									<li>
+										 / 등록, 조회, 수정, 삭제
+									</li>
+									<li>
+										<strong>계약 기능</strong>
+									</li>
+									<li>
+										/ 등록, 조회, 수정, 삭제
+									</li>
+			                    </ul>
+								</div>
 			                    </div>
 			                </div>
 			                <!-- 박미란 소개 끝 -->
@@ -239,37 +235,39 @@
 			                    </div>
 			                     <div class="panel panel-success">
 			                        <div class="panel-heading">
-			                           <center><strong>정은화 자기기술서</strong></center>
-			                        </div>
-			                        <!-- .panel-heading -->
-			                        <div class="panel-body">
-			                            <div class="panel-group" id="accordion">
-			                                <div class="panel panel-green">
-			                                    <div class="panel-heading">
-			                                        <h4 class="panel-title">
-			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne3">구현한 기능</a>
-			                                        </h4>
-			                                    </div>
-			                                    <div id="collapseOne3" class="panel-collapse collapse in">
-			                                        <div class="panel-body">
-			                                        @@
-			                                        </div>
-			                                    </div>
-			                                </div>
-			                                <div class="panel panel-green">
-			                                    <div class="panel-heading">
-			                                        <h4 class="panel-title">
-			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo3">미완성된 기능</a>
-			                                        </h4>
-			                                    </div>
-			                                    <div id="collapseTwo3" class="panel-collapse collapse">
-			                                        <div class="panel-body">
-			                                       	@@
-			                                        </div>
-			                                    </div>
-			                                </div>
-			                            </div>
-			                        </div>
+									<center><strong>구현한 기능</strong></center>
+								</div>
+			                    <div class="panel-body">
+			                    <ul class="list-unstyled">
+			                   		<li>
+										<strong>출결 기능</strong>
+									</li>
+									<li>
+									  / 교직원 및 영유아 출근(등원) 및 퇴근(하원) 
+									</li>
+									<li>
+									 / 등록, 조회, 수정, 삭제
+									</li>
+									<li>
+										<strong>계획안 기능</strong>
+									</li>
+									<li>
+										 / 계획안카테고리, 계획안양식, 계획안 
+									</li>
+									<li>
+										 / 등록, 조회, 수정, 삭제
+									</li>
+									<li>
+										<strong>특별활동 기능</strong>
+									</li>
+									<li>
+										/ 특별활동프로그램, 특별활동신청
+									</li>
+									<li>
+										/ 등록, 조회, 수정, 삭제
+									</li>
+			                    </ul>
+								</div>
 			                    </div>
 			                </div>
 			                <!-- 정은화 소개 끝 -->
@@ -308,36 +306,36 @@
 			                     </div>
 			                     <div class="panel panel-info">
 			                        <div class="panel-heading">
-			                        	<center><strong>김규원 자기기술서</strong></center>
-			                        </div>
-			                        <div class="panel-body">
-			                            <div class="panel-group" id="accordion">
-			                                <div class="panel panel-primary">
-			                                    <div class="panel-heading">
-			                                        <h4 class="panel-title">
-			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne4">구현한 기능</a>
-			                                        </h4>
-			                                    </div>
-			                                    <div id="collapseOne4" class="panel-collapse collapse in">
-			                                        <div class="panel-body">
-			                                        @@
-			                                        </div>
-			                                    </div>
-			                                </div>
-			                                <div class="panel panel-primary">
-			                                    <div class="panel-heading">
-			                                        <h4 class="panel-title">
-			                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo4">미완성된 기능</a>
-			                                        </h4>
-			                                    </div>
-			                                    <div id="collapseTwo4" class="panel-collapse collapse">
-			                                        <div class="panel-body">
-			                                        @@
-			                                        </div>
-			                                    </div>
-			                                </div>
-			                            </div>
-			                   		</div>
+									<center><strong>구현한 기능</strong></center>
+								</div>
+			                    <div class="panel-body">
+			                    <ul class="list-unstyled">
+			                   		<li>
+										<strong>반 관련 기능</strong>
+									</li>
+									<li>
+									   / 반, 반 편성 / 등록, 조회, 수정, 삭제
+									</li>
+									<li>
+									 / 등록, 조회, 수정, 삭제
+									</li>
+									<li>
+										<strong>일지 기능</strong>
+									</li>
+									<li>
+										  / 일지구분, 일지자원, 일지
+									</li>
+									<li>
+										/ 등록, 조회, 수정, 삭제, 상세보기
+									</li>
+									<li>
+										<strong>전표 기능</strong>
+									</li>
+									<li>
+										 등록, 조회, 수정, 삭제
+									</li>
+			                    </ul>
+								</div>
 			                 	</div>
 			                </div>
 			                <!-- 김규원 소개 끝 -->
